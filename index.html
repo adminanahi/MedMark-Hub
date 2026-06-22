@@ -6,8 +6,8 @@
 <title>MedMark Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./index_files/css2" rel="stylesheet">
-<script src="./index_files/xlsx.full.min.js"></script>
+<link href="./MedMark Hub_files/css2" rel="stylesheet">
+<script src="./MedMark Hub_files/xlsx.full.min.js"></script>
 <style>
   :root{
     --navy:#1a365d; --navy-d:#0f2440; --mint:#4CAF50; --mint-s:#66BB6A; --mint-bg:#e8f5e9;
@@ -266,6 +266,50 @@
   .isegb{border:none;background:transparent;color:var(--ink2);border-radius:9px;padding:9px 18px;font-size:13.5px;font-weight:600;cursor:pointer;transition:.15s}
   .isegb.on{background:var(--white);color:var(--mint);font-weight:800;box-shadow:0 1px 5px rgba(26,54,93,.14),inset 0 0 0 1.5px rgba(76,175,80,.5)}
   .crmscope{margin-bottom:16px}
+  .taskfilter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .taskchip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surf);color:var(--ink);border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:700;cursor:pointer;transition:.14s}
+  .taskchip:hover{border-color:var(--mint)}
+  .taskchip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  body.dark .taskchip.on{background:var(--mint);color:#06210f}
+  .taskchip .tcount{display:inline-grid;place-items:center;min-width:18px;height:18px;border-radius:9px;background:rgba(26,54,93,.12);font-size:11px;padding:0 4px}
+  .taskchip.on .tcount{background:rgba(255,255,255,.25)}
+  .taskchip.alert{border-color:var(--coral)}
+  .taskchip .tdot{width:8px;height:8px;border-radius:50%;background:var(--coral)}
+  .kcmove{width:100%;margin-top:9px;border:1px solid var(--mint);background:var(--mint-bg);color:#2e7d32;border-radius:9px;padding:7px;font-size:11.5px;font-weight:700;cursor:pointer}
+  .kcmove:hover{background:var(--mint);color:#fff}
+  .kcmove.send{border-color:var(--navy);color:var(--navy)}
+  .kcmove.send:hover{background:var(--navy);color:#fff}
+  body.dark .kcmove{color:var(--mint-s)}body.dark .kcmove.send{color:#bcd0ff;border-color:#bcd0ff}
+  .archpick{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .archcli{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surf);color:var(--ink);border-radius:999px;padding:5px 13px 5px 5px;font-size:12.5px;font-weight:700;cursor:pointer;transition:.14s}
+  .archcli:hover{border-color:var(--mint)}
+  .archcli.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  body.dark .archcli.on{background:var(--mint);color:#06210f}
+  .archcli .aav{width:24px;height:24px;border-radius:50%;background-size:cover;background-position:center;background:linear-gradient(135deg,var(--mint),var(--sky));flex-shrink:0;display:grid;place-items:center;color:#fff;font-size:9px;font-weight:700}
+  .assetgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:820px){.assetgrid{grid-template-columns:1fr}}
+  .assetsec{padding:16px}
+  .assethd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .assethd h3{font-family:var(--serif);font-weight:600;font-size:14px;color:var(--ink)}
+  .assetcard{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:11px;padding:9px 12px;margin-bottom:8px;background:var(--surf)}
+  .aname{font-size:13px;color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .aacts{display:flex;align-items:center;gap:6px;flex-shrink:0}
+  .aacts a,.aacts button{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;border:1px solid var(--line);background:var(--white);color:var(--ink);font-size:13px;cursor:pointer;text-decoration:none}
+  .aacts a:hover{border-color:var(--mint);color:var(--mint)}.aacts button:hover{border-color:var(--coral);color:var(--coral)}
+  .assetempty{font-size:12px;color:var(--ink2);padding:6px 2px}
+  @keyframes cardflash{0%{box-shadow:0 0 0 0 rgba(76,175,80,0)}20%{box-shadow:0 0 0 4px rgba(76,175,80,.55)}100%{box-shadow:0 0 0 0 rgba(76,175,80,0)}}
+  .kc.flash{animation:cardflash 1.5s ease-out 2;outline:2px solid var(--mint);outline-offset:2px;border-radius:14px}
+  .peditgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}
+  @media(max-width:900px){.peditgrid{grid-template-columns:1fr}}
+  .peditmain{display:flex;flex-direction:column;gap:16px}
+  .peditside .card{position:sticky;top:14px}
+  .postedit .prev{height:200px;border-radius:14px;background:linear-gradient(135deg,var(--sky-bg),var(--mint-bg));display:grid;place-items:center;color:var(--sky);font-weight:600;margin-bottom:14px;background-size:cover;background-position:center;cursor:pointer;border:2px dashed #bcd3f0;text-align:center;padding:10px}
+  .inspowrap{display:flex;flex-wrap:wrap;gap:8px}
+  .inspoit{width:58px;height:58px;border-radius:10px;background-size:cover;background-position:center;position:relative;border:1px solid var(--line)}
+  .inspoit button{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:var(--coral);color:#fff;font-size:11px;display:grid;place-items:center;border:2px solid var(--white);cursor:pointer;padding:0}
+  .inspoadd{width:58px;height:58px;border-radius:10px;border:1.5px dashed var(--line);background:var(--surf);color:var(--ink2);font-size:20px;cursor:pointer}
+  .inspoadd:hover{border-color:var(--mint);color:var(--mint)}
+  .fld textarea.big{min-height:120px}
   .isegb.on.agendo{background:var(--mint);color:#fff;box-shadow:0 2px 8px rgba(76,175,80,.35)}
   .isegb.on.informes{background:var(--sky);color:#fff;box-shadow:0 2px 8px rgba(79,195,247,.35)}
   .isegb.on.no{background:#90a4ae;color:#fff;box-shadow:0 2px 8px rgba(144,164,174,.35)}
@@ -369,6 +413,7 @@
   .fld textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:11px;padding:10px;font-size:13px;line-height:1.5;color:var(--ink);background:var(--white);font-family:var(--sans);resize:vertical}
   .dnav6{grid-template-columns:repeat(6,1fr)}
   .dnav6 button{font-size:9px}.dnav6 .mi{font-size:18px}
+  .dnav4{grid-template-columns:repeat(4,1fr)}
   .origenwrap{display:grid;gap:16px}
   .callhact{display:flex;gap:8px;flex-wrap:wrap}
   .callhtwrap{overflow-x:auto;margin-top:10px;border:1px solid var(--line);border-radius:12px}
@@ -669,7 +714,7 @@
     <div class="lsub" id="lsub">Un solo acceso. Entra y te llevamos a tu espacio.</div>
     <div class="field"><label>Usuario o correo</label><input id="usr" value="perla@medmark.com"></div>
     <div class="field"><label>Contraseña</label><input type="password" value="********"></div>
-    <div class="lrole"><label>Entrar como (temporal · para revisar el avance)</label><select id="demoRole"><option value="admin">Perla · Administradora</option><option value="cm">Anahí · Community Manager</option><option value="disenador">Sofía · Diseño</option><option value="editor">Karla · Edición</option><option value="asistente">Asistente del consultorio</option><option value="doctor">Dr. Cárdenas · Doctor</option></select></div>
+    <div class="lrole"><label>Entrar como (temporal · para revisar el avance)</label><select id="demoRole"><option value="admin">Perla · Administradora</option><option value="cm">Anahí · Community Manager</option><option value="disenador">Sofía · Diseño</option><option value="editor">Karla · Edición</option><option value="doctor">Dr. Cárdenas · Doctor</option></select></div>
     <button class="lbtn" id="enter">Entrar</button>
     <div class="lforgot">¿Olvidaste tu contraseña? <b>Recupérala aquí</b></div>
   </div>
@@ -681,8 +726,8 @@
       <div class="sbrand"><svg width="28" height="24" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></polyline><polyline points="13,10 19,34 24,18" fill="none" stroke="#66BB6A" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><span class="w">Med<span class="b">Mark</span></span><button class="collapseBtn" data-collapse="" title="Ocultar menú">«</button></div>
       <nav class="snav" id="snav">
         <div class="sgrp" data-roles="admin,cm">Panorama</div>
-        <button class="on" data-p="inicio" data-roles="admin,cm"><span class="ic">🏠</span> Inicio</button>
-        <button data-p="crm" data-roles="admin,cm" class=""><span class="ic">🩺</span> Clientes</button>
+        <button class="on" data-p="inicio" data-roles="admin,cm,disenador,editor"><span class="ic">🏠</span> Inicio</button>
+        <button data-p="crm" data-roles="admin,cm"><span class="ic">🩺</span> Clientes</button>
         <div class="sgrp" data-roles="admin,cm,disenador,editor">Producción</div>
         <button data-p="contenido" data-roles="admin,cm,disenador,editor"><span class="ic">🗂️</span> Contenido</button>
         <button data-p="calendario" data-roles="admin,cm,disenador,editor"><span class="ic">🗓️</span> Calendario</button>
@@ -693,13 +738,11 @@
         <button data-p="pagos" data-roles="admin"><span class="ic">🧾</span> Pagos</button>
         <div class="sgrp" data-roles="admin">Sistema</div>
         <button data-p="admin" data-roles="admin"><span class="ic">⚙️</span> Administración</button>
-        <button class="soon" data-p="soon" data-roles="admin,cm,disenador,editor"><span class="ic">🗃️</span> Archivos <span class="soonT">pronto</span></button>
-        <button data-p="agenda" data-roles="asistente" style="display: none;"><span class="ic">📅</span> Agenda de citas</button>
-        <button data-p="llamadas" data-roles="asistente" style="display: none;"><span class="ic">📞</span> Registro de llamadas</button>
+        <button data-p="archivos" data-roles="admin,cm,disenador,editor"><span class="ic">🗃️</span> Archivos</button>
       </nav>
       <div class="suser" id="suser" data-openprofile=""><div class="av" id="sav">PG</div><div><b id="sname">Perla Garza</b><small id="srole">Administradora · Dueña</small></div><button class="out" title="Cerrar sesión" data-logout="">⎋</button></div>
     </aside>
-    <main class="content" id="content"><div class="phb"><div class="blob hb1"></div><div class="blob hb2"></div><div class="g">Buenas noches,</div><h1>Hola, Perla 👋</h1><div class="s">Esto es lo que necesita tu atención esta semana.</div><svg class="ecg" width="70" height="24" viewBox="0 0 70 26"><polyline points="0,16 14,16 19,5 25,23 30,11 35,16 70,16" fill="none" stroke="#66BB6A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><div class="wk">📅 Miércoles 17 de junio, 2026</div></div>  <div class="pad" style="max-width:none;padding-right:30px"><div class="kpis" style="grid-template-columns:repeat(4,1fr)"><div class="kpi s" data-goto="contenido" style="cursor:pointer"><div class="ico">👀</div><div class="n">1</div><div class="l">Esperan tu visto bueno</div></div><div class="kpi a" data-goto="contenido" style="cursor:pointer"><div class="ico">⏳</div><div class="n">1</div><div class="l">Esperando al doctor</div></div><div class="kpi c" data-goto="contenido" style="cursor:pointer"><div class="ico">🔁</div><div class="n">1</div><div class="l">Cambios por aplicar</div></div><div class="kpi v" data-goto="pagos" style="cursor:pointer"><div class="ico">💰</div><div class="n">2</div><div class="l">Pagos por atender</div></div></div>  <div class="dashgrid"><div class="card"><h3>Lo tuyo hoy</h3><div class="csub">Acciones que dependen de ti ahora</div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">En retraso</span><div class="tx">Dr. Carlos Cárdenas · 7 días<small>aún no paga · revisar en Pagos</small></div><span class="go">›</span></div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">En retraso</span><div class="tx">Dra. Carolina Centeno · 7 días<small>aún no paga · revisar en Pagos</small></div><span class="go">›</span></div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Te toca pagar a tu personal<small>3 pendientes · ir a Pagos</small></div><span class="go">›</span></div><div class="row" data-goto="contenido" style="cursor:pointer"><span class="tag t-c">Revisar</span><div class="tx">1 publicación esperan tu visto bueno<small>antes de enviarlas al doctor</small></div><span class="go">›</span></div><div class="row" data-goto="contenido" style="cursor:pointer"><span class="tag t-a">Cambios</span><div class="tx">1 pieza con cambios por aplicar<small>el equipo debe corregir</small></div><span class="go">›</span></div></div>  <div class="card"><h3>Panorama de cuentas</h3><div class="csub">Salud de cada proyecto · 🟢 al día · 🟡 algo pendiente · 🔴 requiere acción</div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="sem sem-r"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">CC</div><div class="tx">Dr. Carlos Cárdenas<small>Cirugía Plástica · Anahí</small></div><span class="pannote pannote-r">Pago pendiente</span><span class="go">›</span></div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="sem sem-r"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">CC</div><div class="tx">Dra. Carolina Centeno<small>Cirugía Bariátrica y General · Perla</small></div><span class="pannote pannote-r">Pago pendiente</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">M</div><div class="tx">Mallyolo<small> · Anahí</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">A</div><div class="tx">Alejandro<small> · Anahí</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">CE</div><div class="tx">Carlos Escobedo<small> · Anahí</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">Ee</div><div class="tx">Especialistas en Cáncer<small> · Anahí</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">M</div><div class="tx">Mercedes<small> · Anahí</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">M/</div><div class="tx">Mater / Nancy<small> · Anahí</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">NK</div><div class="tx">Nicole K<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">CV</div><div class="tx">Cristóbal Vallejo<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">ST</div><div class="tx">Saúl Torres<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">FP</div><div class="tx">Felipe Peña<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">GH</div><div class="tx">Gaby H<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">AB</div><div class="tx">Ana Barrales<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">L</div><div class="tx">Liz<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">F</div><div class="tx">Freedom<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div></div>  <div class="card"><h3>Carga del equipo</h3><div class="csub">Cómo va de ocupado cada quien esta semana</div>    <div class="person"><div class="av">AG</div><div class="nm">Anahí · CM</div><div class="bar"><i style="width:72%;background:var(--mint)"></i></div><span class="pc">13</span></div>    <div class="person"><div class="av">SO</div><div class="nm">Sofía · Diseño</div><div class="bar"><i style="width:92%;background:var(--amber)"></i></div><span class="pc">17</span></div>    <div class="person"><div class="av">KA</div><div class="nm">Karla · Edición</div><div class="bar"><i style="width:58%;background:var(--sky)"></i></div><span class="pc">10</span></div></div></div></div></main>
+    <main class="content" id="content"><div class="phb"><div class="blob hb1"></div><div class="blob hb2"></div><div class="g">Buenas tardes,</div><h1>Hola, Perla 👋</h1><div class="s">Esto es lo que necesita tu atención esta semana.</div><svg class="ecg" width="70" height="24" viewBox="0 0 70 26"><polyline points="0,16 14,16 19,5 25,23 30,11 35,16 70,16" fill="none" stroke="#66BB6A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><div class="wk">📅 Lunes 22 de junio, 2026</div></div>  <div class="pad" style="max-width:none;padding-right:30px"><div class="kpis" style="grid-template-columns:repeat(4,1fr)"><div class="kpi s" data-goto="contenido" style="cursor:pointer"><div class="ico">👀</div><div class="n">0</div><div class="l">Esperan tu visto bueno</div></div><div class="kpi a" data-goto="contenido" style="cursor:pointer"><div class="ico">⏳</div><div class="n">0</div><div class="l">Esperando al doctor</div></div><div class="kpi c" data-goto="contenido" style="cursor:pointer"><div class="ico">🔁</div><div class="n">1</div><div class="l">Cambios por aplicar</div></div><div class="kpi v" data-goto="pagos" style="cursor:pointer"><div class="ico">💰</div><div class="n">2</div><div class="l">Pagos por atender</div></div></div>  <div class="dashgrid"><div class="card"><h3>Lo tuyo hoy</h3><div class="csub">Acciones que dependen de ti ahora</div><div class="row" data-gotask="4" style="cursor:pointer"><span class="tag t-r">Escalado</span><div class="tx">Venció: La obesidad no se trata con una so…<small>habla con Sofía, y si no se resuelve escala a Perla · Dra. Carolina Centeno</small></div><span class="go">›</span></div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">En retraso</span><div class="tx">Dr. Carlos Cárdenas · 12 días<small>aún no paga · revisar en Pagos</small></div><span class="go">›</span></div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">En retraso</span><div class="tx">Dra. Carolina Centeno · 12 días<small>aún no paga · revisar en Pagos</small></div><span class="go">›</span></div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Te toca pagar a tu personal<small>3 pendientes · ir a Pagos</small></div><span class="go">›</span></div><div class="row" data-goto="contenido" style="cursor:pointer"><span class="tag t-a">Cambios</span><div class="tx">1 pieza con cambios por aplicar<small>el equipo debe corregir</small></div><span class="go">›</span></div></div>  <div class="card"><h3>Panorama de cuentas</h3><div class="csub">Tus cuentas + solo las alertas de otras CM · 🟢 al día · 🟡 algo pendiente · 🔴 requiere acción</div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="sem sem-r"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">CC</div><div class="tx">Dra. Carolina Centeno<small>Cirugía Bariátrica y General · Perla</small></div><span class="pannote pannote-r">Pago pendiente</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">NK</div><div class="tx">Nicole K<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">CV</div><div class="tx">Cristóbal Vallejo<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">ST</div><div class="tx">Saúl Torres<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">FP</div><div class="tx">Felipe Peña<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">GH</div><div class="tx">Gaby H<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">AB</div><div class="tx">Ana Barrales<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">L</div><div class="tx">Liz<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="crm" style="cursor:pointer"><span class="sem sem-g"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">F</div><div class="tx">Freedom<small> · Perla</small></div><span class="pannote pannote-g">Al día</span><span class="go">›</span></div><div class="row" data-goto="pagos" style="cursor:pointer"><span class="sem sem-r"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">CC</div><div class="tx">Dr. Carlos Cárdenas<small>Cirugía Plástica · Anahí</small></div><span class="pannote pannote-r">Pago pendiente</span><span class="go">›</span></div></div>  <div class="card"><h3>Carga del equipo</h3><div class="csub">Pendientes de producción de cada quien en tus cuentas · 🔴 = tiene un retraso. Escríbele antes de que se venza.</div><div class="person"><div class="av">SO</div><div class="nm">Sofía · <span style="color:var(--coral)">🔴 retraso</span></div><div class="bar"><i style="width:100%;background:var(--coral)"></i></div><span class="pc">1</span></div><div class="person"><div class="av">KA</div><div class="nm">Karla</div><div class="bar"><i style="width:8%;background:var(--mint)"></i></div><span class="pc">0</span></div></div></div></div></main>
   </div>
 </div>
 
@@ -727,24 +770,14 @@
           <div class="dhead"><div class="blob"></div><div class="g">Tu contenido</div><h2>Agenda de la semana</h2><div class="s">Aprueba o comenta cada publicación antes de publicar</div></div>
           <div class="dbody" id="docAgenda"></div>
         </section>
-        <section data-d="citas" class="hidden">
-          <div class="dhead"><div class="blob"></div><div class="g">Tu consultorio</div><h2>Citas</h2><div class="s">Tu agenda del día. La maneja tu asistente; aquí la consultas.</div></div>
-          <div class="dbody" id="docAgendaCitas"></div>
-        </section>
-        <section data-d="exped" class="hidden">
-          <div class="dhead"><div class="blob"></div><div class="g">Tu consultorio</div><h2>Expedientes</h2><div class="s">La información clínica de tus pacientes, solo para ti.</div></div>
-          <div class="dbody" id="docExped"></div>
-        </section>
         <section data-d="pagos" class="hidden">
           <div class="dhead"><div class="blob"></div><div class="g">Tu cuenta</div><h2>Pagos</h2></div>
           <div class="dbody" id="docPay"></div>
         </section>
       </div>
-      <nav class="dnav dnav6" id="dnav">
+      <nav class="dnav dnav4" id="dnav">
         <button class="on" data-d="pend"><span class="mi">📋</span>Revisar<span class="nb" id="dnb" style="display: grid;">2</span></button>
         <button data-d="chat"><span class="mi">💬</span>Mensajes</button>
-        <button data-d="citas"><span class="mi">🩺</span>Citas</button>
-        <button data-d="exped"><span class="mi">🗂️</span>Expedientes</button>
         <button data-d="rep"><span class="mi">📈</span>Reportes</button>
         <button data-d="pagos"><span class="mi">🧾</span>Pagos<span class="nb" id="dpayNb" style="display: grid;">1</span></button>
       </nav>
@@ -765,7 +798,7 @@ function greet(){var h=new Date().getHours();return h<12?'Buenos días':h<19?'Bu
 var CONFIG={
   platforms:["Instagram","Facebook","TikTok","YouTube"],
   types:["Imagen","Video","Carrusel","Reel","Historia"],
-  statuses:["Borrador","Revisión","Enviado","Cambios","Aprobado"],
+  statuses:["Cambios","Borrador","Revisión","Enviado","Aprobado","Programado"],
   team:["Sofía (Diseño)","Karla (Edición)","Anahí (CM)"],
   funnel:["Inconsciente","Consciente del problema","Consciente de la solución","Consciente del servicio","Evaluación y confianza","Conversión","Fidelización"],
   stages:["Prospecto","Briefing","Activo","Renovación"]
@@ -784,11 +817,11 @@ var ACCENTS=[{n:"Menta",c:"#4CAF50"},{n:"Esmeralda",c:"#10b981"},{n:"Azul",c:"#1
 
 /* ---------- estado ---------- */
 var posts=[
- {id:1,doctor:"Dr. Carlos Cárdenas",plat:"Instagram",type:"Imagen",date:"2026-06-05",status:"Borrador",funnel:"Consciente del problema",copy:"BLEFAROPLASTIA: por qué tus ojos se ven cansados aunque duermas bien.",img:null,who:"Sofía (Diseño)"},
- {id:2,doctor:"Dr. Carlos Cárdenas",plat:"Instagram",type:"Carrusel",date:"2026-06-07",status:"Revisión",funnel:"Consciente del servicio",copy:"Mommy Makeover: recupera tu cuerpo después del embarazo, paso a paso.",img:null,who:"Sofía (Diseño)"},
- {id:3,doctor:"Dr. Carlos Cárdenas",plat:"Facebook",type:"Video",date:"2026-06-11",status:"Enviado",funnel:"Evaluación y confianza",copy:"Resultados naturales: la historia real de una paciente.",img:null,who:"Karla (Edición)"},
- {id:4,doctor:"Dra. Carolina Centeno",plat:"Instagram",type:"Imagen",date:"2026-06-10",status:"Cambios",funnel:"Consciente del problema",changeNote:"Reforzar al equipo de mujeres en la imagen y agregar CTA claro al WhatsApp.",copy:"La obesidad no se trata con una sola consulta.",img:null,who:"Sofía (Diseño)"},
- {id:5,doctor:"Dra. Carolina Centeno",plat:"Facebook",type:"Carrusel",date:"2026-06-09",status:"Aprobado",funnel:"Consciente del problema",copy:"Vesícula: señales de que ya no debes esperar.",img:null,who:"Karla (Edición)"}
+ {id:1,doctor:"Dr. Carlos Cárdenas",plat:"Instagram",type:"Imagen",date:"2026-06-05",pubDate:"2026-06-20",status:"Borrador",funnel:"Consciente del problema",copy:"BLEFAROPLASTIA: por qué tus ojos se ven cansados aunque duermas bien.",img:null,who:"Sofía (Diseño)"},
+ {id:2,doctor:"Dr. Carlos Cárdenas",plat:"Instagram",type:"Carrusel",date:"2026-06-07",pubDate:"2026-06-22",status:"Revisión",funnel:"Consciente del servicio",copy:"Mommy Makeover: recupera tu cuerpo después del embarazo, paso a paso.",img:null,who:"Sofía (Diseño)"},
+ {id:3,doctor:"Dr. Carlos Cárdenas",plat:"Facebook",type:"Video",date:"2026-06-11",pubDate:"2026-06-18",status:"Enviado",funnel:"Evaluación y confianza",copy:"Resultados naturales: la historia real de una paciente.",img:null,who:"Karla (Edición)"},
+ {id:4,doctor:"Dra. Carolina Centeno",plat:"Instagram",type:"Imagen",date:"2026-06-10",pubDate:"2026-06-21",status:"Cambios",funnel:"Consciente del problema",changeNote:"Reforzar al equipo de mujeres en la imagen y agregar CTA claro al WhatsApp.",copy:"La obesidad no se trata con una sola consulta.",img:null,who:"Sofía (Diseño)"},
+ {id:5,doctor:"Dra. Carolina Centeno",plat:"Facebook",type:"Carrusel",date:"2026-06-09",pubDate:"2026-06-19",status:"Aprobado",funnel:"Consciente del problema",copy:"Vesícula: señales de que ya no debes esperar.",img:null,who:"Karla (Edición)"}
 ];
 var clients=[
  {id:5,doc:"Dr. Carlos Cárdenas",esp:"Cirugía Plástica",val:"$12,000",cm:"Anahí",acc:"3",stage:"Activo",phone:"55 9154 3106",email:"contacto@plasticacardenas.com",photo:null,accounts:[{platform:"Instagram",username:"breastandbodyexpert",url:"https://instagram.com/breastandbodyexpert"},{platform:"TikTok",username:"drcarloscardenas",url:"https://tiktok.com/@drcarloscardenas"},{platform:"Facebook",username:"Dr. Carlos Michel Cárdenas Salomón",url:"https://facebook.com/plasticacardenas"}],plan:"2 posts/sem · historias c/3 días",palette:"Por definir (hoy solo azul médico)",fonts:"Por definir",personality:"Natural, elegante, seguro, cercano",keywords:"blefaroplastia, cirugía mamaria, abdominoplastia, liposucción, mommy makeover, robótica",notes:"Público objetivo 40-80 (audiencia real 25-50). CTA principal: WhatsApp. Pendiente: campaña de Mommy Makeover y reemplazar la foto generada por IA del sitio."},
@@ -808,7 +841,7 @@ var clients=[
  {id:19,doc:"Liz",esp:"",val:"",cm:"Perla",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true},
  {id:20,doc:"Freedom",esp:"",val:"",cm:"Perla",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true}
 ];
-var nextPost=6,nextClient=21,tmpImg=null,tmpClientPhoto=null,tmpAccounts=[];
+var nextPost=6,nextClient=21,tmpImg=null,tmpClientPhoto=null,tmpAccounts=[],editPostId=null,editReturn='contenido',tmpInspo=[];
 function docList(){return clients.map(function(c){return c.doc;});}
 function shortFromUrl(u){if(!u)return '';var s=u.replace(/^https?:\/\//,'').replace(/^www\./,'').split('?')[0].split('#')[0];var parts=s.split('/').filter(Boolean);if(parts.length<2)return (parts[0]||'').replace(/^@/,'');var name=parts[parts.length-1].replace(/^@/,'');return name||parts[0];}
 function platFromUrl(u){var s=(u||'').toLowerCase();if(s.indexOf('instagram')>=0)return 'Instagram';if(s.indexOf('facebook')>=0||s.indexOf('fb.com')>=0)return 'Facebook';if(s.indexOf('tiktok')>=0)return 'TikTok';if(s.indexOf('youtube')>=0||s.indexOf('youtu.be')>=0)return 'YouTube';if(s.indexOf('linkedin')>=0)return 'LinkedIn';if(s.indexOf('threads')>=0)return 'Threads';return '';}
@@ -869,18 +902,18 @@ function payInfo(c){
 }
 /* ---------- mensajes + notificaciones ---------- */
 var convos={5:[{who:'them',text:'Hola Anahí, ya vi la propuesta 👍',time:'10:02'},{who:'post',postId:1,text:'Me gusta, pero pongamos un CTA más claro al WhatsApp.',time:'10:08'},{who:'note',text:'Pasar este cambio a Sofía (diseño).',time:'10:09'},{who:'me',text:'¡Claro, Doctor! Lo ajustamos hoy.',time:'10:12'}],6:[{who:'them',text:'¿Cuándo sale el de vesícula?',time:'hace 1 h'}]};
-var unread={5:0,6:1,7:0},activeConvo=5,noteMode=false;
-function chatClients(){return clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});}
+var unread={5:0,6:1,7:0},activeConvo=5,noteMode=false,taskWho='',archCid=0;
+function chatClients(){var act=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});if(currentRole==='admin'||currentRole==='cm'){var me=((USERS[currentRole]||{}).name||'').split(' ')[0];return act.filter(function(c){return (c.cm||'').indexOf(me)>=0;});}return act;}
 function clientName(id){var c=clients.filter(function(x){return x.id===id})[0];return c?c.doc:'Doctor';}
-function totalUnread(){var t=0;for(var k in unread)t+=unread[k];return t;}
+function totalUnread(){var t=0;chatClients().forEach(function(c){t+=(unread[c.id]||0);});return t;}
 function updateMsgBadge(){var b=document.getElementById('msgBadge');var n=totalUnread();if(b){if(n>0){b.style.display='';b.textContent=n;}else{b.style.display='none';}}}
 function beep(){try{var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;var ctx=new Ctx();var o=ctx.createOscillator();var g=ctx.createGain();o.type='sine';o.frequency.value=760;g.gain.setValueAtTime(0.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.13,ctx.currentTime+0.02);g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.28);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.3);setTimeout(function(){try{ctx.close();}catch(e){}},450);}catch(e){}}
 function notify(title,body){beep();if(window.Notification&&Notification.permission==='granted'){try{new Notification(title,{body:body});}catch(e){}}updateMsgBadge();toast('🔔 '+title);}
 /* ---------- roles ---------- */
-var USERS={admin:{name:'Perla Garza',role:'Administradora · Dueña',person:'Perla Garza'},cm:{name:'Anahí Garza',role:'Community Manager',person:'Anahí (CM)'},disenador:{name:'Sofía',role:'Diseñadora',person:'Sofía (Diseño)'},editor:{name:'Karla',role:'Editora',person:'Karla (Edición)'},asistente:{name:'Recepción · Dr. Cárdenas',role:'Asistente del consultorio',person:'Asistente'}};
+var USERS={admin:{name:'Perla Garza',role:'Administradora · Dueña',person:'Perla Garza'},cm:{name:'Anahí Garza',role:'Community Manager',person:'Anahí (CM)'},disenador:{name:'Sofía',role:'Diseñadora',person:'Sofía (Diseño)'},editor:{name:'Karla',role:'Editora',person:'Karla (Edición)'}};
 var currentRole='admin';
 function currentUserName(){return USERS[currentRole].person;}
-function applyRole(rk){currentRole=rk;var u=USERS[rk];profile.name=u.name;profile.role=u.role;profile.photo=null;
+function applyRole(rk){currentRole=rk;var u=USERS[rk];profile.name=u.name;profile.role=u.role;profile.photo=null;crmScope=(rk==='admin')?'todas':'mias';
   document.querySelectorAll('#snav [data-roles]').forEach(function(el){el.style.display=el.getAttribute('data-roles').split(',').indexOf(rk)>=0?'':'none';});
   updateUser();
   var first=null;document.querySelectorAll('#snav button[data-roles]').forEach(function(b){if(!first&&b.getAttribute('data-roles').split(',').indexOf(rk)>=0)first=b.getAttribute('data-p');});
@@ -958,13 +991,13 @@ function setAccent(c){document.documentElement.style.setProperty('--mint',c);doc
 applyTheme();
 
 /* ---------- login ---------- */
-var DEMO_USR={admin:'perla@medmark.com',cm:'anahi@medmark.com',disenador:'sofia@medmark.com',editor:'karla@medmark.com',asistente:'recepcion@plasticacardenas.com',doctor:'dr.cardenas@plasticacardenas.com'};
+var DEMO_USR={admin:'perla@medmark.com',cm:'anahi@medmark.com',disenador:'sofia@medmark.com',editor:'karla@medmark.com',doctor:'dr.cardenas@plasticacardenas.com'};
 function roleFromEmail(em){em=(em||'').trim().toLowerCase();for(var k in DEMO_USR){if(DEMO_USR[k]===em)return k;}return 'admin';}
 var drSel=$('#demoRole');if(drSel)drSel.addEventListener('change',function(){var u=$('#usr');if(u)u.value=DEMO_USR[drSel.value]||'';});
 $('#lhi').textContent=greet()+' 👋';
 $('#enter').addEventListener('click',function(){var r=($('#demoRole')?$('#demoRole').value:roleFromEmail($('#usr')?$('#usr').value:''));$('#login').style.display='none';
   if(window.Notification&&Notification.permission==='default'){try{Notification.requestPermission();}catch(e){}}
-  if(r==='doctor'){$('#doctor').style.display='grid';$('#dg').textContent=greet()+',';}else{$('#agencia').style.display='block';applyRole(r);updateMsgBadge();}});
+  if(r==='doctor'){$('#doctor').style.display='grid';$('#dg').textContent=greet()+',';renderPend();updateDocPayBadge();}else{$('#agencia').style.display='block';applyRole(r);updateMsgBadge();}});
 function logout(){$('#agencia').style.display='none';$('#doctor').style.display='none';$('#login').style.display='grid';}
 
 $$('#snav button').forEach(function(b){b.addEventListener('click',function(){go(b.getAttribute('data-p'),b);});});
@@ -979,38 +1012,78 @@ function initials(n){var p=n.replace(/^(Dr\.|Dra\.)\s*/,'').split(' ');return ((
 
 /* ---------- PANELS ---------- */
 var PANELS={},AFTER={};
+function flashCard(pid){setTimeout(function(){var el=document.querySelector('#content [data-post="'+pid+'"]');if(el){el.classList.add('flash');el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){el.classList.remove('flash');},3000);}},70);}
+function prodHome(){
+  var me=currentUserName();var hd=new Date();
+  var heroDate=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][hd.getDay()]+' '+hd.getDate()+' de '+MESES[hd.getMonth()]+', '+hd.getFullYear();
+  var hoy=todayIso(),manana=addDays(hoy,1);
+  function late(p){return p.date&&p.date<hoy;}
+  function dueWindow(p){return p.date&&p.date<=manana;} // vence hoy/mañana o ya venció = urgente
+  function whenLabel(p){if(late(p))return '<span style="color:var(--coral);font-weight:700">🔴 venció '+isoToShort(p.date)+' · escalado al CM</span>';if(p.date===hoy)return '<span style="color:#b8860b;font-weight:700">⏰ vence hoy</span>';if(p.date===manana)return '<span style="color:#b8860b;font-weight:700">vence mañana</span>';return 'entrega '+isoToShort(p.date);}
+  var tasks=posts.filter(function(p){return p.who===me&&(p.status==='Cambios'||p.status==='Borrador');});
+  tasks.sort(function(a,b){var la=late(a)?0:1,lb=late(b)?0:1;if(la!==lb)return la-lb;var wa=a.status==='Cambios'?0:1,wb=b.status==='Cambios'?0:1;if(wa!==wb)return wa-wb;return (a.date||'').localeCompare(b.date||'');});
+  var revArr=posts.filter(function(p){return p.who===me&&p.status==='Revisión';});var enRev=revArr.length;
+  var revRows=revArr.map(function(p){return '<div class="row" data-gotask="'+p.id+'" style="cursor:pointer"><span class="tag t-s">En revisión</span><div class="tx">'+escapeHtml(p.copy.slice(0,46))+'…<small>con el CM para su visto bueno · '+escapeHtml(p.doctor)+'</small></div><span class="go">›</span></div>';}).join('')||'<div class="folempty" style="padding:8px">Nada en revisión por ahora.</div>';
+  var porVencer=tasks.filter(dueWindow).length;
+  var rows=tasks.map(function(p,i){var action=p.status==='Cambios'?'Corrige lo solicitado':'Prodúcelo y envía a revisión';var tag=p.status==='Cambios'?'<span class="tag t-c">Cambios</span>':'<span class="tag t-a">Por hacer</span>';
+    return '<div class="row" data-post="'+p.id+'" style="cursor:pointer">'+tag+'<div class="tx">'+(i===0?'<b>👉 Empieza aquí: </b>':'')+escapeHtml(p.copy.slice(0,46))+'…<small>'+action+' · '+escapeHtml(p.doctor)+' · '+whenLabel(p)+'</small></div><span class="go">›</span></div>';
+  }).join('')||'<div class="folempty">No tienes pendientes. ¡Vas al día! ✅</div>';
+  return '<div class="phb"><div class="blob hb1"></div><div class="blob hb2"></div><div class="g">'+greet()+',</div><h1>Hola, '+escapeHtml(profile.name.split(' ')[0])+' 👋</h1><div class="s">Tu resumen del día: lo que necesita tu atención, en orden de prioridad. Empieza por la primera y avanza con calma.</div><div class="wk">📅 '+heroDate+'</div></div>\
+  <div class="pad" style="max-width:none;padding-right:30px"><div class="kpis" style="grid-template-columns:repeat(3,1fr)">\
+    <div class="kpi a"><div class="ico">⏰</div><div class="n">'+porVencer+'</div><div class="l">Por vencer</div></div>\
+    <div class="kpi"><div class="ico">🛠️</div><div class="n">'+tasks.length+'</div><div class="l">Por hacer</div></div>\
+    <div class="kpi s"><div class="ico">👀</div><div class="n">'+enRev+'</div><div class="l">En revisión</div></div></div>\
+  <div class="card" style="margin-top:20px"><h3>Tus prioridades de hoy</h3><div class="csub">Ordenadas de mayor a menor urgencia. Empieza por la primera y trabaja con tranquilidad: aquí siempre verás tu siguiente paso, aunque retomes más tarde.</div>'+rows+'</div>\
+  <div class="card" style="margin-top:16px"><h3>Entregado · en revisión</h3><div class="csub">Piezas que ya completaste y están con el CM para su aprobación. Tócalas para ubicarlas, resaltadas, en Mis tareas.</div>'+revRows+'</div></div>';
+}
 PANELS.inicio=function(){var isAdmin=currentRole==='admin';
+  if(currentRole==='disenador'||currentRole==='editor')return prodHome();
+  var meName=((USERS[currentRole]||{}).name||'').split(' ')[0];
+  function isUrgent(c){return !c.paidThisMonth&&(new Date().getDate()-(c.payDay||10))>0;}
+  var activeAll=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
+  var scopeClients=activeAll.filter(function(c){return (c.cm||'').indexOf(meName)>=0;});
+  var scopeDocs={};scopeClients.forEach(function(c){scopeDocs[c.doc]=1;});
+  function inScope(p){return !!scopeDocs[p.doctor];}
+  var hoyI=todayIso(),mananaI=addDays(hoyI,1);
+  var PRODS=['Sofía (Diseño)','Karla (Edición)'];
+  function shortWho(w){return (w||'').split(' (')[0];}
+  function prodPend(w){return posts.filter(function(p){return p.who===w&&inScope(p)&&(p.status==='Cambios'||p.status==='Borrador'||p.status==='Revisión');});}
+  var prodInProd=posts.filter(function(p){return inScope(p)&&PRODS.indexOf(p.who)>=0&&(p.status==='Cambios'||p.status==='Borrador');});
+  var escalRows=prodInProd.filter(function(p){return p.date&&p.date<hoyI;}).map(function(p){return '<div class="row" data-gotask="'+p.id+'" style="cursor:pointer"><span class="tag t-r">Escalado</span><div class="tx">Venció: '+escapeHtml(p.copy.slice(0,34))+'…<small>habla con '+escapeHtml(shortWho(p.who))+', y si no se resuelve escala a Perla · '+escapeHtml(p.doctor)+'</small></div><span class="go">›</span></div>';}).join('');
+  var soonRows=prodInProd.filter(function(p){return p.date&&p.date>=hoyI&&p.date<=mananaI;}).map(function(p){return '<div class="row" data-gotask="'+p.id+'" style="cursor:pointer"><span class="tag t-a">Por vencer</span><div class="tx">'+escapeHtml(p.copy.slice(0,34))+'…<small>pregúntale a '+escapeHtml(shortWho(p.who))+' cómo va · '+(p.date===hoyI?'vence hoy':'vence mañana')+' · '+escapeHtml(p.doctor)+'</small></div><span class="go">›</span></div>';}).join('');
+  var team=PRODS.map(function(w){var arr=prodPend(w);return {w:w,n:arr.length,late:arr.some(function(p){return p.date&&p.date<hoyI;})};});
+  var maxN=Math.max(1,team[0].n,team[1].n);
+  var teamRows=team.map(function(t){var pct=Math.max(8,Math.round(t.n/maxN*100));var col=t.late?'var(--coral)':(t.n>=5?'var(--amber)':'var(--mint)');return '<div class="person"><div class="av">'+escapeHtml(shortWho(t.w).slice(0,2).toUpperCase())+'</div><div class="nm">'+escapeHtml(shortWho(t.w))+(t.late?' · <span style="color:var(--coral)">🔴 retraso</span>':'')+'</div><div class="bar"><i style="width:'+pct+'%;background:'+col+'"></i></div><span class="pc">'+t.n+'</span></div>';}).join('');
   var overdueArr=isAdmin?clients.filter(function(c){return (c.stage==='Activo'||c.stage==='Renovación')&&!c.paidThisMonth&&(new Date().getDate()-(c.payDay||10))>0;}):[];
   var compArr=isAdmin?clients.filter(function(c){return c.comprobante;}):[];
   var overdue=overdueArr.map(function(c){var dl=new Date().getDate()-(c.payDay||10);return '<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">En retraso</span><div class="tx">'+escapeHtml(c.doc)+' · '+dl+' día'+(dl>1?'s':'')+'<small>aún no paga · revisar en Pagos</small></div><span class="go">›</span></div>';}).join('');
   var compRecibido=compArr.map(function(c){return '<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-g">Ya pagó</span><div class="tx">'+escapeHtml(c.doc)+' subió su comprobante<small>verifícalo y confirma en Pagos</small></div><span class="go">›</span></div>';}).join('');
   var nPend=staff.filter(function(s){return s.payStatus!=='Pagado';}).length;
   var staffPend=(isAdmin&&nPend)?'<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Te toca pagar a tu personal<small>'+nPend+' pendientes · ir a Pagos</small></div><span class="go">›</span></div>':'';
-  var revN=posts.filter(function(p){return p.status==='Revisión';}).length;
-  var envN=posts.filter(function(p){return p.status==='Enviado';}).length;
-  var camN=posts.filter(function(p){return p.status==='Cambios';}).length;
+  var revN=posts.filter(function(p){return p.status==='Revisión'&&inScope(p);}).length;
+  var envN=posts.filter(function(p){return p.status==='Enviado'&&inScope(p);}).length;
+  var camN=posts.filter(function(p){return p.status==='Cambios'&&inScope(p);}).length;
   var tiles=[{ico:'👀',n:revN,l:'Esperan tu visto bueno',go:'contenido',cls:'s'},{ico:'⏳',n:envN,l:'Esperando al doctor',go:'contenido',cls:'a'},{ico:'🔁',n:camN,l:'Cambios por aplicar',go:'contenido',cls:'c'}];
   if(isAdmin)tiles.push({ico:'💰',n:overdueArr.length+compArr.length,l:'Pagos por atender',go:'pagos',cls:'v'});
   var kpiHTML=tiles.map(function(t){return '<div class="kpi '+t.cls+'" data-goto="'+t.go+'" style="cursor:pointer"><div class="ico">'+t.ico+'</div><div class="n">'+t.n+'</div><div class="l">'+t.l+'</div></div>';}).join('');
-  var loTuyo=compRecibido+overdue+staffPend;
+  var loTuyo=escalRows+compRecibido+overdue+staffPend;
   if(revN)loTuyo+='<div class="row" data-goto="contenido" style="cursor:pointer"><span class="tag t-c">Revisar</span><div class="tx">'+revN+' publicación'+(revN>1?'es':'')+' esperan tu visto bueno<small>antes de enviarlas al doctor</small></div><span class="go">›</span></div>';
   if(camN)loTuyo+='<div class="row" data-goto="contenido" style="cursor:pointer"><span class="tag t-a">Cambios</span><div class="tx">'+camN+' pieza'+(camN>1?'s':'')+' con cambios por aplicar<small>el equipo debe corregir</small></div><span class="go">›</span></div>';
+  loTuyo+=soonRows;
   if(!loTuyo)loTuyo='<div class="folempty">Todo en orden. Nada urgente por ahora ✅</div>';
-  var actC=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
+  var actC=scopeClients;
+  if(isAdmin){var urgOthers=activeAll.filter(function(c){return (c.cm||'').indexOf(meName)<0&&isUrgent(c);});actC=scopeClients.concat(urgOthers);}
   var panRows=actC.map(function(c){var p=posts.filter(function(x){return x.doctor===c.doc;});var rev=p.filter(function(x){return x.status==='Revisión'||x.status==='Cambios';}).length;var env=p.filter(function(x){return x.status==='Enviado';}).length;var over=isAdmin&&(c.stage==='Activo'||c.stage==='Renovación')&&!c.paidThisMonth&&(new Date().getDate()-(c.payDay||10))>0;var dot,note,goto;if(over){dot='r';note='Pago pendiente';goto='pagos';}else if(rev){dot='a';note=rev+' por revisar';goto='contenido';}else if(env){dot='a';note=env+' con el doctor';goto='contenido';}else{dot='g';note='Al día';goto='crm';}return '<div class="row" data-goto="'+goto+'" style="cursor:pointer"><span class="sem sem-'+dot+'"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">'+initials(c.doc)+'</div><div class="tx">'+escapeHtml(c.doc)+'<small>'+escapeHtml(c.esp||'')+' · '+escapeHtml(c.cm||'')+'</small></div><span class="pannote pannote-'+dot+'">'+note+'</span><span class="go">›</span></div>';}).join('')||'<div class="folempty">Sin cuentas activas.</div>';
-  var panBlock='<div class="card"><h3>Panorama de cuentas</h3><div class="csub">Salud de cada proyecto · 🟢 al día · 🟡 algo pendiente · 🔴 requiere acción</div>'+panRows+'</div>';
+  var panBlock='<div class="card"><h3>Panorama de cuentas</h3><div class="csub">'+(isAdmin?'Tus cuentas + solo las alertas de otras CM · ':'')+'🟢 al día · 🟡 algo pendiente · 🔴 requiere acción</div>'+panRows+'</div>';
   var hd=new Date();var heroDate=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][hd.getDay()]+' '+hd.getDate()+' de '+MESES[hd.getMonth()]+', '+hd.getFullYear();
   return '<div class="phb"><div class="blob hb1"></div><div class="blob hb2"></div><div class="g">'+greet()+',</div><h1>Hola, '+escapeHtml(profile.name.split(' ')[0])+' 👋</h1><div class="s">Esto es lo que necesita tu atención esta semana.</div><svg class="ecg" width="70" height="24" viewBox="0 0 70 26"><polyline points="0,16 14,16 19,5 25,23 30,11 35,16 70,16" fill="none" stroke="#66BB6A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="wk">📅 '+heroDate+'</div></div>\
   <div class="pad" style="max-width:none;padding-right:30px"><div class="kpis" style="grid-template-columns:repeat('+tiles.length+',1fr)">'+kpiHTML+'</div>\
   <div class="dashgrid"><div class="card"><h3>Lo tuyo hoy</h3><div class="csub">Acciones que dependen de ti ahora</div>'+loTuyo+'</div>\
   '+panBlock+'\
-  <div class="card"><h3>Carga del equipo</h3><div class="csub">Cómo va de ocupado cada quien esta semana</div>\
-    <div class="person"><div class="av">AG</div><div class="nm">Anahí · CM</div><div class="bar"><i style="width:72%;background:var(--mint)"></i></div><span class="pc">13</span></div>\
-    <div class="person"><div class="av">SO</div><div class="nm">Sofía · Diseño</div><div class="bar"><i style="width:92%;background:var(--amber)"></i></div><span class="pc">17</span></div>\
-    <div class="person"><div class="av">KA</div><div class="nm">Karla · Edición</div><div class="bar"><i style="width:58%;background:var(--sky)"></i></div><span class="pc">10</span></div></div></div></div>';};
+  <div class="card"><h3>Carga del equipo</h3><div class="csub">Pendientes de producción de cada quien en tus cuentas · 🔴 = tiene un retraso. Escríbele antes de que se venza.</div>'+teamRows+'</div></div></div>';};
 
 PANELS.crm=function(){
-  // — Vista CM: solo una lista de SUS cuentas activas, sin etapas (las etapas son el buró de ventas de Perla) —
+  // — Vista CM: SOLO sus cuentas asignadas (no ve las de otra CM) —
   if(currentRole!=='admin'){
     var me=(USERS[currentRole].name||'').split(' ')[0];
     var mine=clients.filter(function(c){return (c.stage==='Activo'||c.stage==='Renovación')&&(!me||(c.cm||'').indexOf(me)>=0);});
@@ -1020,7 +1093,7 @@ PANELS.crm=function(){
       var sub=(c.plan?'🗓️ '+escapeHtml(c.plan):'')+(c.manychat?(c.plan?' · ':'')+'🤖 ManyChat':'');
       return '<div class="kc"><div class="crmc" data-folder="'+c.id+'">'+head+(c.package?'<div class="pkgtag">📦 '+escapeHtml(c.package)+'</div>':'')+(sub?'<div class="sub">'+sub+'</div>':'')+(accs?'<div class="acctags">'+accs+'</div>':'')+'<div class="crmfoot"><span class="folhint">📁 Abrir carpeta ›</span></div></div></div>';
     }).join('')||'<div class="colempty" style="grid-column:1/-1">Aún no tienes cuentas asignadas. Cuando Perla active un cliente y te lo asigne, aparecerá aquí.</div>';
-    return '<div class="pad"><div class="ptitle"><div><h1>Mis cuentas</h1><p>Los doctores que gestionas. Haz clic en una tarjeta para ver su identidad: marca, redes, paleta, palabras clave y notas.</p></div></div><div class="crmlist">'+cards+'</div></div>';
+    return '<div class="pad"><div class="ptitle"><div><h1>Mis cuentas</h1><p>Los doctores que gestionas. Toca una tarjeta para abrir su carpeta.</p></div></div><div class="crmlist">'+cards+'</div></div>';
   }
   // — Vista admin (Perla): dos sombreros — 🗂️ Todas (Project Manager / dirección) y 👤 Mis cuentas (las que lleva como CM) —
   var active=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
@@ -1098,7 +1171,7 @@ function newSug(c,i,text){var sug=detectActions(text).filter(function(s){return 
 function renderFolder(){
   var c=folderClient();if(!c){closeFolder();return;}ensureFolderData(c);
   $$('#snav button').forEach(function(x){x.classList.remove('on');});var t=$('#snav [data-p="crm"]');if(t)t.classList.add('on');
-  var tabs=[['resumen','📋 Resumen'],['identidad','🎨 Identidad'],['contenido','📅 Contenido'],['reuniones','🗒️ Reuniones'],['acuerdos','✅ Acuerdos'],['origen','📞 Origen']];
+  var tabs=[['resumen','📋 Resumen'],['identidad','🎨 Identidad'],['contenido','📅 Contenido'],['reuniones','🗒️ Reuniones'],['acuerdos','✅ Acuerdos']];
   var pend=(c.acuerdos||[]).filter(function(a){return !a.done;}).length;
   var tabBar=tabs.map(function(tb){var bdg=(tb[0]==='acuerdos'&&pend)?' <span class="ftbn">'+pend+'</span>':'';return '<button class="ftb'+(folderTab===tb[0]?' on':'')+'" data-foltab="'+tb[0]+'">'+tb[1]+bdg+'</button>';}).join('');
   var head='<div class="folhd"><button class="folback" data-folback>← Clientes</button><div class="folwho"><div class="folav" data-folphoto title="Cambiar foto"'+(c.photo?(' style="background-image:url('+c.photo+')"'):'')+'>'+(c.photo?'':initials(c.doc))+'<span class="cam">📷</span></div><input type="file" id="folPhotoFile" accept="image/*" class="hidden"><div><div class="foldoc">'+escapeHtml(c.doc)+'</div><div class="folesp">'+escapeHtml(c.esp||'')+(c.stage?' · '+escapeHtml(c.stage):'')+'</div></div></div></div>';
@@ -1113,7 +1186,6 @@ function folderBody(c){
     case 'contenido':return folContenido(c);
     case 'reuniones':return folReuniones(c);
     case 'acuerdos':return folAcuerdos(c);
-    case 'origen':return renderCallLog(c.id);
   }
   return '';
 }
@@ -1321,10 +1393,6 @@ function monthPickerHTML(){
   }
   return '<div class="mpwrap"><button class="monthbtn" data-monthtoggle>📅 '+lbl+' <span class="mpcar">▾</span></button>'+pop+'</div>';
 }
-PANELS.llamadas=function(){
-  var c=clients.filter(function(x){return x.id===ASIST_DOC})[0];
-  return '<div class="pad"><div class="ptitle"><div><h1>Registro de llamadas</h1><p>Anota cada llamada: si agendó cita o solo pidió informes, y cómo nos conoció. Así '+(c?escapeHtml(c.doc):'el doctor')+' y la agencia ven de dónde llegan los pacientes y si el contenido está funcionando.</p></div></div>'+renderCallLog(ASIST_DOC)+'</div>';
-};
 
 /* ===================== AGENDA / CITAS (lado del doctor) ===================== */
 var WORK_START_MIN=540,WORK_END_MIN=1140,SLOT_MIN=30; // 9:00–19:00, espacios de 30 min
@@ -1418,10 +1486,6 @@ function openApptView(cid,apptId){
   $('#modal').innerHTML='<div class="mhd"><div><h2>Cita</h2><div class="mhsub">'+escapeHtml(a.name||'Paciente')+'</div></div><button class="x" data-closemodal>✕</button></div><div class="mbd">'+s1+'<div class="mactions"><button class="addbtn" data-sendreminder="'+cid+'|'+apptId+'">📲 Enviar recordatorio</button><button class="msave" data-saveficha="'+cid+'|'+apptId+'">Guardar</button><button class="mdel" data-delappt="'+cid+'|'+apptId+'">Cancelar</button></div></div>';
   $('#overlay').classList.add('show');initTimeWheel('fvTime',a.time);
 }
-PANELS.agenda=function(){
-  var c=clients.filter(function(x){return x.id===ASIST_DOC})[0];
-  return '<div class="pad"><div class="ptitle"><div><h1>Agenda de citas</h1><p>Agenda y organiza las consultas de '+(c?escapeHtml(c.doc):'el consultorio')+'. Bloquea las horas que el doctor no atiende para mostrar solo lo disponible. Toca una cita para ver su ficha.</p></div></div>'+renderAgenda(ASIST_DOC,false)+'</div>';
-};
 
 /* ===================== EXPEDIENTES (exclusivo del doctor) ===================== */
 function expedKey(n){return (n||'').trim().toLowerCase();}
@@ -1465,29 +1529,46 @@ function sendConsultaWhats(key,consultaId){
   if(L.length===1){L.push('','(Completa receta o indicaciones y vuelve a enviar.)');}
   window.open('https://wa.me/'+waPhone(expedPhone(c,nm))+'?text='+encodeURIComponent(L.join('\n')),'_blank');toast('📲 Abriendo WhatsApp con la receta');
 }
+function visiblePosts(){
+  if(currentRole==='disenador'||currentRole==='editor'){var me=currentUserName();return posts.filter(function(p){return p.who===me;});}
+  var meName=((USERS[currentRole]||{}).name||'').split(' ')[0];
+  var docCm={};clients.forEach(function(c){docCm[c.doc]=c.cm||'';});
+  if(currentRole==='cm')return posts.filter(function(p){return (docCm[p.doctor]||'').indexOf(meName)>=0;});
+  if(crmScope==='todas')return posts.slice();
+  return posts.filter(function(p){return (docCm[p.doctor]||'').indexOf('Perla')>=0;});
+}
 PANELS.contenido=function(){
-  var body=CONFIG.statuses.map(function(s){var items=posts.filter(function(p){return p.status===s});
-    return '<div class="col"><h4>'+escapeHtml(s)+'<span>'+items.length+'</span></h4>'+items.map(function(p){
+  var vp=visiblePosts();var hoyC=todayIso();var canSendC=(currentRole==='cm'||currentRole==='admin');
+  var scopeSeg=(currentRole==='admin')?'<div class="iseg crmscope"><button class="isegb'+(crmScope!=='todas'?' on':'')+'" data-crmscope="mias">👤 Mis cuentas</button><button class="isegb'+(crmScope==='todas'?' on':'')+'" data-crmscope="todas">🗂️ Todas</button></div>':'';
+  var body=CONFIG.statuses.map(function(s){var items=vp.filter(function(p){return p.status===s});
+    return '<div class="col"><h4>'+escapeHtml(statusLabel(s))+'<span>'+items.length+'</span></h4>'+items.map(function(p){
       var thumb=p.img?'style="background-image:url('+p.img+')"':'';
-      return '<div class="kc" data-post="'+p.id+'"><div class="thumb" '+thumb+'>'+(p.img?'':(p.type==='Video'||p.type==='Reel'?'🎬':'🖼️'))+'</div><div class="kcb"><div class="ti">'+escapeHtml(p.copy.slice(0,46))+(p.copy.length>46?'…':'')+'</div>'+(p.funnel?'<span class="fnl"'+tagStyle('funnel',p.funnel)+'>🎯 '+escapeHtml(p.funnel)+'</span>':'')+'<div class="meta"><span class="plat"'+tagStyle('platforms',p.plat)+'>'+escapeHtml(p.plat)+'</span><span class="dl">📅 '+isoToShort(p.date)+'</span></div><div class="meta"><span class="dl">'+escapeHtml(p.doctor.replace("Dr. Carlos ","Dr. ").replace("Dra. Elena ","Dra. "))+'</span><span class="chip">'+initials(p.who)+'</span></div></div></div>';
+      var late=(p.status==='Cambios'||p.status==='Borrador')&&p.date&&p.date<hoyC;
+      var act='';
+      if(p.status==='Borrador')act='<button class="kcmove" data-tomove="'+p.id+'|Revisión">Enviar a revisión →</button>';
+      else if(p.status==='Revisión'&&canSendC)act='<button class="kcmove send" data-tomove="'+p.id+'|Enviado">✓ Enviar al doctor</button>';
+      return '<div class="kc" data-post="'+p.id+'"><div class="thumb" '+thumb+'>'+(p.img?'':(p.type==='Video'||p.type==='Reel'?'🎬':'🖼️'))+'</div><div class="kcb"><div class="ti">'+escapeHtml(p.copy.slice(0,46))+(p.copy.length>46?'…':'')+'</div><div class="meta"><span class="dl">'+escapeHtml(p.doctor)+'</span><span class="dl"'+(late?' style="color:var(--coral);font-weight:700"':'')+' title="Fecha de entrega">'+(late?'⚠ ':'📅 ')+isoToShort(p.date)+'</span></div>'+act+'</div></div>';
     }).join('')+'</div>';}).join('');
-  var cls=CONFIG.statuses.length>5?'c6':'c5';
-  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Contenido</h1><p>Cada tarjeta es una publicación. Crea una o haz clic para editar copy, imagen, plataforma, estado y propósito.</p></div><button class="addbtn" data-newpost>＋ Nuevo post</button></div><div class="board '+cls+'">'+body+'</div></div>';};
+  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Contenido</h1><p>Cada tarjeta es una publicación. 📦 = fecha de entrega (interna) · 📅 = publicación. Crea una o toca para editar.</p></div><button class="addbtn" data-newpost>＋ Nuevo post</button></div>'+scopeSeg+'<div class="board c6">'+body+'</div></div>';};
 
 PANELS.calendario=function(){
-  var leg=CONFIG.statuses.map(function(s){return '<span><i class="dotc" style="background:'+statusColor(s)+'"></i> '+escapeHtml(s)+'</span>';}).join('');
-  return '<div class="pad"><div class="ptitle"><div><h1>Calendario</h1><p>Tu agenda editable. Haz clic en un día para programar, o en una publicación para editarla.</p></div><button class="addbtn" data-newpost>＋ Nueva publicación</button></div>\
+  var leg=CONFIG.statuses.map(function(s){return '<span><i class="dotc" style="background:'+statusColor(s)+'"></i> '+escapeHtml(statusLabel(s))+'</span>';}).join('');
+  return '<div class="pad"><div class="ptitle"><div><h1>Calendario</h1><p>Las publicaciones se ubican por su <b>fecha de publicación</b> 📅. Toca una pieza para editarla. Para crear, ve a Contenido.</p></div></div>\
   <div class="cal"><div class="calhead"><div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div></div><div class="calgrid" id="calgrid"></div></div>\
   <div class="legend">'+leg+'</div></div>';};
-function statusColor(s){return getColor('statuses',s)||{"Borrador":"#cfd8dc","Revisión":"#FFA000","Enviado":"#4FC3F7","Cambios":"#FF6B6B","Aprobado":"#4CAF50"}[s]||"#90a4ae";}
-AFTER.calendario=function(){var cg=$('#calgrid');if(!cg)return;var h='';
-  for(var i=1;i<=30;i++){var evs=posts.filter(function(p){return isoDay(p.date)===i});var e='';
+function statusColor(s){return getColor('statuses',s)||{"Borrador":"#90A4AE","Revisión":"#FFA000","Enviado":"#4FC3F7","Cambios":"#FF6B6B","Aprobado":"#4CAF50","Programado":"#7e57c2"}[s]||"#90a4ae";}
+var STATUS_LABEL={"Cambios":"Cambios solicitados","Borrador":"En proceso","Revisión":"Revisión (CM)","Enviado":"Enviado al doctor","Aprobado":"Aprobado","Programado":"Programado"};
+function statusLabel(s){return STATUS_LABEL[s]||s;}
+function selStatus(id,val){return '<select id="'+id+'">'+CONFIG.statuses.map(function(s){return '<option value="'+escapeHtml(s)+'"'+(s===val?' selected':'')+'>'+escapeHtml(statusLabel(s))+'</option>';}).join('')+'</select>';}
+AFTER.calendario=function(){var cg=$('#calgrid');if(!cg)return;var h='';var vpc=visiblePosts();
+  for(var i=1;i<=30;i++){var evs=vpc.filter(function(p){return isoDay(p.pubDate||p.date)===i});var e='';
     evs.forEach(function(p){var sc=getColor('statuses',p.status);e+='<div class="ev s-'+escapeHtml(p.status)+'"'+(sc?' style="background:'+sc+'22;color:'+sc+'"':'')+' data-post="'+p.id+'">'+escapeHtml(p.copy.slice(0,16))+'…</div>';});
-    h+='<div class="day" data-day="'+i+'"><div class="num">'+i+'<span class="plus">＋</span></div>'+e+'</div>';}
+    h+='<div class="day"><div class="num">'+i+'</div>'+e+'</div>';}
   cg.innerHTML=h;};
 
 PANELS.mensajes=function(){
-  var list=chatClients().map(function(c){var u=unread[c.id]||0;var arr=convos[c.id]||[];var last=arr.length?arr[arr.length-1]:null;var prev=last?(last.who==='post'?'📝 Feedback en un post':last.text):'Sin mensajes';
+  var cc=chatClients();if(!cc.some(function(c){return c.id===activeConvo;}))activeConvo=cc.length?cc[0].id:0;
+  var list=cc.map(function(c){var u=unread[c.id]||0;var arr=convos[c.id]||[];var last=arr.length?arr[arr.length-1]:null;var prev=last?(last.who==='post'?'📝 Feedback en un post':last.text):'Sin mensajes';
     return '<div class="ci'+(c.id===activeConvo?' on':'')+'" data-convo="'+c.id+'"><div class="av">'+initials(c.doc)+'</div><div class="info"><b>'+escapeHtml(c.doc)+'</b><small>'+escapeHtml(prev.slice(0,30))+'</small></div>'+(u>0?'<div class="nb">'+u+'</div>':'')+'</div>';
   }).join('');
   var msgs=(convos[activeConvo]||[]).map(renderMsg).join('');
@@ -1518,7 +1599,7 @@ var PALETTE=['#1a365d','#1877F2','#4FC3F7','#0f9d8a','#4CAF50','#66BB6A','#FFA00
 // Color por defecto de cada etiqueta (editable por Perla)
 var DEFAULTCOLORS={
   platforms:{"Instagram":"#E1306C","Facebook":"#1877F2","TikTok":"#111111","YouTube":"#FF0000"},
-  statuses:{"Borrador":"#90A4AE","Revisión":"#FFA000","Enviado":"#4FC3F7","Cambios":"#FF6B6B","Aprobado":"#4CAF50"},
+  statuses:{"Cambios":"#FF6B6B","Borrador":"#90A4AE","Revisión":"#FFA000","Enviado":"#4FC3F7","Aprobado":"#4CAF50","Programado":"#7e57c2"},
   funnel:{"Inconsciente":"#90A4AE","Consciente del problema":"#FF6B6B","Consciente de la solución":"#FFA000","Consciente del servicio":"#4FC3F7","Evaluación y confianza":"#7c3aed","Conversión":"#4CAF50","Fidelización":"#0f9d8a"}
 };
 function getColor(key,v){return COLORS[key+'::'+v]||(DEFAULTCOLORS[key]&&DEFAULTCOLORS[key][v])||COLORABLE[key]||'';}
@@ -1599,7 +1680,6 @@ PANELS.perfil=function(){
   <div class="profwrap"><div class="profcard"><div class="profav" id="profAv" '+av+'>'+(profile.photo?'':initials(profile.name))+'<span class="cam">📷</span></div><input type="file" id="profFile" accept="image/*" class="hidden"><h2 id="profName">'+escapeHtml(profile.name)+'</h2><div class="role">'+escapeHtml(profile.role)+'</div>\
     <div style="font-size:11.5px;color:var(--ink2);margin-top:14px;font-weight:600;text-align:left">Color de acento</div><div class="swatches">'+sw+'</div>\
     <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)"><div style="font-size:11.5px;color:var(--ink2);font-weight:600;text-align:left;margin-bottom:8px">Apariencia</div><div class="seg3"><button class="'+(themeMode==="light"?"on":"")+'" data-thememode="light">☀️ Claro</button><button class="'+(themeMode==="dark"?"on":"")+'" data-thememode="dark">🌙 Oscuro</button><button class="'+(themeMode==="auto"?"on":"")+'" data-thememode="auto">🔄 Auto</button></div></div>\
-    <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)"><div style="font-size:11.5px;color:var(--ink2);font-weight:600;text-align:left;margin-bottom:8px">Ver como (demo)</div><div class="seg3" style="flex-wrap:wrap"><button class="'+(currentRole==="admin"?"on":"")+'" data-role="admin">Perla</button><button class="'+(currentRole==="cm"?"on":"")+'" data-role="cm">Anahí</button><button class="'+(currentRole==="disenador"?"on":"")+'" data-role="disenador">Sofía</button><button class="'+(currentRole==="editor"?"on":"")+'" data-role="editor">Karla</button><button class="'+(currentRole==="asistente"?"on":"")+'" data-role="asistente">Asistente</button></div></div>\
     <button class="mdel" style="width:100%;margin-top:18px" data-logout>⎋ Cerrar sesión</button></div>\
   <div class="card"><h3 style="margin-bottom:14px">Datos personales</h3>\
     <div class="fld"><label>Nombre</label><input id="pfName" value="'+escapeHtml(profile.name)+'"></div>\
@@ -1609,46 +1689,93 @@ PANELS.perfil=function(){
     <div class="mactions"><button class="msave" data-saveprofile>Guardar cambios</button></div></div></div></div>';};
 AFTER.perfil=function(){var f=$('#profFile');var av=$('#profAv');if(av&&f){av.addEventListener('click',function(){f.click();});f.addEventListener('change',function(){var file=f.files[0];if(!file)return;var r=new FileReader();r.onload=function(ev){profile.photo=ev.target.result;av.style.backgroundImage='url('+profile.photo+')';av.querySelector('.cam')?(av.innerHTML='<span class="cam">📷</span>'):0;updateUser();};r.readAsDataURL(file);});}};
 
+function taskPeople(){var self=currentUserName();if(currentRole==='admin')return ['Perla Garza','Anahí (CM)','Sofía (Diseño)','Karla (Edición)'];if(currentRole==='cm')return [self,'Sofía (Diseño)','Karla (Edición)'];return [self];}
+function isLateTask(p){return p.date&&p.date<todayIso()&&p.status!=='Aprobado'&&p.status!=='Programado';}
+function personPending(w){return posts.filter(function(p){return p.who===w&&p.status!=='Aprobado'&&p.status!=='Programado';});}
 PANELS.mio=function(){
-  var me=currentUserName();
-  var mine=posts.filter(function(p){return p.who===me;});
-  var groups=[{k:'✎ Cambios solicitados',st:'Cambios'},{k:'Por hacer',st:'Borrador'},{k:'En revisión',st:'Revisión'}];
+  var self=currentUserName();var people=taskPeople();
+  if(people.indexOf(taskWho)<0)taskWho=self;
+  var multi=people.length>1;
+  var chips=people.map(function(w){var pend=personPending(w).length;var late=personPending(w).some(isLateTask);var lbl=(w===self?'👤 '+w:w);
+    return '<button class="taskchip'+(w===taskWho?' on':'')+(late?' alert':'')+'" data-taskwho="'+escapeHtml(w)+'">'+escapeHtml(lbl)+'<span class="tcount">'+pend+'</span>'+(late?'<span class="tdot" title="Tiene un retraso"></span>':'')+'</button>';}).join('');
+  var filterBar=multi?'<div class="taskfilter">'+chips+'</div>':'';
+  var who=taskWho;var mine=posts.filter(function(p){return p.who===who;});
+  var ALLCOLS=[{k:'✎ Cambios solicitados',st:'Cambios'},{k:'🛠️ En proceso',st:'Borrador'},{k:'👀 Revisión (CM)',st:'Revisión'},{k:'📤 Enviado al doctor',st:'Enviado'},{k:'✅ Aprobado',st:'Aprobado'},{k:'🗓️ Programado',st:'Programado'}];
+  var isProd=(currentRole==='disenador'||currentRole==='editor');
+  var groups=isProd?ALLCOLS.slice(0,3):ALLCOLS;
+  var canSend=(currentRole==='cm'||currentRole==='admin');
   var body=groups.map(function(g){var items=mine.filter(function(p){return p.status===g.st;});
-    return '<div class="col"><h4>'+g.k+'<span>'+items.length+'</span></h4>'+(items.map(function(p){
-      return '<div class="kc" data-post="'+p.id+'"><div class="kcb"><div class="ti">'+escapeHtml(p.copy.slice(0,44))+'…</div>'+(p.status==='Cambios'&&p.changeNote?'<div class="why">✎ Qué cambiar: '+escapeHtml(p.changeNote)+'</div>':'')+'<div class="meta"><span class="plat"'+tagStyle('platforms',p.plat)+'>'+escapeHtml(p.plat)+'</span><span class="dl">📅 '+isoToShort(p.date)+'</span></div><div class="meta"><span class="dl">'+escapeHtml(p.doctor)+'</span></div></div></div>';
+    return '<div class="col"><h4>'+g.k+'<span>'+items.length+'</span></h4>'+(items.map(function(p){var late=isLateTask(p);
+      var act='';
+      if(p.status==='Borrador')act='<button class="kcmove" data-tomove="'+p.id+'|Revisión">Enviar a revisión →</button>';
+      else if(p.status==='Revisión'&&canSend)act='<button class="kcmove send" data-tomove="'+p.id+'|Enviado">✓ Enviar al doctor</button>';
+      return '<div class="kc" data-post="'+p.id+'"><div class="kcb"><div class="ti">'+escapeHtml(p.copy.slice(0,44))+'…</div>'+(p.status==='Cambios'&&p.changeNote?'<div class="why">✎ Qué cambiar: '+escapeHtml(p.changeNote)+'</div>':'')+'<div class="meta"><span class="plat"'+tagStyle('platforms',p.plat)+'>'+escapeHtml(p.plat)+'</span><span class="dl"'+(late?' style="color:var(--coral);font-weight:700"':'')+'>'+(late?'⚠ ':'📅 ')+isoToShort(p.date)+'</span></div><div class="meta"><span class="dl">'+escapeHtml(p.doctor)+'</span></div>'+act+'</div></div>';
     }).join('')||'<div style="font-size:12px;color:var(--ink2);padding:10px 4px">Nada por ahora</div>')+'</div>';}).join('');
-  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Mis tareas</h1><p>Tus pendientes asignados. Cuando un post se regresa con cambios, aquí ves la indicación exacta de qué hacer (sin necesidad de entrar al chat).</p></div><div class="pill">'+escapeHtml(profile.name)+'</div></div><div class="board" style="grid-template-columns:repeat(3,minmax(200px,1fr))">'+body+'</div></div>';
+  var intro=multi?(currentRole==='admin'?'Filtra por persona para ver la carga de cada quien. Una alerta 🔴 marca un retraso que necesita tu intervención.':'Tus pendientes y la carga del equipo de producción. La alerta 🔴 marca retrasos.'):'Tus pendientes asignados. Si un post vuelve con cambios, aquí ves qué hacer.';
+  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Mis tareas</h1><p>'+intro+'</p></div></div>'+filterBar+'<div class="board" style="grid-template-columns:repeat('+groups.length+',minmax(190px,1fr))">'+body+'</div></div>';
+};
+var ASSET_CATS=['🎨 Identidad / Logo','📷 Fotos','🎬 Videos','📄 Documentos'];
+PANELS.archivos=function(){
+  var meName=((USERS[currentRole]||{}).name||'').split(' ')[0];
+  var list=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
+  if(currentRole==='cm')list=list.filter(function(c){return (c.cm||'').indexOf(meName)>=0;});
+  if(!list.length)return '<div class="pad"><div class="ptitle"><div><h1>Archivos</h1><p>Aún no hay cuentas.</p></div></div></div>';
+  if(!list.some(function(c){return c.id===archCid;}))archCid=list[0].id;
+  var sel=list.filter(function(c){return c.id===archCid;})[0];if(!sel.assets)sel.assets=[];
+  var picker=list.map(function(c){return '<button class="archcli'+(c.id===archCid?' on':'')+'" data-archcli="'+c.id+'">'+(c.photo?'<span class="aav" style="background-image:url('+c.photo+')"></span>':'<span class="aav aav-i">'+initials(c.doc)+'</span>')+escapeHtml(c.doc)+'</button>';}).join('');
+  var cats=ASSET_CATS.map(function(cat,ci){
+    var cards=sel.assets.map(function(a,gi){return {a:a,gi:gi};}).filter(function(o){return o.a.cat===ci;}).map(function(o){var a=o.a;return '<div class="assetcard"><span class="aname">'+escapeHtml(a.name||'Archivo')+'</span><span class="aacts">'+(a.url?'<a href="'+escapeHtml(a.url)+'" target="_blank" rel="noopener" title="Abrir">↗</a>':'')+'<button data-delasset="'+o.gi+'" title="Quitar">✕</button></span></div>';}).join('')||'<div class="assetempty">Sin archivos aún</div>';
+    return '<div class="card assetsec"><div class="assethd"><h3>'+cat+'</h3><button class="lk2" data-addasset="'+ci+'">＋ Agregar</button></div>'+cards+'</div>';
+  }).join('');
+  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Archivos</h1><p>Materiales de cada cuenta en un solo lugar: identidad y logo, fotos, videos y documentos. Pega el enlace (Drive, etc.) para tenerlo a la mano del equipo.</p></div></div><div class="archpick">'+picker+'</div><div class="assetgrid">'+cats+'</div></div>';
 };
 PANELS.soon=function(){return '<div class="soonwrap"><div class="ill">🚧</div><h2>Próximamente</h2><p>Esta sección llega en la siguiente fase. Estamos perfeccionando el núcleo primero.</p></div>';};
 
 /* ---------- formularios ---------- */
 function sel(name,opts,val){return '<select id="'+name+'">'+opts.map(function(o){return '<option'+(o===val?' selected':'')+'>'+escapeHtml(o)+'</option>';}).join('')+'</select>';}
-function openPostForm(id){
-  var p=id?posts.filter(function(x){return x.id===id})[0]:{doctor:docList()[0],plat:CONFIG.platforms[0],type:CONFIG.types[0],date:"2026-06-15",status:CONFIG.statuses[0],funnel:CONFIG.funnel[0],copy:"",img:null,who:CONFIG.team[0]};
-  tmpImg=p.img||null;
-  var prev=tmpImg?'<div class="prev" id="imgPrev" style="background-image:url('+tmpImg+')"></div>':'<div class="prev" id="imgPrev">🖼️ Haz clic para subir imagen o video<br><small style="font-weight:400">(o arrastra el archivo)</small></div>';
-  $('#modal').innerHTML='<div class="mhd"><div><h2>'+(id?'Editar publicación':'Nueva publicación')+'</h2><div style="font-size:12px;color:var(--ink2);margin-top:3px">El diseñador sube el archivo; el CM escribe el copy.</div></div><button class="x" data-closemodal>✕</button></div><div class="mbd">'
-    +prev+'<input type="file" id="fileInput" accept="image/*" class="hidden">'
-    +'<div class="frow"><div class="fld"><label>Doctor / cuenta</label>'+sel('fDoctor',docList(),p.doctor)+'</div><div class="fld"><label>Plataforma</label>'+sel('fPlat',platformsFor(p.doctor),p.plat)+'</div></div>'
-    +'<div class="frow"><div class="fld"><label>Tipo</label>'+sel('fType',CONFIG.types,p.type)+'</div><div class="fld"><label>📅 Fecha</label><input id="fDate" type="date" value="'+(p.date||'2026-06-15')+'"></div></div>'
-    +'<div class="frow"><div class="fld"><label>Estado</label>'+sel('fStatus',CONFIG.statuses,p.status)+'</div><div class="fld"><label>Responsable</label>'+sel('fWho',CONFIG.team,p.who)+'</div></div>'
-    +'<div class="fld"><label>🎯 Propósito / fase del funnel</label>'+sel('fFunnel',CONFIG.funnel,p.funnel)+'</div>'
-    +'<div class="fld"><label>Copy (texto de la publicación)</label><textarea id="fCopy" placeholder="Escribe aquí el texto…">'+escapeHtml(p.copy)+'</textarea></div>'
-    +'<div class="fld"><label>✎ Qué cambiar / indicación para el responsable</label><textarea id="fChange" placeholder="Si hay que ajustar algo, escribe la indicación clara para quien hará la corrección (diseño, edición u otro)…">'+escapeHtml(p.changeNote||'')+'</textarea></div>'
-    +(id?'<div style="font-size:11px;color:var(--ink2);margin-bottom:8px">El doctor habla por el chat; aquí repartes el trabajo. Se asigna a quien elijas en <b>Responsable</b> (diseño, edición u otro) y el post pasa a "Cambios", apareciendo en sus "Mis tareas".</div>':'')
-    +'<div class="mactions"><button class="msave" data-savepost="'+(id||0)+'">'+(id?'Guardar cambios':'Crear publicación')+'</button>'+(id?'<button class="mdel" style="background:#fff3e0;color:#b26a00" data-delegate="'+id+'">📨 Delegar / asignar</button>':'')+(id?'<button class="mdel" data-delpost="'+id+'">Eliminar</button>':'')+'</div></div>';
-  $('#overlay').classList.add('show');
-  var fi=$('#fileInput');$('#imgPrev').addEventListener('click',function(){fi.click();});
-  fi.addEventListener('change',function(){var f=fi.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){tmpImg=ev.target.result;var pv=$('#imgPrev');pv.style.backgroundImage='url('+tmpImg+')';pv.innerHTML='';};r.readAsDataURL(f);});
-  var fd=$('#fDoctor');if(fd){fd.addEventListener('change',function(){var ps=$('#fPlat');if(ps)ps.innerHTML=platformsFor(fd.value).map(function(o){return '<option>'+escapeHtml(o)+'</option>';}).join('');});}
+function renderInspoWrap(){var wrap=document.getElementById('inspoWrap');if(!wrap)return;wrap.innerHTML=tmpInspo.map(function(s,i){return '<div class="inspoit" style="background-image:url('+s+')"><button data-delinspo="'+i+'" title="Quitar">✕</button></div>';}).join('')+'<button class="inspoadd" data-addinspo title="Agregar referencia">＋</button>';}
+function renderPostEditor(id){
+  editPostId=id||0;
+  var p=id?posts.filter(function(x){return x.id===id})[0]:{doctor:docList()[0],plat:platformsFor(docList()[0])[0],type:CONFIG.types[0],date:todayIso(),pubDate:"",status:"Borrador",funnel:CONFIG.funnel[0],copy:"",img:null,who:CONFIG.team[0],idealClient:"",purpose:"",goals:"",inspo:"",inspoImgs:[]};
+  tmpImg=p.img||null;tmpInspo=(p.inspoImgs||[]).slice();
+  var prev=tmpImg?'<div class="prev big" id="imgPrev" style="background-image:url('+tmpImg+')"></div>':'<div class="prev big" id="imgPrev">🖼️ Sube el archivo final<br><small style="font-weight:400">imagen · toca aquí</small></div>';
+  var inspoHTML=tmpInspo.map(function(s,i){return '<div class="inspoit" style="background-image:url('+s+')"><button data-delinspo="'+i+'" title="Quitar">✕</button></div>';}).join('')+'<button class="inspoadd" data-addinspo title="Agregar referencia">＋</button>';
+  var h='<div class="pad postedit" style="max-width:1100px"><div class="ptitle"><div><button class="folback" data-editback>← '+(editReturn==='mio'?'Mis tareas':'Contenido')+'</button><h1 style="margin-top:10px">'+(id?'Editar publicación':'Crear publicación')+'</h1><p>Define con claridad qué pieza vas a producir y para quién. Solo lo necesario, para crear con dirección.</p></div></div>'
+    +'<div class="peditgrid">'
+    +'<div class="peditmain">'
+      +'<div class="card"><h3>Dirección creativa</h3>'
+        +'<div class="fld"><label>👤 Cliente ideal — ¿a quién le habla?</label><textarea id="fIdeal" placeholder="ej. Mujeres 30-50 que consideran una cirugía y buscan confianza y resultados naturales">'+escapeHtml(p.idealClient||'')+'</textarea></div>'
+        +'<div class="fld"><label>🎯 Propósito — ¿qué queremos lograr?</label><textarea id="fPurpose" placeholder="ej. Educar sobre el procedimiento y generar mensajes al WhatsApp">'+escapeHtml(p.purpose||'')+'</textarea></div>'
+        +'<div class="frow"><div class="fld"><label>📈 Meta concreta</label><input id="fGoals" value="'+escapeHtml(p.goals||'')+'" placeholder="ej. 10 mensajes · 3 citas"></div><div class="fld"><label>🔻 Fase del funnel</label>'+sel('fFunnel',CONFIG.funnel,p.funnel)+'</div></div>'
+      +'</div>'
+      +'<div class="card"><h3>Contenido</h3>'
+        +'<div class="fld"><label>✍️ Copy / guion</label><textarea id="fCopy" class="big" placeholder="Gancho (0-3s) → idea principal sin tecnicismos → CTA claro…">'+escapeHtml(p.copy||'')+'</textarea></div>'
+        +'<div class="fld"><label>💡 Inspiración / referencias</label><textarea id="fInspo" placeholder="Links de referencia (reel, video), ideas visuales, ejemplos a adaptar (nunca copiar)…">'+escapeHtml(p.inspo||'')+'</textarea></div>'
+        +'<div class="fld"><label>Imágenes de referencia</label><div class="inspowrap" id="inspoWrap">'+inspoHTML+'</div><input type="file" id="inspoFile" accept="image/*" class="hidden"></div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="peditside"><div class="card">'+prev+'<input type="file" id="fileInput" accept="image/*" class="hidden">'
+      +'<div class="fld"><label>Doctor / cuenta</label>'+sel('fDoctor',docList(),p.doctor)+'</div>'
+      +'<div class="fld"><label>Plataforma</label>'+sel('fPlat',platformsFor(p.doctor),p.plat)+'</div>'
+      +'<div class="frow"><div class="fld"><label>Tipo</label>'+sel('fType',CONFIG.types,p.type)+'</div><div class="fld"><label>Estado</label>'+selStatus('fStatus',p.status)+'</div></div>'
+      +'<div class="fld"><label>📦 Fecha de entrega (interna)</label><input id="fDate" type="date" value="'+(p.date||'')+'"></div>'
+      +'<div class="fld"><label>📅 Fecha de publicación</label><input id="fPub" type="date" value="'+(p.pubDate||'')+'"></div>'
+      +'<div class="fld"><label>Responsable</label>'+sel('fWho',CONFIG.team,p.who)+'</div>'
+      +(id?'<div class="fld"><label>✎ Qué cambiar (si pides corrección)</label><textarea id="fChange" placeholder="Indicación clara para el responsable…">'+escapeHtml(p.changeNote||'')+'</textarea></div>':'')
+      +'<button class="msave" style="width:100%;margin-top:4px" data-savepost="'+(id||0)+'">'+(id?'Guardar':'Crear publicación')+'</button>'
+      +(id?'<button class="mdel" style="width:100%;margin-top:8px" data-delpost="'+id+'">Eliminar</button>':'')
+    +'</div></div></div></div>';
+  $('#content').innerHTML=h;
 }
 function savePost(id){
-  var data={doctor:$('#fDoctor').value,plat:$('#fPlat').value,type:$('#fType').value,date:$('#fDate').value||'2026-06-15',status:$('#fStatus').value,funnel:$('#fFunnel').value,who:$('#fWho').value,changeNote:($('#fChange')?$('#fChange').value.trim():''),copy:$('#fCopy').value.trim()||'(sin copy)',img:tmpImg};
+  var gv=function(idd){var el=document.getElementById(idd);return el?el.value:undefined;};
+  var data={doctor:gv('fDoctor'),plat:gv('fPlat'),type:gv('fType'),date:gv('fDate')||todayIso(),pubDate:gv('fPub')||'',status:gv('fStatus'),funnel:gv('fFunnel'),who:gv('fWho'),copy:((gv('fCopy')||'').trim())||'(sin copy)',img:tmpImg,idealClient:(gv('fIdeal')||'').trim(),purpose:(gv('fPurpose')||'').trim(),goals:(gv('fGoals')||'').trim(),inspo:(gv('fInspo')||'').trim(),inspoImgs:tmpInspo.slice()};
+  if(document.getElementById('fChange'))data.changeNote=(gv('fChange')||'').trim();
   if(id){var p=posts.filter(function(x){return x.id===id})[0];for(var k in data)p[k]=data[k];toast('✅ Publicación actualizada');}
   else{data.id=nextPost++;posts.push(data);toast('🎉 Publicación creada');}
-  closeModal();refresh();
+  go(editReturn);
 }
-function delPost(id){posts=posts.filter(function(x){return x.id!==id});closeModal();refresh();toast('🗑️ Publicación eliminada');}
+function delPost(id){posts=posts.filter(function(x){return x.id!==id});go(editReturn);toast('🗑️ Publicación eliminada');}
 function pkgIncludes(name){var p=PACKAGES.filter(function(x){return x.name===name;})[0];return (p&&p.includes)?('📦 Incluye: '+escapeHtml(p.includes)):'';}
 function openClientForm(id){
   var c=id?clients.filter(function(x){return x.id===id})[0]:{doc:"",esp:"",val:"",cm:"Anahí",acc:"0",stage:CONFIG.stages[0]};
@@ -1705,6 +1832,11 @@ document.addEventListener('click',function(e){
   if(e.target.closest('[data-logout]'))return logout();
   var tm=e.target.closest('[data-thememode]');if(tm){setThemeMode(tm.getAttribute('data-thememode'));refresh();return;}
   var csc=e.target.closest('[data-crmscope]');if(csc){crmScope=csc.getAttribute('data-crmscope');refresh();return;}
+  var tw=e.target.closest('[data-taskwho]');if(tw){taskWho=tw.getAttribute('data-taskwho');refresh();return;}
+  var gtk=e.target.closest('[data-gotask]');if(gtk){var gpid=parseInt(gtk.getAttribute('data-gotask'),10);var gpst=posts.filter(function(x){return x.id===gpid;})[0];if(gpst)taskWho=gpst.who;go('mio');flashCard(gpid);return;}
+  var acl=e.target.closest('[data-archcli]');if(acl){archCid=parseInt(acl.getAttribute('data-archcli'),10);refresh();return;}
+  var aas=e.target.closest('[data-addasset]');if(aas){var ac=clients.filter(function(x){return x.id===archCid;})[0];if(ac){var nm=prompt('Nombre del archivo (ej. Logo principal, Foto de portada):');if(nm&&nm.trim()){var ur=prompt('Pega el enlace (Drive, Dropbox, etc.) — opcional:')||'';if(!ac.assets)ac.assets=[];ac.assets.push({cat:parseInt(aas.getAttribute('data-addasset'),10),name:nm.trim(),url:(ur||'').trim()});refresh();toast('🗃️ Archivo agregado');}}return;}
+  var dla=e.target.closest('[data-delasset]');if(dla){var ad=clients.filter(function(x){return x.id===archCid;})[0];if(ad&&ad.assets){ad.assets.splice(parseInt(dla.getAttribute('data-delasset'),10),1);refresh();}return;}
   var gt=e.target.closest('[data-goto]');if(gt){go(gt.getAttribute('data-goto'));return;}
   if(e.target.closest('[data-notetoggle]')){noteMode=!noteMode;refresh();return;}
   var cv=e.target.closest('[data-convo]');if(cv){activeConvo=parseInt(cv.getAttribute('data-convo'),10);unread[activeConvo]=0;updateMsgBadge();refresh();return;}
@@ -1713,7 +1845,11 @@ document.addEventListener('click',function(e){
   if(e.target===$('#overlay'))return closeModal();
   if(e.target.closest('[data-closemodal]'))return closeModal();
   if(e.target.closest('[data-saveprofile]'))return saveProfile();
-  if(e.target.closest('[data-newpost]'))return openPostForm(0);
+  if(e.target.closest('[data-newpost]')){editReturn=currentPanel();renderPostEditor(0);return;}
+  if(e.target.closest('[data-editback]'))return go(editReturn);
+  if(e.target.closest('#imgPrev')){var fimg=document.getElementById('fileInput');if(fimg)fimg.click();return;}
+  if(e.target.closest('[data-addinspo]')){var finsp=document.getElementById('inspoFile');if(finsp)finsp.click();return;}
+  var dins=e.target.closest('[data-delinspo]');if(dins){tmpInspo.splice(parseInt(dins.getAttribute('data-delinspo'),10),1);renderInspoWrap();return;}
   if(e.target.closest('[data-newclient]'))return openClientForm(0);
   var cfgA=e.target.closest('[data-cfgadd]');if(cfgA){var key=cfgA.getAttribute('data-cfgadd');var inp=$('[data-cfgin="'+key+'"]');var v=(inp.value||'').trim();if(v){CONFIG[key].push(v);refresh();toast('➕ "'+v+'" agregado');}return;}
   var cfgD=e.target.closest('[data-cfgdel]');if(cfgD){var pr=cfgD.getAttribute('data-cfgdel').split('|');CONFIG[pr[0]].splice(parseInt(pr[1],10),1);refresh();return;}
@@ -1735,7 +1871,13 @@ document.addEventListener('click',function(e){
   var ups=e.target.closest('[data-upstaff]');if(ups){var fi3=$('#sf'+ups.getAttribute('data-upstaff'));if(fi3)fi3.click();return;}
   var vsi=e.target.closest('[data-verstaffimg]');if(vsi){var s2=staff.filter(function(x){return x.id===parseInt(vsi.getAttribute('data-verstaffimg'),10)})[0];if(s2&&s2.comprobante){var w4=window.open('','_blank');if(w4){w4.document.write('<title>Comprobante</title><img src="'+s2.comprobante+'" style="max-width:100%">');w4.document.close();}}return;}
   var vsh=e.target.closest('[data-verstaff]');if(vsh){var pp3=vsh.getAttribute('data-verstaff').split('|');var s3=staff.filter(function(x){return x.id===parseInt(pp3[0],10)})[0];var hh2=s3&&s3.history?s3.history[parseInt(pp3[1],10)]:null;if(hh2&&hh2.comprobante){var w5=window.open('','_blank');if(w5){w5.document.write('<title>Comprobante</title><img src="'+hh2.comprobante+'" style="max-width:100%">');w5.document.close();}}return;}
-  var ev=e.target.closest('[data-post]');if(ev)return openPostForm(parseInt(ev.getAttribute('data-post'),10));
+  var tm=e.target.closest('[data-tomove]');if(tm){var pr=tm.getAttribute('data-tomove').split('|');var pp=posts.filter(function(x){return x.id===parseInt(pr[0],10);})[0];if(pp){pp.status=pr[1];
+    if(pr[1]==='Enviado'){var cli=clients.filter(function(x){return x.doc===pp.doctor;})[0];
+      if(cli){if(!convos[cli.id])convos[cli.id]=[];convos[cli.id].push({who:'me',text:'📤 Te compartí «'+pp.copy.slice(0,42)+'» para tu aprobación.',time:'ahora'});unread[cli.id]=(unread[cli.id]||0)+1;updateMsgBadge();}
+      if(cli&&cli.id===DOCTOR_ID&&!pend.some(function(x){return x.postId===pp.id;}))pend.push({id:Date.now(),postId:pp.id,st:'Pendiente de tu revisión',t:pp.copy.slice(0,28),pm:isoToShort(pp.pubDate||pp.date)+' · '+escapeHtml(pp.type)+' · '+escapeHtml(pp.plat),cp:pp.copy});
+      notify('Enviado al doctor',pp.copy.slice(0,42));}
+    refresh();toast(pr[1]==='Enviado'?'📤 Enviado · aparece en Mensajes y en el portal del doctor':'👀 Enviado a revisión del CM');}return;}
+  var ev=e.target.closest('[data-post]');if(ev){editReturn=currentPanel();renderPostEditor(parseInt(ev.getAttribute('data-post'),10));return;}
   if(e.target.closest('a.acctag'))return; // dejar que el enlace de la red social navegue, sin abrir la ficha
   if(e.target.closest('[data-folphoto]')){var fpf=document.getElementById('folPhotoFile');if(fpf)fpf.click();return;}
   var fo=e.target.closest('[data-folder]');if(fo)return openFolder(parseInt(fo.getAttribute('data-folder'),10));
@@ -1790,7 +1932,6 @@ document.addEventListener('click',function(e){
   var scl=e.target.closest('[data-savecall]');if(scl){var cidv=parseInt(scl.getAttribute('data-savecall'),10);var cv2=clients.filter(function(x){return x.id===cidv})[0];if(!cv2)return;if(!callDraft.result||!callDraft.source){toast('⚠️ Elige resultado y cómo nos conoció');return;}if(!cv2.calls)cv2.calls=[];var pf=$('#cCallProc'),nf=$('#cCallNote'),of=$('#cCallOther'),naf=$('#cCallName'),phf=$('#cCallPhone');var rec={id:nextCall++,date:todayIso(),result:callDraft.result,source:callDraft.source,name:naf?naf.value.trim():'',phone:phf?phf.value.trim():'',proc:pf?pf.value.trim():'',note:nf?nf.value.trim():''};if(callDraft.source==='Redes sociales')rec.app=callDraft.app;else rec.seen=callDraft.seen;if(callDraft.source==='Otro')rec.otherText=of?of.value.trim():'';cv2.calls.push(rec);callDraft={result:'',source:'',app:'',otherText:'',seen:false,name:'',phone:'',proc:'',note:''};refresh();scheduleSave();toast('📞 Llamada registrada');return;}
   var dcl=e.target.closest('[data-delcall]');if(dcl){var dp=dcl.getAttribute('data-delcall').split('|');var cv3=clients.filter(function(x){return x.id===parseInt(dp[0],10)})[0];if(cv3){cv3.calls=(cv3.calls||[]).filter(function(x){return x.id!==parseInt(dp[1],10);});refresh();scheduleSave();}return;}
   var cc=e.target.closest('[data-client]');if(cc)return openClientForm(parseInt(cc.getAttribute('data-client'),10));
-  var dd=e.target.closest('[data-day]');if(dd){openPostForm(0);var inp2=$('#fDate');if(inp2)inp2.value='2026-06-'+pad2(parseInt(dd.getAttribute('data-day'),10));return;}
   var sp=e.target.closest('[data-savepost]');if(sp)return savePost(parseInt(sp.getAttribute('data-savepost'),10));
   var dp=e.target.closest('[data-delpost]');if(dp)return delPost(parseInt(dp.getAttribute('data-delpost'),10));
   var dg=e.target.closest('[data-delegate]');if(dg){var who=$('#fWho')?$('#fWho').value:'';var fs=$('#fStatus');if(fs)fs.value='Cambios';savePost(parseInt(dg.getAttribute('data-delegate'),10));toast('📨 Delegado a '+who);return;}
@@ -1820,6 +1961,9 @@ document.addEventListener('change',function(e){
   var mh=e.target.closest&&e.target.closest('[data-mhora]');if(mh){var cH=folderClient();if(cH){var hi=parseInt(mh.getAttribute('data-mhora'),10);if(cH.meetings[hi])cH.meetings[hi].hora=mh.value;}return;}
   if(e.target.closest&&e.target.closest('[data-bcustom]')){boardTool.color=e.target.value;if(boardTool.mode==='eraser')boardTool.mode='pen';renderFolder();return;}
   if(e.target.id==='folPhotoFile'){var pf=e.target.files[0];if(pf){var fc=folderClient();var rr=new FileReader();rr.onload=function(ev){if(fc){fc.photo=ev.target.result;renderFolder();scheduleSave();toast('📷 Foto actualizada');}};rr.readAsDataURL(pf);}return;}
+  if(e.target.id==='fileInput'){var fimg=e.target.files[0];if(fimg){var ri=new FileReader();ri.onload=function(ev){tmpImg=ev.target.result;var pv=document.getElementById('imgPrev');if(pv){pv.style.backgroundImage='url('+tmpImg+')';pv.innerHTML='';}};ri.readAsDataURL(fimg);}e.target.value='';return;}
+  if(e.target.id==='inspoFile'){var fin=e.target.files[0];if(fin){var rin=new FileReader();rin.onload=function(ev){tmpInspo.push(ev.target.result);renderInspoWrap();};rin.readAsDataURL(fin);}e.target.value='';return;}
+  if(e.target.id==='fDoctor'){var ps=document.getElementById('fPlat');if(ps)ps.innerHTML=platformsFor(e.target.value).map(function(o){return '<option>'+escapeHtml(o)+'</option>';}).join('');return;}
   if(e.target.id==='bImgFile'){var bf=e.target.files[0];if(bf){var ar3=currentBoardArr();var rd=new FileReader();rd.onload=function(ev){var im=new Image();im.onload=function(){var mw=520,sc=Math.min(1,mw/im.width);ar3.push({t:'image',x:60,y:60,w:Math.round(im.width*sc),h:Math.round(im.height*sc),src:ev.target.result});renderFolder();toast('🖼️ Foto insertada');};im.src=ev.target.result;};rd.readAsDataURL(bf);}return;}
   var cmn=e.target.closest&&e.target.closest('[data-callmonth]');if(cmn){callMonth=cmn.value;refresh();return;}
   var agj=e.target.closest&&e.target.closest('[data-agjump]');if(agj){if(agj.value){agendaDate=agj.value;agendaRefresh();}return;}
