@@ -143,6 +143,15 @@
   .sidebar2{background:linear-gradient(180deg,#123254,#0d2238);padding:14px 12px;overflow-y:auto;height:calc(100vh - 58px);position:sticky;top:58px}
   .sbhd{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7e93ad;padding:4px 8px 10px}
   .sbadd{border:none;background:rgba(255,255,255,.1);color:#fff;width:24px;height:24px;border-radius:8px;font-size:15px;cursor:pointer;line-height:1}
+  .sbcol{border:none;background:rgba(255,255,255,.1);color:#fff;width:22px;height:22px;border-radius:7px;font-size:13px;cursor:pointer;line-height:1;flex-shrink:0}
+  .sbttl{flex:1}
+  .shell2.sidecol{grid-template-columns:62px 1fr}
+  .sidecol .sidebar2{padding:14px 6px}
+  .sidecol .sbhd{justify-content:center;padding:4px 0 10px}
+  .sidecol .sbttl,.sidecol .sbadd{display:none}
+  .sidecol .clicnm{display:none}
+  .sidecol .clicn{justify-content:center;padding:7px 0;gap:0}
+  .sidecol .clicav{width:30px;height:30px;font-size:10px}
   .sbadd:hover{background:var(--mint)}
   .notifpop{position:fixed;top:64px;right:18px;width:320px;max-height:72vh;overflow-y:auto;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(15,39,66,.22);padding:16px 14px;z-index:40}
   @media(max-width:860px){.tpinfo{display:none}.topnav button{font-size:0;padding:8px 10px;gap:0}.topnav button .ic{font-size:17px}.topnav .bd{display:none}.shell2{grid-template-columns:188px 1fr}.topsearch{width:150px}}
@@ -247,7 +256,7 @@
   .phb .wk{position:absolute;right:30px;top:28px;z-index:1;font-size:12px;color:#cfe0f0;background:rgba(255,255,255,.12);padding:6px 14px;border-radius:20px;font-weight:600}
   .ecg{position:absolute;right:30px;bottom:22px;z-index:1;opacity:.5}
 
-  .pad{padding:22px 30px 0;max-width:1120px}
+  .pad{padding:22px 30px 0;max-width:1280px}
   .ptitle{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
   .ptitle h1{font-size:22px;color:var(--ink);font-weight:600}
   .ptitle p{font-size:13px;color:var(--ink2);margin-top:3px;max-width:560px}
@@ -1012,6 +1021,48 @@
   .usurc{min-width:0}
   .usurolesel{width:100%;max-width:172px;font-size:12px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;background:var(--white);color:var(--ink);font-family:inherit}
   .rolme{font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;background:#ede7fb;color:#6a4ca8;display:inline-block}
+  .rolepill2{font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;display:inline-block}
+  .rolwrap{display:inline-flex;align-items:center;gap:6px}
+  .roleedit-btn{width:24px;height:24px;border-radius:7px;border:1px solid var(--line);background:var(--white);cursor:pointer;font-size:11px;color:var(--ink2);flex-shrink:0}
+  .roleedit-btn:hover{border-color:var(--mint);color:var(--mint-d)}
+  .stcard{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);border-radius:13px;background:var(--white);cursor:pointer;margin-bottom:8px}
+  .stcard:hover{border-color:var(--mint);background:var(--surf)}
+  .stav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--mint),var(--sky));display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0}
+  .stx{flex:1;min-width:0}.stx b{font-size:13.5px;font-weight:600;display:block}.stx small{font-size:11.5px;color:var(--ink2);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stcont{margin-top:1px}
+  .stgo{font-size:11.5px;color:var(--mint-d);font-weight:700;white-space:nowrap;flex-shrink:0}
+  .kpis2{font-size:11px;color:var(--ink2);margin-top:3px}
+  .fmbar{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 10px}
+  .fmchip{font-size:11.5px;font-weight:600;padding:6px 11px;border-radius:20px;border:1px solid var(--line);background:var(--white);color:var(--ink2);cursor:pointer;font-family:inherit}
+  .fmchip.on{background:var(--mint-bg);color:var(--mint-d);border-color:#bfe3c4}
+  .fmwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+  .fmtable{width:100%;border-collapse:collapse;font-size:12.5px;min-width:560px}
+  .fmtable thead th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);font-weight:700;padding:9px 11px;border-bottom:2px solid var(--line);background:var(--col)}
+  .fmtable th.r,.fmtable td.r{text-align:right}
+  .fmtable tbody td{padding:10px 11px;border-bottom:1px solid var(--line)}
+  .fmtable tbody tr:last-child td{border-bottom:none}
+  .fmtable tbody tr:hover{background:var(--surf)}
+  .fmtable tfoot td{padding:11px;font-weight:700;border-top:2px solid var(--line);background:var(--surf)}
+  .fmpill{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block}
+  .fmpill.ok{background:var(--mint-bg);color:var(--mint-d)}.fmpill.pend{background:#fff4e0;color:#9a6200}
+  .fmtype{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px}
+  .t-cli{background:#e3f3fc;color:#1f86b8}.t-nom{background:#ede7fb;color:#6a4ca8}
+  .balwrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .balcard{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .balbigl{font-size:12px;color:var(--ink2);font-weight:600}
+  .balbign{font-size:32px;font-weight:700;font-family:var(--serif);letter-spacing:-.02em;margin:2px 0}
+  .balbigs{font-size:11.5px;color:var(--ink2);margin-bottom:14px}
+  .balrow{display:flex;align-items:center;gap:10px;margin-top:9px}
+  .ballbl{font-size:11.5px;color:var(--ink2);width:40px;flex-shrink:0}
+  .baltrack{flex:1;height:10px;background:#e7edf3;border-radius:6px;overflow:hidden}.baltrack i{display:block;height:100%;border-radius:6px}
+  .balval{font-size:12.5px;font-weight:700;width:84px;text-align:right;flex-shrink:0}
+  .gastosbox{margin-top:16px;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .gastoshd{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .fmmes{margin-left:auto;font-size:11.5px;color:var(--ink2);font-weight:600;align-self:center}
+  .mvrow{cursor:pointer}.mvrow:hover{background:var(--surf)}.mvrow.open{background:var(--surf)}
+  .mvchev{color:var(--ink2);text-align:center;width:22px}
+  .mvdetrow td{background:var(--surf);padding:0 12px 14px;border-bottom:1px solid var(--line)}
+  @media(max-width:760px){.balwrap{grid-template-columns:1fr}}
   .roleedit{display:flex;gap:5px;align-items:center}
   .usuacts{display:flex;gap:6px;justify-content:flex-end}
   .usuic{width:32px;height:32px;border-radius:9px;border:1px solid var(--line);background:var(--white);cursor:pointer;font-size:13px;color:var(--ink2);display:grid;place-items:center;flex-shrink:0}
@@ -1056,8 +1107,8 @@
     <nav class="topnav" id="topnav">
       <button class="" data-p="inicio" data-roles="admin,cm,disenador,editor"><span class="ic">🏠</span> Inicio</button>
       <button data-p="contenido" data-roles="admin,cm,disenador,editor" class=""><span class="ic">✅</span> Actividades</button>
-      <button data-p="calendario" data-roles="admin,cm,disenador,editor"><span class="ic">🗓️</span> Calendario</button>
-      <button data-p="mensajes" data-roles="admin,cm" class=""><span class="ic">💬</span> Mensajes <span class="bd" id="msgBadge" style="display: none;">1</span></button>
+      <button data-p="calendario" data-roles="admin,cm,disenador,editor" class=""><span class="ic">🗓️</span> Calendario</button>
+      <button data-p="mensajes" data-roles="admin,cm"><span class="ic">💬</span> Mensajes <span class="bd" id="msgBadge">1</span></button>
       <button data-p="admin" data-roles="admin" class="on"><span class="ic">⚙️</span> Administración</button>
     </nav>
     <div class="ttools">
@@ -1070,10 +1121,10 @@
   </header>
   <div class="shell2">
     <aside class="sidebar2" id="sidebar2" data-roles="admin,cm" data-p="clientes">
-      <div class="sbhd">Clientes <button class="sbadd" data-newclient="" title="Nuevo cliente">＋</button></div>
-      <div id="snavClients"><div class="clicn" data-folder="5" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#ff6a6a"></span></div><span class="clicnm">Dr. Carlos Cárdenas</span></div><div class="clicn" data-folder="6" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#ff6a6a"></span></div><span class="clicnm">Dra. Carolina Centeno</span></div><div class="clicn" data-folder="7" tabindex="0" role="button"><div class="clicav">M<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mallyolo</span></div><div class="clicn" data-folder="8" tabindex="0" role="button"><div class="clicav">A<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Alejandro</span></div><div class="clicn" data-folder="9" tabindex="0" role="button"><div class="clicav">CE<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Carlos Escobedo</span></div><div class="clicn" data-folder="10" tabindex="0" role="button"><div class="clicav">Ee<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Especialistas en Cáncer</span></div><div class="clicn" data-folder="11" tabindex="0" role="button"><div class="clicav">M<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mercedes</span></div><div class="clicn" data-folder="12" tabindex="0" role="button"><div class="clicav">M/<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mater / Nancy</span></div><div class="clicn" data-folder="13" tabindex="0" role="button"><div class="clicav">NK<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Nicole K</span></div><div class="clicn" data-folder="14" tabindex="0" role="button"><div class="clicav">CV<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Cristóbal Vallejo</span></div><div class="clicn" data-folder="15" tabindex="0" role="button"><div class="clicav">ST<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Saúl Torres</span></div><div class="clicn" data-folder="16" tabindex="0" role="button"><div class="clicav">FP<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Felipe Peña</span></div><div class="clicn" data-folder="17" tabindex="0" role="button"><div class="clicav">GH<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Gaby H</span></div><div class="clicn" data-folder="18" tabindex="0" role="button"><div class="clicav">AB<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Ana Barrales</span></div><div class="clicn" data-folder="19" tabindex="0" role="button"><div class="clicav">L<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Liz</span></div><div class="clicn" data-folder="20" tabindex="0" role="button"><div class="clicav">F<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Freedom</span></div></div>
+      <div class="sbhd"><button class="sbcol" data-sidecollapse="" title="Ocultar / mostrar nombres">‹</button><span class="sbttl">Clientes</span><button class="sbadd" data-newclient="" title="Nuevo cliente">＋</button></div>
+      <div id="snavClients"><div class="clicn" data-folder="5" title="Dr. Carlos Cárdenas" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#ff6a6a"></span></div><span class="clicnm">Dr. Carlos Cárdenas</span></div><div class="clicn" data-folder="6" title="Dra. Carolina Centeno" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#ff6a6a"></span></div><span class="clicnm">Dra. Carolina Centeno</span></div><div class="clicn" data-folder="7" title="Mallyolo" tabindex="0" role="button"><div class="clicav">M<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mallyolo</span></div><div class="clicn" data-folder="8" title="Alejandro" tabindex="0" role="button"><div class="clicav">A<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Alejandro</span></div><div class="clicn" data-folder="9" title="Carlos Escobedo" tabindex="0" role="button"><div class="clicav">CE<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Carlos Escobedo</span></div><div class="clicn" data-folder="10" title="Especialistas en Cáncer" tabindex="0" role="button"><div class="clicav">Ee<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Especialistas en Cáncer</span></div><div class="clicn" data-folder="11" title="Mercedes" tabindex="0" role="button"><div class="clicav">M<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mercedes</span></div><div class="clicn" data-folder="12" title="Mater / Nancy" tabindex="0" role="button"><div class="clicav">M/<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mater / Nancy</span></div><div class="clicn" data-folder="13" title="Nicole K" tabindex="0" role="button"><div class="clicav">NK<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Nicole K</span></div><div class="clicn" data-folder="14" title="Cristóbal Vallejo" tabindex="0" role="button"><div class="clicav">CV<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Cristóbal Vallejo</span></div><div class="clicn" data-folder="15" title="Saúl Torres" tabindex="0" role="button"><div class="clicav">ST<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Saúl Torres</span></div><div class="clicn" data-folder="16" title="Felipe Peña" tabindex="0" role="button"><div class="clicav">FP<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Felipe Peña</span></div><div class="clicn" data-folder="17" title="Gaby H" tabindex="0" role="button"><div class="clicav">GH<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Gaby H</span></div><div class="clicn" data-folder="18" title="Ana Barrales" tabindex="0" role="button"><div class="clicav">AB<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Ana Barrales</span></div><div class="clicn" data-folder="19" title="Liz" tabindex="0" role="button"><div class="clicav">L<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Liz</span></div><div class="clicn" data-folder="20" title="Freedom" tabindex="0" role="button"><div class="clicav">F<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Freedom</span></div></div>
     </aside>
-    <main class="content" id="content"><div class="pad" style="max-width:900px"><div class="ptitle"><div><h1>Administración</h1><p>Tu centro de configuración, una sección a la vez.</p></div></div><div class="amwrap"><aside class="amnav"><div class="amgrp">Negocio</div><div class="amcat" data-admincat="finanzas"><span class="amic">💰</span><span class="amnm">Finanzas</span><span class="ambdg">$102,700</span></div><div class="amgrp">Equipo</div><div class="amcat" data-admincat="personal"><span class="amic">👥</span><span class="amnm">Personal</span><span class="ambdg">3</span></div><div class="amcat on" data-admincat="usuarios"><span class="amic">🧑</span><span class="amnm">Usuarios y accesos</span></div><div class="amgrp">Sistema</div></aside><section class="ampanel"><h2 class="amh2">🧑 Usuarios y accesos</h2><div class="amd">Crea las cuentas del equipo (correo, contraseña y rol) y define qué módulos ve cada rol. Solo administradora.</div><p class="folhint">Crea las cuentas del equipo y asígnales su rol. Solo tú (administradora) puedes hacerlo. Tú defines la contraseña; cada quien la puede cambiar después con "Recupérala" en el login, y tú puedes resetearla con 🔑.</p><div class="usucard"><div class="usuhd"><h2 class="usuh2">🧑 Equipo<span id="usuCount"> · 1</span></h2><div class="ususearch">🔍 <input id="usuSearch" placeholder="Buscar por nombre o correo…"></div><button class="addbtn" data-usunew="">＋ Nuevo usuario</button></div><div id="usuFormBox"></div><div class="usuthr"><div>Usuario</div><div>Correo</div><div>Rol</div><div class="rt">Acciones</div></div><div id="usuariosBox"><div class="usuitem"><div class="usutr"><div class="usuu"><div class="usuav">PG</div><b>Perla Garza</b></div><div class="usumail">perla@medmark.com</div><div class="usurc"><span class="rolme">Administrador</span></div><div class="usuacts"><button class="usuic" data-usupass="5748449f-2031-4c48-b4df-cf5e00a4a22c" title="Cambiar contraseña">🔑</button></div></div></div></div><div class="usufoot">El rol se elige de la lista <b>o se escribe uno nuevo</b>. 🔑 cambia la contraseña · ✕ elimina (te pide confirmar).</div></div><div id="accRolBox"><div class="usucard" style="margin-top:14px"><div class="usuhd"><h2 class="usuh2">🔑 Accesos por rol</h2></div><div style="padding:14px 16px"><div class="subd" style="margin:0 0 10px">Elige un rol y prende los módulos que verá. Aplica a todas las personas con ese rol. La administradora siempre tiene acceso completo.</div><div class="iseg accseg" style="margin-bottom:10px;flex-wrap:wrap"><button class="isegb" data-accrole="cm">Community Manager</button><button class="isegb" data-accrole="disenador">Diseño</button><button class="isegb on" data-accrole="editor">Edición</button></div><div class="subd" style="margin:2px 0 8px">Módulos para <b>Edición</b></div><div class="accmod"><span class="accmodl">🏠 Inicio</span><button class="tgl on" data-rperm="editor|inicio" aria-label="Cambiar acceso de Edición a 🏠 Inicio"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">✅ Actividades</span><button class="tgl on" data-rperm="editor|contenido" aria-label="Cambiar acceso de Edición a ✅ Actividades"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">🗓️ Calendario</span><button class="tgl on" data-rperm="editor|calendario" aria-label="Cambiar acceso de Edición a 🗓️ Calendario"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">🩺 Clientes</span><button class="tgl" data-rperm="editor|clientes" aria-label="Cambiar acceso de Edición a 🩺 Clientes"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">💬 Mensajes</span><button class="tgl" data-rperm="editor|mensajes" aria-label="Cambiar acceso de Edición a 💬 Mensajes"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">⚙️ Administración</span><button class="tgl" data-rperm="editor|admin" aria-label="Cambiar acceso de Edición a ⚙️ Administración"><span class="tgk"></span></button></div></div></div></div></section></div></div></main>
+    <main class="content" id="content"><div class="pad" style="max-width:none"><div class="ptitle"><div><h1>Administración</h1><p>Tu centro de configuración, una sección a la vez.</p></div></div><div class="amwrap"><aside class="amnav"><div class="amgrp">Negocio</div><div class="amcat" data-admincat="finanzas"><span class="amic">💰</span><span class="amnm">Finanzas</span><span class="ambdg">6</span></div><div class="amgrp">Equipo</div><div class="amcat on" data-admincat="personal"><span class="amic">👥</span><span class="amnm">Nómina</span><span class="ambdg">4</span></div><div class="amcat" data-admincat="usuarios"><span class="amic">🧑</span><span class="amnm">Usuarios y accesos</span></div><div class="amgrp">Sistema</div></aside><section class="ampanel"><h2 class="amh2">👥 Nómina</h2><div class="amd">Tu equipo y su ficha: rol, sueldo, contacto y responsabilidades. Toca a alguien para abrir su ficha.</div><div class="stcard" data-editstaff="1"><div class="stav">AG</div><div class="stx"><b>Anahí Garza</b><small>Community Manager · <span style="color:#2e7d32;font-weight:700">$8,000/mes</span></small><small class="stcont">444 123 4567 · anahi.garza@gmail.com</small></div><span class="stgo">Abrir ficha ›</span></div><div class="stcard" data-editstaff="2"><div class="stav">S</div><div class="stx"><b>Sofía</b><small>Diseñadora · <span style="color:#2e7d32;font-weight:700">$10,000/mes</span></small><small class="stcont">444 234 5678 · sofia.design@gmail.com</small></div><span class="stgo">Abrir ficha ›</span></div><div class="stcard" data-editstaff="3"><div class="stav">K</div><div class="stx"><b>Karla</b><small>Editora · <span style="color:#2e7d32;font-weight:700">$9,000/mes</span></small><small class="stcont">444 345 6789 · karla.edit@gmail.com</small></div><span class="stgo">Abrir ficha ›</span></div><div class="stcard" data-editstaff="4"><div class="stav">E</div><div class="stx"><b>Empleado</b><small>— · <span style="color:#2e7d32;font-weight:700">—/mes</span></small></div><span class="stgo">Abrir ficha ›</span></div><button class="addbtn" data-newstaff="" style="margin-top:12px">＋ Agregar empleado</button></section></div></div></main>
   </div>
   <div class="notifpop" id="notifPanel" style="display:none"><div class="arlbl">Actividad del equipo</div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Mommy Makeover: recupera tu …»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Ácido hialurónico: qué hace …»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Chequeo cardiológico: qué in…»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Dra. Carolina Centeno</b> pidió un cambio</div><div class="afw">Reforzar al equipo de mujeres en la imag</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Nicole K</b> pidió un cambio</div><div class="afw">Acortar el gancho a 3 seg y poner música</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Especialistas en Cáncer</b> pidió un cambio</div><div class="afw">Agregar subtítulos y suavizar el cierre.</div></div></div><div class="afeed"><div class="afdot">✅</div><div><div class="aft"><b>Dra. Carolina Centeno</b> aprobó «Vesícula: señales de que y…»</div><div class="afw">lista para programar</div></div></div><div class="afeed"><div class="afdot">✅</div><div><div class="aft"><b>Carlos Escobedo</b> aprobó «Electrocardiograma el mism…»</div><div class="afw">lista para programar</div></div></div><div class="afeed"><div class="afdot">📤</div><div><div class="aft"><b>Dr. Carlos Cárdenas</b> tiene una pieza por aprobar</div><div class="afw">enviada a su portal</div></div></div></div>
 </div>
@@ -1116,8 +1167,8 @@
   </div>
 </div>
 
-<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
-<div class="toast" id="toast"></div>
+<div class="overlay" id="overlay"><div class="modal" id="modal"><div class="mhd"><div><h2>🗂️ Ficha del empleado</h2><div style="font-size:12px;color:var(--ink2);margin-top:2px">— · —/mes</div></div><button class="x" data-closemodal="">✕</button></div><div class="mbd"><div class="frow"><div class="fld"><label>Nombre</label><input id="stName" value="Empleado" placeholder="Nombre completo"></div><div class="fld"><label>Rol / puesto</label><input id="stRole" value="" placeholder="ej. Diseñador, Editor…"></div></div><div class="frow"><div class="fld"><label>Sueldo mensual</label><input id="stAmount" value="—" placeholder="$0"></div><div class="fld"><label>Día de pago</label><input id="stPayDay" value="" placeholder="ej. 30 de cada mes"></div></div><div class="frow"><div class="fld"><label>Fecha de ingreso</label><input id="stStart" type="date" value=""></div><div class="fld"><label>Teléfono</label><input id="stPhone" value="" placeholder="444 000 0000"></div></div><div class="frow"><div class="fld"><label>Correo personal</label><input id="stEmailP" value="" placeholder="correo@personal.com"></div><div class="fld"><label>Correo de trabajo</label><input id="stEmailW" value="" placeholder="correo@medmark.mx"></div></div><div class="fld"><label>Responsabilidades / compromisos</label><textarea id="stResp" placeholder="¿De qué se encarga? ej. Edición de reels de 3 cuentas; entregas los martes…"></textarea></div><div class="fld"><label>Notas (otros datos importantes)</label><textarea id="stNotes" placeholder="Contrato, datos bancarios, contacto de emergencia, etc."></textarea></div><div class="mactions"><button class="msave" data-savestaff="4">Guardar cambios</button><button class="recpill" data-staffuser="4">👤 Crear acceso</button><button class="mdel" data-delstaffask="4">Eliminar</button></div><div class="muted2" style="margin-top:6px">"Crear acceso" le genera su usuario para entrar a la app (los freelance pueden quedarse solo en nómina, sin acceso).</div></div></div></div>
+<div class="toast" id="toast">✅ Ficha guardada</div>
 
 <script src="./index_files/supabase.js"></script>
 <script>
@@ -1275,7 +1326,7 @@ function currentUserName(){return (USERS[currentRole]&&USERS[currentRole].person
 function applyRole(rk){currentRole=rk;var u=USERS[rk]||{name:sessionName||'Usuario',role:cap(rk)};profile.name=u.name;profile.role=u.role;profile.photo=null;crmScope=(rk==='admin')?'todas':'mias';
   document.querySelectorAll('#topnav button, #sidebar2').forEach(function(el){el.style.display=accessOn(rk,el.getAttribute('data-p'))?'':'none';});
   var sb=document.getElementById('sidebar2');document.getElementById('agencia').classList.toggle('solo',!sb||sb.style.display==='none');
-  updateUser();
+  updateUser();applySidecol();
   var first=null;document.querySelectorAll('#topnav button').forEach(function(b){if(!first&&accessOn(rk,b.getAttribute('data-p')))first=b.getAttribute('data-p');});
   if(first){go(first);}else{noAccessScreen();}
 }
@@ -1294,21 +1345,25 @@ function savePkg(id){var d={name:$('#pkName').value.trim()||'Paquete',price:$('#
 function delPkg(id){PACKAGES=PACKAGES.filter(function(x){return x.id!==id});closeModal();refresh();toast('🗑️ Paquete eliminado');}
 /* ---------- frases de agradecimiento + nómina ---------- */
 var THANKS={doctor:'¡Gracias por tu pago, Doctor! Seguimos creciendo juntos 🚀',staff:'¡Gracias por tu gran trabajo este mes! 🙌'};
-var staff=[{id:1,name:'Anahí Garza',role:'Community Manager',amount:'$8,000',payStatus:'Pendiente',history:[]},{id:2,name:'Sofía',role:'Diseñadora',amount:'$10,000',payStatus:'Pendiente',history:[]},{id:3,name:'Karla',role:'Editora',amount:'$9,000',payStatus:'Pendiente',history:[]}];
+var staff=[{id:1,name:'Anahí Garza',role:'Community Manager',amount:'$8,000',payStatus:'Pendiente',history:[],phone:'444 123 4567',emailP:'anahi.garza@gmail.com',emailW:'anahi@medmark.mx',start:'2025-01-15',payDay:'30 de cada mes',resp:'Estrategia y community management de las cuentas asignadas; primer contacto con pacientes y seguimiento.',notes:''},{id:2,name:'Sofía',role:'Diseñadora',amount:'$10,000',payStatus:'Pendiente',history:[],phone:'444 234 5678',emailP:'sofia.design@gmail.com',emailW:'sofia@medmark.mx',start:'2025-02-01',payDay:'30 de cada mes',resp:'Diseño de piezas gráficas y carruseles; identidad visual de cada consultorio.',notes:''},{id:3,name:'Karla',role:'Editora',amount:'$9,000',payStatus:'Pendiente',history:[],phone:'444 345 6789',emailP:'karla.edit@gmail.com',emailW:'karla@medmark.mx',start:'2025-03-10',payDay:'30 de cada mes',resp:'Edición de reels y videos; subtítulos y entregas semanales.',notes:''}];
 var expenses=[{id:1,name:'Herramientas (Meta, Canva, CapCut)',amount:1800},{id:2,name:'Publicidad propia de la agencia',amount:2500}],nextExpense=3;
 function parseMoney(s){return parseFloat(String(s==null?'':s).replace(/[^0-9.]/g,''))||0;}
 function fmtMoney(n){return '$'+Math.round(n||0).toLocaleString('es-MX');}
 function registerStaffPay(id){var s=staff.filter(function(x){return x.id===id})[0];if(!s)return;s.payStatus='Pagado';s.history.push({date:(s.compDate||fechaLarga(new Date())),amount:s.amount,comprobante:s.comprobante||null});s.comprobante=null;s.compDate=null;refresh();notify('💸 Pago a personal',s.name+' · '+(THANKS.staff||'¡Gracias!'));}
 var nextStaffId=4;
-function openStaffForm(id){var s=id?staff.filter(function(x){return x.id===id})[0]:{name:'',role:'',amount:''};
-  $('#modal').innerHTML='<div class="mhd"><div><h2>'+(id?'Editar empleado':'Nuevo empleado')+'</h2></div><button class="x" data-closemodal>✕</button></div><div class="mbd">'
-   +'<div class="fld"><label>Nombre</label><input id="stName" value="'+escapeHtml(s.name)+'" placeholder="Nombre completo"></div>'
-   +'<div class="fld"><label>Rol / puesto</label><input id="stRole" value="'+escapeHtml(s.role)+'" placeholder="ej. Diseñador, Editor, Fotógrafo…"></div>'
-   +'<div class="fld"><label>Sueldo mensual</label><input id="stAmount" value="'+escapeHtml(s.amount)+'" placeholder="$0"></div>'
-   +'<div class="mactions"><button class="msave" data-savestaff="'+(id||0)+'">'+(id?'Guardar cambios':'Agregar empleado')+'</button>'+(id?'<button class="mdel" data-delstaffask="'+id+'">Eliminar</button>':'')+'</div></div>';
+function openStaffForm(id){var s=id?staff.filter(function(x){return x.id===id})[0]:{name:'',role:'',amount:'',phone:'',emailP:'',emailW:'',start:'',resp:'',notes:''};
+  $('#modal').innerHTML='<div class="mhd"><div><h2>'+(id?'🗂️ Ficha del empleado':'Nuevo empleado')+'</h2>'+(id?'<div style="font-size:12px;color:var(--ink2);margin-top:2px">'+escapeHtml(s.role||'—')+(s.amount?' · '+escapeHtml(s.amount)+'/mes':'')+(s.payDay?' · paga '+escapeHtml(s.payDay):'')+'</div>':'')+'</div><button class="x" data-closemodal>✕</button></div><div class="mbd">'
+   +'<div class="frow"><div class="fld"><label>Nombre</label><input id="stName" value="'+escapeHtml(s.name||'')+'" placeholder="Nombre completo"></div><div class="fld"><label>Rol / puesto</label><input id="stRole" value="'+escapeHtml(s.role||'')+'" placeholder="ej. Diseñador, Editor…"></div></div>'
+   +'<div class="frow"><div class="fld"><label>Sueldo mensual</label><input id="stAmount" value="'+escapeHtml(s.amount||'')+'" placeholder="$0"></div><div class="fld"><label>Día de pago</label><input id="stPayDay" value="'+escapeHtml(s.payDay||'')+'" placeholder="ej. 30 de cada mes"></div></div>'
+   +'<div class="frow"><div class="fld"><label>Fecha de ingreso</label><input id="stStart" type="date" value="'+escapeHtml(s.start||'')+'"></div><div class="fld"><label>Teléfono</label><input id="stPhone" value="'+escapeHtml(s.phone||'')+'" placeholder="444 000 0000"></div></div>'
+   +'<div class="frow"><div class="fld"><label>Correo personal</label><input id="stEmailP" value="'+escapeHtml(s.emailP||'')+'" placeholder="correo@personal.com"></div><div class="fld"><label>Correo de trabajo</label><input id="stEmailW" value="'+escapeHtml(s.emailW||'')+'" placeholder="correo@medmark.mx"></div></div>'
+   +'<div class="fld"><label>Responsabilidades / compromisos</label><textarea id="stResp" placeholder="¿De qué se encarga? ej. Edición de reels de 3 cuentas; entregas los martes…">'+escapeHtml(s.resp||'')+'</textarea></div>'
+   +'<div class="fld"><label>Notas (otros datos importantes)</label><textarea id="stNotes" placeholder="Contrato, datos bancarios, contacto de emergencia, etc.">'+escapeHtml(s.notes||'')+'</textarea></div>'
+   +'<div class="mactions"><button class="msave" data-savestaff="'+(id||0)+'">'+(id?'Guardar cambios':'Agregar empleado')+'</button>'+(id?'<button class="recpill" data-staffuser="'+id+'">👤 Crear acceso</button><button class="mdel" data-delstaffask="'+id+'">Eliminar</button>':'')+'</div>'+(id?'<div class="muted2" style="margin-top:6px">"Crear acceso" le genera su usuario para entrar a la app (los freelance pueden quedarse solo en nómina, sin acceso).</div>':'')+'</div>';
   $('#overlay').classList.add('show');}
-function saveStaff(id){var d={name:$('#stName').value.trim()||'Empleado',role:$('#stRole').value.trim(),amount:$('#stAmount').value.trim()||'—'};if(id){var s=staff.filter(function(x){return x.id===id})[0];for(var k in d)s[k]=d[k];}else{d.id=nextStaffId++;d.payStatus='Pendiente';d.history=[];staff.push(d);}adminCat='personal';closeModal();refresh();toast('✅ Empleado guardado');}
+function saveStaff(id){var d={name:$('#stName').value.trim()||'Empleado',role:$('#stRole').value.trim(),amount:$('#stAmount').value.trim()||'—',phone:$('#stPhone').value.trim(),emailP:$('#stEmailP').value.trim(),emailW:$('#stEmailW').value.trim(),start:$('#stStart').value,payDay:$('#stPayDay').value.trim(),resp:$('#stResp').value.trim(),notes:$('#stNotes').value.trim()};if(id){var s=staff.filter(function(x){return x.id===id})[0];for(var k in d)s[k]=d[k];}else{d.id=nextStaffId++;d.payStatus='Pendiente';d.history=[];staff.push(d);}adminCat='personal';closeModal();refresh();toast('✅ Ficha guardada');}
 function delStaff(id){staff=staff.filter(function(x){return x.id!==id});adminCat='personal';closeModal();refresh();toast('🗑️ Empleado eliminado');}
+function crearAccesoEmpleado(id){var s=staff.filter(function(x){return x.id===id})[0];if(!s)return;usuPrefill={email:(s.emailW||s.emailP||''),nombre:s.name};usuFormOpen=true;adminCat='usuarios';closeModal();go('admin');toast('Pon el rol y una contraseña para crear el acceso de '+s.name);}
 var confirmFn=null;
 function askConfirm(msg,fn){confirmFn=fn;$('#modal').innerHTML='<div class="mbd" style="text-align:center;padding:30px 26px"><div style="font-size:38px">⚠️</div><div style="font-family:var(--serif);font-size:19px;color:var(--ink);margin:10px 0 6px">¿Estás seguro?</div><div style="font-size:13px;color:var(--ink2);margin-bottom:22px;line-height:1.5">'+escapeHtml(msg)+'</div><div style="display:flex;gap:10px"><button class="msave" style="flex:1;background:var(--col,#eef3f8);color:var(--ink);box-shadow:none" data-confirmno>Cancelar</button><button class="msave" style="flex:1;background:var(--coral);box-shadow:none" data-confirmyes>Sí, eliminar</button></div></div>';$('#overlay').classList.add('show');}
 var ACCICON={"Instagram":"📷","Facebook":"📘","TikTok":"🎵","YouTube":"▶️","Threads":"🧵","LinkedIn":"💼","X":"✖️"};
@@ -1440,7 +1495,7 @@ PANELS.inicio=function(){var isAdmin=currentRole==='admin';
   var overdue=overdueArr.map(function(c){var dl=new Date().getDate()-(c.payDay||10);return '<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">En retraso</span><div class="tx">'+escapeHtml(c.doc)+' · '+dl+' día'+(dl>1?'s':'')+'<small>aún no paga · revisar en Pagos</small></div><span class="go">›</span></div>';}).join('');
   var compRecibido=compArr.map(function(c){return '<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-g">Ya pagó</span><div class="tx">'+escapeHtml(c.doc)+' subió su comprobante<small>verifícalo y confirma en Pagos</small></div><span class="go">›</span></div>';}).join('');
   var nPend=staff.filter(function(s){return s.payStatus!=='Pagado';}).length;
-  var staffPend=(isAdmin&&nPend)?'<div class="row" data-gofin="nomina" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Te toca pagar a tu personal<small>'+nPend+' pendientes · ir a Finanzas › Cobros</small></div><span class="go">›</span></div>':'';
+  var staffPend=(isAdmin&&nPend)?'<div class="row" data-gofin="nomina" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Te toca pagar a tu personal<small>'+nPend+' pendientes · ir a Finanzas › Movimientos</small></div><span class="go">›</span></div>':'';
   var revN=posts.filter(function(p){return p.status==='Revisión'&&inScope(p);}).length;
   var envN=posts.filter(function(p){return p.status==='Enviado'&&inScope(p);}).length;
   var camN=posts.filter(function(p){return p.status==='Cambios'&&inScope(p);}).length;
@@ -1585,9 +1640,10 @@ function renderSidebarClients(){
     var dotC=over?'#ff6a6a':(rev?'#f5a623':'#66BB6A');
     var on=(inFolder&&folderId===c.id)?' on':'';
     var av=c.photo?' style="background-image:url('+c.photo+')"':'';
-    return '<div class="clicn'+on+'" data-folder="'+c.id+'"><div class="clicav"'+av+'>'+(c.photo?'':initials(c.doc))+'<span class="clidot" style="background:'+dotC+'"></span></div><span class="clicnm">'+escapeHtml(c.doc)+'</span></div>';
+    return '<div class="clicn'+on+'" data-folder="'+c.id+'" title="'+escapeHtml(c.doc)+'"><div class="clicav"'+av+'>'+(c.photo?'':initials(c.doc))+'<span class="clidot" style="background:'+dotC+'"></span></div><span class="clicnm">'+escapeHtml(c.doc)+'</span></div>';
   }).join('')||'<div class="clinone">'+(q?'Sin resultados':'Sin cuentas')+'</div>';
 }
+function applySidecol(){var sh=document.querySelector('.shell2');if(!sh)return;var on=false;try{on=localStorage.getItem('mmSidecol')==='1';}catch(e){}sh.classList.toggle('sidecol',on);var b=document.querySelector('[data-sidecollapse]');if(b)b.textContent=on?'›':'‹';}
 var notifSig='',notifSeen='';
 function renderActivity(){
   var box=$('#notifPanel');if(!box)return;
@@ -2204,7 +2260,7 @@ function folReportes(c){
     +'<div class="card"><h3>Vista previa</h3><div class="csub">Así lo verá '+escapeHtml(c.doc)+' en su portal · no se edita aquí</div>'+docRepBody(c,repMonth)+((repGet(c,repMonth)&&repTotals(repGet(c,repMonth)).alc)?'<button class="addbtn" style="width:100%;margin-top:14px" data-printrep="'+c.id+'|'+repMonth+'">⬇ Descargar PDF</button>':'')+'</div></div></div>';
 }
 
-var adminOpen={finanzas:true};var adminCat='finanzas',accRole='cm',pendAccess=null,finView='',finTab='resumen',paysView='clientes',payOpen=null;
+var adminOpen={finanzas:true};var adminCat='finanzas',accRole='cm',pendAccess=null,finView='',finTab='balance',finFilter='todos',paysView='clientes',payOpen=null;
 var COLORS={};var COLORABLE={platforms:'#c2185b',statuses:'#607d8b',funnel:'#7c3aed'};
 // Paleta curada (lo que recomiendan las apps del rubro: pocos colores complementarios)
 var PALETTE=['#1a365d','#1877F2','#4FC3F7','#0f9d8a','#4CAF50','#66BB6A','#FFA000','#FF6B6B','#E1306C','#7c3aed','#607d8b','#111111'];
@@ -2231,8 +2287,11 @@ function showAccessConfirm(btn){if(!pendAccess)return;var pop=document.getElemen
   pop.innerHTML='<div class="cptext">¿'+verb+' <b>'+(m?m.l:pendAccess.p)+'</b> para '+who+'?</div><div class="cpacts"><button class="cpno" data-acccancel>Cancelar</button><button class="cpyes'+(pendAccess.to?'':' danger')+'" data-accconfirm>'+(pendAccess.to?'Dar acceso':'Quitar')+'</button></div>';
   pop.style.display='block';var r=btn.getBoundingClientRect();var w=250;var left=Math.max(12,Math.min(r.right-w,(window.innerWidth||1200)-w-12));pop.style.left=left+'px';pop.style.top=(r.bottom+8)+'px';}
 var USU_ROLES=[['admin','Administrador'],['cm','Community Manager'],['disenador','Diseño'],['editor','Edición'],['doctor','Doctor'],['pendiente','Pendiente (sin acceso)']];
-var usuPassId=null,usuFormOpen=false,usuRoleEditId=null,usuDelId=null,usuCache=[],usuRoles=[];
+var usuPassId=null,usuFormOpen=false,usuRoleEditId=null,usuRoleSelId=null,usuDelId=null,usuPrefill=null,usuCache=[],usuRoles=[];
 function roleLabel(r){for(var i=0;i<USU_ROLES.length;i++){if(USU_ROLES[i][0]===r)return USU_ROLES[i][1];}return cap(r);}
+var ROLE_PAL=[['#e0f7f4','#0f8a7e'],['#fdeffa','#a83c84'],['#eaf0fb','#3a4db0'],['#fde8e8','#b3322f'],['#f3ece2','#8a5a2b'],['#e2f0d9','#4a7a1f'],['#fbe9f0','#9a2f57'],['#e7f0fb','#2b6cb0']];
+function roleColors(r){var b={admin:['#ede7fb','#6a4ca8'],cm:['#e3f3fc','#1f86b8'],disenador:['#e8f5e9','#2e7d32'],editor:['#fff3e0','#b26a00'],doctor:['#eef3f8','#5a7a9c'],pendiente:['#eef3f8','#8a9bb0']}[r];if(b)return b;var h=0,s=String(r||'');for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return ROLE_PAL[h%ROLE_PAL.length];}
+function rolePill(r){var c=roleColors(r);return '<span class="rolepill2" style="background:'+c[0]+';color:'+c[1]+'">'+escapeHtml(roleLabel(r))+'</span>';}
 function normRole(r){return String(r||'').toLowerCase().replace(/\s+/g,' ').trim();}
 function roleOptionsHtml(current,withOtro){var seen={},out='';
   USU_ROLES.forEach(function(x){if(x[0]==='pendiente')return;seen[x[0]]=1;out+='<option value="'+x[0]+'"'+(x[0]===current?' selected':'')+'>'+escapeHtml(x[1])+'</option>';});
@@ -2259,8 +2318,9 @@ function usuariosBody(){
 }
 function renderUsuForm(){var box=document.getElementById('usuFormBox');if(!box)return;
   if(!usuFormOpen){box.innerHTML='';return;}
-  box.innerHTML='<div class="usuform"><div class="usuformt">Nuevo usuario</div>'
-    +'<div class="frow"><div class="fld"><label>Correo</label><input id="nuEmail" type="email" placeholder="correo@medmark.com"></div><div class="fld"><label>Nombre</label><input id="nuNombre" placeholder="Nombre y apellido"></div></div>'
+  var pf=usuPrefill||{};
+  box.innerHTML='<div class="usuform"><div class="usuformt">'+(pf.nombre?'Crear acceso · '+escapeHtml(pf.nombre):'Nuevo usuario')+'</div>'
+    +'<div class="frow"><div class="fld"><label>Correo</label><input id="nuEmail" type="email" value="'+escapeHtml(pf.email||'')+'" placeholder="correo@medmark.com"></div><div class="fld"><label>Nombre</label><input id="nuNombre" value="'+escapeHtml(pf.nombre||'')+'" placeholder="Nombre y apellido"></div></div>'
     +'<div class="frow"><div class="fld"><label>Rol</label><select id="nuRol" data-nurol>'+roleOptionsHtml('cm',true)+'</select><input id="nuRolNuevo" class="rolnew" placeholder="Escribe el rol nuevo (ej. Estratega)" style="display:none"></div>'
     +'<div class="fld"><label>Contraseña</label><div class="pwdwrap"><input id="nuPass" type="password" placeholder="mín. 6 caracteres"><button type="button" class="pwdeye" data-eyefor="nuPass">👁️</button></div></div></div>'
     +'<div class="usuformact"><button class="addbtn" data-usucreate>Crear usuario</button><button class="lk2" data-usunewcancel style="color:var(--ink2)">Cancelar</button></div></div>';
@@ -2272,14 +2332,15 @@ function renderUsuRows(list,filtered){var box=document.getElementById('usuariosB
 function usuRow(u){
   var isMe=(myUid&&u.id===myUid);
   var rolCell;
-  if(isMe){rolCell='<span class="rolme">'+escapeHtml(roleLabel(u.rol))+'</span>';}
+  if(isMe){rolCell='<span class="rolwrap">'+rolePill(u.rol)+'</span>';}
   else if(usuRoleEditId===u.id){rolCell='<div class="roleedit"><input id="urole_'+u.id+'" class="rolnew" value="'+escapeHtml(u.rol==='pendiente'?'':cap(u.rol))+'" placeholder="Nombre del rol"><button class="usuic ok" data-usrolesave="'+u.id+'" title="Guardar">✓</button><button class="usuic" data-usrolecancel="1" title="Cancelar">✕</button></div>';}
-  else{rolCell='<select class="usurolesel" data-usurole="'+u.id+'">'+roleOptionsHtml(u.rol,true)+'</select>';}
+  else if(usuRoleSelId===u.id){rolCell='<select class="usurolesel" data-usurole="'+u.id+'">'+roleOptionsHtml(u.rol,true)+'</select>';}
+  else{rolCell='<span class="rolwrap">'+rolePill(u.rol)+'<button class="roleedit-btn" data-usroleedit="'+u.id+'" title="Cambiar rol">✎</button></span>';}
   var pass=(usuPassId===u.id)?'<div class="usupass"><div class="pwdwrap"><input id="upw_'+u.id+'" type="password" placeholder="Nueva contraseña (mín. 6)"><button type="button" class="pwdeye" data-eyefor="upw_'+u.id+'">👁️</button></div><button class="addbtn sm" data-usupasssave="'+u.id+'">Guardar</button><button class="lk2" data-usupasscancel="1" style="color:var(--ink2)">Cancelar</button></div>':'';
   var del=(!isMe&&usuDelId===u.id)?'<div class="usudelc"><span><b>¿Eliminar a '+escapeHtml(u.nombre||u.email||'este usuario')+'?</b> No se puede deshacer.</span><span class="usudelb"><button class="lk2" data-usudelcancel="1" style="color:var(--ink2)">Cancelar</button><button class="addbtn danger" data-usudelconfirm="'+u.id+'">Eliminar</button></span></div>':'';
   return '<div class="usuitem"><div class="usutr"><div class="usuu"><div class="usuav">'+escapeHtml(initials(u.nombre||u.email||'?'))+'</div><b>'+escapeHtml(u.nombre||'—')+'</b></div><div class="usumail">'+escapeHtml(u.email||'')+'</div><div class="usurc">'+rolCell+'</div><div class="usuacts"><button class="usuic" data-usupass="'+u.id+'" title="Cambiar contraseña">🔑</button>'+(isMe?'':'<button class="usuic del" data-usudelask="'+u.id+'" title="Eliminar">✕</button>')+'</div></div>'+pass+del+'</div>';
 }
-async function usuCrear(){var email=(($('#nuEmail')||{}).value||'').trim(),nombre=(($('#nuNombre')||{}).value||'').trim();var rolSel=($('#nuRol')||{}).value||'cm';var rol=(rolSel==='__nuevo')?normRole(($('#nuRolNuevo')||{}).value||''):rolSel;var pass=(($('#nuPass')||{}).value||'');if(!email||pass.length<6){toast('⚠️ Correo y contraseña de mín. 6 caracteres');return;}if(rolSel==='__nuevo'&&rol.length<2){toast('⚠️ Escribe el nombre del rol nuevo');return;}toast('Creando usuario…');var r=await invokeUsr({action:'create',email:email,nombre:nombre,rol:rol,password:pass});if(r.error){toast('⚠️ '+r.error);return;}usuFormOpen=false;renderUsuForm();toast('✅ Usuario creado');loadUsuarios();}
+async function usuCrear(){var email=(($('#nuEmail')||{}).value||'').trim(),nombre=(($('#nuNombre')||{}).value||'').trim();var rolSel=($('#nuRol')||{}).value||'cm';var rol=(rolSel==='__nuevo')?normRole(($('#nuRolNuevo')||{}).value||''):rolSel;var pass=(($('#nuPass')||{}).value||'');if(!email||pass.length<6){toast('⚠️ Correo y contraseña de mín. 6 caracteres');return;}if(rolSel==='__nuevo'&&rol.length<2){toast('⚠️ Escribe el nombre del rol nuevo');return;}toast('Creando usuario…');var r=await invokeUsr({action:'create',email:email,nombre:nombre,rol:rol,password:pass});if(r.error){toast('⚠️ '+r.error);return;}usuFormOpen=false;usuPrefill=null;renderUsuForm();toast('✅ Usuario creado');loadUsuarios();}
 async function usuSetRole(id,rol){var r=await invokeUsr({action:'setRole',id:id,rol:normRole(rol)});if(r.error){toast('⚠️ '+r.error);loadUsuarios();return;}toast('✅ Rol actualizado');loadUsuarios();}
 function usrSaveRole(id){var v=normRole(($('#urole_'+id)||{}).value||'');if(v.length<2){toast('⚠️ Escribe el nombre del rol');return;}usuRoleEditId=null;usuSetRole(id,v);}
 function accesosPorRolBlock(){
@@ -2297,7 +2358,17 @@ async function loadPermisos(){var r=await invokeUsr({action:'getPermisos'});if(r
 async function savePermiso(rol){var mods=(permisosCache&&permisosCache[rol])||{};var r=await invokeUsr({action:'setPermiso',rol:rol,modulos:mods});if(r.error){toast('⚠️ '+r.error);return;}toast('✅ Accesos guardados');}
 async function usuDel(id){usuDelId=null;var r=await invokeUsr({action:'delete',id:id});if(r.error){toast('⚠️ '+r.error);loadUsuarios();return;}toast('🗑️ Usuario eliminado');loadUsuarios();}
 async function usuSetPass(id){var pw=(($('#upw_'+id)||{}).value||'');if(pw.length<6){toast('⚠️ Mín. 6 caracteres');return;}var r=await invokeUsr({action:'setPassword',id:id,password:pw});if(r.error){toast('⚠️ '+r.error);return;}usuPassId=null;toast('🔑 Contraseña actualizada');loadUsuarios();}
-AFTER.admin=function(){if(adminCat==='usuarios'){loadUsuarios();}};
+AFTER.admin=function(){if(adminCat==='usuarios'){loadUsuarios();renderUsuForm();}};
+function clientPayDet(c){var paid=!!c.paidThisMonth;
+  var prev=c.comprobante?'<div class="payprev"><img src="'+c.comprobante+'" data-vercomp="'+c.id+'"><div class="muted2">Comprobante del doctor'+(c.compDate?' · '+escapeHtml(c.compDate):'')+'. Verifica que sea real, luego marca pagado y emite recibo.</div></div>':'';
+  return '<div class="paydet">'
+    +'<div class="finedit"><span class="fen">💲 Valor mensual</span><input class="feinp" data-setval="'+c.id+'" value="'+escapeHtml(c.val||'')+'" placeholder="$0"></div>'+prev
+    +'<div class="payacts">'+(paid?'<span style="font-size:12.5px;color:#2e7d32;font-weight:700">Pagado este mes ✓</span>':'<button class="recpill" data-remind="'+c.id+'">🔔 Recordatorio</button><button class="addbtn" data-confirmpay="'+c.id+'">✓ Marcar pagado</button>')+'</div>'
+    +'<div class="payacts"><button class="recpill" data-hist="'+c.id+'">📋 Historial</button><button class="recpill" data-genrec="'+c.id+'">🧾 Generar recibo</button></div></div>';}
+function staffPayDet(s){
+  var sh=(s.history||[]).map(function(h,i){return '<div class="payhrow"><span>📅 '+escapeHtml(h.date)+'</span><span style="color:#2e7d32;font-weight:700">'+escapeHtml(h.amount)+'</span>'+(h.comprobante?'<button class="lk2" data-verstaff="'+s.id+'|'+i+'">📎</button>':'')+'</div>';}).join('');
+  var sprev=s.comprobante?'<div class="payprev"><img src="'+s.comprobante+'" data-verstaffimg="'+s.id+'"><div class="muted2">Comprobante de transferencia. Registra para guardarlo en el historial.</div></div>':'';
+  return '<div class="paydet">'+sprev+'<div class="payacts"><input type="file" accept="image/*" data-stafffile="'+s.id+'" id="sf'+s.id+'" class="hidden">'+(s.payStatus!=='Pagado'?'<button class="recpill" data-upstaff="'+s.id+'">📎 Adjuntar comprobante</button><button class="addbtn" data-staffpay="'+s.id+'">💸 Registrar pago</button>':'<span class="muted2">Pagado este mes ✓</span>')+'</div>'+(sh?'<div class="payhhd">Historial</div>'+sh:'')+'</div>';}
 PANELS.admin=function(){
   var out=[];
   var act=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
@@ -2310,16 +2381,35 @@ PANELS.admin=function(){
   var inEdit=act.map(function(c){return '<div class="finedit"><span class="fen">'+escapeHtml(c.doc)+'</span><input class="feinp" data-setval="'+c.id+'" value="'+escapeHtml(c.val||'')+'" placeholder="$"></div>';}).join('')||'<div class="muted2">Sin cuentas activas.</div>';
   var exEdit=expenses.map(function(e){return '<div class="finedit"><input class="feinp fename" data-expname="'+e.id+'" value="'+escapeHtml(e.name)+'"><input class="feinp feamt" data-expamt="'+e.id+'" value="'+escapeHtml(String(e.amount))+'"><button class="lk2" style="color:var(--coral)" data-delexpense="'+e.id+'">✕</button></div>';}).join('');
   function fcard(key,label,val,color,extra){return '<div class="fincard fclk'+(finView===key?' on':'')+'" data-fincard="'+key+'"><div class="fl">'+label+'</div><div class="fv" style="color:'+color+'">'+val+'</div>'+(extra||'')+'</div>';}
-  var fin='<div class="finsum">'
-    +fcard('ingresos','Ingresos',fmtMoney(ing),'#2e7d32','')
-    +fcard('egresos','Egresos',fmtMoney(egr),'var(--coral)','')
-    +fcard('ganancia','Ganancia · '+margen+'%',fmtMoney(gan),(gan>=0?'#2e7d32':'var(--coral)'),'<div class="marbar"><i style="width:'+Math.max(2,Math.min(100,margen))+'%"></i></div>')
+  var perMes=cap(MESES[new Date().getMonth()])+' '+new Date().getFullYear();
+  var cobrado=act.filter(function(c){return c.paidThisMonth;}).reduce(function(s,c){return s+parseMoney(c.val);},0);
+  var porCobrar=ing-cobrado;
+  var nCobrar=act.filter(function(c){return !c.paidThisMonth;}).length;
+  var nomPend=staff.filter(function(s){return s.payStatus!=='Pagado';}).reduce(function(a,x){return a+parseMoney(x.amount);},0);
+  var nNomPend=staff.filter(function(s){return s.payStatus!=='Pagado';}).length;
+  function lastPay(o){return (o.history&&o.history.length)?o.history[o.history.length-1]:null;}
+  var movRows=[];
+  act.forEach(function(c){var paid=!!c.paidThisMonth;var lp=lastPay(c);movRows.push({n:c.doc,tipo:'Cliente',cls:'t-cli',monto:parseMoney(c.val),estado:paid?'Pagado':'Por cobrar',ok:paid,fecha:(paid&&lp)?lp.date:'—',folio:(paid&&lp&&lp.folio)?lp.folio:'—',obj:c,key:'c'+c.id});});
+  staff.forEach(function(s){var paid=s.payStatus==='Pagado';var lp=lastPay(s);movRows.push({n:s.name,tipo:'Nómina',cls:'t-nom',monto:parseMoney(s.amount),estado:paid?'Pagado':'Pendiente',ok:paid,fecha:(paid&&lp)?lp.date:'—',folio:'—',obj:s,key:'s'+s.id});});
+  var ff=finFilter||'todos';
+  var shown=movRows.filter(function(m){if(ff==='clientes')return m.tipo==='Cliente';if(ff==='nomina')return m.tipo==='Nómina';if(ff==='pagado')return m.ok;if(ff==='pendiente')return !m.ok;return true;});
+  var kpiStrip='<div class="finsum">'
+    +'<div class="fincard"><div class="fl">Ingresos del mes</div><div class="fv" style="color:#2e7d32">'+fmtMoney(ing)+'</div><div class="kpis2">cobrado '+fmtMoney(cobrado)+'</div></div>'
+    +'<div class="fincard fclk" data-gomov="pendiente"><div class="fl">Por cobrar</div><div class="fv" style="color:#bd7b12">'+fmtMoney(porCobrar)+'</div><div class="kpis2">'+nCobrar+' cuenta'+(nCobrar===1?'':'s')+' ›</div></div>'
+    +'<div class="fincard"><div class="fl">Ganancia · '+margen+'%</div><div class="fv" style="color:'+(gan>=0?'#2e7d32':'var(--coral)')+'">'+fmtMoney(gan)+'</div><div class="marbar"><i style="width:'+Math.max(2,Math.min(100,margen<0?0:margen))+'%"></i></div></div>'
     +'</div>';
-  if(finView==='ingresos'){fin+='<div class="findet"><div class="fdhd">💵 Ingresos · mensualidad por doctor</div><div class="muted2" style="margin-bottom:8px">Edita el monto de cada doctor (es el mismo valor que ves en Pagos).</div>'+inEdit+'</div>';}
-  else if(finView==='egresos'){fin+='<div class="findet"><div class="fdhd">📉 Egresos</div><div class="finrow2"><span><b>Nómina del equipo</b><div class="muted2">'+staff.length+' personas · se edita en Personal</div></span><span style="color:var(--coral);font-weight:700">'+fmtMoney(nom)+'</span></div>'+exEdit+'<div class="cfgadd" style="margin-top:10px"><input id="expName" placeholder="Concepto del gasto"><input id="expAmt" type="number" placeholder="$" style="max-width:110px"><button data-addexpense>＋ Agregar gasto</button></div></div>';}
-  else if(finView==='ganancia'){fin+='<div class="findet"><div class="fdhd">🧮 Cómo se obtiene</div><div class="oprow"><span>Ingresos</span><span style="color:#2e7d32;font-weight:700">+ '+fmtMoney(ing)+'</span></div><div class="oprow"><span>Nómina</span><span style="color:var(--coral);font-weight:700">− '+fmtMoney(nom)+'</span></div><div class="oprow"><span>Otros gastos</span><span style="color:var(--coral);font-weight:700">− '+fmtMoney(otros)+'</span></div><div class="opline"></div><div class="oprow optot"><span>Ganancia</span><span style="color:'+(gan>=0?'#2e7d32':'var(--coral)')+'">'+fmtMoney(gan)+'</span></div><div class="muted2" style="margin-top:6px">Margen '+margen+'% = ganancia ÷ ingresos.</div></div>';}
-  else{fin+='<div class="finhint">Toca una tarjeta para ver y editar su detalle.</div>';}
-  var persBody=staff.map(function(s){return '<div class="accrow2"><div style="flex:1"><b>'+escapeHtml(s.name)+'</b><div style="font-size:11.5px;color:var(--ink2)">'+escapeHtml(s.role||'—')+' · <span style="color:#2e7d32;font-weight:700">'+escapeHtml(s.amount)+'/mes</span></div></div><button class="lk2" data-editstaff="'+s.id+'">Editar</button><button class="lk2" style="color:var(--coral)" data-delstaffask="'+s.id+'">✕</button></div>';}).join('')+'<button class="addbtn" data-newstaff style="margin-top:12px">＋ Agregar empleado</button>';
+  var maxv=Math.max(ing,egr,1);
+  var balanceView='<div class="balwrap"><div class="balcard"><div class="balbigl">Te queda este mes</div><div class="balbign" style="color:'+(gan>=0?'#2e7d32':'var(--coral)')+'">'+fmtMoney(gan)+'</div><div class="balbigs">margen '+margen+'% · '+(gan>=0?'ganancia':'déficit')+'</div>'
+    +'<div class="balrow"><div class="ballbl">Entra</div><div class="baltrack"><i style="width:'+Math.round(ing/maxv*100)+'%;background:#2e7d32"></i></div><div class="balval" style="color:#2e7d32">'+fmtMoney(ing)+'</div></div>'
+    +'<div class="balrow"><div class="ballbl">Sale</div><div class="baltrack"><i style="width:'+Math.round(egr/maxv*100)+'%;background:#ef5350"></i></div><div class="balval" style="color:#ef5350">'+fmtMoney(egr)+'</div></div></div>'
+    +'<div class="balcard"><div class="oprow"><span>Ingresos (cobros a clientes)</span><span style="color:#2e7d32;font-weight:700">+ '+fmtMoney(ing)+'</span></div><div class="oprow"><span>Nómina del equipo</span><span style="color:var(--coral);font-weight:700">− '+fmtMoney(nom)+'</span></div><div class="oprow"><span>Otros gastos</span><span style="color:var(--coral);font-weight:700">− '+fmtMoney(otros)+'</span></div><div class="oprow optot"><span>Te queda</span><span style="color:'+(gan>=0?'#2e7d32':'var(--coral)')+'">'+fmtMoney(gan)+'</span></div></div></div>'
+    +'<div class="finhint" style="margin-top:10px">Los <b>ingresos</b> se ajustan en la carpeta de cada doctor (su mensualidad) y se reflejan aquí solos. Los <b>gastos</b> se editan en la pestaña Desglose.</div>';
+  var dchips='<div class="fmbar">'+[['todos','Todos'],['clientes','Clientes'],['nomina','Nómina'],['pagado','Pagado'],['pendiente','Pendiente']].map(function(f){return '<button class="fmchip'+(ff===f[0]?' on':'')+'" data-finfilter="'+f[0]+'">'+f[1]+'</button>';}).join('')+'<span class="fmmes">📅 '+perMes+'</span></div>';
+  var trs=shown.map(function(m){var open=payOpen===m.key;return '<tr class="mvrow'+(open?' open':'')+'" data-payopen="'+m.key+'"><td><b>'+escapeHtml(m.n)+'</b></td><td><span class="fmtype '+m.cls+'">'+m.tipo+'</span></td><td class="muted2">'+perMes+'</td><td class="r" style="font-weight:600">'+fmtMoney(m.monto)+'</td><td><span class="fmpill '+(m.ok?'ok':'pend')+'">'+escapeHtml(m.estado)+'</span></td><td class="muted2">'+escapeHtml(m.fecha)+'</td><td class="muted2">'+escapeHtml(m.folio)+'</td><td class="mvchev">'+(open?'▾':'▸')+'</td></tr>'+(open?'<tr class="mvdetrow"><td colspan="8">'+(m.tipo==='Cliente'?clientPayDet(m.obj):staffPayDet(m.obj))+'</td></tr>':'');}).join('')||'<tr><td colspan="8" class="muted2" style="text-align:center;padding:16px">Sin movimientos con ese filtro.</td></tr>';
+  var totShown=shown.reduce(function(a,m){return a+m.monto;},0);
+  var movimientosView='<div class="finhint" style="margin:0 0 10px">Toca un renglón para registrar el pago, subir comprobante o generar recibo.</div>'+dchips+'<div class="fmwrap"><table class="fmtable"><thead><tr><th>Concepto</th><th>Tipo</th><th>Periodo</th><th class="r">Monto</th><th>Estado</th><th>Fecha pago</th><th>Folio</th><th></th></tr></thead><tbody>'+trs+'</tbody><tfoot><tr><td colspan="3">Totales</td><td class="r">'+fmtMoney(totShown)+'</td><td colspan="4" class="muted2">Cobrado '+fmtMoney(cobrado)+' · Por cobrar '+fmtMoney(porCobrar)+' · Nómina pend. '+fmtMoney(nomPend)+'</td></tr></tfoot></table></div>'
+    +'<div class="gastosbox"><div class="gastoshd">💸 Otros gastos del mes</div>'+exEdit+'<div class="cfgadd" style="margin-top:8px"><input id="expName" placeholder="Concepto del gasto"><input id="expAmt" type="number" placeholder="$" style="max-width:110px"><button data-addexpense>＋ Agregar gasto</button></div></div>';
+  var persBody=staff.map(function(s){var contact=[s.phone,s.emailP||s.emailW].filter(Boolean).join(' · ');return '<div class="stcard" data-editstaff="'+s.id+'"><div class="stav">'+escapeHtml(initials(s.name||'?'))+'</div><div class="stx"><b>'+escapeHtml(s.name||'—')+'</b><small>'+escapeHtml(s.role||'—')+' · <span style="color:#2e7d32;font-weight:700">'+escapeHtml(s.amount||'—')+'/mes</span></small>'+(contact?'<small class="stcont">'+escapeHtml(contact)+'</small>':'')+'</div><span class="stgo">Abrir ficha ›</span></div>';}).join('')+'<button class="addbtn" data-newstaff style="margin-top:12px">＋ Agregar empleado</button>';
   var pkgBody=PACKAGES.map(function(p){return '<div class="accrow2"><div style="flex:1"><b>'+escapeHtml(p.name)+'</b> · <span style="color:#2e7d32;font-weight:700">'+escapeHtml(p.price)+'/mes</span><div style="font-size:11.5px;color:var(--ink2);margin-top:2px">'+escapeHtml(p.includes)+'</div></div><button class="lk2" data-editpkg="'+p.id+'">Editar</button><button class="lk2" style="color:var(--coral)" data-delpkg="'+p.id+'">✕</button></div>';}).join('')+'<button class="addbtn" data-newpkg style="margin-top:12px">＋ Nuevo paquete</button>';
   var _A=AGENCY;var recBody='<div style="font-size:12px;color:var(--ink2);margin-bottom:14px">Estos datos arman tus recibos en PDF. Edítalos y guarda; el recibo se actualiza solo. Recuerda: el recibo es comprobante de pago, no una factura fiscal (CFDI).</div>'
     +'<div class="frow"><div class="fld"><label>Razón social</label><input id="agRazon" value="'+escapeHtml(_A.razon||'')+'"></div><div class="fld"><label>RFC</label><input id="agRfc" value="'+escapeHtml(_A.rfc||'')+'"></div></div>'
@@ -2328,16 +2418,16 @@ PANELS.admin=function(){
     +'<div class="fld"><label>Leyenda al pie (aclaración no fiscal)</label><textarea id="agLeyenda" rows="2" style="width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical">'+escapeHtml(_A.leyenda||'')+'</textarea></div>'
     +'<div class="frow"><div class="fld"><label>Color de acento</label><input id="agAcento" type="color" value="'+(_A.acento||'#4CAF50')+'" style="height:42px;padding:4px;cursor:pointer"></div><div class="fld"><label>Logo (opcional)</label><input type="file" id="agLogoFile" accept="image/*">'+(_A.logo?'<div style="font-size:11px;color:#2e7d32;margin-top:5px">✓ Logo cargado · súbelo de nuevo para reemplazar</div>':'')+'</div></div>'
     +'<div style="display:flex;gap:10px;margin-top:18px"><button class="recpill" data-previewrec>👁️ Vista previa</button><button class="addbtn" data-saveagency>💾 Guardar datos</button></div>';
-  var finBody='<div class="iseg" style="margin-bottom:18px"><button class="isegb'+(finTab==='resumen'?' on':'')+'" data-fintab="resumen">💰 Resumen</button><button class="isegb'+(finTab==='cobros'?' on':'')+'" data-fintab="cobros">🧾 Cobros</button><button class="isegb'+(finTab==='recibo'?' on':'')+'" data-fintab="recibo">📄 Recibo</button></div>'+(finTab==='cobros'?('<div class="amd" style="margin:0 0 6px">Cobros a clientes y nómina del equipo. Toca un nombre para registrar su pago.</div>'+PANELS.pagos()):(finTab==='recibo'?recBody:fin));
+  var finBody=kpiStrip+'<div class="iseg" style="margin:16px 0 0"><button class="isegb'+(finTab==='balance'?' on':'')+'" data-fintab="balance">⚖️ Balance</button><button class="isegb'+(finTab==='movimientos'?' on':'')+'" data-fintab="movimientos">📊 Movimientos</button><button class="isegb'+(finTab==='recibo'?' on':'')+'" data-fintab="recibo">📄 Recibo</button></div><div style="margin-top:14px">'+(finTab==='movimientos'?movimientosView:(finTab==='recibo'?recBody:balanceView))+'</div>';
   var CATS=[
-    {k:'finanzas',ic:'💰',t:'Finanzas',grp:'Negocio',bdg:fmtMoney(gan),desc:'Todo el dinero: resumen (ingresos, egresos, ganancia), cobros a clientes y nómina, y datos del recibo.',body:finBody},
-    {k:'personal',ic:'👥',t:'Personal',grp:'Equipo',bdg:String(staff.length),desc:'Alta o baja del equipo, con su rol y sueldo.',body:persBody},
+    {k:'finanzas',ic:'💰',t:'Finanzas',grp:'Negocio',bdg:((nCobrar+nNomPend)?String(nCobrar+nNomPend):''),desc:'Movimientos del mes (cobros y nómina) con estado y totales, ganancia, cobros y datos del recibo.',body:finBody},
+    {k:'personal',ic:'👥',t:'Nómina',grp:'Equipo',bdg:String(staff.length),desc:'Tu equipo y su ficha: rol, sueldo, contacto y responsabilidades. Toca a alguien para abrir su ficha.',body:persBody},
     {k:'usuarios',ic:'🧑',t:'Usuarios y accesos',grp:'Equipo',bdg:'',desc:'Crea las cuentas del equipo (correo, contraseña y rol) y define qué módulos ve cada rol. Solo administradora.',body:usuariosBody()}
   ];
   if(!CATS.filter(function(c){return c.k===adminCat;}).length)adminCat='finanzas';
   var cur=CATS.filter(function(c){return c.k===adminCat;})[0];
   var nav=['Negocio','Equipo','Sistema'].map(function(g){return '<div class="amgrp">'+g+'</div>'+CATS.filter(function(c){return c.grp===g;}).map(function(c){return '<div class="amcat'+(c.k===adminCat?' on':'')+'" data-admincat="'+c.k+'"><span class="amic">'+c.ic+'</span><span class="amnm">'+escapeHtml(c.t)+'</span>'+(c.bdg?'<span class="ambdg">'+escapeHtml(c.bdg)+'</span>':'')+'</div>';}).join('');}).join('');
-  return '<div class="pad" style="max-width:900px"><div class="ptitle"><div><h1>Administración</h1><p>Tu centro de configuración, una sección a la vez.</p></div></div><div class="amwrap"><aside class="amnav">'+nav+'</aside><section class="ampanel"><h2 class="amh2">'+cur.ic+' '+escapeHtml(cur.t)+'</h2><div class="amd">'+escapeHtml(cur.desc)+'</div>'+cur.body+'</section></div></div>';};
+  return '<div class="pad" style="max-width:none"><div class="ptitle"><div><h1>Administración</h1><p>Tu centro de configuración, una sección a la vez.</p></div></div><div class="amwrap"><aside class="amnav">'+nav+'</aside><section class="ampanel"><h2 class="amh2">'+cur.ic+' '+escapeHtml(cur.t)+'</h2><div class="amd">'+escapeHtml(cur.desc)+'</div>'+cur.body+'</section></div></div>';};
 
 PANELS.pagos=function(){
   var pay=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
@@ -2599,11 +2689,12 @@ function saveProfile(){profile.name=$('#pfName').value.trim()||profile.name;prof
 /* ---------- eventos ---------- */
 document.addEventListener('click',function(e){
   var _np=$('#notifPanel');if(_np&&_np.style.display!=='none'&&!e.target.closest('#notifPanel')&&!e.target.closest('#bellBtn')){_np.style.display='none';}
-  var _cp=document.getElementById('confpop');if(_cp&&_cp.style.display!=='none'&&!e.target.closest('#confpop')&&!e.target.closest('[data-access]')){_cp.style.display='none';pendAccess=null;}
+  var _cp=document.getElementById('confpop');if(_cp&&_cp.style.display!=='none'&&!e.target.closest('#confpop')&&!e.target.closest('[data-rperm]')){_cp.style.display='none';pendAccess=null;}
   if(e.target.closest('#searchBtn')){var _ts=$('#topSearch');if(_ts){_ts.style.display=(_ts.style.display==='none'?'':'none');if(_ts.style.display!=='none')_ts.focus();}return;}
   if(e.target.closest('#bellBtn')){var _b=$('#notifPanel');if(_b){var _sh=_b.style.display==='none';_b.style.display=_sh?'':'none';if(_sh){renderActivity();notifSeen=notifSig;var _bd=$('#bellDot');if(_bd)_bd.style.display='none';}}return;}
   if(e.target.closest('[data-movestage]'))return;
   if(e.target.closest('a'))return;
+  if(e.target.closest('[data-sidecollapse]')){var sh2=document.querySelector('.shell2');if(sh2){var now=!sh2.classList.contains('sidecol');sh2.classList.toggle('sidecol',now);try{localStorage.setItem('mmSidecol',now?'1':'0');}catch(_e){}var bb=e.target.closest('[data-sidecollapse]');if(bb)bb.textContent=now?'›':'‹';}return;}
   if(e.target.closest('[data-collapse]')){var shx=document.querySelector('.shell');if(shx)shx.classList.toggle('collapsed');return;}
   if(e.target.closest('[data-logout]'))return logout();
   var tm=e.target.closest('[data-thememode]');if(tm){setThemeMode(tm.getAttribute('data-thememode'));refresh();return;}
@@ -2640,10 +2731,14 @@ document.addEventListener('click',function(e){
   var dins=e.target.closest('[data-delinspo]');if(dins){tmpInspo.splice(parseInt(dins.getAttribute('data-delinspo'),10),1);renderInspoWrap();return;}
   if(e.target.closest('[data-newclient]'))return openClientForm(0);
   var arl=e.target.closest('[data-accrole]');if(arl){accRole=arl.getAttribute('data-accrole');renderAccesosPorRol();return;}
-  var _rp=e.target.closest('[data-rperm]');if(_rp){var rpa=_rp.getAttribute('data-rperm').split('|');var rrol=rpa[0],rmod=rpa[1];if(!permisosCache)permisosCache={};if(!permisosCache[rrol])permisosCache[rrol]={};permisosCache[rrol][rmod]=!rolePerm(rrol,rmod);renderAccesosPorRol();savePermiso(rrol);return;}
+  var _rp=e.target.closest('[data-rperm]');if(_rp){var rpa=_rp.getAttribute('data-rperm').split('|');pendAccess={role:rpa[0],p:rpa[1],to:!rolePerm(rpa[0],rpa[1])};showAccessConfirm(_rp);return;}
+  if(e.target.closest('[data-acccancel]')){pendAccess=null;hideConfpop();return;}
+  if(e.target.closest('[data-accconfirm]')){if(pendAccess){if(!permisosCache)permisosCache={};if(!permisosCache[pendAccess.role])permisosCache[pendAccess.role]={};permisosCache[pendAccess.role][pendAccess.p]=pendAccess.to;var _pr=pendAccess.role;pendAccess=null;hideConfpop();renderAccesosPorRol();savePermiso(_pr);}else{hideConfpop();}return;}
   var fcd=e.target.closest('[data-fincard]');if(fcd){var fk=fcd.getAttribute('data-fincard');finView=(finView===fk?'':fk);refresh();return;}
+  var fmf=e.target.closest('[data-finfilter]');if(fmf){finFilter=fmf.getAttribute('data-finfilter');refresh();return;}
+  var gmv=e.target.closest('[data-gomov]');if(gmv){finTab='movimientos';finFilter=gmv.getAttribute('data-gomov');refresh();return;}
   var psv=e.target.closest('[data-paysview]');if(psv){paysView=psv.getAttribute('data-paysview');payOpen=null;refresh();return;}
-  var gfn=e.target.closest('[data-gofin]');if(gfn){adminCat='finanzas';finTab='cobros';paysView=(gfn.getAttribute('data-gofin')==='nomina')?'nomina':'clientes';go('admin');return;}
+  var gfn=e.target.closest('[data-gofin]');if(gfn){adminCat='finanzas';finTab='movimientos';finFilter=(gfn.getAttribute('data-gofin')==='nomina')?'nomina':'todos';go('admin');return;}
   var pop2=e.target.closest('[data-payopen]');if(pop2){var pk=pop2.getAttribute('data-payopen');payOpen=(payOpen===pk?null:pk);refresh();return;}
   var cfgA=e.target.closest('[data-cfgadd]');if(cfgA){var key=cfgA.getAttribute('data-cfgadd');var inp=$('[data-cfgin="'+key+'"]');var v=(inp.value||'').trim();if(v){CONFIG[key].push(v);refresh();toast('➕ "'+v+'" agregado');}return;}
   var cfgD=e.target.closest('[data-cfgdel]');if(cfgD){var pr=cfgD.getAttribute('data-cfgdel').split('|');CONFIG[pr[0]].splice(parseInt(pr[1],10),1);refresh();return;}
@@ -2653,8 +2748,8 @@ document.addEventListener('click',function(e){
   var dpk=e.target.closest('[data-delpkg]');if(dpk)return delPkg(parseInt(dpk.getAttribute('data-delpkg'),10));
   var amc=e.target.closest('[data-admincat]');if(amc){adminCat=amc.getAttribute('data-admincat');refresh();return;}
   var ftb=e.target.closest('[data-fintab]');if(ftb){finTab=ftb.getAttribute('data-fintab');refresh();return;}
-  if(e.target.closest('[data-usunew]')){usuFormOpen=!usuFormOpen;renderUsuForm();return;}
-  if(e.target.closest('[data-usunewcancel]')){usuFormOpen=false;renderUsuForm();return;}
+  if(e.target.closest('[data-usunew]')){usuFormOpen=!usuFormOpen;if(usuFormOpen)usuPrefill=null;renderUsuForm();return;}
+  if(e.target.closest('[data-usunewcancel]')){usuFormOpen=false;usuPrefill=null;renderUsuForm();return;}
   if(e.target.closest('[data-usucreate]')){usuCrear();return;}
   var _uda=e.target.closest('[data-usudelask]');if(_uda){usuDelId=_uda.getAttribute('data-usudelask');usuPassId=null;usuRoleEditId=null;renderUsuRows(usuCache);return;}
   if(e.target.closest('[data-usudelcancel]')){usuDelId=null;renderUsuRows(usuCache);return;}
@@ -2663,11 +2758,13 @@ document.addEventListener('click',function(e){
   var _ups=e.target.closest('[data-usupasssave]');if(_ups){usuSetPass(_ups.getAttribute('data-usupasssave'));return;}
   if(e.target.closest('[data-usupasscancel]')){usuPassId=null;renderUsuRows(usuCache);return;}
   var _urs=e.target.closest('[data-usrolesave]');if(_urs){usrSaveRole(_urs.getAttribute('data-usrolesave'));return;}
-  if(e.target.closest('[data-usrolecancel]')){usuRoleEditId=null;renderUsuRows(usuCache);return;}
+  if(e.target.closest('[data-usrolecancel]')){usuRoleEditId=null;usuRoleSelId=null;renderUsuRows(usuCache);return;}
+  var _ure=e.target.closest('[data-usroleedit]');if(_ure){usuRoleSelId=_ure.getAttribute('data-usroleedit');usuRoleEditId=null;renderUsuRows(usuCache);return;}
   var _ey=e.target.closest('[data-eyefor]');if(_ey){var _t=document.getElementById(_ey.getAttribute('data-eyefor'));if(_t){var _sh=_t.type==='password';_t.type=_sh?'text':'password';_ey.textContent=_sh?'🙈':'👁️';}return;}
   var acc=e.target.closest('[data-acc]');if(acc){var ak=acc.getAttribute('data-acc');adminOpen[ak]=!adminOpen[ak];refresh();return;}
   if(e.target.closest('[data-newstaff]'))return openStaffForm(0);
   var est=e.target.closest('[data-editstaff]');if(est)return openStaffForm(parseInt(est.getAttribute('data-editstaff'),10));
+  var _su=e.target.closest('[data-staffuser]');if(_su)return crearAccesoEmpleado(parseInt(_su.getAttribute('data-staffuser'),10));
   var sst=e.target.closest('[data-savestaff]');if(sst)return saveStaff(parseInt(sst.getAttribute('data-savestaff'),10));
   var dsa=e.target.closest('[data-delstaffask]');if(dsa){var sid2=parseInt(dsa.getAttribute('data-delstaffask'),10);var st2=staff.filter(function(x){return x.id===sid2})[0];askConfirm('Vas a eliminar a '+(st2?st2.name:'este empleado')+' de tu nómina. Esta acción no se puede deshacer.',function(){delStaff(sid2);});return;}
   if(e.target.closest('[data-confirmyes]')){if(confirmFn){confirmFn();confirmFn=null;}return;}
@@ -2781,7 +2878,7 @@ function renderDocCitas(){var el=$('#docAgendaCitas');if(el)el.innerHTML=renderA
 document.addEventListener('input',function(e){if(e.target&&e.target.id==='topSearch'){cliQuery=e.target.value;renderSidebarClients();}else if(e.target&&e.target.id==='usuSearch'){usuFilter(e.target.value);}});
 document.addEventListener('change',function(e){
   if(e.target.id==='agLogoFile'){var lf=e.target.files[0];if(lf){var lr=new FileReader();lr.onload=function(ev){AGENCY.logo=ev.target.result;saveAgency();toast('🖼️ Logo cargado · ya aparece en el recibo');};lr.readAsDataURL(lf);}return;}
-  var _ur=e.target.closest&&e.target.closest('[data-usurole]');if(_ur){if(_ur.value==='__nuevo'){usuRoleEditId=_ur.getAttribute('data-usurole');renderUsuRows(usuCache);}else{usuSetRole(_ur.getAttribute('data-usurole'),_ur.value);}return;}
+  var _ur=e.target.closest&&e.target.closest('[data-usurole]');if(_ur){if(_ur.value==='__nuevo'){usuRoleEditId=_ur.getAttribute('data-usurole');usuRoleSelId=null;renderUsuRows(usuCache);}else{usuRoleSelId=null;usuSetRole(_ur.getAttribute('data-usurole'),_ur.value);}return;}
   var _nr=e.target.closest&&e.target.closest('[data-nurol]');if(_nr){var _ni=document.getElementById('nuRolNuevo');if(_ni){_ni.style.display=(_nr.value==='__nuevo')?'':'none';if(_nr.value==='__nuevo')_ni.focus();}return;}
   var cws=e.target.closest&&e.target.closest('[data-contwho]');if(cws){contWho=cws.value;refresh();return;}
   var ccs=e.target.closest&&e.target.closest('[data-contclient]');if(ccs){contClient=ccs.value;refresh();return;}
