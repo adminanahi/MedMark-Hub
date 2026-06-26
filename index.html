@@ -992,6 +992,44 @@
   .demobox summary:before{content:'▸ ';color:var(--mint)}
   .demobox[open] summary:before{content:'▾ '}
   .lnote{font-size:11.5px;color:var(--ink2);margin-top:12px;line-height:1.45}
+  .pwdwrap{position:relative}
+  .pwdwrap input{width:100%;padding-right:42px}
+  .pwdeye{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;opacity:.55;padding:6px;line-height:1}
+  .pwdeye:hover{opacity:1}
+  .usucard{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-top:6px}
+  .usuhd{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .usuh2{font-size:14.5px;font-weight:700;color:var(--navy)}
+  .ususearch{margin-left:auto;display:flex;align-items:center;gap:7px;background:var(--col);border-radius:10px;padding:7px 11px;font-size:12.5px;color:var(--ink2);min-width:180px}
+  .ususearch input{border:none;background:none;outline:none;font-family:inherit;font-size:12.5px;color:var(--ink);width:100%}
+  .usuthr,.usutr{display:grid;grid-template-columns:1.7fr 1.8fr 1.15fr 86px;gap:12px;align-items:center;padding:0 16px}
+  .usuthr{padding-top:10px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+  .usuthr div{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2)}.usuthr .rt{text-align:right}
+  .usuitem{border-top:1px solid var(--line)}.usuitem:first-child{border-top:none}
+  .usutr{padding-top:11px;padding-bottom:11px}
+  .usuu{display:flex;align-items:center;gap:10px;min-width:0}.usuu b{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .usuav{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--mint),var(--sky));display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0}
+  .usumail{font-size:12.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .usurc{min-width:0}
+  .usurolesel{width:100%;max-width:172px;font-size:12px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;background:var(--white);color:var(--ink);font-family:inherit}
+  .rolme{font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;background:#ede7fb;color:#6a4ca8;display:inline-block}
+  .roleedit{display:flex;gap:5px;align-items:center}
+  .usuacts{display:flex;gap:6px;justify-content:flex-end}
+  .usuic{width:32px;height:32px;border-radius:9px;border:1px solid var(--line);background:var(--white);cursor:pointer;font-size:13px;color:var(--ink2);display:grid;place-items:center;flex-shrink:0}
+  .usuic.del:hover{color:var(--coral);border-color:#f3b6b6}.usuic.ok{color:#2e7d32;border-color:#bfe3c4}
+  .usupass{display:flex;gap:8px;align-items:center;margin:0 16px 12px;padding:10px 12px;background:var(--surf);border:1px solid var(--line);border-radius:11px;flex-wrap:wrap}.usupass .pwdwrap{flex:1;min-width:180px;max-width:280px}
+  .usudelc{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:0 16px 12px;padding:10px 13px;background:#fdeded;border:1px solid #f3b6b6;border-radius:11px;flex-wrap:wrap;font-size:12.5px;color:#a3261f}
+  .usudelb{display:flex;gap:8px;align-items:center;flex-shrink:0}
+  .addbtn.danger{background:var(--coral)}
+  .usufoot{font-size:11.5px;color:var(--ink2);padding:11px 16px;border-top:1px solid var(--line);background:var(--surf)}
+  .usuempty{padding:18px 16px;font-size:12.5px;color:var(--ink2);text-align:center}
+  .usuform{padding:14px 16px;border-bottom:1px solid var(--line);background:var(--surf)}
+  .usuformt{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .usuformact{display:flex;gap:10px;align-items:center;margin-top:4px}
+  .rolnew{width:100%;max-width:240px;font-size:12.5px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--white);color:var(--ink);font-family:inherit;margin-top:6px}
+  .roleedit .rolnew{margin-top:0;max-width:140px}
+  .noacc{max-width:460px;margin:48px auto;text-align:center;background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:34px 28px}
+  .noacc-ic{font-size:40px;margin-bottom:10px}.noacc h2{font-size:18px;color:var(--navy);margin-bottom:8px;font-family:var(--serif)}.noacc p{font-size:13px;color:var(--ink2);line-height:1.6}
+  .addbtn.sm{padding:7px 12px;font-size:12px}
 </style>
 </head>
 <body>
@@ -1003,7 +1041,7 @@
     <div class="lhi" id="lhi">Buenas tardes 👋</div>
     <div class="lsub" id="lsub">Un solo acceso. Entra y te llevamos a tu espacio.</div>
     <div class="field"><label>Correo</label><input id="usr" type="email" autocomplete="email" placeholder="tucorreo@medmark.com"></div>
-    <div class="field"><label>Contraseña</label><input id="pwd" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+    <div class="field"><label>Contraseña</label><div class="pwdwrap"><input id="pwd" type="password" autocomplete="current-password" placeholder="••••••••"><button type="button" class="pwdeye" id="pwdEye" aria-label="Mostrar u ocultar contraseña">👁️</button></div></div>
     <div class="authmsg" id="authMsg"></div>
     <button class="lbtn" id="enter">Entrar</button>
     <div class="lforgot">¿Olvidaste tu contraseña? <b id="forgot">Recupérala</b></div>
@@ -1017,10 +1055,9 @@
     <div class="tbrand"><svg width="26" height="22" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><span class="w">Med<span class="b">Mark</span></span></div>
     <nav class="topnav" id="topnav">
       <button class="" data-p="inicio" data-roles="admin,cm,disenador,editor"><span class="ic">🏠</span> Inicio</button>
-      <button data-p="contenido" data-roles="admin,cm,disenador,editor"><span class="ic">✅</span> Actividades</button>
+      <button data-p="contenido" data-roles="admin,cm,disenador,editor" class=""><span class="ic">✅</span> Actividades</button>
       <button data-p="calendario" data-roles="admin,cm,disenador,editor"><span class="ic">🗓️</span> Calendario</button>
-      <button data-p="mensajes" data-roles="admin,cm"><span class="ic">💬</span> Mensajes <span class="bd" id="msgBadge">1</span></button>
-      <button data-p="pagos" data-roles="admin"><span class="ic">🧾</span> Pagos</button>
+      <button data-p="mensajes" data-roles="admin,cm" class=""><span class="ic">💬</span> Mensajes <span class="bd" id="msgBadge" style="display: none;">1</span></button>
       <button data-p="admin" data-roles="admin" class="on"><span class="ic">⚙️</span> Administración</button>
     </nav>
     <div class="ttools">
@@ -1036,7 +1073,7 @@
       <div class="sbhd">Clientes <button class="sbadd" data-newclient="" title="Nuevo cliente">＋</button></div>
       <div id="snavClients"><div class="clicn" data-folder="5" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#ff6a6a"></span></div><span class="clicnm">Dr. Carlos Cárdenas</span></div><div class="clicn" data-folder="6" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#ff6a6a"></span></div><span class="clicnm">Dra. Carolina Centeno</span></div><div class="clicn" data-folder="7" tabindex="0" role="button"><div class="clicav">M<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mallyolo</span></div><div class="clicn" data-folder="8" tabindex="0" role="button"><div class="clicav">A<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Alejandro</span></div><div class="clicn" data-folder="9" tabindex="0" role="button"><div class="clicav">CE<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Carlos Escobedo</span></div><div class="clicn" data-folder="10" tabindex="0" role="button"><div class="clicav">Ee<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Especialistas en Cáncer</span></div><div class="clicn" data-folder="11" tabindex="0" role="button"><div class="clicav">M<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mercedes</span></div><div class="clicn" data-folder="12" tabindex="0" role="button"><div class="clicav">M/<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Mater / Nancy</span></div><div class="clicn" data-folder="13" tabindex="0" role="button"><div class="clicav">NK<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Nicole K</span></div><div class="clicn" data-folder="14" tabindex="0" role="button"><div class="clicav">CV<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Cristóbal Vallejo</span></div><div class="clicn" data-folder="15" tabindex="0" role="button"><div class="clicav">ST<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Saúl Torres</span></div><div class="clicn" data-folder="16" tabindex="0" role="button"><div class="clicav">FP<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Felipe Peña</span></div><div class="clicn" data-folder="17" tabindex="0" role="button"><div class="clicav">GH<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Gaby H</span></div><div class="clicn" data-folder="18" tabindex="0" role="button"><div class="clicav">AB<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Ana Barrales</span></div><div class="clicn" data-folder="19" tabindex="0" role="button"><div class="clicav">L<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Liz</span></div><div class="clicn" data-folder="20" tabindex="0" role="button"><div class="clicav">F<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Freedom</span></div></div>
     </aside>
-    <main class="content" id="content"><div class="pad" style="max-width:900px"><div class="ptitle"><div><h1>Administración</h1><p>Tu centro de configuración, una sección a la vez.</p></div></div><div class="amwrap"><aside class="amnav"><div class="amgrp">Negocio</div><div class="amcat" data-admincat="finanzas"><span class="amic">💰</span><span class="amnm">Finanzas</span><span class="ambdg">$102,700</span></div><div class="amgrp">Equipo</div><div class="amcat" data-admincat="personal"><span class="amic">👥</span><span class="amnm">Personal</span><span class="ambdg">3</span></div><div class="amcat" data-admincat="accesos"><span class="amic">🔑</span><span class="amnm">Accesos</span><span class="ambdg">3</span></div><div class="amgrp">Sistema</div><div class="amcat on" data-admincat="config"><span class="amic">⚙️</span><span class="amnm">Configuración</span></div></aside><section class="ampanel"><h2 class="amh2">⚙️ Configuración</h2><div class="amd">Tipos de contenido, responsables del equipo y etapas del CRM.</div><div class="subsec"><div class="subt">Tipos de contenido</div><div class="subd">Imagen, video, carrusel, reel… los formatos que manejas.</div><div class="chips"><span class="cfgchip">Imagen<button data-cfgdel="types|0" title="Quitar">✕</button></span><span class="cfgchip">Video<button data-cfgdel="types|1" title="Quitar">✕</button></span><span class="cfgchip">Carrusel<button data-cfgdel="types|2" title="Quitar">✕</button></span><span class="cfgchip">Reel<button data-cfgdel="types|3" title="Quitar">✕</button></span><span class="cfgchip">Historia<button data-cfgdel="types|4" title="Quitar">✕</button></span></div><div class="cfgadd"><input data-cfgin="types" placeholder="Agregar opción…"><button data-cfgadd="types">＋ Agregar</button></div></div><div class="subsec"><div class="subt">Responsables</div><div class="subd">A quién puedes asignar cada publicación.</div><div class="chips"><span class="cfgchip">Sofía (Diseño)<button data-cfgdel="team|0" title="Quitar">✕</button></span><span class="cfgchip">Karla (Edición)<button data-cfgdel="team|1" title="Quitar">✕</button></span><span class="cfgchip">Anahí (CM)<button data-cfgdel="team|2" title="Quitar">✕</button></span></div><div class="cfgadd"><input data-cfgin="team" placeholder="Agregar opción…"><button data-cfgadd="team">＋ Agregar</button></div></div></section></div></div></main>
+    <main class="content" id="content"><div class="pad" style="max-width:900px"><div class="ptitle"><div><h1>Administración</h1><p>Tu centro de configuración, una sección a la vez.</p></div></div><div class="amwrap"><aside class="amnav"><div class="amgrp">Negocio</div><div class="amcat" data-admincat="finanzas"><span class="amic">💰</span><span class="amnm">Finanzas</span><span class="ambdg">$102,700</span></div><div class="amgrp">Equipo</div><div class="amcat" data-admincat="personal"><span class="amic">👥</span><span class="amnm">Personal</span><span class="ambdg">3</span></div><div class="amcat on" data-admincat="usuarios"><span class="amic">🧑</span><span class="amnm">Usuarios y accesos</span></div><div class="amgrp">Sistema</div></aside><section class="ampanel"><h2 class="amh2">🧑 Usuarios y accesos</h2><div class="amd">Crea las cuentas del equipo (correo, contraseña y rol) y define qué módulos ve cada rol. Solo administradora.</div><p class="folhint">Crea las cuentas del equipo y asígnales su rol. Solo tú (administradora) puedes hacerlo. Tú defines la contraseña; cada quien la puede cambiar después con "Recupérala" en el login, y tú puedes resetearla con 🔑.</p><div class="usucard"><div class="usuhd"><h2 class="usuh2">🧑 Equipo<span id="usuCount"> · 1</span></h2><div class="ususearch">🔍 <input id="usuSearch" placeholder="Buscar por nombre o correo…"></div><button class="addbtn" data-usunew="">＋ Nuevo usuario</button></div><div id="usuFormBox"></div><div class="usuthr"><div>Usuario</div><div>Correo</div><div>Rol</div><div class="rt">Acciones</div></div><div id="usuariosBox"><div class="usuitem"><div class="usutr"><div class="usuu"><div class="usuav">PG</div><b>Perla Garza</b></div><div class="usumail">perla@medmark.com</div><div class="usurc"><span class="rolme">Administrador</span></div><div class="usuacts"><button class="usuic" data-usupass="5748449f-2031-4c48-b4df-cf5e00a4a22c" title="Cambiar contraseña">🔑</button></div></div></div></div><div class="usufoot">El rol se elige de la lista <b>o se escribe uno nuevo</b>. 🔑 cambia la contraseña · ✕ elimina (te pide confirmar).</div></div><div id="accRolBox"><div class="usucard" style="margin-top:14px"><div class="usuhd"><h2 class="usuh2">🔑 Accesos por rol</h2></div><div style="padding:14px 16px"><div class="subd" style="margin:0 0 10px">Elige un rol y prende los módulos que verá. Aplica a todas las personas con ese rol. La administradora siempre tiene acceso completo.</div><div class="iseg accseg" style="margin-bottom:10px;flex-wrap:wrap"><button class="isegb" data-accrole="cm">Community Manager</button><button class="isegb" data-accrole="disenador">Diseño</button><button class="isegb on" data-accrole="editor">Edición</button></div><div class="subd" style="margin:2px 0 8px">Módulos para <b>Edición</b></div><div class="accmod"><span class="accmodl">🏠 Inicio</span><button class="tgl on" data-rperm="editor|inicio" aria-label="Cambiar acceso de Edición a 🏠 Inicio"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">✅ Actividades</span><button class="tgl on" data-rperm="editor|contenido" aria-label="Cambiar acceso de Edición a ✅ Actividades"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">🗓️ Calendario</span><button class="tgl on" data-rperm="editor|calendario" aria-label="Cambiar acceso de Edición a 🗓️ Calendario"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">🩺 Clientes</span><button class="tgl" data-rperm="editor|clientes" aria-label="Cambiar acceso de Edición a 🩺 Clientes"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">💬 Mensajes</span><button class="tgl" data-rperm="editor|mensajes" aria-label="Cambiar acceso de Edición a 💬 Mensajes"><span class="tgk"></span></button></div><div class="accmod"><span class="accmodl">⚙️ Administración</span><button class="tgl" data-rperm="editor|admin" aria-label="Cambiar acceso de Edición a ⚙️ Administración"><span class="tgk"></span></button></div></div></div></div></section></div></div></main>
   </div>
   <div class="notifpop" id="notifPanel" style="display:none"><div class="arlbl">Actividad del equipo</div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Mommy Makeover: recupera tu …»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Ácido hialurónico: qué hace …»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Chequeo cardiológico: qué in…»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Dra. Carolina Centeno</b> pidió un cambio</div><div class="afw">Reforzar al equipo de mujeres en la imag</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Nicole K</b> pidió un cambio</div><div class="afw">Acortar el gancho a 3 seg y poner música</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Especialistas en Cáncer</b> pidió un cambio</div><div class="afw">Agregar subtítulos y suavizar el cierre.</div></div></div><div class="afeed"><div class="afdot">✅</div><div><div class="aft"><b>Dra. Carolina Centeno</b> aprobó «Vesícula: señales de que y…»</div><div class="afw">lista para programar</div></div></div><div class="afeed"><div class="afdot">✅</div><div><div class="aft"><b>Carlos Escobedo</b> aprobó «Electrocardiograma el mism…»</div><div class="afw">lista para programar</div></div></div><div class="afeed"><div class="afdot">📤</div><div><div class="aft"><b>Dr. Carlos Cárdenas</b> tiene una pieza por aprobar</div><div class="afw">enviada a su portal</div></div></div></div>
 </div>
@@ -1156,6 +1193,7 @@ var clients=[
 ];
 var nextPost=18,nextClient=21,tmpImg=null,tmpClientPhoto=null,tmpAccounts=[],editPostId=null,editReturn='contenido',tmpInspo=[],editFolderReturn=null;
 function docList(){return clients.map(function(c){return c.doc;});}
+function responsables(){var n=staff.map(function(s){return s.name;});return n.length?n:['(sin equipo)'];}
 function shortFromUrl(u){if(!u)return '';var s=u.replace(/^https?:\/\//,'').replace(/^www\./,'').split('?')[0].split('#')[0];var parts=s.split('/').filter(Boolean);if(parts.length<2)return (parts[0]||'').replace(/^@/,'');var name=parts[parts.length-1].replace(/^@/,'');return name||parts[0];}
 function platFromUrl(u){var s=(u||'').toLowerCase();if(s.indexOf('instagram')>=0)return 'Instagram';if(s.indexOf('facebook')>=0||s.indexOf('fb.com')>=0)return 'Facebook';if(s.indexOf('tiktok')>=0)return 'TikTok';if(s.indexOf('youtube')>=0||s.indexOf('youtu.be')>=0)return 'YouTube';if(s.indexOf('linkedin')>=0)return 'LinkedIn';if(s.indexOf('threads')>=0)return 'Threads';return '';}
 // Link clickeable de una cuenta: usa el url guardado, o lo arma con plataforma + usuario
@@ -1230,14 +1268,18 @@ function notify(title,body){beep();if(window.Notification&&Notification.permissi
 /* ---------- roles ---------- */
 var USERS={admin:{name:'Perla Garza',role:'Administradora · Dueña',person:'Perla Garza'},cm:{name:'Anahí Garza',role:'Community Manager',person:'Anahí (CM)'},disenador:{name:'Sofía',role:'Diseñadora',person:'Sofía (Diseño)'},editor:{name:'Karla',role:'Editora',person:'Karla (Edición)'}};
 var currentRole='admin';
-function currentUserName(){return USERS[currentRole].person;}
-function applyRole(rk){currentRole=rk;var u=USERS[rk];profile.name=u.name;profile.role=u.role;profile.photo=null;crmScope=(rk==='admin')?'todas':'mias';
+var sessionName='';
+var MYACCESS=null;
+var myUid=null;
+function currentUserName(){return (USERS[currentRole]&&USERS[currentRole].person)||sessionName||'Usuario';}
+function applyRole(rk){currentRole=rk;var u=USERS[rk]||{name:sessionName||'Usuario',role:cap(rk)};profile.name=u.name;profile.role=u.role;profile.photo=null;crmScope=(rk==='admin')?'todas':'mias';
   document.querySelectorAll('#topnav button, #sidebar2').forEach(function(el){el.style.display=accessOn(rk,el.getAttribute('data-p'))?'':'none';});
   var sb=document.getElementById('sidebar2');document.getElementById('agencia').classList.toggle('solo',!sb||sb.style.display==='none');
   updateUser();
   var first=null;document.querySelectorAll('#topnav button').forEach(function(b){if(!first&&accessOn(rk,b.getAttribute('data-p')))first=b.getAttribute('data-p');});
-  go(first||'contenido');
+  if(first){go(first);}else{noAccessScreen();}
 }
+function noAccessScreen(){var c=$('#content');if(c)c.innerHTML='<div class="noacc"><div class="noacc-ic">🔒</div><h2>Tu cuenta aún no tiene accesos</h2><p>La administradora te asignará permisos en <b>Accesos</b>. En cuanto los tengas, aquí verás tus secciones.</p></div>';try{renderSidebarClients();renderActivity();}catch(e){}}
 /* ---------- paquetes de servicio ---------- */
 var PACKAGES=[{id:1,name:'Esencial',price:'$1,500',includes:'8 publicaciones/mes · 1 reel · reporte mensual'},{id:2,name:'Crecimiento',price:'$2,500',includes:'12 publicaciones/mes · 4 reels · ManyChat · reporte quincenal'}];
 var nextPkg=3;
@@ -1294,7 +1336,6 @@ function buildReceiptDoc(c,r){
     +'.letra{font-size:11.5px;color:#5a7a9c;font-family:Arial;text-align:right;margin-top:3px;text-transform:uppercase}'
     +'.foot{margin-top:22px;font-size:11.5px;color:#5a7a9c;font-family:Arial;line-height:1.5}'
     +'.legal{margin-top:12px;font-size:10.5px;color:#8a9bb0;font-family:Arial;border-top:1px dashed #d6deea;padding-top:10px;line-height:1.5}'
-    +'.sign{margin-top:40px;border-top:1px solid #1a365d;width:240px;padding-top:6px;font-size:12px;font-family:Arial}'
     +'@media print{body{padding:20px}}</style></head><body>'
     +'<div class="hd"><div>'+logo+'<div class="t" style="margin-top:8px">'+escapeHtml(AGENCY.razon)+'<br>RFC: '+escapeHtml(AGENCY.rfc)+(AGENCY.domicilio?'<br>'+escapeHtml(AGENCY.domicilio):'')+(AGENCY.contacto?'<br>'+escapeHtml(AGENCY.contacto):'')+'</div></div><div style="text-align:right"><div class="t">Folio</div><div class="folio">'+escapeHtml(r.folio)+'</div><div class="t" style="margin-top:8px">Fecha</div><div class="t" style="font-weight:700;color:#1a365d">'+escapeHtml(r.fecha)+'</div></div></div>'
     +'<div class="title">RECIBO DE PAGO</div>'
@@ -1309,7 +1350,6 @@ function buildReceiptDoc(c,r){
     +'<div class="letra">'+montoEnLetra(r.amount)+'</div></div>'
     +'<div class="foot">Recibido por <b>'+escapeHtml(AGENCY.razon)+'</b> (RFC '+escapeHtml(AGENCY.rfc)+') como pago por los servicios prestados'+(r.periodo?' del periodo '+escapeHtml(r.periodo):'')+'.</div>'
     +(AGENCY.leyenda?'<div class="legal">'+escapeHtml(AGENCY.leyenda)+'</div>':'')
-    +'<div class="sign">Firma / sello</div>'
     +'</body></html>';
 }
 function printReceipt(c,r){var w=window.open("","_blank");if(!w){toast("Permite las ventanas emergentes para descargar el PDF");return;}w.document.write(buildReceiptDoc(c,r));w.document.close();w.focus();setTimeout(function(){w.print();},350);}
@@ -1329,13 +1369,15 @@ var drSel=$('#demoRole');if(drSel)drSel.addEventListener('change',function(){var
 $('#lhi').textContent=greet()+' 👋';
 function authMsg(m,ok){var el=$('#authMsg');if(!el)return;el.textContent=m||'';el.className='authmsg'+(ok?' ok':'')+(m?' show':'');}
 function rolARuta(rol){$('#login').style.display='none';if(window.Notification&&Notification.permission==='default'){try{Notification.requestPermission();}catch(e){}}if(rol==='doctor'){$('#doctor').style.display='grid';$('#dg').textContent=greet()+',';renderPend();renderDocRep();updateDocPayBadge();}else{$('#agencia').style.display='block';applyRole(rol);updateMsgBadge();}}
-async function trasSesion(){if(!window.supa)return false;try{var ur=await supa.auth.getUser();var u=ur.data&&ur.data.user;if(!u)return false;var q=await supa.from('perfiles').select('rol,nombre').eq('id',u.id).maybeSingle();var rol=q.data&&q.data.rol;if(!rol||rol==='pendiente'){authMsg('Tu cuenta ya existe pero está pendiente de que la administradora te asigne un rol.');return false;}authMsg('');rolARuta(rol);return true;}catch(e){authMsg('No pude cargar tu perfil: '+(e.message||e));return false;}}
+async function trasSesion(){if(!window.supa)return false;try{var ur=await supa.auth.getUser();var u=ur.data&&ur.data.user;if(!u)return false;var q=await supa.from('perfiles').select('rol,nombre').eq('id',u.id).maybeSingle();var rol=q.data&&q.data.rol;if(!rol||rol==='pendiente'){authMsg('Tu cuenta ya existe pero está pendiente de que la administradora te asigne un rol.');return false;}myUid=u.id;sessionName=(q.data&&q.data.nombre)||'';try{var pr=await supa.from('permisos_rol').select('modulos').eq('rol',rol).maybeSingle();MYACCESS=(pr&&pr.data&&pr.data.modulos)||{};}catch(e){MYACCESS={};}authMsg('');rolARuta(rol);return true;}catch(e){authMsg('No pude cargar tu perfil: '+(e.message||e));return false;}}
 async function entrar(){if(!window.supa){authMsg('Conexión no disponible. Recarga la página.');return;}var em=(($('#usr')||{}).value||''),pw=(($('#pwd')||{}).value||'');if(!em.trim()||!pw){authMsg('Escribe tu correo y contraseña.');return;}authMsg('Entrando…',true);var r=await supa.auth.signInWithPassword({email:em.trim(),password:pw});if(r.error){authMsg('Correo o contraseña incorrectos.');return;}trasSesion();}
 async function registrar(){if(!window.supa){authMsg('Conexión no disponible. Recarga la página.');return;}var em=(($('#usr')||{}).value||''),pw=(($('#pwd')||{}).value||'');if(!em.trim()||pw.length<6){authMsg('Para crear cuenta: correo válido y contraseña de al menos 6 caracteres.');return;}authMsg('Creando cuenta…',true);var r=await supa.auth.signUp({email:em.trim(),password:pw});if(r.error){authMsg('No se pudo crear: '+r.error.message);return;}authMsg('¡Cuenta creada! Avísale a la administradora para que te active y luego entra.',true);}
 var _en=$('#enter');if(_en)_en.addEventListener('click',entrar);
-var _ed=$('#enterDemo');if(_ed)_ed.addEventListener('click',function(){rolARuta($('#demoRole')?$('#demoRole').value:'admin');});
+['usr','pwd'].forEach(function(id){var _i=$('#'+id);if(_i)_i.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();entrar();}});});
+var _pe=$('#pwdEye');if(_pe)_pe.addEventListener('click',function(){var p=$('#pwd');if(!p)return;var sh=p.type==='password';p.type=sh?'text':'password';_pe.textContent=sh?'🙈':'👁️';});
+var _ed=$('#enterDemo');if(_ed)_ed.addEventListener('click',function(){MYACCESS=null;myUid=null;rolARuta($('#demoRole')?$('#demoRole').value:'admin');});
 var _fg=$('#forgot');if(_fg)_fg.addEventListener('click',async function(){var em=(($('#usr')||{}).value||'');if(!em.trim()){authMsg('Escribe tu correo arriba y vuelve a tocar Recupérala.');return;}if(window.supa){try{await supa.auth.resetPasswordForEmail(em.trim());authMsg('Si el correo existe, te llegará un enlace para restablecer la contraseña.',true);}catch(e){authMsg('No se pudo enviar el enlace.');}}});
-function logout(){if(window.supa){try{supa.auth.signOut();}catch(e){}}inFolder=false;folderId=null;var cn=$('#cnav');if(cn)cn.style.display='none';var sn=$('#snav');if(sn)sn.style.display='';$('#agencia').style.display='none';$('#doctor').style.display='none';$('#login').style.display='grid';authMsg('');}
+function logout(){sessionName='';MYACCESS=null;myUid=null;if(window.supa){try{supa.auth.signOut();}catch(e){}}inFolder=false;folderId=null;var cn=$('#cnav');if(cn)cn.style.display='none';var sn=$('#snav');if(sn)sn.style.display='';$('#agencia').style.display='none';$('#doctor').style.display='none';$('#login').style.display='grid';authMsg('');}
 if(window.supa){try{supa.auth.getSession().then(function(s){if(s&&s.data&&s.data.session)trasSesion();});}catch(e){}}
 
 $$('#topnav button').forEach(function(b){b.addEventListener('click',function(){go(b.getAttribute('data-p'),b);});});
@@ -1398,7 +1440,7 @@ PANELS.inicio=function(){var isAdmin=currentRole==='admin';
   var overdue=overdueArr.map(function(c){var dl=new Date().getDate()-(c.payDay||10);return '<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">En retraso</span><div class="tx">'+escapeHtml(c.doc)+' · '+dl+' día'+(dl>1?'s':'')+'<small>aún no paga · revisar en Pagos</small></div><span class="go">›</span></div>';}).join('');
   var compRecibido=compArr.map(function(c){return '<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-g">Ya pagó</span><div class="tx">'+escapeHtml(c.doc)+' subió su comprobante<small>verifícalo y confirma en Pagos</small></div><span class="go">›</span></div>';}).join('');
   var nPend=staff.filter(function(s){return s.payStatus!=='Pagado';}).length;
-  var staffPend=(isAdmin&&nPend)?'<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Te toca pagar a tu personal<small>'+nPend+' pendientes · ir a Pagos</small></div><span class="go">›</span></div>':'';
+  var staffPend=(isAdmin&&nPend)?'<div class="row" data-gofin="nomina" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Te toca pagar a tu personal<small>'+nPend+' pendientes · ir a Finanzas › Cobros</small></div><span class="go">›</span></div>':'';
   var revN=posts.filter(function(p){return p.status==='Revisión'&&inScope(p);}).length;
   var envN=posts.filter(function(p){return p.status==='Enviado'&&inScope(p);}).length;
   var camN=posts.filter(function(p){return p.status==='Cambios'&&inScope(p);}).length;
@@ -2177,15 +2219,85 @@ function tagStyle(key,v){var c=getColor(key,v);return c?' style="background:'+c+
 function accItem(key,title,desc,body){var open=!!adminOpen[key];return '<div class="acc"><div class="acchead'+(open?' open':'')+'" data-acc="'+key+'"><span>'+title+'</span><span class="chev">'+(open?'▾':'▸')+'</span></div>'+(open?'<div class="accbody"><div class="accd">'+desc+'</div>'+body+'</div>':'')+'</div>';}
 var ACCESS={};
 var ACC_ROLES=[{r:'cm',n:'Anahí · Community Manager'},{r:'disenador',n:'Sofía · Diseño'},{r:'editor',n:'Karla · Edición'}];
-var ACC_MODS=[{p:'inicio',l:'🏠 Inicio',def:['admin','cm','disenador','editor']},{p:'contenido',l:'✅ Actividades',def:['admin','cm','disenador','editor']},{p:'calendario',l:'🗓️ Calendario',def:['admin','cm','disenador','editor']},{p:'clientes',l:'🩺 Clientes',def:['admin','cm']},{p:'mensajes',l:'💬 Mensajes',def:['admin','cm']},{p:'pagos',l:'🧾 Pagos',def:['admin']},{p:'admin',l:'⚙️ Administración',def:['admin']}];
+var ACC_MODS=[{p:'inicio',l:'🏠 Inicio',def:['admin','cm','disenador','editor']},{p:'contenido',l:'✅ Actividades',def:['admin','cm','disenador','editor']},{p:'calendario',l:'🗓️ Calendario',def:['admin','cm','disenador','editor']},{p:'clientes',l:'🩺 Clientes',def:['admin','cm']},{p:'mensajes',l:'💬 Mensajes',def:['admin','cm']},{p:'admin',l:'⚙️ Administración',def:['admin']}];
 function modDef(p,role){var m=ACC_MODS.filter(function(x){return x.p===p;})[0];return !!(m&&m.def.indexOf(role)>=0);}
-function accessOn(role,p){if(ACCESS[role]&&(p in ACCESS[role]))return ACCESS[role][p];return modDef(p,role);}
+function accessOn(role,p){if(role==='admin')return true;if(MYACCESS&&role===currentRole)return !!MYACCESS[p];if(ACCESS[role]&&(p in ACCESS[role]))return ACCESS[role][p];return modDef(p,role);}
+var permisosCache=null;
+function rolePerm(rol,p){if(permisosCache&&permisosCache[rol]&&(p in permisosCache[rol]))return !!permisosCache[rol][p];return modDef(p,rol);}
 function hideConfpop(){var p=document.getElementById('confpop');if(p)p.style.display='none';}
 function showAccessConfirm(btn){if(!pendAccess)return;var pop=document.getElementById('confpop');if(!pop){pop=document.createElement('div');pop.id='confpop';pop.className='confpop';document.body.appendChild(pop);}
-  var m=ACC_MODS.filter(function(x){return x.p===pendAccess.p;})[0];var role=ACC_ROLES.filter(function(x){return x.r===pendAccess.role;})[0];
+  var m=ACC_MODS.filter(function(x){return x.p===pendAccess.p;})[0];var role=accRolesList().filter(function(x){return x.r===pendAccess.role;})[0];
   var verb=pendAccess.to?'Dar acceso a':'Quitar el acceso a';var who=role?escapeHtml(role.n.split(' · ')[0]):'';
   pop.innerHTML='<div class="cptext">¿'+verb+' <b>'+(m?m.l:pendAccess.p)+'</b> para '+who+'?</div><div class="cpacts"><button class="cpno" data-acccancel>Cancelar</button><button class="cpyes'+(pendAccess.to?'':' danger')+'" data-accconfirm>'+(pendAccess.to?'Dar acceso':'Quitar')+'</button></div>';
   pop.style.display='block';var r=btn.getBoundingClientRect();var w=250;var left=Math.max(12,Math.min(r.right-w,(window.innerWidth||1200)-w-12));pop.style.left=left+'px';pop.style.top=(r.bottom+8)+'px';}
+var USU_ROLES=[['admin','Administrador'],['cm','Community Manager'],['disenador','Diseño'],['editor','Edición'],['doctor','Doctor'],['pendiente','Pendiente (sin acceso)']];
+var usuPassId=null,usuFormOpen=false,usuRoleEditId=null,usuDelId=null,usuCache=[],usuRoles=[];
+function roleLabel(r){for(var i=0;i<USU_ROLES.length;i++){if(USU_ROLES[i][0]===r)return USU_ROLES[i][1];}return cap(r);}
+function normRole(r){return String(r||'').toLowerCase().replace(/\s+/g,' ').trim();}
+function roleOptionsHtml(current,withOtro){var seen={},out='';
+  USU_ROLES.forEach(function(x){if(x[0]==='pendiente')return;seen[x[0]]=1;out+='<option value="'+x[0]+'"'+(x[0]===current?' selected':'')+'>'+escapeHtml(x[1])+'</option>';});
+  usuRoles.forEach(function(r){if(!seen[r]){seen[r]=1;out+='<option value="'+escapeHtml(r)+'"'+(r===current?' selected':'')+'>'+escapeHtml(cap(r))+'</option>';}});
+  if(current&&!seen[current]&&current!=='pendiente'){out+='<option value="'+escapeHtml(current)+'" selected>'+escapeHtml(cap(current))+'</option>';}
+  if(current==='pendiente'){out+='<option value="pendiente" selected>Pendiente (sin rol)</option>';}
+  if(withOtro)out+='<option value="__nuevo">✏️ Otro (escribir)…</option>';
+  return out;}
+function accRolesList(){var base=[{r:'cm',n:'Community Manager'},{r:'disenador',n:'Diseño'},{r:'editor',n:'Edición'}];var seen={admin:1,doctor:1,pendiente:1,cm:1,disenador:1,editor:1};usuCache.forEach(function(u){var r=u.rol;if(r&&!seen[r]){seen[r]=1;base.push({r:r,n:cap(r)});}});return base;}
+function refreshUsuRoles(){var seen={admin:1,cm:1,disenador:1,editor:1,doctor:1,pendiente:1};usuRoles=[];usuCache.forEach(function(u){var r=u.rol;if(r&&!seen[r]){seen[r]=1;usuRoles.push(r);}});}
+async function invokeUsr(body){if(!window.supa)return {error:'Conexión no disponible. Recarga la página.'};try{var ses=await supa.auth.getSession();if(!(ses&&ses.data&&ses.data.session))return {error:'Estás en modo demo (vista previa). Para crear o gestionar usuarios de verdad, entra con tu cuenta de administradora (no el modo demo).'};var r=await supa.functions.invoke('admin-usuarios',{body:body});if(r.error){var msg=r.error.message||'Error';try{var b=await r.error.context.json();if(b&&b.error)msg=b.error;}catch(_e){}return {error:msg};}return {data:r.data};}catch(e){return {error:String(e&&e.message||e)};}}
+function usuariosBody(){
+  return '<p class="folhint">Crea las cuentas del equipo y asígnales su rol. Solo tú (administradora) puedes hacerlo. Tú defines la contraseña; cada quien la puede cambiar después con "Recupérala" en el login, y tú puedes resetearla con 🔑.</p>'
+    +'<div class="usucard">'
+    +'<div class="usuhd"><h2 class="usuh2">🧑 Equipo<span id="usuCount"></span></h2>'
+    +'<div class="ususearch">🔍 <input id="usuSearch" placeholder="Buscar por nombre o correo…"></div>'
+    +'<button class="addbtn" data-usunew>＋ Nuevo usuario</button></div>'
+    +'<div id="usuFormBox"></div>'
+    +'<div class="usuthr"><div>Usuario</div><div>Correo</div><div>Rol</div><div class="rt">Acciones</div></div>'
+    +'<div id="usuariosBox"><div class="usuempty">Cargando…</div></div>'
+    +'<div class="usufoot">El rol se elige de la lista <b>o se escribe uno nuevo</b>. 🔑 cambia la contraseña · ✕ elimina (te pide confirmar).</div>'
+    +'</div>'
+    +'<div id="accRolBox"></div>';
+}
+function renderUsuForm(){var box=document.getElementById('usuFormBox');if(!box)return;
+  if(!usuFormOpen){box.innerHTML='';return;}
+  box.innerHTML='<div class="usuform"><div class="usuformt">Nuevo usuario</div>'
+    +'<div class="frow"><div class="fld"><label>Correo</label><input id="nuEmail" type="email" placeholder="correo@medmark.com"></div><div class="fld"><label>Nombre</label><input id="nuNombre" placeholder="Nombre y apellido"></div></div>'
+    +'<div class="frow"><div class="fld"><label>Rol</label><select id="nuRol" data-nurol>'+roleOptionsHtml('cm',true)+'</select><input id="nuRolNuevo" class="rolnew" placeholder="Escribe el rol nuevo (ej. Estratega)" style="display:none"></div>'
+    +'<div class="fld"><label>Contraseña</label><div class="pwdwrap"><input id="nuPass" type="password" placeholder="mín. 6 caracteres"><button type="button" class="pwdeye" data-eyefor="nuPass">👁️</button></div></div></div>'
+    +'<div class="usuformact"><button class="addbtn" data-usucreate>Crear usuario</button><button class="lk2" data-usunewcancel style="color:var(--ink2)">Cancelar</button></div></div>';
+  var f=document.getElementById('nuEmail');if(f)f.focus();
+}
+async function loadUsuarios(){var box=document.getElementById('usuariosBox');if(box)box.innerHTML='<div class="usuempty">Cargando…</div>';var r=await invokeUsr({action:'list'});box=document.getElementById('usuariosBox');if(box){if(r.error){box.innerHTML='<div class="usuempty">No se pudo cargar: '+escapeHtml(r.error)+'</div>';}else{usuCache=(r.data&&r.data.usuarios)||[];refreshUsuRoles();renderUsuRows(usuCache);}}loadPermisos();}
+function usuFilter(q){q=String(q||'').toLowerCase().trim();var list=!q?usuCache:usuCache.filter(function(u){return ((u.nombre||'')+' '+(u.email||'')).toLowerCase().indexOf(q)>=0;});renderUsuRows(list,!!q);}
+function renderUsuRows(list,filtered){var box=document.getElementById('usuariosBox');if(!box)return;box.innerHTML=(list&&list.length)?list.map(usuRow).join(''):'<div class="usuempty">'+(filtered?'Sin resultados.':'Aún no hay usuarios. Toca “＋ Nuevo usuario”.')+'</div>';var c=document.getElementById('usuCount');if(c)c.textContent=' · '+usuCache.length;}
+function usuRow(u){
+  var isMe=(myUid&&u.id===myUid);
+  var rolCell;
+  if(isMe){rolCell='<span class="rolme">'+escapeHtml(roleLabel(u.rol))+'</span>';}
+  else if(usuRoleEditId===u.id){rolCell='<div class="roleedit"><input id="urole_'+u.id+'" class="rolnew" value="'+escapeHtml(u.rol==='pendiente'?'':cap(u.rol))+'" placeholder="Nombre del rol"><button class="usuic ok" data-usrolesave="'+u.id+'" title="Guardar">✓</button><button class="usuic" data-usrolecancel="1" title="Cancelar">✕</button></div>';}
+  else{rolCell='<select class="usurolesel" data-usurole="'+u.id+'">'+roleOptionsHtml(u.rol,true)+'</select>';}
+  var pass=(usuPassId===u.id)?'<div class="usupass"><div class="pwdwrap"><input id="upw_'+u.id+'" type="password" placeholder="Nueva contraseña (mín. 6)"><button type="button" class="pwdeye" data-eyefor="upw_'+u.id+'">👁️</button></div><button class="addbtn sm" data-usupasssave="'+u.id+'">Guardar</button><button class="lk2" data-usupasscancel="1" style="color:var(--ink2)">Cancelar</button></div>':'';
+  var del=(!isMe&&usuDelId===u.id)?'<div class="usudelc"><span><b>¿Eliminar a '+escapeHtml(u.nombre||u.email||'este usuario')+'?</b> No se puede deshacer.</span><span class="usudelb"><button class="lk2" data-usudelcancel="1" style="color:var(--ink2)">Cancelar</button><button class="addbtn danger" data-usudelconfirm="'+u.id+'">Eliminar</button></span></div>':'';
+  return '<div class="usuitem"><div class="usutr"><div class="usuu"><div class="usuav">'+escapeHtml(initials(u.nombre||u.email||'?'))+'</div><b>'+escapeHtml(u.nombre||'—')+'</b></div><div class="usumail">'+escapeHtml(u.email||'')+'</div><div class="usurc">'+rolCell+'</div><div class="usuacts"><button class="usuic" data-usupass="'+u.id+'" title="Cambiar contraseña">🔑</button>'+(isMe?'':'<button class="usuic del" data-usudelask="'+u.id+'" title="Eliminar">✕</button>')+'</div></div>'+pass+del+'</div>';
+}
+async function usuCrear(){var email=(($('#nuEmail')||{}).value||'').trim(),nombre=(($('#nuNombre')||{}).value||'').trim();var rolSel=($('#nuRol')||{}).value||'cm';var rol=(rolSel==='__nuevo')?normRole(($('#nuRolNuevo')||{}).value||''):rolSel;var pass=(($('#nuPass')||{}).value||'');if(!email||pass.length<6){toast('⚠️ Correo y contraseña de mín. 6 caracteres');return;}if(rolSel==='__nuevo'&&rol.length<2){toast('⚠️ Escribe el nombre del rol nuevo');return;}toast('Creando usuario…');var r=await invokeUsr({action:'create',email:email,nombre:nombre,rol:rol,password:pass});if(r.error){toast('⚠️ '+r.error);return;}usuFormOpen=false;renderUsuForm();toast('✅ Usuario creado');loadUsuarios();}
+async function usuSetRole(id,rol){var r=await invokeUsr({action:'setRole',id:id,rol:normRole(rol)});if(r.error){toast('⚠️ '+r.error);loadUsuarios();return;}toast('✅ Rol actualizado');loadUsuarios();}
+function usrSaveRole(id){var v=normRole(($('#urole_'+id)||{}).value||'');if(v.length<2){toast('⚠️ Escribe el nombre del rol');return;}usuRoleEditId=null;usuSetRole(id,v);}
+function accesosPorRolBlock(){
+  var accR=accRolesList();
+  if(!accR.filter(function(r){return r.r===accRole;}).length)accRole=(accR[0]||{r:'cm'}).r;
+  var selR=accR.filter(function(r){return r.r===accRole;})[0]||accR[0]||{r:'cm',n:'Community Manager'};
+  var seg='<div class="iseg accseg" style="margin-bottom:10px;flex-wrap:wrap">'+accR.map(function(role){return '<button class="isegb'+(role.r===accRole?' on':'')+'" data-accrole="'+role.r+'">'+escapeHtml(role.n.split(' · ')[0])+'</button>';}).join('')+'</div>';
+  var rows=ACC_MODS.map(function(m){var on=rolePerm(selR.r,m.p);return '<div class="accmod"><span class="accmodl">'+m.l+'</span><button class="tgl'+(on?' on':'')+'" data-rperm="'+selR.r+'|'+m.p+'" aria-label="Cambiar acceso de '+escapeHtml(selR.n)+' a '+escapeHtml(m.l)+'"><span class="tgk"></span></button></div>';}).join('');
+  return '<div class="usucard" style="margin-top:14px"><div class="usuhd"><h2 class="usuh2">🔑 Accesos por rol</h2></div><div style="padding:14px 16px">'
+    +'<div class="subd" style="margin:0 0 10px">Elige un rol y prende los módulos que verá. Aplica a todas las personas con ese rol. La administradora siempre tiene acceso completo.</div>'
+    +seg+'<div class="subd" style="margin:2px 0 8px">Módulos para <b>'+escapeHtml(selR.n)+'</b></div>'+rows+'</div></div>';
+}
+function renderAccesosPorRol(){var box=document.getElementById('accRolBox');if(box)box.innerHTML=accesosPorRolBlock();}
+async function loadPermisos(){var r=await invokeUsr({action:'getPermisos'});if(r&&r.data&&r.data.permisos){permisosCache={};r.data.permisos.forEach(function(x){permisosCache[x.rol]=x.modulos||{};});}renderAccesosPorRol();}
+async function savePermiso(rol){var mods=(permisosCache&&permisosCache[rol])||{};var r=await invokeUsr({action:'setPermiso',rol:rol,modulos:mods});if(r.error){toast('⚠️ '+r.error);return;}toast('✅ Accesos guardados');}
+async function usuDel(id){usuDelId=null;var r=await invokeUsr({action:'delete',id:id});if(r.error){toast('⚠️ '+r.error);loadUsuarios();return;}toast('🗑️ Usuario eliminado');loadUsuarios();}
+async function usuSetPass(id){var pw=(($('#upw_'+id)||{}).value||'');if(pw.length<6){toast('⚠️ Mín. 6 caracteres');return;}var r=await invokeUsr({action:'setPassword',id:id,password:pw});if(r.error){toast('⚠️ '+r.error);return;}usuPassId=null;toast('🔑 Contraseña actualizada');loadUsuarios();}
+AFTER.admin=function(){if(adminCat==='usuarios'){loadUsuarios();}};
 PANELS.admin=function(){
   var out=[];
   var act=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
@@ -2209,15 +2321,6 @@ PANELS.admin=function(){
   else{fin+='<div class="finhint">Toca una tarjeta para ver y editar su detalle.</div>';}
   var persBody=staff.map(function(s){return '<div class="accrow2"><div style="flex:1"><b>'+escapeHtml(s.name)+'</b><div style="font-size:11.5px;color:var(--ink2)">'+escapeHtml(s.role||'—')+' · <span style="color:#2e7d32;font-weight:700">'+escapeHtml(s.amount)+'/mes</span></div></div><button class="lk2" data-editstaff="'+s.id+'">Editar</button><button class="lk2" style="color:var(--coral)" data-delstaffask="'+s.id+'">✕</button></div>';}).join('')+'<button class="addbtn" data-newstaff style="margin-top:12px">＋ Agregar empleado</button>';
   var pkgBody=PACKAGES.map(function(p){return '<div class="accrow2"><div style="flex:1"><b>'+escapeHtml(p.name)+'</b> · <span style="color:#2e7d32;font-weight:700">'+escapeHtml(p.price)+'/mes</span><div style="font-size:11.5px;color:var(--ink2);margin-top:2px">'+escapeHtml(p.includes)+'</div></div><button class="lk2" data-editpkg="'+p.id+'">Editar</button><button class="lk2" style="color:var(--coral)" data-delpkg="'+p.id+'">✕</button></div>';}).join('')+'<button class="addbtn" data-newpkg style="margin-top:12px">＋ Nuevo paquete</button>';
-  if(!ACC_ROLES.filter(function(r){return r.r===accRole;}).length)accRole=ACC_ROLES[0].r;
-  var selR=ACC_ROLES.filter(function(r){return r.r===accRole;})[0];
-  var accSeg='<div class="iseg" style="margin-bottom:8px">'+ACC_ROLES.map(function(role){return '<button class="isegb'+(role.r===accRole?' on':'')+'" data-accrole="'+role.r+'">'+escapeHtml(role.n.split(' · ')[0])+'</button>';}).join('')+'</div>';
-  var accRows=ACC_MODS.map(function(m){var on=accessOn(selR.r,m.p);return '<div class="accmod"><span class="accmodl">'+m.l+'</span><button class="tgl'+(on?' on':'')+'" data-access="'+selR.r+'|'+m.p+'"><span class="tgk"></span></button></div>';}).join('');
-  var accHtml=accSeg+'<div class="subd" style="margin:0 0 6px">Acceso de <b>'+escapeHtml(selR.n)+'</b>. Te pediremos confirmar cada cambio.</div>'+accRows;
-  var oo='';['types','team'].forEach(function(key){
-    var chips=CONFIG[key].map(function(v,i){return '<span class="cfgchip">'+escapeHtml(v)+'<button data-cfgdel="'+key+'|'+i+'" title="Quitar">✕</button></span>';}).join('');
-    oo+='<div class="subsec"><div class="subt">'+CFGMETA[key].t+'</div><div class="subd">'+CFGMETA[key].d+'</div><div class="chips">'+chips+'</div><div class="cfgadd"><input data-cfgin="'+key+'" placeholder="Agregar opción…"><button data-cfgadd="'+key+'">＋ Agregar</button></div></div>';
-  });
   var _A=AGENCY;var recBody='<div style="font-size:12px;color:var(--ink2);margin-bottom:14px">Estos datos arman tus recibos en PDF. Edítalos y guarda; el recibo se actualiza solo. Recuerda: el recibo es comprobante de pago, no una factura fiscal (CFDI).</div>'
     +'<div class="frow"><div class="fld"><label>Razón social</label><input id="agRazon" value="'+escapeHtml(_A.razon||'')+'"></div><div class="fld"><label>RFC</label><input id="agRfc" value="'+escapeHtml(_A.rfc||'')+'"></div></div>'
     +'<div class="frow"><div class="fld"><label>Domicilio</label><input id="agDom" value="'+escapeHtml(_A.domicilio||'')+'"></div><div class="fld"><label>Contacto (correo · teléfono)</label><input id="agCont" value="'+escapeHtml(_A.contacto||'')+'"></div></div>'
@@ -2225,12 +2328,11 @@ PANELS.admin=function(){
     +'<div class="fld"><label>Leyenda al pie (aclaración no fiscal)</label><textarea id="agLeyenda" rows="2" style="width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical">'+escapeHtml(_A.leyenda||'')+'</textarea></div>'
     +'<div class="frow"><div class="fld"><label>Color de acento</label><input id="agAcento" type="color" value="'+(_A.acento||'#4CAF50')+'" style="height:42px;padding:4px;cursor:pointer"></div><div class="fld"><label>Logo (opcional)</label><input type="file" id="agLogoFile" accept="image/*">'+(_A.logo?'<div style="font-size:11px;color:#2e7d32;margin-top:5px">✓ Logo cargado · súbelo de nuevo para reemplazar</div>':'')+'</div></div>'
     +'<div style="display:flex;gap:10px;margin-top:18px"><button class="recpill" data-previewrec>👁️ Vista previa</button><button class="addbtn" data-saveagency>💾 Guardar datos</button></div>';
-  var finBody='<div class="iseg" style="margin-bottom:18px"><button class="isegb'+(finTab==='resumen'?' on':'')+'" data-fintab="resumen">💰 Resumen</button><button class="isegb'+(finTab==='paquetes'?' on':'')+'" data-fintab="paquetes">📦 Paquetes</button><button class="isegb'+(finTab==='recibo'?' on':'')+'" data-fintab="recibo">🧾 Recibo</button></div>'+(finTab==='paquetes'?pkgBody:(finTab==='recibo'?recBody:fin));
+  var finBody='<div class="iseg" style="margin-bottom:18px"><button class="isegb'+(finTab==='resumen'?' on':'')+'" data-fintab="resumen">💰 Resumen</button><button class="isegb'+(finTab==='cobros'?' on':'')+'" data-fintab="cobros">🧾 Cobros</button><button class="isegb'+(finTab==='recibo'?' on':'')+'" data-fintab="recibo">📄 Recibo</button></div>'+(finTab==='cobros'?('<div class="amd" style="margin:0 0 6px">Cobros a clientes y nómina del equipo. Toca un nombre para registrar su pago.</div>'+PANELS.pagos()):(finTab==='recibo'?recBody:fin));
   var CATS=[
-    {k:'finanzas',ic:'💰',t:'Finanzas',grp:'Negocio',bdg:fmtMoney(gan),desc:'Ingresos, egresos y ganancia · paquetes · datos del recibo. (Los cobros y recibos se emiten en Pagos.)',body:finBody},
+    {k:'finanzas',ic:'💰',t:'Finanzas',grp:'Negocio',bdg:fmtMoney(gan),desc:'Todo el dinero: resumen (ingresos, egresos, ganancia), cobros a clientes y nómina, y datos del recibo.',body:finBody},
     {k:'personal',ic:'👥',t:'Personal',grp:'Equipo',bdg:String(staff.length),desc:'Alta o baja del equipo, con su rol y sueldo.',body:persBody},
-    {k:'accesos',ic:'🔑',t:'Accesos',grp:'Equipo',bdg:String(ACC_ROLES.length),desc:'Da o quita el acceso de cada persona a cada módulo.',body:accHtml},
-    {k:'config',ic:'⚙️',t:'Configuración',grp:'Sistema',bdg:'',desc:'Tipos de contenido, responsables del equipo y etapas del CRM.',body:oo}
+    {k:'usuarios',ic:'🧑',t:'Usuarios y accesos',grp:'Equipo',bdg:'',desc:'Crea las cuentas del equipo (correo, contraseña y rol) y define qué módulos ve cada rol. Solo administradora.',body:usuariosBody()}
   ];
   if(!CATS.filter(function(c){return c.k===adminCat;}).length)adminCat='finanzas';
   var cur=CATS.filter(function(c){return c.k===adminCat;})[0];
@@ -2277,7 +2379,7 @@ PANELS.pagos=function(){
       return '<div class="payitem">'+head+det+'</div>';
     }).join('')||'<div class="finhint">No hay clientes activos.</div>';
   }
-  return '<div class="pad" style="max-width:760px"><div class="ptitle"><div><h1>Pagos</h1><p>Cobros a clientes y nómina del equipo. Toca un nombre para registrar su pago. Solo visible para ti.</p></div></div>'+cards+seg+body+'</div>';
+  return cards+seg+body;
 };
 function openReceipt(id){
   var c=clients.filter(function(x){return x.id===id})[0];if(!c)return;
@@ -2400,7 +2502,7 @@ function renderInspoWrap(){var wrap=document.getElementById('inspoWrap');if(!wra
 function exitPostEditor(){if(editFolderReturn){folderId=editFolderReturn;inFolder=true;folderTab='contenido';editFolderReturn=null;renderFolder();}else{go(editReturn);}}
 function renderPostEditor(id,presetDoc){
   editPostId=id||0;
-  var p=id?posts.filter(function(x){return x.id===id})[0]:{doctor:(presetDoc||docList()[0]),plat:platformsFor(presetDoc||docList()[0])[0],type:CONFIG.types[0],date:todayIso(),pubDate:"",status:"Idea",funnel:CONFIG.funnel[0],copy:"",img:null,who:CONFIG.team[0],idealClient:"",purpose:"",goals:"",inspo:"",inspoImgs:[],kind:"organico",objetivo:"",presu:"",oferta:"",publico:"",variaciones:"",finCamp:"",mediaUrl:""};
+  var p=id?posts.filter(function(x){return x.id===id})[0]:{doctor:(presetDoc||docList()[0]),plat:platformsFor(presetDoc||docList()[0])[0],type:CONFIG.types[0],date:todayIso(),pubDate:"",status:"Idea",funnel:CONFIG.funnel[0],copy:"",img:null,who:(responsables()[0]||''),idealClient:"",purpose:"",goals:"",inspo:"",inspoImgs:[],kind:"organico",objetivo:"",presu:"",oferta:"",publico:"",variaciones:"",finCamp:"",mediaUrl:""};
   tmpImg=p.img||null;tmpInspo=(p.inspoImgs||[]).slice();
   var prev=p.mediaUrl?('<div style="margin-bottom:8px">'+mediaEmbed(p.mediaUrl,200)+'</div>'):(tmpImg?'<div class="prev big" id="imgPrev" style="background-image:url('+tmpImg+')"></div>':'<div class="prev big" id="imgPrev">🖼️ Sube una imagen o pega el enlace de Drive abajo<br><small style="font-weight:400">imagen · toca aquí</small></div>');
   var inspoHTML=tmpInspo.map(function(s,i){return '<div class="inspoit" style="background-image:url('+s+')"><button data-delinspo="'+i+'" title="Quitar">✕</button></div>';}).join('')+'<button class="inspoadd" data-addinspo title="Agregar referencia">＋</button>';
@@ -2430,7 +2532,7 @@ function renderPostEditor(id,presetDoc){
       +'<div class="frow"><div class="fld"><label>Tipo</label>'+sel('fType',CONFIG.types,p.type)+'</div><div class="fld"><label>Estado</label>'+selStatus('fStatus',p.status)+'</div></div>'
       +'<div class="fld"><label>📦 Fecha de entrega (interna)</label><input id="fDate" type="date" value="'+(p.date||'')+'"></div>'
       +'<div class="fld"><label>📅 Fecha de publicación</label><input id="fPub" type="date" value="'+(p.pubDate||'')+'"></div>'
-      +'<div class="fld"><label>Responsable</label>'+sel('fWho',CONFIG.team,p.who)+'</div>'
+      +'<div class="fld"><label>Responsable</label>'+sel('fWho',responsables(),p.who)+'</div>'
       +(id?'<div class="fld"><label>✎ Qué cambiar (si pides corrección)</label><textarea id="fChange" placeholder="Indicación clara para el responsable…">'+escapeHtml(p.changeNote||'')+'</textarea></div>':'')
       +'<button class="msave" style="width:100%;margin-top:4px" data-savepost="'+(id||0)+'">'+(id?'Guardar':'Crear publicación')+'</button>'
       +(id?'<button class="mdel" style="width:100%;margin-top:8px" data-delpost="'+id+'">Eliminar</button>':'')
@@ -2537,12 +2639,11 @@ document.addEventListener('click',function(e){
   if(e.target.closest('[data-addinspo]')){var finsp=document.getElementById('inspoFile');if(finsp)finsp.click();return;}
   var dins=e.target.closest('[data-delinspo]');if(dins){tmpInspo.splice(parseInt(dins.getAttribute('data-delinspo'),10),1);renderInspoWrap();return;}
   if(e.target.closest('[data-newclient]'))return openClientForm(0);
-  var arl=e.target.closest('[data-accrole]');if(arl){accRole=arl.getAttribute('data-accrole');refresh();return;}
-  var acg=e.target.closest('[data-access]');if(acg){var apr=acg.getAttribute('data-access').split('|');pendAccess={role:apr[0],p:apr[1],to:!accessOn(apr[0],apr[1])};showAccessConfirm(acg);return;}
-  if(e.target.closest('[data-acccancel]')){pendAccess=null;hideConfpop();return;}
-  if(e.target.closest('[data-accconfirm]')){if(pendAccess){if(!ACCESS[pendAccess.role])ACCESS[pendAccess.role]={};ACCESS[pendAccess.role][pendAccess.p]=pendAccess.to;var ml=(ACC_MODS.filter(function(m){return m.p===pendAccess.p;})[0]||{l:pendAccess.p}).l;var nm=((ACC_ROLES.filter(function(r){return r.r===pendAccess.role;})[0]||{n:''}).n).split(' · ')[0];toast((pendAccess.to?'✅ Acceso dado · ':'🚫 Acceso quitado · ')+ml+' → '+nm);pendAccess=null;}hideConfpop();refresh();return;}
+  var arl=e.target.closest('[data-accrole]');if(arl){accRole=arl.getAttribute('data-accrole');renderAccesosPorRol();return;}
+  var _rp=e.target.closest('[data-rperm]');if(_rp){var rpa=_rp.getAttribute('data-rperm').split('|');var rrol=rpa[0],rmod=rpa[1];if(!permisosCache)permisosCache={};if(!permisosCache[rrol])permisosCache[rrol]={};permisosCache[rrol][rmod]=!rolePerm(rrol,rmod);renderAccesosPorRol();savePermiso(rrol);return;}
   var fcd=e.target.closest('[data-fincard]');if(fcd){var fk=fcd.getAttribute('data-fincard');finView=(finView===fk?'':fk);refresh();return;}
   var psv=e.target.closest('[data-paysview]');if(psv){paysView=psv.getAttribute('data-paysview');payOpen=null;refresh();return;}
+  var gfn=e.target.closest('[data-gofin]');if(gfn){adminCat='finanzas';finTab='cobros';paysView=(gfn.getAttribute('data-gofin')==='nomina')?'nomina':'clientes';go('admin');return;}
   var pop2=e.target.closest('[data-payopen]');if(pop2){var pk=pop2.getAttribute('data-payopen');payOpen=(payOpen===pk?null:pk);refresh();return;}
   var cfgA=e.target.closest('[data-cfgadd]');if(cfgA){var key=cfgA.getAttribute('data-cfgadd');var inp=$('[data-cfgin="'+key+'"]');var v=(inp.value||'').trim();if(v){CONFIG[key].push(v);refresh();toast('➕ "'+v+'" agregado');}return;}
   var cfgD=e.target.closest('[data-cfgdel]');if(cfgD){var pr=cfgD.getAttribute('data-cfgdel').split('|');CONFIG[pr[0]].splice(parseInt(pr[1],10),1);refresh();return;}
@@ -2552,6 +2653,18 @@ document.addEventListener('click',function(e){
   var dpk=e.target.closest('[data-delpkg]');if(dpk)return delPkg(parseInt(dpk.getAttribute('data-delpkg'),10));
   var amc=e.target.closest('[data-admincat]');if(amc){adminCat=amc.getAttribute('data-admincat');refresh();return;}
   var ftb=e.target.closest('[data-fintab]');if(ftb){finTab=ftb.getAttribute('data-fintab');refresh();return;}
+  if(e.target.closest('[data-usunew]')){usuFormOpen=!usuFormOpen;renderUsuForm();return;}
+  if(e.target.closest('[data-usunewcancel]')){usuFormOpen=false;renderUsuForm();return;}
+  if(e.target.closest('[data-usucreate]')){usuCrear();return;}
+  var _uda=e.target.closest('[data-usudelask]');if(_uda){usuDelId=_uda.getAttribute('data-usudelask');usuPassId=null;usuRoleEditId=null;renderUsuRows(usuCache);return;}
+  if(e.target.closest('[data-usudelcancel]')){usuDelId=null;renderUsuRows(usuCache);return;}
+  var _udc=e.target.closest('[data-usudelconfirm]');if(_udc){usuDel(_udc.getAttribute('data-usudelconfirm'));return;}
+  var _upz=e.target.closest('[data-usupass]');if(_upz){usuPassId=_upz.getAttribute('data-usupass');usuRoleEditId=null;renderUsuRows(usuCache);return;}
+  var _ups=e.target.closest('[data-usupasssave]');if(_ups){usuSetPass(_ups.getAttribute('data-usupasssave'));return;}
+  if(e.target.closest('[data-usupasscancel]')){usuPassId=null;renderUsuRows(usuCache);return;}
+  var _urs=e.target.closest('[data-usrolesave]');if(_urs){usrSaveRole(_urs.getAttribute('data-usrolesave'));return;}
+  if(e.target.closest('[data-usrolecancel]')){usuRoleEditId=null;renderUsuRows(usuCache);return;}
+  var _ey=e.target.closest('[data-eyefor]');if(_ey){var _t=document.getElementById(_ey.getAttribute('data-eyefor'));if(_t){var _sh=_t.type==='password';_t.type=_sh?'text':'password';_ey.textContent=_sh?'🙈':'👁️';}return;}
   var acc=e.target.closest('[data-acc]');if(acc){var ak=acc.getAttribute('data-acc');adminOpen[ak]=!adminOpen[ak];refresh();return;}
   if(e.target.closest('[data-newstaff]'))return openStaffForm(0);
   var est=e.target.closest('[data-editstaff]');if(est)return openStaffForm(parseInt(est.getAttribute('data-editstaff'),10));
@@ -2665,9 +2778,11 @@ document.addEventListener('click',function(e){
   var dn=e.target.closest('#dnav button');if(dn){$$('#dnav button').forEach(function(x){x.classList.remove('on')});dn.classList.add('on');$$('#doctor [data-d]').forEach(function(s){s.classList.toggle('hidden',s.getAttribute('data-d')!==dn.getAttribute('data-d'));});if(dn.getAttribute('data-d')==='pagos')renderDocPay();if(dn.getAttribute('data-d')==='rep')renderDocRep();return;}
 function renderDocCitas(){var el=$('#docAgendaCitas');if(el)el.innerHTML=renderAgenda(DOCTOR_ID,true);}
 });
-document.addEventListener('input',function(e){if(e.target&&e.target.id==='topSearch'){cliQuery=e.target.value;renderSidebarClients();}});
+document.addEventListener('input',function(e){if(e.target&&e.target.id==='topSearch'){cliQuery=e.target.value;renderSidebarClients();}else if(e.target&&e.target.id==='usuSearch'){usuFilter(e.target.value);}});
 document.addEventListener('change',function(e){
   if(e.target.id==='agLogoFile'){var lf=e.target.files[0];if(lf){var lr=new FileReader();lr.onload=function(ev){AGENCY.logo=ev.target.result;saveAgency();toast('🖼️ Logo cargado · ya aparece en el recibo');};lr.readAsDataURL(lf);}return;}
+  var _ur=e.target.closest&&e.target.closest('[data-usurole]');if(_ur){if(_ur.value==='__nuevo'){usuRoleEditId=_ur.getAttribute('data-usurole');renderUsuRows(usuCache);}else{usuSetRole(_ur.getAttribute('data-usurole'),_ur.value);}return;}
+  var _nr=e.target.closest&&e.target.closest('[data-nurol]');if(_nr){var _ni=document.getElementById('nuRolNuevo');if(_ni){_ni.style.display=(_nr.value==='__nuevo')?'':'none';if(_nr.value==='__nuevo')_ni.focus();}return;}
   var cws=e.target.closest&&e.target.closest('[data-contwho]');if(cws){contWho=cws.value;refresh();return;}
   var ccs=e.target.closest&&e.target.closest('[data-contclient]');if(ccs){contClient=ccs.value;refresh();return;}
   var md=e.target.closest&&e.target.closest('[data-mdate]');if(md){var cD=folderClient();if(cD){var di=parseInt(md.getAttribute('data-mdate'),10);if(cD.meetings[di])cD.meetings[di].date=md.value;}return;}
