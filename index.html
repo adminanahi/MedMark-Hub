@@ -10,16 +10,18 @@
 <script src="./index_files/xlsx.full.min.js"></script>
 <style>
   :root{
-    --navy:#1a365d; --navy-d:#0f2440; --mint:#4CAF50; --mint-d:#2e7d32; --mint-s:#66BB6A; --mint-bg:#e8f5e9;
-    --coral:#FF6B6B; --amber:#FFA000; --sky:#4FC3F7; --sky-bg:#e8f6fd;
-    --bone:#F0F4F8; --white:#ffffff; --surf:#fbfdff; --col:#eef3f8;
-    --ink:#1a365d; --ink2:#4d6d92; --line:#e7edf3;
-    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    --shadow:0 1px 3px rgba(26,54,93,.06),0 12px 30px rgba(26,54,93,.07);
+    --navy:#1A365D; --navy-d:#142a47; --edac:#1A365D; --edac2:#27406B; --mint:#34C98C; --mint-d:#168F63; --mint-s:#46DCA0; --mint-bg:#E2F6ED;
+    --coral:#E55F49; --coral-bg:#FCE9E4; --amber:#CF961F; --amber-bg:#FAF0D8; --sky:#2C93C4; --sky-bg:#E3F3FB; --violet:#6468C7; --violet-bg:#ECEDFB;
+    --bone:#EEF2F8; --area:#F6F8FC; --white:#FFFFFF; --surf:#F6F8FC; --col:#F1F5F9;
+    --ink:#1A2A41; --ink2:#697A91; --ink3:#9AA8BC; --line:#E8EDF4; --line2:#F1F5F9;
+    --serif:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --shadow:0 1px 2px rgba(20,37,61,.05),0 5px 14px -10px rgba(20,37,61,.16);
   }
   body.dark{
-    --bone:#0e1b2e; --white:#16263f; --surf:#1b2d49; --col:#13233b;
-    --ink:#e6edf6; --ink2:#9fb2cb; --line:#26405f; --mint-bg:#16352a; --sky-bg:#10324a; --mint-d:#2e8b46;
+    --navy:#1A365D; --navy-d:#0F1F38; --edac:#7DA8E6; --edac2:#A9C4EC; --mint:#34C98C; --mint-d:#46DCA0; --mint-s:#46DCA0; --mint-bg:#0F3328;
+    --coral:#FF8B7D; --coral-bg:#3A201C; --amber:#E7B85A; --amber-bg:#3A3016; --sky:#74D2EE; --sky-bg:#10324A; --violet:#9DA1EA; --violet-bg:#222449;
+    --bone:#0A1320; --area:#0E1A2B; --white:#16263E; --surf:#0E1A2B; --col:#13233B;
+    --ink:#E9F1F9; --ink2:#9DAEC6; --ink3:#6E81A0; --line:#243A57; --line2:#1B2C46;
     --shadow:0 1px 3px rgba(0,0,0,.3),0 12px 30px rgba(0,0,0,.35);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -90,7 +92,12 @@
   .folav2{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--mint),var(--sky));background-size:cover;background-position:center;display:grid;place-items:center;color:#fff;font-weight:700;font-size:17px;flex-shrink:0;cursor:pointer}
   .folnm{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--ink)}
   .folesp2{font-size:12.5px;color:var(--ink2);margin-top:2px}
-  .folacts{margin-left:auto;display:flex;gap:8px}
+  .folacts{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+  .folchip{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:600;background:var(--chip);border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+  .folchip.ok{background:#e7f8ef;border-color:#bdeed4;color:#1c8a52}
+  .folchip.no{background:#fdece9;border-color:#f6c9bd;color:#c0492b}
+  body.dark .folchip.ok{background:rgba(43,176,108,.16);border-color:rgba(43,176,108,.34);color:#7fe3ad}
+  body.dark .folchip.no{background:rgba(208,93,61,.18);border-color:rgba(208,93,61,.36);color:#f3a892}
   .wabtn{background:#e7f8ef;border:1px solid #bdeed4;color:#1c8a52;border-radius:11px;padding:9px 13px;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
   .ftabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:18px}
   .ftab{font-size:12.5px;font-weight:600;color:var(--ink2);padding:9px 12px;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:inherit;border-radius:8px 8px 0 0}
@@ -101,13 +108,13 @@
   /* sidebar: lista de clientes */
   .clisrch{margin:2px 6px 8px;width:calc(100% - 12px);border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#dce6f1;border-radius:9px;padding:7px 10px;font-size:12px;font-family:inherit;outline:none}
   .clisrch::placeholder{color:#7e8fa4}
-  .clicn{display:flex;align-items:center;gap:9px;padding:6px 10px;border-radius:9px;cursor:pointer;color:#c6d3e3;font-size:12.5px;transition:.14s}
-  .clicn:hover{background:rgba(255,255,255,.06);color:#fff}
-  .clicn.on{background:rgba(102,187,106,.2);color:#fff;font-weight:600}
-  .clicav{width:25px;height:25px;border-radius:50%;background:linear-gradient(135deg,var(--mint),var(--sky));background-size:cover;background-position:center;display:grid;place-items:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;position:relative}
-  .clidot{position:absolute;right:-1px;bottom:-1px;width:8px;height:8px;border-radius:50%;border:1.5px solid #0f2238}
+  .clicn{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:10px;cursor:pointer;color:rgba(255,255,255,.8);font-size:12.5px;transition:.14s}
+  .clicn:hover{background:rgba(255,255,255,.1);color:#fff}
+  .clicn.on{background:rgba(255,255,255,.16);color:#fff;font-weight:600}
+  .clicav{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--mint),var(--sky));background-size:cover;background-position:center;display:grid;place-items:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;position:relative}
+  .clidot{position:absolute;right:-2px;bottom:-2px;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--white)}
   .clicnm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .clinone{color:#7e8fa4;font-size:12px;padding:6px 10px}
+  .clinone{color:var(--ink3);font-size:12px;padding:6px 10px}
   /* panel de actividad del equipo */
   .actrail{background:var(--white);border-left:1px solid var(--line);padding:18px 14px;overflow-y:auto;height:100vh;position:sticky;top:0}
   .arlbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3,#9aa9bb);margin:0 0 12px}
@@ -117,42 +124,109 @@
   .afw{font-size:10.5px;color:var(--ink3,#9aa9bb);margin-top:2px}
   .afnone{font-size:12px;color:var(--ink3,#9aa9bb)}
   /* ===== Layout B: barra superior + clientes a la izquierda ===== */
-  .topbar{display:flex;align-items:center;gap:16px;height:58px;padding:0 18px;background:linear-gradient(90deg,#103053,#0d2238);position:sticky;top:0;z-index:30}
+  /* ===== Shell AZUL (barra superior + lateral, antes del brief) ===== */
+  .topbar{display:flex;align-items:center;gap:14px;height:58px;padding:0 18px;background:var(--navy);position:sticky;top:0;z-index:30}
   .tbrand{display:flex;align-items:center;gap:8px;color:#fff}
-  .tbrand .w{font-size:16px;font-weight:700;letter-spacing:-.02em}.tbrand .b{color:var(--mint)}
-  .topnav{display:flex;gap:3px;margin-left:6px;flex-wrap:wrap}
-  .topnav button{display:inline-flex;align-items:center;gap:7px;border:none;background:none;font-family:inherit;font-size:13px;font-weight:600;color:#aebfd4;padding:8px 13px;border-radius:10px;cursor:pointer;transition:.14s}
+  .tbrand .w{font-size:16px;font-weight:800;letter-spacing:-.02em}.tbrand .b{color:var(--mint-s)}
+  .topnav{display:flex;gap:3px;margin-left:10px;flex-wrap:wrap}
+  .topnav button{display:inline-flex;align-items:center;gap:7px;border:none;background:none;font-family:var(--serif);font-size:13px;font-weight:600;color:rgba(255,255,255,.78);padding:8px 13px;border-radius:10px;cursor:pointer;transition:.14s}
   .topnav button .ic{font-size:14px}
-  .topnav button:hover{background:rgba(255,255,255,.08);color:#fff}
-  .topnav button.on{background:rgba(47,201,138,.22);color:#fff}
-  .topnav .bd{background:var(--coral,#ff6b6b);color:#fff;border-radius:9px;font-size:10px;font-weight:700;padding:1px 6px;margin-left:2px}
-  .ttools{margin-left:auto;display:flex;align-items:center;gap:9px}
-  .ticon{width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.08);color:#fff;font-size:16px;cursor:pointer;position:relative;display:grid;place-items:center}
-  .ticon:hover{background:rgba(255,255,255,.16)}
+  .topnav button:hover{background:rgba(255,255,255,.12);color:#fff}
+  .topnav button.on{background:rgba(255,255,255,.16);color:#fff;font-weight:700}
+  .topnav .bd{background:var(--coral);color:#fff;border-radius:9px;font-size:10px;font-weight:700;padding:1px 6px;margin-left:2px}
+  .ttools{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .ticon{width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.12);color:#fff;font-size:16px;cursor:pointer;position:relative;display:grid;place-items:center;transition:.14s}
+  .ticon:hover{background:rgba(255,255,255,.22)}
   .topsearch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);color:#fff;border-radius:11px;padding:9px 13px;font-size:13px;font-family:inherit;outline:none;width:210px}
-  .topsearch::placeholder{color:#8aa0b8}
-  .bdot{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--coral,#ff6b6b);border:2px solid #102a44}
-  .tprofile{display:flex;align-items:center;gap:9px;cursor:pointer;padding:4px 6px;border-radius:11px}
-  .tprofile:hover{background:rgba(255,255,255,.08)}
-  .tprofile .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--mint),var(--sky));display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px}
-  .tpinfo b{color:#fff;font-size:12.5px;display:block;line-height:1.1}.tpinfo small{color:#8aa0b8;font-size:10.5px}
-  .topbar .out{border:none;background:none;color:#8aa0b8;font-size:16px;cursor:pointer;padding:6px}
-  .topbar .out:hover{color:#fff}
+  .topsearch::placeholder{color:rgba(255,255,255,.5)}
+  .bdot{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--coral);border:2px solid var(--navy)}
+  .tprofile{display:flex;align-items:center;gap:9px;cursor:pointer;padding:4px 8px 4px 6px;border-radius:11px;transition:.14s}
+  .tprofile:hover{background:rgba(255,255,255,.12)}
+  .tprofile .av{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--mint),var(--sky));background-size:cover;background-position:center;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px}
+  .tpinfo b{color:#fff;font-size:12.5px;display:block;line-height:1.1}.tpinfo small{color:rgba(255,255,255,.6);font-size:10.5px}
+  .tout{border:none;background:rgba(255,255,255,.12);color:#fff;font-size:15px;cursor:pointer;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;transition:.14s}
+  .tout:hover{background:var(--coral)}
   .shell2{display:grid;grid-template-columns:248px 1fr;min-height:calc(100vh - 58px)}
-  .solo .shell2{grid-template-columns:1fr}
-  .sidebar2{background:linear-gradient(180deg,#123254,#0d2238);padding:14px 12px;overflow-y:auto;height:calc(100vh - 58px);position:sticky;top:58px}
-  .sbhd{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7e93ad;padding:4px 8px 10px}
-  .sbadd{border:none;background:rgba(255,255,255,.1);color:#fff;width:24px;height:24px;border-radius:8px;font-size:15px;cursor:pointer;line-height:1}
-  .sbcol{border:none;background:rgba(255,255,255,.1);color:#fff;width:22px;height:22px;border-radius:7px;font-size:13px;cursor:pointer;line-height:1;flex-shrink:0}
+  .solo .shell2{grid-template-columns:1fr}.solo .sidebar2{display:none}
+  .sidebar2{background:var(--navy-d);padding:14px 12px;overflow-y:auto;height:calc(100vh - 58px);position:sticky;top:58px;display:flex;flex-direction:column}
+  /* ===== Inicio (vista por persona) ===== */
+  .vbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 24px;border-bottom:1px solid var(--line);background:var(--white);position:sticky;top:0;z-index:5}
+  .vtitle{font-family:var(--serif);font-size:18px;font-weight:800;color:var(--ink);margin:0}
+  .vsub{font-size:12px;color:var(--ink2);margin-top:1px}
+  .vactions{display:flex;align-items:center;gap:10px}
+  .vseg{display:inline-flex;background:var(--col);border-radius:20px;padding:3px}
+  .vseg button{border:none;background:none;font-family:inherit;font-size:12.5px;font-weight:600;color:var(--ink2);padding:6px 13px;border-radius:18px;cursor:pointer}
+  .vseg button.on{background:var(--white);color:var(--ink);box-shadow:var(--shadow)}
+  .vbtn{border:none;background:var(--mint);color:#fff;font-family:inherit;font-size:13px;font-weight:700;padding:9px 16px;border-radius:10px;cursor:pointer;box-shadow:0 4px 12px -4px rgba(52,201,140,.5)}
+  .vbtn:hover{background:var(--mint-d)}
+  .vhello{font-family:var(--serif);font-size:22px;font-weight:800;color:var(--ink);margin:0}
+  .vlead{font-size:13.5px;color:var(--ink2);margin:3px 0 18px}.vhi{color:var(--coral);font-weight:700}
+  .inicgrid{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
+  @media(max-width:1100px){.inicgrid{grid-template-columns:1fr}}
+  .inicside{display:flex;flex-direction:column;gap:16px}
+  .vch{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .vch h3{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);margin:0}
+  .vchn{font-size:11.5px;color:var(--ink3);background:var(--surf);border:1px solid var(--line);padding:3px 10px;border-radius:20px}
+  .dvrow{display:flex;align-items:center;gap:12px;padding:13px 4px;border-top:1px solid var(--line2)}.dvrow:first-of-type{border-top:none}
+  .dvprio{width:4px;align-self:stretch;border-radius:4px;flex:none}
+  .pr-r{background:var(--coral)}.pr-a{background:var(--amber)}.pr-s{background:var(--sky)}
+  .dvmain{flex:1;min-width:0;cursor:pointer}
+  .dvt{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.35}
+  .dvchip{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;display:inline-block;flex:none}
+  .st-idea{background:var(--col);color:var(--ink2)}
+  .st-dis{background:var(--sky-bg);color:#1c6f97}
+  .st-cam{background:var(--coral-bg);color:#b23a26}
+  .st-rev,.st-env{background:var(--amber-bg);color:#946a10}
+  .st-apr{background:var(--mint-bg);color:var(--mint-d)}
+  .dvmeta{font-size:11.5px;color:var(--ink2);margin-top:4px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+  .dvav{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,var(--mint),var(--sky));background-size:cover;background-position:center;display:inline-grid;place-items:center;color:#fff;font-size:8px;font-weight:700;flex:none}
+  .dvcli{color:var(--ink);font-weight:600}.dvdate{font-weight:600;color:var(--ink2)}
+  .dvlate{color:var(--coral);font-weight:700}.dvsoon{color:#946a10;font-weight:700}.dvpub{color:var(--ink3)}
+  .dvbtn{border:none;background:var(--mint);color:#fff;font-family:inherit;font-size:12px;font-weight:700;padding:8px 14px;border-radius:9px;cursor:pointer;white-space:nowrap;flex:none}
+  .dvgo{color:var(--ink3);font-size:20px;line-height:1;flex:none;padding:0 2px 0 6px}
+  .dvrow:hover .dvgo{color:var(--mint)}
+  .dvbtn:hover{background:var(--mint-d)}
+  .dvbtn.ghost{background:var(--surf);color:var(--ink2);border:1px solid var(--line)}.dvbtn.ghost:hover{background:var(--col);color:var(--ink)}
+  .wkstrip{display:flex;gap:5px;justify-content:space-between}
+  .wkday{flex:1;text-align:center;border-radius:10px;padding:7px 2px}.wkday.on{background:var(--mint-bg)}
+  .wkl{font-size:9.5px;font-weight:700;color:var(--ink3);letter-spacing:.03em}.wkday.on .wkl{color:var(--mint-d)}
+  .wkbz{height:34px;display:flex;align-items:flex-end;justify-content:center;margin:5px 0 3px}
+  .wkbz i{width:8px;border-radius:4px;background:var(--sky);display:block}.wkday.on .wkbz i{background:var(--mint)}
+  .wkn{font-size:12px;font-weight:700;color:var(--ink)}
+  .esprow{display:flex;align-items:center;gap:10px;padding:9px 2px;border-top:1px solid var(--line2);cursor:pointer}.esprow:first-of-type{border-top:none}
+  .espic{width:30px;height:30px;border-radius:9px;background:var(--surf);display:grid;place-items:center;font-size:14px;flex:none}
+  .espmain{flex:1;min-width:0}
+  .espt{font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .espw{font-size:11px;color:var(--ink2);margin-top:1px}
+  .esptag{font-size:10.5px;color:var(--ink2);background:var(--surf);border:1px solid var(--line);padding:3px 9px;border-radius:20px;white-space:nowrap;flex:none}
+  .sbhd{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:4px 6px 10px}
   .sbttl{flex:1}
-  .shell2.sidecol{grid-template-columns:62px 1fr}
+  .sbacts{display:flex;gap:5px;flex-shrink:0}
+  .sbadd,.sbcoll{border:none;background:rgba(255,255,255,.1);color:#fff;width:24px;height:24px;border-radius:8px;font-size:14px;cursor:pointer;line-height:1;display:grid;place-items:center}
+  .sbadd:hover,.sbcoll:hover{background:rgba(255,255,255,.22)}
+  .sbtop{display:flex;justify-content:flex-end;margin-bottom:6px}
+  #sidebar2 .topnav{flex-direction:column;gap:2px;margin:0 0 10px;flex-wrap:nowrap}
+  #sidebar2 .topnav button{width:100%;justify-content:flex-start;font-size:13.5px;padding:10px 12px;border-radius:10px}
+  #sidebar2 .topnav button .ic{font-size:16px;width:20px;text-align:center}
+  #sidebar2 .topnav button .bd{margin-left:auto}
+  .sbcli{border-top:1px solid rgba(255,255,255,.12);padding-top:11px;margin-top:4px}
+  .shell2.sidecol{grid-template-columns:64px 1fr}
   .sidecol .sidebar2{padding:14px 6px}
+  .sidecol .sbtop{justify-content:center}
+  .sidecol #topnav button{justify-content:center;padding:10px 0;font-size:0}
+  .sidecol #topnav button .ic{font-size:18px;width:auto}
+  .sidecol #topnav button .bd{display:none}
   .sidecol .sbhd{justify-content:center;padding:4px 0 10px}
-  .sidecol .sbttl,.sidecol .sbadd{display:none}
+  .sidecol .sbttl,.sidecol .sbadd,.sidecol .clisearch{display:none}
+  .sidecol .sbcli{border-top:none}
   .sidecol .clicnm{display:none}
   .sidecol .clicn{justify-content:center;padding:7px 0;gap:0}
   .sidecol .clicav{width:30px;height:30px;font-size:10px}
-  .sbadd:hover{background:var(--mint)}
+  .clisearch{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#eaf0f7;border-radius:10px;padding:8px 11px;font-size:12.5px;margin-bottom:9px;outline:none}
+  .clisearch::placeholder{color:rgba(255,255,255,.45)}
+  .clisearch:focus{border-color:var(--mint);background:rgba(255,255,255,.12)}
+  .climas{display:block;width:100%;text-align:left;background:none;border:none;color:var(--mint-s);font-size:12px;font-weight:600;padding:8px 10px;margin-top:2px;cursor:pointer;border-radius:8px}
+  .climas:hover{background:rgba(255,255,255,.08)}
   .notifpop{position:fixed;top:64px;right:18px;width:320px;max-height:72vh;overflow-y:auto;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(15,39,66,.22);padding:16px 14px;z-index:40}
   @media(max-width:860px){.tpinfo{display:none}.topnav button{font-size:0;padding:8px 10px;gap:0}.topnav button .ic{font-size:17px}.topnav .bd{display:none}.shell2{grid-template-columns:188px 1fr}.topsearch{width:150px}}
   .accmod{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 2px;border-top:1px solid var(--line)}
@@ -272,6 +346,10 @@
   .sem-g{background:var(--mint)}.sem-a{background:var(--amber)}.sem-r{background:var(--coral)}
   .pannote{font-size:11.5px;font-weight:700;white-space:nowrap}
   .pannote-g{color:#2e7d32}.pannote-a{color:#b8860b}.pannote-r{color:var(--coral)}
+  .pansum{display:flex;gap:8px;margin:12px 0 4px;flex-wrap:wrap}
+  .pss{font-size:12px;color:var(--ink2);background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:5px 12px}
+  .pss b{font-weight:700;color:var(--ink);font-size:13px}
+  .pss.r b{color:var(--coral)}.pss.a b{color:#b8860b}.pss.g b{color:var(--mint-d)}
   .kpi .ico{font-size:18px}.kpi .n{font-family:var(--serif);font-weight:600;font-size:32px;color:var(--ink);margin-top:6px;line-height:1}
   .kpi .l{font-size:12px;color:var(--ink2);margin-top:5px}
   .grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-top:20px}
@@ -427,6 +505,10 @@
   .isegb.on{background:var(--mint-d);color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(76,175,80,.32)}
   .crmscope{margin-bottom:16px}
   .taskfilter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .cvtog{display:inline-flex;background:var(--col);border-radius:11px;padding:3px;flex:none}
+  .cvb{border:none;background:none;font-family:var(--serif);font-size:12.5px;font-weight:700;color:var(--ink2);padding:7px 14px;border-radius:9px;cursor:pointer;transition:.14s}
+  .cvb.on{background:var(--white);color:var(--ink);box-shadow:var(--shadow)}
+  body.dark .cvb.on{background:var(--navy);color:#fff}
   .ctoolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
   .contfilter{display:inline-flex;align-items:center;gap:8px}
   .cflbl{font-size:12px;color:var(--ink2);font-weight:600}
@@ -1053,6 +1135,47 @@
   .psteph{font-size:15.5px;font-weight:700;color:var(--ink)}
   .psteps{font-size:11.5px;color:var(--ink2);margin:1px 0 13px 35px}
   body.dark .pstepn{background:var(--mint);color:#06210f}
+  /* ---- editor asistente (wizard) ---- */
+  .pwbar{display:flex;align-items:center;gap:5px;margin-bottom:14px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
+  .pwstep{display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:3px 2px;white-space:nowrap;flex:0 0 auto}
+  .pwsnum{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:800;border:1.5px solid var(--line);background:var(--white);color:var(--ink3);transition:.15s;flex:0 0 auto}
+  .pwslbl{font-size:12.5px;font-weight:700;color:var(--ink3);transition:.15s}
+  .pwstep.on .pwsnum{background:var(--edac);border-color:var(--edac);color:#fff;box-shadow:0 3px 10px -1px var(--edac);transform:scale(1.06)}
+  .pwstep.on .pwslbl{color:var(--edac)}
+  .pwstep.done .pwsnum{background:var(--mint-d);border-color:var(--mint-d);color:#fff}
+  .pwstep.done .pwslbl{color:var(--mint-d)}
+  .pwstep:not(.on):not(.done):hover .pwsnum{border-color:var(--ink3);color:var(--ink2)}
+  .pwsline{flex:1 1 auto;min-width:12px;height:2.5px;border-radius:2px;background:var(--line)}
+  .pwsline.done{background:var(--mint-d)}
+  body.dark .pwsnum{background:var(--col)}
+  .pwcard{display:flex;flex-direction:column}
+  .pwpane{animation:pwfade .22s ease}
+  @keyframes pwfade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  .pwhd{margin-bottom:15px;border-left:3px solid var(--edac);padding-left:11px}
+  .pweye{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--edac);margin-bottom:3px}
+  .pwhd h2{font-family:var(--serif);font-size:18px;font-weight:800;color:var(--ink);margin:0;letter-spacing:-.01em}
+  .pwhd p{font-size:12.5px;color:var(--ink2);margin:3px 0 0}
+  .pwnav{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}
+  .pwback{background:var(--white);border:1px solid var(--line);color:var(--ink2);font-weight:700;font-size:13px;padding:9px 17px;border-radius:11px;cursor:pointer;transition:.15s}
+  .pwback:hover{border-color:var(--ink3);color:var(--ink)}
+  .pwnext{margin-left:auto;background:var(--edac);border:none;color:#fff;font-weight:800;font-size:13px;padding:11px 22px;border-radius:11px;cursor:pointer;box-shadow:0 4px 12px -3px var(--edac);transition:.15s}
+  .pwnext:hover{background:var(--edac2);transform:translateY(-1px)}
+  .pwdone{margin-left:auto;font-size:11.5px;font-weight:600;color:var(--mint-d)}
+  body.dark .pwback{background:var(--col)}
+  body.dark .pwnext{color:#06210f}
+  /* ---- archivo 1-2-3 ---- */
+  .arz{display:flex;flex-direction:column}
+  .arzrow{display:flex;gap:13px;padding:2px 0}
+  .arzrow+.arzrow{border-top:1px dashed var(--line);margin-top:11px;padding-top:14px}
+  .arzn{width:27px;height:27px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-size:13px;font-weight:800;background:var(--edac);color:#fff;margin-top:1px;box-shadow:0 2px 7px -2px var(--edac)}
+  .arzbody{flex:1;min-width:0}
+  .arzt{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:9px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .arzbtn{width:100%;margin:0}
+  .arzsub{font-size:11px;color:var(--ink2);margin-top:7px;line-height:1.5}
+  .arzhint{font-size:11.5px;color:var(--ink2);line-height:1.55;margin-top:8px;background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+  .rostatwrap{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+  .rostat{font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid}
+  .rostathint{font-size:11px;color:var(--ink2);flex:1;min-width:170px;line-height:1.4}
   .fldsep{height:1px;background:var(--line);margin:15px 0}
   .filezone{display:flex;align-items:center;gap:12px;border:1.5px dashed var(--line);border-radius:12px;padding:11px 12px;cursor:pointer;background:var(--surf);transition:.15s}
   .filezone:hover{border-color:var(--mint);background:var(--mint-bg)}
@@ -1168,36 +1291,38 @@
     <button class="lbtn" id="enter">Entrar</button>
     <div class="lforgot">¿Olvidaste tu contraseña? Solicita a tu administrador el restablecimiento de tu acceso.</div>
     <div class="lnote">Las cuentas las crea la administradora. Si no tienes acceso, pídeselo a Perla.</div>
-    <details class="demobox"><summary>Revisar en modo demo (sin cuenta)</summary><div class="lrole"><label>Entrar como</label><select id="demoRole"><option value="admin">Perla · Administradora</option><option value="cm">Anahí · Community Manager</option><option value="disenador">Sofía · Diseño</option><option value="editor">Karla · Edición</option><option value="doctor">Dr. Cárdenas · Doctor</option></select></div><button class="lbtn lbtn2" id="enterDemo">Entrar en modo demo</button></details>
+    <details class="demobox" open=""><summary>Revisar en modo demo (sin cuenta)</summary><div class="lrole"><label>Entrar como</label><select id="demoRole"><option value="admin">Perla · Administradora</option><option value="cm">Anahí · Community Manager</option><option value="disenador">Sofía · Diseño</option><option value="editor">Karla · Edición</option><option value="doctor">Dr. Cárdenas · Doctor</option></select></div><button class="lbtn lbtn2" id="enterDemo">Entrar en modo demo</button></details>
   </div>
 </div>
 
 <div id="agencia" style="display: block;">
   <header class="topbar">
-    <div class="tbrand"><svg width="26" height="22" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><span class="w">Med<span class="b">Mark</span></span></div>
-    <nav class="topnav" id="topnav">
-      <button class="on" data-p="inicio" data-roles="admin,cm,disenador,editor"><span class="ic">🏠</span> Inicio</button>
-      <button data-p="contenido" data-roles="admin,cm,disenador,editor"><span class="ic">✅</span> Actividades</button>
-      <button data-p="calendario" data-roles="admin,cm,disenador,editor"><span class="ic">🗓️</span> Calendario</button>
-      <button data-p="mensajes" data-roles="admin,cm"><span class="ic">💬</span> Mensajes <span class="bd" id="msgBadge" style="display: none;">1</span></button>
-      <button data-p="admin" data-roles="admin"><span class="ic">⚙️</span> Administración</button>
-    </nav>
+    <div class="tbrand"><svg width="26" height="22" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><span class="w">Med<span class="b">Mark</span></span></div>
     <div class="ttools">
-      <button class="ticon" id="searchBtn" title="Buscar cliente">🔍</button>
-      <input id="topSearch" class="topsearch" placeholder="Buscar cliente…" style="display:none">
-      <button class="ticon" id="bellBtn" title="Notificaciones">🔔<span class="bdot" id="bellDot" style="display:none"></span></button>
-      <div class="tprofile" data-openprofile=""><div class="av" id="sav">PG</div><div class="tpinfo"><b id="sname">Perla Garza</b><small id="srole">Administradora · Dueña</small></div></div>
-      <button class="out" title="Cerrar sesión" data-logout="">⎋</button>
+      <button class="ticon" id="bellBtn" title="Notificaciones">🔔<span class="bdot" id="bellDot" style=""></span></button>
+      <div class="tprofile" data-openprofile="" title="Mi perfil"><div class="av" id="sav">PG</div><div class="tpinfo"><b id="sname">Perla Garza</b><small id="srole">Administradora · Dueña</small></div></div>
+      <button class="tout" data-logout="" title="Cerrar sesión">⎋</button>
     </div>
   </header>
   <div class="shell2">
-    <aside class="sidebar2" id="sidebar2" data-roles="admin,cm" data-p="clientes">
-      <div class="sbhd"><button class="sbadd" data-newclient="" title="Nuevo cliente">＋</button><span class="sbttl">Clientes</span><button class="sbcol" data-sidecollapse="" title="Ocultar / mostrar nombres">‹</button></div>
-      <div id="snavClients"><div class="clinone">Sin cuentas</div></div>
+    <aside class="sidebar2" id="sidebar2">
+      <div class="sbtop"><button class="sbcoll" data-sidecollapse="" title="Ocultar barra">‹</button></div>
+      <nav class="topnav" id="topnav">
+        <button class="on" data-p="inicio" data-roles="admin,cm,disenador,editor"><span class="ic">🏠</span> Inicio</button>
+        <button data-p="contenido" data-roles="admin,cm,disenador,editor" class=""><span class="ic">📋</span> Tablero</button>
+        <button data-p="calendario" data-roles="admin,cm,disenador,editor" class=""><span class="ic">🗓️</span> Calendario</button>
+        <button data-p="mensajes" data-roles="admin,cm" class=""><span class="ic">💬</span> Mensajes <span class="bd" id="msgBadge">1</span></button>
+        <button data-p="admin" data-roles="admin" class=""><span class="ic">⚙️</span> Administración</button>
+      </nav>
+      <div class="sbcli" id="sbcli" data-p="clientes">
+        <div class="sbhd"><span class="sbttl">Mis clientes</span><button class="sbadd" data-newclient="" title="Nuevo cliente">＋</button></div>
+        <input id="topSearch" class="clisearch" placeholder="🔍 Buscar cliente…">
+        <div id="snavClients"><div class="clicn" data-folder="8" title="Alejandro" tabindex="0" role="button"><div class="clicav">A<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Alejandro</span></div><div class="clicn" data-folder="18" title="Ana Barrales" tabindex="0" role="button"><div class="clicav">AB<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Ana Barrales</span></div><div class="clicn" data-folder="9" title="Carlos Escobedo" tabindex="0" role="button"><div class="clicav">CE<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Carlos Escobedo</span></div><div class="clicn" data-folder="14" title="Cristóbal Vallejo" tabindex="0" role="button"><div class="clicav">CV<span class="clidot" style="background:#66BB6A"></span></div><span class="clicnm">Cristóbal Vallejo</span></div><div class="clicn" data-folder="5" title="Dr. Carlos Cárdenas" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Dr. Carlos Cárdenas</span></div><div class="clicn" data-folder="21" title="Dr. Iván Robles" tabindex="0" role="button"><div class="clicav">IR<span class="clidot" style="background:#f5a623"></span></div><span class="clicnm">Dr. Iván Robles</span></div><div class="clicn" data-folder="6" title="Dra. Carolina Centeno" tabindex="0" role="button"><div class="clicav">CC<span class="clidot" style="background:#ff6a6a"></span></div><span class="clicnm">Dra. Carolina Centeno</span></div><button class="climas" data-clientsmore="">▾ Ver todos (18)</button></div>
+      </div>
     </aside>
-    <main class="content" id="content"><div class="phb"><div class="blob hb1"></div><div class="blob hb2"></div><div class="g">Buenas tardes,</div><h1>Hola, Perla 👋</h1><div class="s">Esto es lo que necesita tu atención esta semana.</div><svg class="ecg" width="70" height="24" viewBox="0 0 70 26"><polyline points="0,16 14,16 19,5 25,23 30,11 35,16 70,16" fill="none" stroke="#66BB6A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><div class="wk">📅 Lunes 29 de junio, 2026</div></div>  <div class="pad" style="max-width:none;padding-right:30px"><div class="kpis" style="grid-template-columns:repeat(3,1fr)"><div class="kpi s" data-goto="contenido" style="cursor:pointer" tabindex="0" role="button"><div class="ico">👀</div><div class="n">0</div><div class="l">Esperan tu visto bueno</div></div><div class="kpi a" data-goto="contenido" style="cursor:pointer" tabindex="0" role="button"><div class="ico">⏳</div><div class="n">0</div><div class="l">Esperando al doctor</div></div><div class="kpi v" data-goto="pagos" style="cursor:pointer" tabindex="0" role="button"><div class="ico">💰</div><div class="n">0</div><div class="l">Pagos por atender</div></div></div>  <div class="dashgrid"><div class="card"><h3>Pendientes del día</h3><div class="csub">Acciones que dependen de ti ahora</div><div class="folempty">Todo en orden. Nada urgente por ahora ✅</div></div>  <div class="card"><h3>Panorama de cuentas</h3><div class="csub">Tus cuentas + alertas de otras CM · Solo las que requieren atención · 🟡 pendiente · 🔴 urgente</div><div class="folempty">Sin cuentas activas.</div></div>  <div class="card"><h3>Carga del equipo</h3><div class="csub">Pendientes de cada quien en tus cuentas · 🟢 al día · 🟡 carga alta · 🔴 retraso. Escríbele antes de que se venza.</div><div class="person"><div class="av">SO</div><div class="nm">Sofía</div><div class="bar"><i style="width:8%;background:var(--mint)"></i></div><span class="pc">0</span></div><div class="person"><div class="av">KA</div><div class="nm">Karla</div><div class="bar"><i style="width:8%;background:var(--mint)"></i></div><span class="pc">0</span></div></div><div class="card"><div class="anthd"><h3>Listas para julio</h3><div class="antbig"><b style="color:#9aa9bb">0</b><span>/0 listas</span></div></div><div class="antoverall"><i style="width:0%;background:#9aa9bb"></i></div><div class="csub">0% del próximo mes listo · solo las cuentas que faltan por adelantar</div><div class="folmut" style="padding:8px 2px">🎉 Todo julio aprobado o programado.</div></div></div></div></main>
+    <main class="content" id="content"><div class="vbar"><div><h1 class="vtitle">Inicio</h1><div class="vsub">Martes 30 de junio · lo asignado a ti</div></div><div class="vactions"><div class="vseg"><button class="" data-iniscope="mio">Solo lo mío</button><button class="on" data-iniscope="todo">Todo</button></div></div></div><div class="pad" style="max-width:none;padding:18px 24px 30px"><h2 class="vhello">Hola, Perla 👋</h2><p class="vlead">Tienes <b class="vhi">8 entregas en curso</b>. 1 debe quedar lista mañana. 10 piezas esperan a otros.</p><div class="inicgrid"><div class="card"><div class="vch"><h3>Próximas entregas</h3></div><div class="dvrow" data-post="2" style="cursor:pointer"><span class="dvprio pr-r"></span><span class="dvchip st-rev">En revisión</span><div class="dvmain"><div class="dvt">Mommy Makeover: recupera tu cuerpo después del embaraz</div><div class="dvmeta"><span class="dvav">CC</span><span class="dvcli">Dr. Carlos Cárdenas</span> · <b class="dvdate"><span class="dvlate">⚑ venció 7 jun</span></b> <span class="dvpub">· publica 22 jun</span></div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="dvrow" data-post="15" style="cursor:pointer"><span class="dvprio pr-r"></span><span class="dvchip st-rev">En revisión</span><div class="dvmain"><div class="dvt">Mitos sobre la quimioterapia que asustan sin razón.</div><div class="dvmeta"><span class="dvav">Ee</span><span class="dvcli">Especialistas en Cáncer</span> · <b class="dvdate"><span class="dvlate">⚑ venció 19 jun</span></b> <span class="dvpub">· publica 29 jun</span></div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="dvrow" data-post="7" style="cursor:pointer"><span class="dvprio pr-r"></span><span class="dvchip st-rev">En revisión</span><div class="dvmain"><div class="dvt">Ácido hialurónico: qué hace y qué NO hace por tu rostr</div><div class="dvmeta"><span class="dvav">NK</span><span class="dvcli">Nicole K</span> · <b class="dvdate"><span class="dvlate">⚑ venció 20 jun</span></b> <span class="dvpub">· publica 29 jun</span></div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="dvrow" data-post="11" style="cursor:pointer"><span class="dvprio pr-r"></span><span class="dvchip st-rev">En revisión</span><div class="dvmain"><div class="dvt">Chequeo cardiológico: qué incluye y cada cuándo hacerl</div><div class="dvmeta"><span class="dvav">CE</span><span class="dvcli">Carlos Escobedo</span> · <b class="dvdate"><span class="dvlate">⚑ venció 21 jun</span></b> <span class="dvpub">· publica 30 jun</span></div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="dvrow" data-post="5" style="cursor:pointer"><span class="dvprio pr-a"></span><span class="dvchip st-apr">Aprobado</span><div class="dvmain"><div class="dvt">Vesícula: señales de que ya no debes esperar.</div><div class="dvmeta"><span class="dvav">CC</span><span class="dvcli">Dra. Carolina Centeno</span> · <b class="dvdate"><span class="dvlate">⚑ venció 9 jun</span></b> <span class="dvpub">· publica 19 jun</span></div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="dvrow" data-post="13" style="cursor:pointer"><span class="dvprio pr-a"></span><span class="dvchip st-apr">Aprobado</span><div class="dvmain"><div class="dvt">Electrocardiograma el mismo día: rápido y sin dolor.</div><div class="dvmeta"><span class="dvav">CE</span><span class="dvcli">Carlos Escobedo</span> · <b class="dvdate"><span class="dvlate">⚑ venció 14 jun</span></b> <span class="dvpub">· publica 26 jun</span></div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="dvrow" data-post="19" style="cursor:pointer"><span class="dvprio pr-a"></span><span class="dvchip st-rev">En revisión</span><div class="dvmain"><div class="dvt">Artroscopia de hombro: en qué consiste y cómo es la re</div><div class="dvmeta"><span class="dvav">IR</span><span class="dvcli">Dr. Iván Robles</span> · <b class="dvdate"><span class="dvsoon">lista mañana</span></b> <span class="dvpub">· publica 4 jul</span></div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="dvrow" data-post="20" style="cursor:pointer"><span class="dvprio pr-s"></span><span class="dvchip st-apr">Aprobado</span><div class="dvmain"><div class="dvt">Control prenatal: por qué cada cita cuenta.</div><div class="dvmeta"><span class="dvav">PL</span><span class="dvcli">Dra. Paty Lugo</span> · <b class="dvdate">lista en 2 días · 2 jul</b> <span class="dvpub">· publica 4 jul</span></div></div><span class="dvgo" aria-hidden="true">›</span></div></div><div class="inicside"><div class="card"><div class="vch"><h3>Tu semana</h3><span class="vchn">8 entregas</span></div><div class="wkstrip"><div class="wkday"><div class="wkl">LUN</div><div class="wkbz"></div><div class="wkn">0</div></div><div class="wkday on"><div class="wkl">MAR</div><div class="wkbz"></div><div class="wkn">0</div></div><div class="wkday"><div class="wkl">MIÉ</div><div class="wkbz"><i style="height:32px"></i></div><div class="wkn">1</div></div><div class="wkday"><div class="wkl">JUE</div><div class="wkbz"><i style="height:32px"></i></div><div class="wkn">1</div></div><div class="wkday"><div class="wkl">VIE</div><div class="wkbz"></div><div class="wkn">0</div></div><div class="wkday"><div class="wkl">SÁB</div><div class="wkbz"></div><div class="wkn">0</div></div><div class="wkday"><div class="wkl">DOM</div><div class="wkbz"></div><div class="wkn">0</div></div></div></div><div class="card"><div class="vch"><h3>Esperando a otros</h3><span class="vchn">no depende de ti</span></div><div class="esprow" data-post="1"><span class="espic">🎨</span><div class="espmain"><div class="espt">BLEFAROPLASTIA: por qué tus ojos se ven </div><div class="espw">Con diseño · Dr. Carlos Cárdenas</div></div><span class="esptag">en proceso</span></div><div class="esprow" data-post="3"><span class="espic">⏳</span><div class="espmain"><div class="espt">Resultados naturales: la historia real d</div><div class="espw">Esperando aprobación · Dr. Carlos Cárdenas</div></div><span class="esptag">19 días</span></div><div class="esprow" data-post="4"><span class="espic">🎨</span><div class="espmain"><div class="espt">La obesidad no se trata con una sola con</div><div class="espw">Con diseño · Dra. Carolina Centeno</div></div><span class="esptag">cambios</span></div><div class="esprow" data-post="6"><span class="espic">🎨</span><div class="espmain"><div class="espt">3 señales de que tu piel necesita un fac</div><div class="espw">Con diseño · Nicole K</div></div><span class="esptag">en proceso</span></div><div class="esprow" data-post="9"><span class="espic">🎨</span><div class="espmain"><div class="espt">Lo que tu piel te pide a gritos en época</div><div class="espw">Con diseño · Nicole K</div></div><span class="esptag">cambios</span></div></div></div></div></div></main>
   </div>
-  <div class="notifpop" id="notifPanel" style="display:none"><div class="arlbl">Actividad del equipo</div><div class="afnone">Sin novedades por ahora.</div></div>
+  <div class="notifpop" id="notifPanel" style="display:none"><div class="arlbl">Actividad del equipo</div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Mommy Makeover: recupera tu …»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Ácido hialurónico: qué hace …»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «Chequeo cardiológico: qué in…»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Dra. Carolina Centeno</b> pidió un cambio</div><div class="afw">Reforzar al equipo de mujeres en la imag</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Nicole K</b> pidió un cambio</div><div class="afw">Acortar el gancho a 3 seg y poner música</div></div></div><div class="afeed"><div class="afdot">🔁</div><div><div class="aft"><b>Especialistas en Cáncer</b> pidió un cambio</div><div class="afw">Agregar subtítulos y suavizar el cierre.</div></div></div><div class="afeed"><div class="afdot">✅</div><div><div class="aft"><b>Dra. Carolina Centeno</b> aprobó «Vesícula: señales de que y…»</div><div class="afw">lista para programar</div></div></div><div class="afeed"><div class="afdot">✅</div><div><div class="aft"><b>Carlos Escobedo</b> aprobó «Electrocardiograma el mism…»</div><div class="afw">lista para programar</div></div></div><div class="afeed"><div class="afdot">✅</div><div><div class="aft"><b>Dra. Paty Lugo</b> aprobó «Control prenatal: por qué …»</div><div class="afw">lista para programar</div></div></div></div>
 </div>
 
 <div id="doctor">
@@ -1293,11 +1418,14 @@ var posts=[
  {id:14,doctor:"Especialistas en Cáncer",plat:"Instagram",type:"Imagen",date:"2026-06-24",pubDate:"2026-07-01",status:"Borrador",funnel:"Inconsciente",copy:"La detección temprana cambia el pronóstico. Revísate a tiempo.",img:null,who:"Sofía (Diseño)"},
  {id:15,doctor:"Especialistas en Cáncer",plat:"Instagram",type:"Carrusel",date:"2026-06-19",pubDate:"2026-06-29",status:"Revisión",funnel:"Consciente del problema",copy:"Mitos sobre la quimioterapia que asustan sin razón.",img:null,who:"Karla (Edición)"},
  {id:16,doctor:"Especialistas en Cáncer",plat:"Instagram",type:"Video",date:"2026-06-16",pubDate:"2026-06-27",status:"Cambios",funnel:"Consciente de la solución",changeNote:"Agregar subtítulos y suavizar el cierre.",copy:"Acompañamiento integral: no estás solo en este proceso.",img:null,who:"Karla (Edición)"},
- {id:17,doctor:"Especialistas en Cáncer",plat:"Instagram",type:"Imagen",date:"2026-06-12",pubDate:"2026-06-30",status:"Programado",funnel:"Fidelización",copy:"Gracias a quienes comparten su historia. 💚",img:null,who:"Sofía (Diseño)"}
+ {id:17,doctor:"Especialistas en Cáncer",plat:"Instagram",type:"Imagen",date:"2026-06-12",pubDate:"2026-06-30",status:"Programado",funnel:"Fidelización",copy:"Gracias a quienes comparten su historia. 💚",img:null,who:"Sofía (Diseño)"},
+ {id:18,doctor:"Dr. Iván Robles",plat:"Instagram",type:"Reel",date:"2026-06-30",pubDate:"2026-07-03",status:"Borrador",funnel:"Consciente del problema",copy:"3 señales de que tu rodilla necesita revisión (no lo dejes pasar).",img:null,who:"Karla (Edición)"},
+ {id:19,doctor:"Dr. Iván Robles",plat:"Instagram",type:"Carrusel",date:"2026-07-01",pubDate:"2026-07-04",status:"Revisión",funnel:"Consciente de la solución",copy:"Artroscopia de hombro: en qué consiste y cómo es la recuperación.",img:null,who:"Sofía (Diseño)"},
+ {id:20,doctor:"Dra. Paty Lugo",plat:"Instagram",type:"Imagen",date:"2026-07-02",pubDate:"2026-07-04",status:"Aprobado",funnel:"Consciente del servicio",copy:"Control prenatal: por qué cada cita cuenta.",img:null,who:"Sofía (Diseño)"}
 ];
 var clients=[
- {id:5,doc:"Dr. Carlos Cárdenas",esp:"Cirugía Plástica",val:"$12,000",cm:"Anahí",acc:"3",stage:"Activo",phone:"55 9154 3106",email:"contacto@plasticacardenas.com",photo:null,accounts:[{platform:"Instagram",username:"breastandbodyexpert",url:"https://instagram.com/breastandbodyexpert"},{platform:"TikTok",username:"drcarloscardenas",url:"https://tiktok.com/@drcarloscardenas"},{platform:"Facebook",username:"Dr. Carlos Michel Cárdenas Salomón",url:"https://facebook.com/plasticacardenas"}],plan:"2 posts/sem · historias c/3 días",palette:"Por definir (hoy solo azul médico)",fonts:"Por definir",personality:"Natural, elegante, seguro, cercano",keywords:"blefaroplastia, cirugía mamaria, abdominoplastia, liposucción, mommy makeover, robótica",notes:"Público objetivo 40-80 (audiencia real 25-50). CTA principal: WhatsApp. Pendiente: campaña de Mommy Makeover y reemplazar la foto generada por IA del sitio.",reports:{"2026-04":{nets:{Instagram:{alc:18000,seg:80,msg:24,likes:1100,com:140,guard:260,comp:160,rep:0},Facebook:{alc:10000,seg:40,msg:14,likes:400,com:50,guard:0,comp:90,rep:0}},note:"",next:""},"2026-05":{nets:{Instagram:{alc:24000,seg:140,msg:31,likes:1500,com:180,guard:340,comp:220,rep:0},Facebook:{alc:12500,seg:70,msg:18,likes:520,com:70,guard:0,comp:120,rep:0}},note:"",next:""},"2026-06":{nets:{Instagram:{alc:32000,seg:220,msg:40,likes:2100,com:240,guard:480,comp:300,rep:0},Facebook:{alc:16200,seg:120,msg:23,likes:700,com:90,guard:0,comp:160,rep:0}},pauta:{inv:4000,alc:22000,msg:48,conv:6},note:"",next:""}}},
- {id:6,doc:"Dra. Carolina Centeno",esp:"Cirugía Bariátrica y General",val:"$10,000",cm:"Perla",acc:"2",stage:"Renovación",phone:"",email:"hola@dracarolinacenteno.com",photo:null,accounts:[{platform:"Instagram",username:"cirujanobariatraqro",url:"https://instagram.com/cirujanobariatraqro"},{platform:"Facebook",username:"Dra. Carolina Centeno",url:"https://facebook.com/dracarolinacenteno"}],plan:"3 IG/sem · 2 FB/sem · 8-9 historias/sem",palette:"Por definir (hoy solo azul médico)",fonts:"Por definir",personality:"Empática, cercana, sin prejuicios · equipo de mujeres",keywords:"bariátrica, manga gástrica, bypass, bipartición intestinal, SADIS, vesícula, hernias, robótica",notes:"Regla del brief: hablar MENOS de medicamentos (GLP-1/Ozempic). Equipo de mujeres como pilar visual. Priorizar 3 procedimientos ancla. Sitio oficial: dracarolinacenteno.com.",reports:{"2026-05":{nets:{Instagram:{alc:9000,seg:50,msg:14,likes:600,com:80,guard:140,comp:90,rep:0},Facebook:{alc:6000,seg:30,msg:8,likes:200,com:30,guard:0,comp:50,rep:0}},note:"",next:""},"2026-06":{nets:{Instagram:{alc:12000,seg:90,msg:20,likes:800,com:110,guard:200,comp:130,rep:0},Facebook:{alc:7800,seg:50,msg:11,likes:260,com:40,guard:0,comp:70,rep:0}},note:"",next:""}}},
+ {id:5,doc:"Dr. Carlos Cárdenas",esp:"Cirugía Plástica",val:"$12,000",cm:"Anahí",acc:"3",stage:"Activo",package:"Crecimiento",paidThisMonth:true,phone:"55 9154 3106",email:"contacto@plasticacardenas.com",photo:null,accounts:[{platform:"Instagram",username:"breastandbodyexpert",url:"https://instagram.com/breastandbodyexpert"},{platform:"TikTok",username:"drcarloscardenas",url:"https://tiktok.com/@drcarloscardenas"},{platform:"Facebook",username:"Dr. Carlos Michel Cárdenas Salomón",url:"https://facebook.com/plasticacardenas"}],plan:"2 posts/sem · historias c/3 días",palette:"Por definir (hoy solo azul médico)",fonts:"Por definir",personality:"Natural, elegante, seguro, cercano",keywords:"blefaroplastia, cirugía mamaria, abdominoplastia, liposucción, mommy makeover, robótica",arranque:{gb_perfil:true,gb_fotos:true,bio_ig:true,bio_fb:true,link_bio:true,wa_business:true},objetivos:"Llenar la agenda de cirugía mamaria y mommy makeover · posicionarse como referente premium de cirugía plástica en la zona.",notes:"Público objetivo 40-80 (audiencia real 25-50). CTA principal: WhatsApp. Pendiente: campaña de Mommy Makeover y reemplazar la foto generada por IA del sitio.",reports:{"2026-04":{nets:{Instagram:{alc:18000,seg:80,msg:24,likes:1100,com:140,guard:260,comp:160,rep:0},Facebook:{alc:10000,seg:40,msg:14,likes:400,com:50,guard:0,comp:90,rep:0}},note:"",next:""},"2026-05":{nets:{Instagram:{alc:24000,seg:140,msg:31,likes:1500,com:180,guard:340,comp:220,rep:0},Facebook:{alc:12500,seg:70,msg:18,likes:520,com:70,guard:0,comp:120,rep:0}},note:"",next:""},"2026-06":{nets:{Instagram:{alc:32000,seg:220,msg:40,likes:2100,com:240,guard:480,comp:300,rep:0},Facebook:{alc:16200,seg:120,msg:23,likes:700,com:90,guard:0,comp:160,rep:0}},pauta:{inv:4000,alc:22000,msg:48,conv:6},note:"",next:""}}},
+ {id:6,doc:"Dra. Carolina Centeno",esp:"Cirugía Bariátrica y General",val:"$10,000",cm:"Perla",acc:"2",stage:"Renovación",package:"Esencial",payStatus:"Pendiente",phone:"",email:"hola@dracarolinacenteno.com",photo:null,accounts:[{platform:"Instagram",username:"cirujanobariatraqro",url:"https://instagram.com/cirujanobariatraqro"},{platform:"Facebook",username:"Dra. Carolina Centeno",url:"https://facebook.com/dracarolinacenteno"}],plan:"3 IG/sem · 2 FB/sem · 8-9 historias/sem",palette:"Por definir (hoy solo azul médico)",fonts:"Por definir",personality:"Empática, cercana, sin prejuicios · equipo de mujeres",keywords:"bariátrica, manga gástrica, bypass, bipartición intestinal, SADIS, vesícula, hernias, robótica",arranque:{gb_perfil:true,bio_ig:true},objetivos:"Posicionarse como referente de cirugía bariátrica con enfoque humano · más manga gástrica y bypass agendados.",notes:"Regla del brief: hablar MENOS de medicamentos (GLP-1/Ozempic). Equipo de mujeres como pilar visual. Priorizar 3 procedimientos ancla. Sitio oficial: dracarolinacenteno.com.",reports:{"2026-05":{nets:{Instagram:{alc:9000,seg:50,msg:14,likes:600,com:80,guard:140,comp:90,rep:0},Facebook:{alc:6000,seg:30,msg:8,likes:200,com:30,guard:0,comp:50,rep:0}},note:"",next:""},"2026-06":{nets:{Instagram:{alc:12000,seg:90,msg:20,likes:800,com:110,guard:200,comp:130,rep:0},Facebook:{alc:7800,seg:50,msg:11,likes:260,com:40,guard:0,comp:70,rep:0}},note:"",next:""}}},
  {id:7,doc:"Mallyolo",esp:"",val:"$8,000",cm:"Anahí",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true},
  {id:8,doc:"Alejandro",esp:"",val:"$8,000",cm:"Anahí",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true},
  {id:9,doc:"Carlos Escobedo",esp:"Cardiología",val:"$8,000",cm:"Anahí",acc:"2",stage:"Activo",phone:"442 305 9981",email:"contacto@drescobedocardio.com",photo:null,accounts:[{platform:"Instagram",username:"dr.escobedo.cardio",url:"https://instagram.com/dr.escobedo.cardio"},{platform:"Facebook",username:"Dr. Carlos Escobedo",url:"https://facebook.com/drescobedocardio"}],plan:"2 posts/sem · 1 reel/sem",driveUrl:"https://drive.google.com/drive/folders/ejemplo-escobedo",palette:"Azul médico, blanco, rojo tenue",fonts:"Por definir",personality:"Confiable, claro, preventivo",keywords:"cardiología, electrocardiograma, hipertensión, colesterol, chequeo, arritmia",notes:"Enfoque en prevención. Lenguaje simple, sin alarmismo.",paidThisMonth:true,reports:{"2026-05":{nets:{Instagram:{alc:6200,seg:40,msg:9,likes:300,com:40,guard:70,comp:50,rep:0},Facebook:{alc:4000,seg:20,msg:5,likes:130,com:18,guard:0,comp:30,rep:0}},note:"",next:""},"2026-06":{nets:{Instagram:{alc:8800,seg:75,msg:15,likes:430,com:60,guard:110,comp:80,rep:0},Facebook:{alc:5200,seg:35,msg:8,likes:180,com:25,guard:0,comp:45,rep:0}},note:"",next:""}}},
@@ -1311,9 +1439,11 @@ var clients=[
  {id:17,doc:"Gaby H",esp:"",val:"$8,000",cm:"Perla",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true},
  {id:18,doc:"Ana Barrales",esp:"",val:"$8,000",cm:"Perla",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true},
  {id:19,doc:"Liz",esp:"",val:"$8,000",cm:"Perla",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true},
- {id:20,doc:"Freedom",esp:"",val:"$8,000",cm:"Perla",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true}
+ {id:20,doc:"Freedom",esp:"",val:"$8,000",cm:"Perla",acc:"0",stage:"Activo",phone:"",email:"",photo:null,accounts:[],plan:"",palette:"",fonts:"",personality:"",keywords:"",notes:"",paidThisMonth:true},
+ {id:21,doc:"Dr. Iván Robles",esp:"Traumatología",val:"$8,000",cm:"Anahí",acc:"1",stage:"Activo",phone:"",email:"",photo:null,accounts:[{platform:"Instagram",username:"dr.ivanrobles",url:"https://instagram.com/dr.ivanrobles"}],plan:"2 IG/sem · 1 reel/sem",palette:"",fonts:"",personality:"Cercano, directo, deportivo",keywords:"rodilla, hombro, fractura, artroscopia, dolor articular",notes:"",paidThisMonth:true},
+ {id:22,doc:"Dra. Paty Lugo",esp:"Ginecología",val:"$8,000",cm:"Anahí",acc:"1",stage:"Activo",phone:"",email:"",photo:null,accounts:[{platform:"Instagram",username:"dra.patylugo",url:"https://instagram.com/dra.patylugo"}],plan:"3 IG/sem · historias diarias",palette:"",fonts:"",personality:"Cálida, informada, de confianza",keywords:"control prenatal, papanicolau, anticoncepción, menopausia",notes:"",paidThisMonth:true}
 ];
-var nextPost=18,nextClient=21,tmpImg=null,tmpClientPhoto=null,tmpAccounts=[],editPostId=null,editReturn='contenido',tmpInspo=[],editFolderReturn=null;
+var nextPost=21,nextClient=23,tmpImg=null,tmpClientPhoto=null,tmpAccounts=[],editPostId=null,editReturn='contenido',tmpInspo=[],editFolderReturn=null;
 function docList(){return clients.map(function(c){return c.doc;});}
 function responsables(){var n=staff.map(function(s){return s.name;});return n.length?n:['(sin equipo)'];}
 function shortFromUrl(u){if(!u)return '';var s=u.replace(/^https?:\/\//,'').replace(/^www\./,'').split('?')[0].split('#')[0];var parts=s.split('/').filter(Boolean);if(parts.length<2)return (parts[0]||'').replace(/^@/,'');var name=parts[parts.length-1].replace(/^@/,'');return name||parts[0];}
@@ -1378,7 +1508,7 @@ function renderHistory(){var c=clients.filter(function(x){return x.id===histId})
   var sel='<select class="paysel" data-histperiod><option value="Todos">Todos los meses</option>'+buildPeriods(c).map(function(pp){var v=pp.mes+'|'+pp.y;return '<option value="'+v+'"'+(v===histPeriod?' selected':'')+'>'+cap(pp.mes)+' '+pp.y+'</option>';}).join('')+'</select>';
   $('#modal').innerHTML='<div class="mhd"><div><h2>Historial de pagos</h2><div style="font-size:12px;color:var(--ink2);margin-top:3px">'+escapeHtml(c.doc)+' · cada pago con fecha y hora</div></div><button class="x" data-closemodal>✕</button></div><div class="mbd"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:8px"><span style="font-size:12px;font-weight:600;color:var(--ink2)">Mes:</span>'+sel+'</div>'+rows+'</div>';
 }
-function confirmPay(id){var c=clients.filter(function(x){return x.id===id})[0];if(!c)return;c.paidThisMonth=true;logPayment(c);if(typeof CLOUD!=='undefined'&&CLOUD&&c.dbid)setClientePagoDB(c.dbid,true).catch(function(){});refresh();toast('✅ Pago confirmado y registrado · '+c.doc);}
+function confirmPay(id){var c=clients.filter(function(x){return x.id===id})[0];if(!c)return;var _cp=c.comprobante;c.paidThisMonth=true;logPayment(c);if(typeof CLOUD!=='undefined'&&CLOUD&&c.dbid){setClientePagoDB(c.dbid,true).catch(function(){});var _pp={estado:'Pagado',monto:c.val||null};if(isStoragePath(_cp))_pp.comprobante=_cp;savePagoDB(c.dbid,pagoMesActual(),_pp).catch(function(){});}refresh();toast('✅ Pago confirmado y registrado · '+c.doc);}
 function payInfo(c){
   if(c.paidThisMonth)return {col:'#4CAF50',badge:'<span class="tag t-g">Pagado ✓</span>',retraso:0};
   var day=new Date().getDate(),due=c.payDay||10;
@@ -1389,12 +1519,15 @@ function payInfo(c){
 /* ---------- mensajes + notificaciones ---------- */
 var convos={5:[{who:'them',text:'Hola Anahí, ya vi la propuesta 👍',time:'10:02'},{who:'post',postId:1,text:'Me gusta, pero pongamos un CTA más claro al WhatsApp.',time:'10:08'},{who:'note',text:'Pasar este cambio a Sofía (diseño).',time:'10:09'},{who:'me',text:'¡Claro, Doctor! Lo ajustamos hoy.',time:'10:12'}],6:[{who:'them',text:'¿Cuándo sale el de vesícula?',time:'hace 1 h'}]};
 var unread={5:0,6:1,7:0},activeConvo=5,noteMode=false,taskWho='',contWho='Todos',contClient='Todos',archCid=0,repCid=0,repMonth='2026-06',repNet='';
-function chatClients(){var act=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});if(currentRole==='admin'||currentRole==='cm'){var me=((USERS[currentRole]||{}).name||'').split(' ')[0];return act.filter(function(c){return (c.cm||'').indexOf(me)>=0;});}return act;}
+function chatClients(){var act=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});if(currentRole==='cm'){var me=((USERS[currentRole]||{}).name||'').split(' ')[0];return act.filter(function(c){return (c.cm||'').indexOf(me)>=0;});}return act;}
 function clientName(id){var c=clients.filter(function(x){return x.id===id})[0];return c?c.doc:'Doctor';}
 function totalUnread(){var t=0;chatClients().forEach(function(c){t+=(unread[c.id]||0);});return t;}
 function updateMsgBadge(){var b=document.getElementById('msgBadge');var n=totalUnread();if(b){if(n>0){b.style.display='';b.textContent=n;}else{b.style.display='none';}}}
 function beep(){try{var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;var ctx=new Ctx();var o=ctx.createOscillator();var g=ctx.createGain();o.type='sine';o.frequency.value=760;g.gain.setValueAtTime(0.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.13,ctx.currentTime+0.02);g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.28);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+0.3);setTimeout(function(){try{ctx.close();}catch(e){}},450);}catch(e){}}
 function notify(title,body){beep();if(window.Notification&&Notification.permission==='granted'){try{new Notification(title,{body:body});}catch(e){}}updateMsgBadge();toast('🔔 '+title);}
+/* Avisos al equipo: cuando el doctor actúa (aprueba / pide cambios / escribe), llega por tiempo real y se avisa activamente (toast + sonido), no solo refresco silencioso. */
+function aviso(title,body){try{beep();}catch(e){}if(window.Notification&&Notification.permission==='granted'){try{new Notification(title,{body:body||''});}catch(e){}}toast(title);}
+function avisoDoctorAccion(p,accion){var nm=p.doctor||'El doctor';if(accion==='Aprobado')aviso('✅ '+nm+' aprobó una pieza','«'+(p.copy||'').slice(0,30)+'» — lista para programar');else if(accion==='Cambios')aviso('🔁 '+nm+' pidió un cambio','«'+(p.copy||'').slice(0,24)+'» · '+((p.changeNote||'revisa y reenvía')).slice(0,40));}
 /* ---------- roles ---------- */
 var USERS={admin:{name:'Perla Garza',role:'Administradora · Dueña',person:'Perla Garza'},cm:{name:'Anahí Garza',role:'Community Manager',person:'Anahí (CM)'},disenador:{name:'Sofía',role:'Diseñadora',person:'Sofía (Diseño)'},editor:{name:'Karla',role:'Editora',person:'Karla (Edición)'}};
 var currentRole='admin';
@@ -1403,8 +1536,8 @@ var MYACCESS=null;
 var myUid=null;
 function currentUserName(){return (USERS[currentRole]&&USERS[currentRole].person)||sessionName||'Usuario';}
 function applyRole(rk){currentRole=rk;var u=USERS[rk]||{name:sessionName||'Usuario',role:cap(rk)};profile.name=u.name;profile.role=u.role;profile.photo=null;crmScope=(rk==='admin')?'todas':'mias';
-  document.querySelectorAll('#topnav button, #sidebar2').forEach(function(el){el.style.display=accessOn(rk,el.getAttribute('data-p'))?'':'none';});
-  var sb=document.getElementById('sidebar2');document.getElementById('agencia').classList.toggle('solo',!sb||sb.style.display==='none');
+  document.querySelectorAll('#topnav button, #sbcli').forEach(function(el){el.style.display=accessOn(rk,el.getAttribute('data-p'))?'':'none';});
+  document.getElementById('agencia').classList.remove('solo');
   updateUser();applySidecol();
   var first=null;document.querySelectorAll('#topnav button').forEach(function(b){if(!first&&accessOn(rk,b.getAttribute('data-p')))first=b.getAttribute('data-p');});
   if(first){go(first);}else{noAccessScreen();}
@@ -1527,11 +1660,11 @@ var drSel=$('#demoRole');if(drSel)drSel.addEventListener('change',function(){var
 $('#lhi').textContent=greet()+' 👋';
 function authMsg(m,ok){var el=$('#authMsg');if(!el)return;el.textContent=m||'';el.className='authmsg'+(ok?' ok':'')+(m?' show':'');}
 function rolARuta(rol){$('#login').style.display='none';if(window.Notification&&Notification.permission==='default'){try{Notification.requestPermission();}catch(e){}}if(rol==='doctor'){$('#doctor').style.display='grid';$('#dg').textContent=greet()+',';renderPend();renderDocRep();updateDocPayBadge();}else{$('#agencia').style.display='block';applyRole(rol);updateMsgBadge();}}
-async function trasSesion(){if(!window.supa)return false;try{var ur=await supa.auth.getUser();var u=ur.data&&ur.data.user;if(!u)return false;var q=await supa.from('perfiles').select('rol,nombre').eq('id',u.id).maybeSingle();var rol=q.data&&q.data.rol;if(!rol||rol==='pendiente'){authMsg('Tu cuenta ya existe pero está pendiente de que la administradora te asigne un rol.');return false;}myUid=u.id;sessionName=(q.data&&q.data.nombre)||'';try{var pr=await supa.from('permisos_rol').select('modulos').eq('rol',rol).maybeSingle();MYACCESS=(pr&&pr.data&&pr.data.modulos)||{};}catch(e){MYACCESS={};}authMsg('');CLOUD=true;try{clients=await loadClientesDB();}catch(_le){clients=[];}try{await attachCampaignsDB();}catch(_ce){}try{posts=await loadPostsDB();}catch(_pe){posts=[];}try{staff=await loadPersonalDB();}catch(_se){staff=[];}try{await loadNegocioDB();}catch(_ne){}if(rol==='doctor'){if(clients[0])DOCTOR_ID=clients[0].id;pend=posts.filter(function(p){return p.status==='Enviado';}).map(function(p){return {id:p.id,postId:p.id,st:'Pendiente de tu revisión',t:(p.copy||'').slice(0,28),pm:isoToShort(p.pubDate||p.date)+' · '+escapeHtml(p.type)+' · '+escapeHtml(p.plat),cp:p.copy};});}else{pend=[];}rolARuta(rol);return true;}catch(e){authMsg('No pude cargar tu perfil: '+(e.message||e));return false;}}
+async function trasSesion(){if(!window.supa)return false;try{var ur=await supa.auth.getUser();var u=ur.data&&ur.data.user;if(!u)return false;var q=await supa.from('perfiles').select('rol,nombre').eq('id',u.id).maybeSingle();var rol=q.data&&q.data.rol;if(!rol||rol==='pendiente'){authMsg('Tu cuenta ya existe pero está pendiente de que la administradora te asigne un rol.');return false;}myUid=u.id;sessionName=(q.data&&q.data.nombre)||'';try{var pr=await supa.from('permisos_rol').select('modulos').eq('rol',rol).maybeSingle();MYACCESS=(pr&&pr.data&&pr.data.modulos)||{};}catch(e){MYACCESS={};}authMsg('');CLOUD=true;try{clients=await loadClientesDB();}catch(_le){clients=[];}try{await attachCampaignsDB();}catch(_ce){}try{await attachReportesDB();}catch(_re){}try{await attachPagosDB();}catch(_pe2){}try{posts=await loadPostsDB();}catch(_pe){posts=[];}try{staff=await loadPersonalDB();}catch(_se){staff=[];}try{await loadNegocioDB();}catch(_ne){}try{if(rol!=='doctor')expenses=await loadGastosDB();}catch(_ge){}try{convos=await loadMensajesDB(rol==='doctor');}catch(_me){convos={};}unread={};if(rol==='doctor'){if(clients[0])DOCTOR_ID=clients[0].id;pend=posts.filter(function(p){return p.status==='Enviado';}).map(function(p){return {id:p.id,postId:p.id,st:'Pendiente de tu revisión',t:(p.copy||'').slice(0,28),pm:isoToShort(p.pubDate||p.date)+' · '+escapeHtml(p.type)+' · '+escapeHtml(p.plat),cp:p.copy};});}else{pend=[];}try{startRealtime();}catch(_rt){}rolARuta(rol);return true;}catch(e){authMsg('No pude cargar tu perfil: '+(e.message||e));return false;}}
 /* ===== Capa de datos en la nube (Supabase) — Módulo Clientes ===== */
 var CLOUD=false;
-function clienteToDb(c){return {nombre:c.doc||'',especialidad:c.esp||null,etapa:c.stage||'Activo',cm:c.cm||null,paquete:c.package||null,plan:c.plan||null,telefono:c.phone||null,email:c.email||null,manychat:c.manychat?'si':null,whatsapp:c.whatsapp?'si':null,foto:c.photo||null,paleta:c.palette||null,fuentes:c.fonts||null,personalidad:c.personality||null,palabras_clave:c.keywords||null,notas:c.notes||null,valor:c.val||null};}
-function dbToCliente(r,accs){accs=accs||[];return {id:nextClient++,dbid:r.id,doc:r.nombre||'',esp:r.especialidad||'',stage:r.etapa||'Activo',cm:r.cm||'Sin asignar',package:r.paquete||'',plan:r.plan||'',phone:r.telefono||'',email:r.email||'',manychat:!!r.manychat,whatsapp:!!r.whatsapp,photo:r.foto||null,palette:r.paleta||'',fonts:r.fuentes||'',personality:r.personalidad||'',keywords:r.palabras_clave||'',notes:r.notas||'',val:r.valor||'—',acc:String(accs.length),accounts:accs.map(function(a){return {platform:a.plataforma,username:a.usuario,url:a.link};})};}
+function clienteToDb(c){return {nombre:c.doc||'',especialidad:c.esp||null,etapa:c.stage||'Activo',cm:c.cm||null,paquete:c.package||null,plan:c.plan||null,telefono:c.phone||null,email:c.email||null,manychat:c.manychat?'si':null,whatsapp:c.whatsapp?'si':null,foto:c.photo||null,paleta:c.palette||null,fuentes:c.fonts||null,personalidad:c.personality||null,palabras_clave:c.keywords||null,notas:c.notes||null,valor:c.val||null,objetivos:c.objetivos||null,arranque:c.arranque||{},pagado_mes:!!c.paidThisMonth};}
+function dbToCliente(r,accs){accs=accs||[];return {id:nextClient++,dbid:r.id,doc:r.nombre||'',esp:r.especialidad||'',stage:r.etapa||'Activo',cm:r.cm||'Sin asignar',package:r.paquete||'',plan:r.plan||'',phone:r.telefono||'',email:r.email||'',manychat:!!r.manychat,whatsapp:!!r.whatsapp,photo:r.foto||null,palette:r.paleta||'',fonts:r.fuentes||'',personality:r.personalidad||'',keywords:r.palabras_clave||'',notes:r.notas||'',val:r.valor||'—',objetivos:r.objetivos||'',arranque:r.arranque||{},paidThisMonth:!!r.pagado_mes,acc:String(accs.length),accounts:accs.map(function(a){return {platform:a.plataforma,username:a.usuario,url:a.link};})};}
 async function loadClientesDB(){if(!window.supa)return [];var cs=await supa.from('clientes').select('*').order('creado_en',{ascending:true});if(cs.error)throw cs.error;var ac=await supa.from('cuentas_redes').select('*');var by={};(((ac&&ac.data))||[]).forEach(function(a){(by[a.cliente_id]=by[a.cliente_id]||[]).push(a);});return ((cs.data)||[]).map(function(r){return dbToCliente(r,by[r.id]||[]);});}
 async function saveClienteDB(c){var row=clienteToDb(c);var res;if(c.dbid){res=await supa.from('clientes').update(row).eq('id',c.dbid).select().maybeSingle();}else{res=await supa.from('clientes').insert(row).select().maybeSingle();}if(res.error)throw res.error;var sid=res.data&&res.data.id;await supa.from('cuentas_redes').delete().eq('cliente_id',sid);if(c.accounts&&c.accounts.length){var ins=await supa.from('cuentas_redes').insert(c.accounts.map(function(a){return {cliente_id:sid,plataforma:a.platform,usuario:a.username,link:a.url};}));if(ins.error)throw ins.error;}return sid;}
 async function delClienteDB(dbid){await supa.from('cuentas_redes').delete().eq('cliente_id',dbid);var r=await supa.from('clientes').delete().eq('id',dbid);if(r.error)throw r.error;}
@@ -1565,6 +1698,69 @@ async function delCampaignDB(dbid){if(!dbid)return;var r=await supa.from('campan
 function campDbidById(localId){if(localId==null)return null;for(var i=0;i<clients.length;i++){var ks=clients[i].campaigns||[];for(var j=0;j<ks.length;j++){if(ks[j].id===localId)return ks[j].dbid||null;}}return null;}
 function campLocalIdByDbid(dbid){if(!dbid)return null;for(var i=0;i<clients.length;i++){var ks=clients[i].campaigns||[];for(var j=0;j<ks.length;j++){if(ks[j].dbid===dbid)return ks[j].id;}}return null;}
 async function attachCampaignsDB(){try{var rows=await loadCampaignsDB();var byDbid={};clients.forEach(function(c){c.campaigns=[];byDbid[c.dbid]=c;});rows.forEach(function(o){var c=byDbid[o.row.cliente_id];if(c)c.campaigns.push(o.camp);});}catch(e){}}
+/* ---- Reportes mensuales en la nube (tabla `reportes`: mes + jsonb datos/pauta + nota/proximo_mes). Historial por mes; el equipo escribe, el doctor solo lee los suyos (RLS ya puesta). No guarda imágenes. ---- */
+function reporteToDb(clienteDbid,mk,r){return {cliente_id:clienteDbid,mes:mk,datos:(r&&r.nets)||{},pauta:(r&&r.pauta)||null,nota:(r&&r.note)||null,proximo_mes:(r&&r.next)||null};}
+function dbToReporte(row){return {nets:row.datos||{},pauta:row.pauta||null,note:row.nota||'',next:row.proximo_mes||''};}
+async function loadReportesDB(){if(!window.supa)return {};var r=await supa.from('reportes').select('*');if(r.error)throw r.error;var by={};((r.data)||[]).forEach(function(row){(by[row.cliente_id]=by[row.cliente_id]||{})[row.mes]=dbToReporte(row);});return by;}
+async function attachReportesDB(){try{var by=await loadReportesDB();clients.forEach(function(c){if(c.dbid)c.reports=by[c.dbid]||{};});}catch(e){}}
+async function saveReporteDB(clienteDbid,mk,r){if(!window.supa||!clienteDbid)return;var ex=await supa.from('reportes').select('id').eq('cliente_id',clienteDbid).eq('mes',mk).maybeSingle();if(ex&&ex.error)throw ex.error;var row=reporteToDb(clienteDbid,mk,r);if(ex&&ex.data&&ex.data.id){var u=await supa.from('reportes').update(row).eq('id',ex.data.id);if(u.error)throw u.error;}else{var i=await supa.from('reportes').insert(row);if(i.error)throw i.error;}}
+async function saveArranqueDB(dbid,arranque){if(!window.supa||!dbid)return;var r=await supa.from('clientes').update({arranque:arranque||{}}).eq('id',dbid);if(r.error)throw r.error;}
+/* ---- Gastos de la agencia en la nube (tabla `gastos`; solo el equipo, RLS es_equipo). No guarda imágenes. ---- */
+function dbToGasto(r){var m=parseInt(r.monto,10);return {id:nextExpense++,dbid:r.id,name:r.concepto||'',amount:(isNaN(m)?(r.monto||0):m)};}
+async function loadGastosDB(){if(!window.supa)return [];var r=await supa.from('gastos').select('*').order('creado_en',{ascending:true});if(r.error)throw r.error;return ((r.data)||[]).map(dbToGasto);}
+async function saveGastoDB(e){if(!window.supa)return;var r=await supa.from('gastos').insert({concepto:e.name||'',monto:String(e.amount==null?'':e.amount)}).select().maybeSingle();if(r.error)throw r.error;if(r&&r.data)e.dbid=r.data.id;}
+async function updateGastoDB(e){if(!window.supa||!e.dbid)return;var r=await supa.from('gastos').update({concepto:e.name||'',monto:String(e.amount==null?'':e.amount)}).eq('id',e.dbid);if(r.error)throw r.error;}
+async function delGastoDB(dbid){if(!window.supa||!dbid)return;var r=await supa.from('gastos').delete().eq('id',dbid);if(r.error)throw r.error;}
+/* ---- Comprobantes de pago: imagen en Supabase Storage (bucket privado 'comprobantes', se comprime al subir) + ruta en la tabla pagos. El equipo la ve con enlace firmado temporal; se puede borrar. ---- */
+function compressImage(file,cb){try{var img=new Image();var rd=new FileReader();rd.onload=function(ev){img.onload=function(){var max=1200,w=img.width,h=img.height;if(w>max||h>max){if(w>=h){h=Math.round(h*max/w);w=max;}else{w=Math.round(w*max/h);h=max;}}var cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);cv.toBlob(function(b){cb(b||file);},'image/jpeg',0.7);};img.onerror=function(){cb(file);};img.src=ev.target.result;};rd.onerror=function(){cb(file);};rd.readAsDataURL(file);}catch(e){cb(file);}}
+async function uploadComprobante(clienteDbid,file){if(!window.supa||!clienteDbid)return null;var blob=await new Promise(function(res){compressImage(file,res);});var path=clienteDbid+'/'+Date.now()+'.jpg';var r=await supa.storage.from('comprobantes').upload(path,blob,{contentType:'image/jpeg',upsert:false});if(r.error)throw r.error;return path;}
+async function comprobanteUrl(path){if(!window.supa||!path)return null;var r=await supa.storage.from('comprobantes').createSignedUrl(path,3600);if(r.error)throw r.error;return r.data&&r.data.signedUrl;}
+async function deleteComprobanteFile(path){if(!window.supa||!path)return;try{await supa.storage.from('comprobantes').remove([path]);}catch(e){}}
+function pagoMesActual(){return todayIso().slice(0,7);}
+function isStoragePath(v){return !!v&&typeof v==='string'&&v.indexOf('data:')!==0;}
+async function savePagoDB(clienteDbid,mes,patch){if(!window.supa||!clienteDbid)return null;var ex=await supa.from('pagos').select('id').eq('cliente_id',clienteDbid).eq('mes',mes).maybeSingle();if(ex&&ex.error)throw ex.error;if(ex&&ex.data&&ex.data.id){var u=await supa.from('pagos').update(patch||{}).eq('id',ex.data.id);if(u.error)throw u.error;return ex.data.id;}var row=Object.assign({cliente_id:clienteDbid,mes:mes},patch||{});var i=await supa.from('pagos').insert(row).select().maybeSingle();if(i.error)throw i.error;return i.data&&i.data.id;}
+async function loadPagosDB(){if(!window.supa)return {};var r=await supa.from('pagos').select('*');if(r.error)throw r.error;var by={};((r.data)||[]).forEach(function(row){(by[row.cliente_id]=by[row.cliente_id]||[]).push(row);});return by;}
+async function attachPagosDB(){try{var by=await loadPagosDB();var mk=pagoMesActual();clients.forEach(function(c){if(!c.dbid)return;var rows=(by[c.dbid]||[]).slice().sort(function(a,b){return a.mes<b.mes?-1:1;});var cur=rows.filter(function(x){return x.mes===mk;})[0];if(cur)c.comprobante=(cur.estado!=='Pagado'&&cur.comprobante)?cur.comprobante:null;c.payHist=rows;});}catch(e){}}
+function openImgWindow(src){var w=window.open('','_blank');if(w){w.document.write('<title>Comprobante</title><img src="'+src+'" style="max-width:100%">');w.document.close();}}
+function openComprobante(v){if(!v)return;if(isStoragePath(v)){comprobanteUrl(v).then(function(u){if(u)openImgWindow(u);else toast('No se pudo abrir el comprobante');}).catch(function(){toast('No se pudo abrir el comprobante');});}else{openImgWindow(v);}}
+function compPreview(c){if(!c.comprobante)return '';var del='<button class="lk2" style="color:var(--coral);margin-left:8px" data-delcomp="'+c.id+'">🗑 Borrar</button>';var body=isStoragePath(c.comprobante)?'<button class="recpill" data-vercomp="'+c.id+'">📎 Ver comprobante</button>':'<img src="'+c.comprobante+'" data-vercomp="'+c.id+'" style="max-width:100%;cursor:pointer">';return '<div class="payprev">'+body+'<div class="muted2">Comprobante del doctor'+(c.compDate?' · '+escapeHtml(c.compDate):'')+'. Verifica que sea real, luego marca pagado y emite recibo.'+del+'</div></div>';}
+/* ---- Mensajes (feedback del doctor / chat por cliente) en la nube. Tabla mensajes: de='equipo'/'doctor'/'post'. Las notas internas NO se guardan (no deben llegar al doctor). ---- */
+function clienteLocalIdByDbid(dbid){var c=clients.filter(function(x){return x.dbid===dbid;})[0];return c?c.id:0;}
+function clienteDbidByLocalId(id){var c=clients.filter(function(x){return x.id===id;})[0];return c?(c.dbid||null):null;}
+function postDbidByLocalId(id){var p=posts.filter(function(x){return x.id===id;})[0];return p?(p.dbid||null):null;}
+function postLocalIdByDbid(dbid){if(!dbid)return null;var p=posts.filter(function(x){return x.dbid===dbid;})[0];return p?p.id:null;}
+function msgTime(ts){if(!ts)return 'ahora';try{return new Date(ts).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});}catch(e){return '';}}
+function dbToMsg(r,asDoctor){var de=r.de||'equipo';var who;if(asDoctor){who=(de==='equipo')?'them':'me';}else{who=(de==='equipo')?'me':((de==='post')?'post':'them');}return {dbid:r.id,who:who,text:r.texto||'',postId:postLocalIdByDbid(r.publicacion_id),time:msgTime(r.creado_en)};}
+async function loadMensajesDB(asDoctor){if(!window.supa)return {};var r=await supa.from('mensajes').select('*').order('creado_en',{ascending:true});if(r.error)throw r.error;var o={};((r.data)||[]).forEach(function(row){var lid=clienteLocalIdByDbid(row.cliente_id);if(!lid)return;(o[lid]=o[lid]||[]).push(dbToMsg(row,asDoctor));});return o;}
+async function saveMensajeDB(localClientId,m,de){if(!window.supa||de==='note')return;var cd=clienteDbidByLocalId(localClientId);if(!cd)return;var row={cliente_id:cd,de:de||'equipo',texto:m.text||'',publicacion_id:(m.postId?postDbidByLocalId(m.postId):null),leido:false};try{var r=await supa.from('mensajes').insert(row).select().maybeSingle();if(r&&r.data)m.dbid=r.data.id;}catch(e){}}
+/* ---- Tiempo real: cuando otro usuario del equipo cambia algo en la nube, se refleja en vivo ---- */
+var rtChannel=null,rtTimer=null;
+function rtSafe(){var ov=document.getElementById('overlay');if(ov&&ov.classList.contains('show'))return false;if(document.querySelector('.postedit'))return false;var ae=document.activeElement;if(ae&&/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName))return false;return true;}
+function rtPaint(){if(!rtSafe())return;clearTimeout(rtTimer);rtTimer=setTimeout(function(){try{refresh();}catch(e){}},180);}
+async function rtSync(kind){try{
+  if(kind==='posts'){var _prevSt={};posts.forEach(function(p){if(p.dbid)_prevSt[p.dbid]=p.status;});posts=await loadPostsDB();if(currentRole==='admin'||currentRole==='cm'){posts.forEach(function(p){if(!p.dbid)return;var o=_prevSt[p.dbid];if(o&&o!==p.status){if(p.status==='Aprobado')avisoDoctorAccion(p,'Aprobado');else if(p.status==='Cambios')avisoDoctorAccion(p,'Cambios');}});}if(currentRole==='doctor'){pend=posts.filter(function(p){return p.status==='Enviado';}).map(function(p){return {id:p.id,postId:p.id,st:'Pendiente de tu revisión',t:(p.copy||'').slice(0,28),pm:isoToShort(p.pubDate||p.date)+' · '+escapeHtml(p.type)+' · '+escapeHtml(p.plat),cp:p.copy};});}}
+  else if(kind==='clientes'){clients=await loadClientesDB();await attachCampaignsDB();await attachReportesDB();}
+  else if(kind==='campanas'){await attachCampaignsDB();}
+  else if(kind==='personal'){staff=await loadPersonalDB();}
+  else if(kind==='negocio'){await loadNegocioDB();}
+  else if(kind==='pagos'){await attachPagosDB();}
+  else if(kind==='mensajes'){var _prevC={};for(var _k in convos){_prevC[_k]=(convos[_k]||[]).length;}convos=await loadMensajesDB(currentRole==='doctor');if(currentRole==='admin'||currentRole==='cm'){for(var _k2 in convos){var _arr=convos[_k2]||[];if(_arr.length>(_prevC[_k2]||0)){var _last=_arr[_arr.length-1];if(_last&&_last.who==='them'){var _cl=clients.filter(function(x){return String(x.id)===String(_k2);})[0];aviso('💬 '+(_cl?_cl.doc:'Un doctor')+' te escribió',(_last.text||'').slice(0,50));}}}}}
+  rtPaint();
+}catch(e){}}
+function startRealtime(){if(!window.supa||rtChannel||typeof supa.channel!=='function')return;try{
+  rtChannel=supa.channel('mm-rt')
+    .on('postgres_changes',{event:'*',schema:'public',table:'publicaciones'},function(){rtSync('posts');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'clientes'},function(){rtSync('clientes');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'cuentas_redes'},function(){rtSync('clientes');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'campanas'},function(){rtSync('campanas');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'pagos'},function(){rtSync('pagos');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'mensajes'},function(){rtSync('mensajes');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'cambios'},function(){rtSync('posts');rtSync('mensajes');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'personal'},function(){rtSync('personal');})
+    .on('postgres_changes',{event:'*',schema:'public',table:'negocio'},function(){rtSync('negocio');})
+    .subscribe();
+}catch(e){}}
+function stopRealtime(){if(rtChannel&&window.supa){try{supa.removeChannel(rtChannel);}catch(e){}}rtChannel=null;}
 async function entrar(){if(!window.supa){authMsg('Conexión no disponible. Recarga la página.');return;}var em=(($('#usr')||{}).value||''),pw=(($('#pwd')||{}).value||'');if(!em.trim()||!pw){authMsg('Escribe tu correo y contraseña.');return;}authMsg('Entrando…',true);var r=await supa.auth.signInWithPassword({email:em.trim(),password:pw});if(r.error){authMsg('Correo o contraseña incorrectos.');return;}trasSesion();}
 async function registrar(){if(!window.supa){authMsg('Conexión no disponible. Recarga la página.');return;}var em=(($('#usr')||{}).value||''),pw=(($('#pwd')||{}).value||'');if(!em.trim()||pw.length<6){authMsg('Para crear cuenta: correo válido y contraseña de al menos 6 caracteres.');return;}authMsg('Creando cuenta…',true);var r=await supa.auth.signUp({email:em.trim(),password:pw});if(r.error){authMsg('No se pudo crear: '+r.error.message);return;}authMsg('¡Cuenta creada! Avísale a la administradora para que te active y luego entra.',true);}
 var _en=$('#enter');if(_en)_en.addEventListener('click',entrar);
@@ -1572,7 +1768,7 @@ var _en=$('#enter');if(_en)_en.addEventListener('click',entrar);
 var _pe=$('#pwdEye');if(_pe)_pe.addEventListener('click',function(){var p=$('#pwd');if(!p)return;var sh=p.type==='password';p.type=sh?'text':'password';_pe.textContent=sh?'🙈':'👁️';});
 var _ed=$('#enterDemo');if(_ed)_ed.addEventListener('click',function(){MYACCESS=null;myUid=null;rolARuta($('#demoRole')?$('#demoRole').value:'admin');});
 var _fg=$('#forgot');if(_fg)_fg.addEventListener('click',async function(){var em=(($('#usr')||{}).value||'');if(!em.trim()){authMsg('Escribe tu correo arriba y vuelve a tocar Recupérala.');return;}if(window.supa){try{await supa.auth.resetPasswordForEmail(em.trim());authMsg('Si el correo existe, te llegará un enlace para restablecer la contraseña.',true);}catch(e){authMsg('No se pudo enviar el enlace.');}}});
-function logout(){sessionName='';MYACCESS=null;myUid=null;if(window.supa){try{supa.auth.signOut();}catch(e){}}inFolder=false;folderId=null;var cn=$('#cnav');if(cn)cn.style.display='none';var sn=$('#snav');if(sn)sn.style.display='';$('#agencia').style.display='none';$('#doctor').style.display='none';$('#login').style.display='grid';authMsg('');}
+function logout(){sessionName='';MYACCESS=null;myUid=null;try{stopRealtime();}catch(_rt){}CLOUD=false;if(window.supa){try{supa.auth.signOut();}catch(e){}}inFolder=false;folderId=null;var cn=$('#cnav');if(cn)cn.style.display='none';var sn=$('#snav');if(sn)sn.style.display='';$('#agencia').style.display='none';$('#doctor').style.display='none';$('#login').style.display='grid';authMsg('');}
 if(window.supa){try{supa.auth.getSession().then(function(s){if(s&&s.data&&s.data.session)trasSesion();});}catch(e){}}
 
 $$('#topnav button').forEach(function(b){b.addEventListener('click',function(){go(b.getAttribute('data-p'),b);});});
@@ -1612,7 +1808,120 @@ function prodHome(){
   <div class="card"><h3>Tus prioridades de hoy</h3><div class="csub">Ordenadas de mayor a menor urgencia. Empieza por la primera; aquí siempre verás tu siguiente paso, aunque retomes más tarde.</div>'+rows+'</div>\
   <div class="card"><h3>Entregado · en revisión</h3><div class="csub">Piezas que ya completaste y están con el CM para su aprobación. Tócalas para ubicarlas, resaltadas, en Contenido.</div>'+revRows+'</div></div></div>';
 }
-PANELS.inicio=function(){var isAdmin=currentRole==='admin';
+/* Quién ve TODOS los clientes en Inicio: admin (dueña) + coordinación de operaciones.
+   Marca a alguien como coordinador con su rol ("coordinación"/"operaciones") o su nombre en COORD_NAMES. */
+var COORD_NAMES=['Anahí','Anahi'];
+function seesAllClients(){if(currentRole==='admin')return true;
+  var r=((profile&&profile.role)||'')+' '+currentRole;if(/coordin|operac|due[nñ]/i.test(r))return true;
+  var nm=(currentUserName()||'')+' '+((profile&&profile.name)||'')+' '+(((USERS[currentRole]||{}).name)||'');
+  return /coordin/i.test(nm)||COORD_NAMES.some(function(n){return nm.indexOf(n)>=0;});}
+var inicioScope='mio';
+function inicioBody(){return inicioBodyV2();}
+function inicioBodyV2(){
+  var verTodo=seesAllClients();
+  var me=((USERS[currentRole]||{}).name||'').split(' ')[0];
+  var scopeMode=verTodo?inicioScope:'mio';
+  function pieceMine(p){var c=clients.filter(function(x){return x.doc===p.doctor;})[0];return !!c&&(c.cm||'').indexOf(me)>=0;}
+  var hoyI=todayIso(),mananaI=addDays(hoyI,1);
+  function dBetween(a,b){return Math.round((Date.parse(b)-Date.parse(a))/86400000);}
+  function isoOf(d){return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
+  var PRODS=['Sofía (Diseño)','Karla (Edición)'];
+  var enProc=posts.filter(function(p){return p.status!=='Programado';});
+  var mias=enProc.filter(function(p){return scopeMode==='todo'?true:pieceMine(p);});
+  function esperaInfo(p){
+    if(p.status==='Enviado'){var n=p.date?dBetween(p.date,hoyI):0;return {ic:'⏳',w:'Esperando aprobación · '+p.doctor,tag:(n>0?n+' día'+(n>1?'s':''):'hoy')};}
+    if((p.status==='Borrador'||p.status==='Cambios')&&PRODS.indexOf(p.who)>=0){var ed=(p.who.indexOf('Edici')>=0);return {ic:(ed?'✂️':'🎨'),w:'Con '+(ed?'el editor':'diseño')+' · '+p.doctor,tag:(p.status==='Cambios'?'cambios':'en proceso')};}
+    return null;
+  }
+  var esperando=[];mias.forEach(function(p){var e=esperaInfo(p);if(e)esperando.push({p:p,e:e});});
+  var espIds={};esperando.forEach(function(x){espIds[x.p.id]=1;});
+  var entregas=mias.filter(function(p){return !espIds[p.id];});
+  function rank(p){if(p.date&&p.date<hoyI&&p.status!=='Aprobado')return 0;if(p.date&&p.date<=mananaI)return 1;return 2;}
+  entregas.sort(function(a,b){return (rank(a)-rank(b))||((a.date||'').localeCompare(b.date||''));});
+  /* Inicio NO ejecuta acciones: cada botón solo TE LLEVA al editor de esa pieza (evita errores de dedo). */
+  function stage(p){var t=(p.type||''),vid=(t==='Video'||t==='Reel'||t==='Historia');
+    if(p.status==='Idea')return {chip:'Idea',cls:'st-idea',act:vid?'Escribir guion':'Empezar pieza'};
+    if(p.status==='Borrador')return {chip:'En diseño',cls:'st-dis',act:vid?'Subir video':'Subir diseño'};
+    if(p.status==='Cambios')return {chip:'Cambios',cls:'st-cam',act:'Corregir'};
+    if(p.status==='Revisión')return {chip:'En revisión',cls:'st-rev',act:'Revisar'};
+    if(p.status==='Enviado')return {chip:'Esperando al doctor',cls:'st-env',act:''};
+    if(p.status==='Aprobado')return {chip:'Aprobado',cls:'st-apr',act:'Programar'};
+    return {chip:p.status,cls:'st-idea',act:''};
+  }
+  function prio(p){if(p.date&&p.date<hoyI&&p.status!=='Aprobado')return 'pr-r';if(p.date&&p.date<=mananaI)return 'pr-a';return 'pr-s';}
+  function cuenta(p){if(!p.date)return 'sin fecha';if(p.date<hoyI)return '<span class="dvlate">⚑ venció '+isoToShort(p.date)+'</span>';if(p.date===hoyI)return '<span class="dvsoon">⏰ lista hoy</span>';if(p.date===mananaI)return '<span class="dvsoon">lista mañana</span>';var dd=dBetween(hoyI,p.date);return 'lista en '+dd+' días · '+isoToShort(p.date);}
+  function cAv(name){var c=clients.filter(function(x){return x.doc===name;})[0];var ph=c&&c.photo;return '<span class="dvav"'+(ph?' style="background-image:url('+ph+')"':'')+'>'+(ph?'':initials(name))+'</span>';}
+  var dvRows=entregas.slice(0,8).map(function(p){var s=stage(p);
+    return '<div class="dvrow" data-post="'+p.id+'" style="cursor:pointer"><span class="dvprio '+prio(p)+'"></span><span class="dvchip '+s.cls+'">'+s.chip+'</span><div class="dvmain"><div class="dvt">'+escapeHtml((p.copy||'').slice(0,54))+'</div><div class="dvmeta">'+cAv(p.doctor)+'<span class="dvcli">'+escapeHtml(p.doctor)+'</span> · <b class="dvdate">'+cuenta(p)+'</b>'+(p.pubDate?' <span class="dvpub">· publica '+isoToShort(p.pubDate)+'</span>':'')+'</div></div><span class="dvgo" aria-hidden="true">›</span></div>';
+  }).join('')||'<div class="folempty">No tienes entregas en proceso. ¡Vas al día! ✅</div>';
+  var dd0=new Date();var dow=(dd0.getDay()+6)%7;dd0.setDate(dd0.getDate()-dow);var wk=[];for(var i=0;i<7;i++){wk.push(isoOf(dd0));dd0.setDate(dd0.getDate()+1);}
+  var wkLbl=['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'];
+  var wkN=wk.map(function(d){return entregas.filter(function(p){return p.date===d;}).length;});
+  var maxw=Math.max(1,Math.max.apply(null,wkN));
+  var wkHtml=wk.map(function(d,i){var n=wkN[i],today=(d===hoyI),h=n?Math.max(8,Math.round(n/maxw*32)):0;return '<div class="wkday'+(today?' on':'')+'"><div class="wkl">'+wkLbl[i]+'</div><div class="wkbz">'+(n?'<i style="height:'+h+'px"></i>':'')+'</div><div class="wkn">'+n+'</div></div>';}).join('');
+  var espHtml=esperando.slice(0,5).map(function(x){var p=x.p,e=x.e;return '<div class="esprow" data-post="'+p.id+'"><span class="espic">'+e.ic+'</span><div class="espmain"><div class="espt">'+escapeHtml((p.copy||'').slice(0,40))+'</div><div class="espw">'+escapeHtml(e.w)+'</div></div><span class="esptag">'+escapeHtml(e.tag)+'</span></div>';}).join('')||'<div class="folmut" style="padding:10px 2px">Nada esperando a terceros ✅</div>';
+  var hd=new Date();var fechaTxt=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][hd.getDay()]+' '+hd.getDate()+' de '+MESES[hd.getMonth()];
+  var toggle=verTodo?('<div class="vseg"><button class="'+(scopeMode==='mio'?'on':'')+'" data-iniscope="mio">Solo lo mío</button><button class="'+(scopeMode==='todo'?'on':'')+'" data-iniscope="todo">Todo</button></div>'):'';
+  var nEnt=entregas.length,nSoon=entregas.filter(function(p){return p.date===mananaI;}).length,nEsp=esperando.length;
+  return '<div class="vbar"><div><h1 class="vtitle">Inicio</h1><div class="vsub">'+fechaTxt+' · lo asignado a ti</div></div><div class="vactions">'+toggle+'</div></div>'
+    +'<div class="pad" style="max-width:none;padding:18px 24px 30px">'
+    +'<h2 class="vhello">Hola, '+escapeHtml(profile.name.split(' ')[0])+' 👋</h2>'
+    +'<p class="vlead">Tienes <b class="vhi">'+nEnt+' entrega'+(nEnt===1?'':'s')+' en curso</b>.'+(nSoon?' '+nSoon+' debe quedar lista mañana.':'')+(nEsp?' '+nEsp+' pieza'+(nEsp>1?'s':'')+' espera'+(nEsp>1?'n':'')+' a otros.':'')+'</p>'
+    +'<div class="inicgrid">'
+    +'<div class="card"><div class="vch"><h3>Próximas entregas</h3></div>'+dvRows+'</div>'
+    +'<div class="inicside">'
+    +'<div class="card"><div class="vch"><h3>Tu semana</h3><span class="vchn">'+nEnt+' entregas</span></div><div class="wkstrip">'+wkHtml+'</div></div>'
+    +'<div class="card"><div class="vch"><h3>Esperando a otros</h3><span class="vchn">no depende de ti</span></div>'+espHtml+'</div>'
+    +'</div></div></div>';
+}
+function _inicioOld2(){
+  var verTodo=seesAllClients();
+  var meName=((USERS[currentRole]||{}).name||'').split(' ')[0];
+  var activeAll=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});
+  var scope=verTodo?activeAll:activeAll.filter(function(c){return (c.cm||'').indexOf(meName)>=0;});
+  var scopeDocs={};scope.forEach(function(c){scopeDocs[c.doc]=1;});
+  function inScope(p){return !!scopeDocs[p.doctor];}
+  var hoyI=todayIso(),mananaI=addDays(hoyI,1);
+  function notDone(s){return s!=='Aprobado'&&s!=='Programado'&&s!=='Enviado';}
+  var PRODS=['Sofía (Diseño)','Karla (Edición)'];function shortWho(w){return (w||'').split(' (')[0];}
+  function clientStatus(c){var ps=posts.filter(function(p){return p.doctor===c.doc;});
+    var late=ps.filter(function(p){return p.date&&p.date<hoyI&&notDone(p.status);}).length;
+    var rev=ps.filter(function(p){return p.status==='Revisión';}).length;
+    var env=ps.filter(function(p){return p.status==='Enviado';}).length;
+    var cam=ps.filter(function(p){return p.status==='Cambios';}).length;
+    var soon=ps.filter(function(p){return p.date&&p.date>=hoyI&&p.date<=mananaI&&notDone(p.status);}).length;
+    if(late)return {dot:'r',rank:0,note:late+' vencida'+(late>1?'s':'')+(rev?' · '+rev+' por aprobar':'')};
+    if(cam)return {dot:'a',rank:1,note:cam+' con cambios'};
+    if(rev)return {dot:'a',rank:1,note:rev+' por aprobar'};
+    if(env)return {dot:'a',rank:1,note:env+' con el doctor'};
+    if(soon)return {dot:'a',rank:1,note:soon+' por entregar pronto'};
+    return {dot:'g',rank:2,note:'Al día este mes'};}
+  var ws=scope.map(function(c){return {c:c,st:clientStatus(c)};});
+  var nR=0,nA=0,nG=0;ws.forEach(function(x){if(x.st.dot==='r')nR++;else if(x.st.dot==='a')nA++;else nG++;});
+  ws.sort(function(a,b){return (a.st.rank-b.st.rank)||((a.c.doc||'').localeCompare(b.c.doc||'','es'));});
+  var panRows=ws.map(function(x){var c=x.c,st=x.st;return '<div class="row" data-folder="'+c.id+'" style="cursor:pointer"><span class="sem sem-'+st.dot+'"></span><div class="cavatar cavatar-i" style="width:30px;height:30px;font-size:11px">'+initials(c.doc)+'</div><div class="tx">'+escapeHtml(c.doc)+'<small>'+escapeHtml(c.esp||'')+(verTodo&&c.cm?' · '+escapeHtml(c.cm):'')+'</small></div><span class="pannote pannote-'+st.dot+'">'+st.note+'</span><span class="go">›</span></div>';}).join('')||'<div class="folempty">Sin cuentas asignadas.</div>';
+  var sumStrip='<div class="pansum"><span class="pss r"><b>'+nR+'</b> atrasado'+(nR===1?'':'s')+'</span><span class="pss a"><b>'+nA+'</b> atención</span><span class="pss g"><b>'+nG+'</b> al día</span></div>';
+  var todo=[];
+  posts.filter(function(p){return inScope(p)&&p.date&&p.date<hoyI&&notDone(p.status);}).forEach(function(p){todo.push({rank:0,html:'<div class="row" data-gotask="'+p.id+'" style="cursor:pointer"><span class="tag t-r">Vencida</span><div class="tx">'+escapeHtml(p.copy.slice(0,40))+'…<small>'+escapeHtml(p.doctor)+' · venció '+isoToShort(p.date)+(p.who&&PRODS.indexOf(p.who)>=0?' · habla con '+escapeHtml(shortWho(p.who)):'')+'</small></div><span class="go">›</span></div>'});});
+  posts.filter(function(p){return inScope(p)&&p.status==='Revisión';}).forEach(function(p){todo.push({rank:1,html:'<div class="row" data-gotask="'+p.id+'" style="cursor:pointer"><span class="tag t-c">Revisar</span><div class="tx">'+escapeHtml(p.copy.slice(0,40))+'…<small>revísala y envíala al doctor · '+escapeHtml(p.doctor)+'</small></div><span class="go">›</span></div>'});});
+  posts.filter(function(p){return inScope(p)&&p.date&&p.date>=hoyI&&p.date<=mananaI&&notDone(p.status);}).forEach(function(p){todo.push({rank:2,html:'<div class="row" data-gotask="'+p.id+'" style="cursor:pointer"><span class="tag t-a">Por vencer</span><div class="tx">'+escapeHtml(p.copy.slice(0,40))+'…<small>'+escapeHtml(p.doctor)+' · '+(p.date===hoyI?'vence hoy':'vence mañana')+'</small></div><span class="go">›</span></div>'});});
+  if(currentRole==='admin'){
+    clients.filter(function(c){return (c.stage==='Activo'||c.stage==='Renovación')&&!c.paidThisMonth&&(new Date().getDate()-(c.payDay||10))>0;}).forEach(function(c){var dl=new Date().getDate()-(c.payDay||10);todo.push({rank:1,html:'<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-r">Pago</span><div class="tx">'+escapeHtml(c.doc)+' en retraso<small>'+dl+' día'+(dl>1?'s':'')+' · revisar en Finanzas</small></div><span class="go">›</span></div>'});});
+    clients.filter(function(c){return c.comprobante;}).forEach(function(c){todo.push({rank:1,html:'<div class="row" data-goto="pagos" style="cursor:pointer"><span class="tag t-g">Ya pagó</span><div class="tx">'+escapeHtml(c.doc)+' subió comprobante<small>verifícalo y confirma en Finanzas</small></div><span class="go">›</span></div>'});});
+    var nNom=staff.filter(function(s){return s.payStatus!=='Pagado';}).length;if(nNom)todo.push({rank:2,html:'<div class="row" data-gofin="nomina" style="cursor:pointer"><span class="tag t-a">Nómina</span><div class="tx">Pagar a tu personal<small>'+nNom+' pendiente'+(nNom>1?'s':'')+' · Finanzas</small></div><span class="go">›</span></div>'});
+  }
+  todo.sort(function(a,b){return a.rank-b.rank;});
+  var CAP=6;var loTuyo=todo.length?(todo.slice(0,CAP).map(function(x){return x.html;}).join('')+(todo.length>CAP?'<button class="vermas" data-goto="contenido" style="width:100%;text-align:left;padding:9px 2px;font-size:13px;color:var(--sky);background:none">Ver los '+todo.length+' pendientes ›</button>':'')):'<div class="folempty">Todo en orden. Nada urgente por ahora ✅</div>';
+  var hd=new Date();var heroDate=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'][hd.getDay()]+' '+hd.getDate()+' de '+MESES[hd.getMonth()]+', '+hd.getFullYear();
+  var scopeNote=verTodo?'ves todos los clientes':'ves tus cuentas';
+  return '<div class="phb"><div class="blob hb1"></div><div class="blob hb2"></div><div class="g">'+greet()+',</div><h1>Hola, '+escapeHtml(profile.name.split(' ')[0])+' 👋</h1><div class="s">Lo que tienes que hacer y cómo va cada cliente.</div><svg class="ecg" width="70" height="24" viewBox="0 0 70 26"><polyline points="0,16 14,16 19,5 25,23 30,11 35,16 70,16" fill="none" stroke="#66BB6A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="wk">📅 '+heroDate+'</div></div>'
+    +'<div class="pad" style="max-width:none;padding-right:30px">'
+    +'<div class="card" style="margin-top:18px"><h3>Para hacer hoy</h3><div class="csub">Solo lo que depende de ti, en orden de urgencia.</div>'+loTuyo+'</div>'
+    +'<div class="card" style="margin-top:16px"><div class="anthd"><h3>Panorama de clientes</h3><div class="antbig"><b>'+scope.length+'</b><span> · '+scopeNote+'</span></div></div>'+sumStrip+'<div class="csub" style="margin-top:4px">Cómo va cada cliente este mes · toca uno para ver todo lo suyo.</div>'+panRows+'</div>'
+    +'</div>';
+}
+PANELS.inicio=function(){if(currentRole==='disenador'||currentRole==='editor')return prodHome();return inicioBody();};
+function _inicioOld(){var isAdmin=currentRole==='admin';
   if(currentRole==='disenador'||currentRole==='editor')return prodHome();
   var meName=((USERS[currentRole]||{}).name||'').split(' ')[0];
   function isUrgent(c){return !c.paidThisMonth&&(new Date().getDate()-(c.payDay||10))>0;}
@@ -1713,46 +2022,7 @@ var callDraft={result:'',source:'',app:'',otherText:'',seen:false,name:'',phone:
 var callPickerOpen=false,callPickerYear=2026,callHistOpen=false;
 var boardTool={mode:'pen',color:'#1a365d',size:4,opacity:1};
 var BOARD_W=2000,BOARD_H=1400,boardStart=null,boardDraft=null,boardSel=null,boardAct=null,boardActSt=null;
-(function(){
-  var C=clients.filter(function(x){return x.id===6})[0];
-  if(C){C.meetings=[{title:'Revisión de auditoría · abril',date:'2026-04-29',hora:'11:00',note:'Repasamos la auditoría de 90 días. Urgente: eliminar el post del 1-abr que tiene copy de otro doctor. Hay que responder la reseña negativa de Google y eliminar el sitio bariatricacirugia.com. Acordamos activar ManyChat para responder en menos de 5 minutos y arrancar campaña de bipartición intestinal como diferenciador. Confirmar con la Dra. si atiende pacientes a distancia.'}];
-    C.acuerdos=[{id:nextAc++,text:'Eliminar o reescribir el post del 1-abr (copy de otro doctor)',done:false,from:'Revisión de auditoría · abril'},{id:nextAc++,text:'Responder la reseña negativa de Google con tono profesional',done:false,from:'Revisión de auditoría · abril'},{id:nextAc++,text:'Eliminar bariatricacirugia.com y dejar solo dracarolinacenteno.com',done:true,from:'Revisión de auditoría · abril'},{id:nextAc++,text:'Activar ManyChat (respuesta en menos de 5 min)',done:false,from:'Revisión de auditoría · abril'}];
-    C.board=[];}
-  var K=clients.filter(function(x){return x.id===5})[0];
-  if(K){K.meetings=[{title:'Plan de contenido · mayo',date:'2026-05-02',hora:'12:30',note:'El feed está cargado a blefaroplastia. Falta Mommy Makeover por completo. Acordamos crear el Highlight de Mommy Makeover, reemplazar la foto generada por IA del sitio y arrancar el sistema semanal de reseñas de Google.'}];
-    K.acuerdos=[{id:nextAc++,text:'Crear set inicial de Mommy Makeover (3-4 piezas) + Highlight',done:false,from:'Plan de contenido · mayo'},{id:nextAc++,text:'Reemplazar la foto de IA del home por foto real del Dr.',done:false,from:'Plan de contenido · mayo'}];
-    K.board=[];
-    var mk=curMonthKey();
-    K.calls=[
-      {id:nextCall++,date:mk+'-03',result:'agendo',source:'Redes sociales',app:'Instagram',seen:false,proc:'Blefaroplastia',note:'Vio un reel'},
-      {id:nextCall++,date:mk+'-04',result:'informes',source:'Redes sociales',app:'Instagram',seen:false,proc:'Liposucción',note:''},
-      {id:nextCall++,date:mk+'-05',result:'agendo',source:'Recomendación',seen:true,proc:'Mommy Makeover',note:'Una amiga operada la recomendó; ya nos seguía'},
-      {id:nextCall++,date:mk+'-06',result:'informes',source:'Redes sociales',app:'TikTok',seen:false,proc:'',note:''},
-      {id:nextCall++,date:mk+'-07',result:'agendo',source:'Otro',otherText:'Buscó en Google',seen:true,proc:'Abdominoplastia',note:''},
-      {id:nextCall++,date:mk+'-08',result:'no',source:'Redes sociales',app:'Instagram',seen:false,proc:'',note:'Solo preguntó precio'},
-      {id:nextCall++,date:mk+'-09',result:'informes',source:'Redes sociales',app:'Facebook',seen:false,proc:'',note:''},
-      {id:nextCall++,date:mk+'-10',result:'agendo',source:'Redes sociales',app:'Facebook',seen:false,proc:'Cirugía mamaria',note:'Vio un testimonio'},
-      {id:nextCall++,date:mk+'-11',result:'agendo',source:'Recomendación',seen:false,proc:'',note:'Recomendación de paciente'},
-      {id:nextCall++,date:mk+'-12',result:'informes',source:'Pasó por consultorio',seen:true,proc:'',note:''}
-    ];
-    var hoy=todayIso();
-    K.appts=[
-      {id:nextAppt++,date:hoy,time:'10:00',dur:1,tipo:'1ª vez',origen:'web',name:'María López',phone:'55 1122 3344',motivo:'Valoración de blefaroplastia',salud:'Sin alergias conocidas. No fuma.',procs:'Blefaroplastia superior',receta:'',recs:'',next:'',estado:'proceso'},
-      {id:nextAppt++,date:hoy,time:'12:00',dur:2,tipo:'Cirugía',name:'Ana Ruiz',phone:'55 5566 7788',motivo:'Mommy Makeover',salud:'Cesárea previa. Hb normal.',procs:'Abdominoplastia + aumento mamario',receta:'',recs:'',next:'',estado:'proceso'},
-      {id:nextAppt++,date:hoy,time:'16:30',dur:1,tipo:'Post-operatorio',name:'Lucía Méndez',phone:'',motivo:'Revisión a 15 días',salud:'',procs:'',receta:'',recs:'Continuar faja 3 semanas',next:'',estado:'proceso'}
-    ];
-    K.blocks=[hoy+'|14:00'];}
-  var NK=clients.filter(function(x){return x.id===13})[0];
-  if(NK){NK.meetings=[{title:'Plan de junio · estética',date:'2026-05-28',hora:'17:00',note:'Enfocamos junio en cuidado de la piel para época de calor. Acordamos una serie de 4 reels educativos y reactivar antes/después con consentimiento firmado.'}];
-    NK.acuerdos=[{id:nextAc++,text:'Recopilar 3 antes/después con consentimiento firmado',done:false,from:'Plan de junio · estética'},{id:nextAc++,text:'Guion de la serie "Tu piel en verano" (4 reels)',done:true,from:'Plan de junio · estética'}];NK.board=[];}
-  var CE=clients.filter(function(x){return x.id===9})[0];
-  if(CE){CE.meetings=[{title:'Arranque de cuenta · cardiología',date:'2026-05-30',hora:'10:30',note:'Onboarding. El Dr. quiere educar sobre prevención sin asustar. Acordamos el pilar "chequeo a tiempo" y un caso real al mes. Falta foto profesional en bata.'}];
-    CE.acuerdos=[{id:nextAc++,text:'Agendar sesión de fotos del Dr. en consultorio',done:false,from:'Arranque de cuenta · cardiología'},{id:nextAc++,text:'Aprobar el guion del caso real de junio',done:false,from:'Arranque de cuenta · cardiología'}];CE.board=[];}
-  var EC=clients.filter(function(x){return x.id===10})[0];
-  if(EC){EC.meetings=[{title:'Línea editorial · oncología',date:'2026-06-01',hora:'13:00',note:'Tono sensible y esperanzador, sin imágenes duras. Acordamos un calendario de detección temprana para junio y testimonios con autorización.'}];
-    EC.acuerdos=[{id:nextAc++,text:'Validar mensajes de detección temprana con el equipo médico',done:true,from:'Línea editorial · oncología'},{id:nextAc++,text:'Conseguir 1 testimonio en video con autorización',done:false,from:'Línea editorial · oncología'}];EC.board=[];
-    K.exped={'maría lópez':{salud:'Sin alergias conocidas. No fuma. Biometría normal.',alergias:'Ninguna',procs:'Blefaroplastia superior',consultas:[{id:nextConsulta++,date:hoy,nota:'Primera valoración. Buena candidata; piel con exceso en párpado superior.',receta:'',indic:'Traer estudios de laboratorio recientes a la próxima cita.',next:''}]}};}
-})();
+/* Datos de ejemplo de Reuniones/Pizarra/Citas eliminados: módulos fuera del producto; incluían datos de pacientes (privacidad). */
 (function(){
   var ESC=clients.filter(function(x){return x.id===9})[0];
   if(ESC){if(!ESC.campaigns)ESC.campaigns=[];var ec1={id:nextCampaign++,name:'Electrocardiograma $499 · junio',objetivo:'Mensajes a WhatsApp',presu:'$3,000',publico:'45-65, hombres y mujeres, Querétaro',oferta:'Electro + valoración $499',start:'2026-06-10',end:'2026-06-30',estado:'Activa'};ESC.campaigns.push(ec1);var ep=posts.filter(function(x){return x.id===13})[0];if(ep)ep.campaignId=ec1.id;}
@@ -1763,8 +2033,9 @@ loadState();
 var ACTION_RX=/\b(enviar|env[ií]a|mandar|manda|crear|crea|subir|sube|agendar|agenda|revisar|revisa|preparar|prepara|hacer|haz|dise[ñn]ar|dise[ñn]a|publicar|publica|grabar|graba|llamar|llama|cotizar|cotiza|ajustar|ajusta|definir|define|coordinar|coordina|programar|programa|confirmar|confirma|entregar|entrega|contactar|contacta|seguimiento|solicitar|solicita|actualizar|actualiza|montar|armar)\b/i;
 function folderClient(){return clients.filter(function(x){return x.id===folderId})[0];}
 function ensureFolderData(c){if(c){if(!c.meetings)c.meetings=[];if(!c.acuerdos)c.acuerdos=[];if(!c.board)c.board=[];if(!c.campaigns)c.campaigns=[];}}
-function openFolder(id){folderId=id;inFolder=true;folderTab='resumen';folBoardMtg=null;boardSel=null;campEdit=null;ensureFolderData(folderClient());renderFolder();}
+function openFolder(id){folderId=id;inFolder=true;folderTab='identidad';folBoardMtg=null;boardSel=null;campEdit=null;ensureFolderData(folderClient());renderFolder();}
 function closeFolder(){inFolder=false;folderId=null;go('inicio');}
+var cliExpanded=false;
 function renderSidebarClients(){
   var box=$('#snavClients');if(!box)return;
   if(currentRole!=='admin'&&currentRole!=='cm'){box.innerHTML='';return;}
@@ -1774,7 +2045,8 @@ function renderSidebarClients(){
   var q=(cliQuery||'').toLowerCase();
   if(q)list=list.filter(function(c){return (c.doc||'').toLowerCase().indexOf(q)>=0||(c.esp||'').toLowerCase().indexOf(q)>=0;});
   list.sort(function(a,b){return (a.doc||'').localeCompare((b.doc||''),'es',{sensitivity:'base'});});
-  box.innerHTML=list.map(function(c){
+  var N=7,shown=(cliExpanded||q)?list:list.slice(0,N);
+  var rows=shown.map(function(c){
     var p=posts.filter(function(x){return x.doctor===c.doc;});
     var over=!c.paidThisMonth&&(new Date().getDate()-(c.payDay||10))>0;
     var rev=p.filter(function(x){return x.status==='Revisión'||x.status==='Cambios';}).length;
@@ -1783,6 +2055,8 @@ function renderSidebarClients(){
     var av=c.photo?' style="background-image:url('+c.photo+')"':'';
     return '<div class="clicn'+on+'" data-folder="'+c.id+'" title="'+escapeHtml(c.doc)+'"><div class="clicav"'+av+'>'+(c.photo?'':initials(c.doc))+'<span class="clidot" style="background:'+dotC+'"></span></div><span class="clicnm">'+escapeHtml(c.doc)+'</span></div>';
   }).join('')||'<div class="clinone">'+(q?'Sin resultados':'Sin cuentas')+'</div>';
+  if(!q&&list.length>N)rows+='<button class="climas" data-clientsmore>'+(cliExpanded?'▴ Ver menos':'▾ Ver todos ('+list.length+')')+'</button>';
+  box.innerHTML=rows;
 }
 function applySidecol(){var sh=document.querySelector('.shell2');if(!sh)return;var on=false;try{on=localStorage.getItem('mmSidecol')==='1';}catch(e){}sh.classList.toggle('sidecol',on);var b=document.querySelector('[data-sidecollapse]');if(b)b.textContent=on?'›':'‹';}
 var notifSig='',notifSeen='';
@@ -1811,7 +2085,7 @@ function clientPosts(c){return posts.filter(function(p){return p.doctor===c.doc;
 function detectActions(text){var out=[],seen={};(text||'').split(/[\n.;]+/).forEach(function(ln){var s=ln.trim().replace(/^[-•*\d.\)\s]+/,'').trim();if(s.length>4&&ACTION_RX.test(s)){var k=s.toLowerCase();if(!seen[k]){seen[k]=1;out.push(s);}}});return out;}
 function newSug(c,i,text){var sug=detectActions(text).filter(function(s){return !(c.acuerdos||[]).some(function(a){return a.text.toLowerCase()===s.toLowerCase();});});return sug.length?'<div class="msugt">📌 Acuerdos detectados — confirma los que apliquen</div>'+sug.map(function(s){return '<div class="msugrow"><span>'+escapeHtml(s)+'</span><button class="lk2" data-addac="'+i+'|'+encodeURIComponent(s)+'">＋ acuerdo</button></div>';}).join(''):'';}
 /* Reuniones y Acuerdos: ocultas por decisión de Jose (26 jun 2026) — complementarias, no core, y eran demasiadas pestañas. La lógica (folReuniones/folAcuerdos) queda intacta; para regresarlas, volver a agregar sus entradas aquí: ['reuniones','🗒️','Reuniones'],['acuerdos','✅','Acuerdos'] */
-var FOL_TABS=[['resumen','📋','Perfil del cliente'],['identidad','🎨','Identidad de marca'],['contenido','📅','Contenido'],['pauta','📣','Pauta'],['reportes','📈','Reportes'],['archivos','🗂️','Archivos']];
+var FOL_TABS=[['identidad','🎨','Marca'],['resumen','👤','Perfil'],['contenido','📅','Contenido'],['pauta','📣','Pauta'],['reportes','📈','Reportes'],['archivos','🗂️','Archivos']];
 function renderClientNav(c){
   $$('#topnav button').forEach(function(x){x.classList.remove('on')});
   renderSidebarClients();renderActivity();
@@ -1822,12 +2096,12 @@ function renderFolder(){
   var pend=(c.acuerdos||[]).filter(function(a){return !a.done;}).length;
   var tabs=FOL_TABS.map(function(t){var bdg=(t[0]==='acuerdos'&&pend)?' <span class="ftbd">'+pend+'</span>':'';return '<button class="ftab'+(folderTab===t[0]?' on':'')+'" data-foltab="'+t[0]+'">'+t[1]+' '+t[2]+bdg+'</button>';}).join('');
   var wa=c.phone?'<a class="wabtn" href="https://wa.me/'+waPhone(c.phone)+'" target="_blank" rel="noopener">💬 WhatsApp</a>':'';
+  var _pkg=c.package?'<span class="folchip">📦 '+escapeHtml(c.package)+'</span>':'';var _payok=!!c.paidThisMonth;var _pay=_payok?'Al día':'Pendiente';var _payc='<span class="folchip '+(_payok?'ok':'no')+'" title="El estado de pago se maneja en Finanzas">'+(_payok?'●':'○')+' '+_pay+'</span>';
   var av=c.photo?' style="background-image:url('+c.photo+')"':'';
   var head='<div class="folhd3"><button class="folback2" data-folback>← Inicio</button>'
-    +'<div class="folid"><div class="folav2" data-folphoto title="Cambiar foto"'+av+'>'+(c.photo?'':initials(c.doc))+'</div><input type="file" id="folPhotoFile" accept="image/*" class="hidden"><div style="min-width:0"><div class="folnm">'+escapeHtml(c.doc)+'</div><div class="folesp2">'+escapeHtml(c.esp||'')+(c.cm?' · CM '+escapeHtml(c.cm):'')+'</div></div><div class="folacts">'+wa+'</div></div>'
+    +'<div class="folid"><div class="folav2" data-folphoto title="Cambiar foto"'+av+'>'+(c.photo?'':initials(c.doc))+'</div><input type="file" id="folPhotoFile" accept="image/*" class="hidden"><div style="min-width:0"><div class="folnm">'+escapeHtml(c.doc)+'</div><div class="folesp2">'+escapeHtml(c.esp||'')+(c.cm?' · CM '+escapeHtml(c.cm):'')+'</div></div><div class="folacts">'+_pkg+_payc+wa+'</div></div>'
     +'<div class="ftabs">'+tabs+'</div></div>';
   $('#content').innerHTML='<div class="pad folwrap">'+head+'<div class="folbody">'+folderBody(c)+'</div></div>';
-  if(folderTab==='reuniones'&&folBoardMtg!=null)initBoard();
   makeAccessible();
   scheduleSave();
 }
@@ -1839,29 +2113,54 @@ function folderBody(c){
     case 'pauta':return folPauta(c);
     case 'reportes':return folReportes(c);
     case 'archivos':return folArchivos(c);
-    case 'reuniones':return folReuniones(c);
-    case 'acuerdos':return folAcuerdos(c);
   }
   return '';
 }
 function accChips(c){return (c.accounts||[]).map(function(a){var href=accUrl(a);var lbl=accIcon(a.platform)+' '+(a.username?escapeHtml(a.username):escapeHtml(a.platform));return href?'<a class="acctag" href="'+escapeHtml(href)+'" target="_blank" rel="noopener">'+lbl+' <span class="ext">↗</span></a>':'<span class="acctag">'+lbl+'</span>';}).join('');}
 function repStatusChip(c){var mk=todayIso().slice(0,7);var done=c.reports&&c.reports[mk];var mes=(MESES[parseInt(mk.split('-')[1],10)-1]||'').slice(0,3);return '<div class="repstat '+(done?'ok':'no')+'">'+(done?'✓ Reporte de '+mes+' listo':'⛔ Reporte de '+mes+' pendiente')+'</div>';}
+/* PERFIL — datos y accesos (factual). El paquete/pagos NO van aquí: viven en Finanzas (chip de estado en el header). */
 function folResumen(c){
   function r(lbl,v){return '<div class="folrow"><b>'+lbl+'</b><span>'+(v?escapeHtml(v):'—')+'</span></div>';}
-  var inc=PACKAGES.filter(function(x){return x.name===c.package;})[0];
   return '<div class="folsec"><div class="folsechd"><h3>Perfil del cliente</h3><button class="addbtn" data-client="'+c.id+'">✏️ Editar</button></div>'
-    +r('Nombre',c.doc)+r('Especialidad',c.esp)+r('CM asignado',c.cm)+r('Teléfono',c.phone)+r('Correo',c.email)+'</div>'
-    +'<div class="folsec"><h3>Servicios contratados</h3>'
-    +r('Paquete contratado',c.package)
-    +(inc&&inc.includes?'<div class="folrow"><b>Incluye</b><span>'+escapeHtml(inc.includes)+'</span></div>':'')
+    +r('Especialidad',c.esp)+r('CM asignado',c.cm)+r('Teléfono',c.phone)+r('Correo',c.email)
+    +'<div class="folrow"><b>Redes y accesos</b><span class="acctags">'+(accChips(c)||'<span class="folmut">—</span>')+'</span></div>'
     +r('Plan de posteo',c.plan)+'</div>';
 }
+/* Checklist de arranque — "carta de presentación digital" (base de toda cuenta, metodología de Jose). Vive en Marca. Estado por cliente en c.arranque (jsonb), persistido. */
+var ONBOARDING=[
+ {g:'📍 Google Business',items:[['gb_perfil','Perfil reclamado y completo (horarios, dirección, teléfono)'],['gb_fotos','Fotos actuales del consultorio y del doctor'],['gb_resenas','Pedir reseñas recientes (QR en consultorio)'],['gb_responder','Responder reseñas (incluidas las negativas)']]},
+ {g:'📱 Bio en redes',items:[['bio_ig','Instagram: nombre + especialidad + diferenciador + CTA + link'],['bio_fb','Facebook con la misma bio'],['bio_tt','TikTok (si aplica)']]},
+ {g:'🔗 Link in Bio · WhatsApp',items:[['link_bio','Link in Bio (Beacons/Linktree): agenda, WhatsApp, servicios, reseñas'],['wa_business','WhatsApp Business con mensajes automáticos activos']]},
+ {g:'⭐ Highlights de Instagram',items:[['hl_base','Yo · Procedimientos · Testimonios'],['hl_conv','FAQ · Cómo agendar · Consultorio']]}
+];
+function arranqueAll(){var n=0;ONBOARDING.forEach(function(s){n+=s.items.length;});return n;}
+function arranqueDone(c){var a=c.arranque||{},n=0;ONBOARDING.forEach(function(s){s.items.forEach(function(it){if(a[it[0]])n++;});});return n;}
+function arranquePct(c){var t=arranqueAll();return t?Math.round(arranqueDone(c)/t*100):0;}
+function folArranque(c){
+  var a=c.arranque||{},pct=arranquePct(c),done=arranqueDone(c),tot=arranqueAll();
+  var col=pct===100?'var(--mint-d)':(pct>=50?'var(--amber)':'var(--coral)');
+  var groups=ONBOARDING.map(function(s){
+    var rows=s.items.map(function(it){var on=!!a[it[0]];
+      return '<div class="arqrow" data-arq="'+it[0]+'" role="button" tabindex="0" aria-pressed="'+(on?'true':'false')+'" style="display:flex;align-items:center;gap:10px;padding:8px 4px;cursor:pointer;border-radius:8px"><span style="width:19px;height:19px;border-radius:6px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-size:11px;'+(on?'background:var(--mint);color:#fff':'border:1.5px solid var(--ink3)')+'">'+(on?'✓':'')+'</span><span style="font-size:13.5px;color:'+(on?'var(--ink)':'var(--ink2)')+'">'+escapeHtml(it[1])+'</span></div>';
+    }).join('');
+    return '<div style="margin-top:12px"><div style="font-size:11px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px">'+s.g+'</div>'+rows+'</div>';
+  }).join('');
+  return '<div class="folsec"><div class="folsechd"><h3>🚀 Carta de presentación digital</h3><span class="repstat '+(pct===100?'ok':'no')+'" style="margin:0">'+pct+'%</span></div>'
+    +'<div class="csub" style="margin:-6px 0 8px">La base que todo doctor debe tener lista antes de empujar contenido. Marca lo que ya esté hecho.</div>'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font-size:12.5px;color:var(--ink2)">'+done+' de '+tot+' listos</span></div>'
+    +'<div style="height:9px;background:var(--line);border-radius:999px;overflow:hidden;margin:8px 0 4px"><div style="height:100%;width:'+pct+'%;background:var(--mint);border-radius:999px"></div></div>'
+    +groups+'</div>';
+}
+/* MARCA — estrategia de comunicación (lo que ves primero). Las redes/accesos van en Perfil, no aquí. */
 function folIdentidad(c){
   function r(lbl,v){return '<div class="folrow"><b>'+lbl+'</b><span>'+(v?escapeHtml(v):'—')+'</span></div>';}
-  return '<div class="folsec"><div class="folsechd"><h3>Identidad de marca</h3><button class="addbtn" data-client="'+c.id+'">✏️ Editar identidad</button></div>'
-    +r('Paleta de color',c.palette)+r('Fuentes',c.fonts)+r('Personalidad / tono',c.personality)+r('Palabras clave',c.keywords)
-    +'<div class="folrow"><b>Redes sociales</b><span class="acctags">'+(accChips(c)||'<span class="folmut">—</span>')+'</span></div>'
-    +(c.notes?'<div class="folrow"><b>Notas de marca</b><span>'+escapeHtml(c.notes)+'</span></div>':'')+'</div>';
+  return '<div class="folsec"><div class="folsechd"><h3>Marca y comunicación</h3><button class="addbtn" data-client="'+c.id+'">✏️ Editar</button></div>'
+    +r('🎯 Objetivos y metas',c.objetivos)
+    +r('🗣️ Personalidad / tono',c.personality)
+    +r('🎨 Paleta de color',c.palette)+r('Fuentes',c.fonts)
+    +r('🔑 Palabras clave',c.keywords)
+    +(c.notes?'<div class="folrow"><b>📝 Notas de marca</b><span>'+escapeHtml(c.notes)+'</span></div>':'')+'</div>'
+    +folArranque(c);
 }
 function folContenido(c){
   var mine=clientPosts(c);
@@ -2193,9 +2492,10 @@ function visiblePosts(){
   if(crmScope==='todas')return posts.slice();
   return posts.filter(function(p){return (docCm[p.doctor]||'').indexOf('Perla')>=0;});
 }
+var contView='tablero';
 PANELS.contenido=function(){
   var vpAll=visiblePosts();var hoyC=todayIso();var canSendC=(currentRole==='cm'||currentRole==='admin');
-  var scopeSeg=(currentRole==='admin')?'<div class="iseg crmscope"><button class="isegb'+(crmScope!=='todas'?' on':'')+'" data-crmscope="mias">👤 Mis cuentas</button><button class="isegb'+(crmScope==='todas'?' on':'')+'" data-crmscope="todas">🗂️ Todas</button></div>':'';
+  var scopeSeg='';if(currentRole==='admin')crmScope='todas';
   var persBar='';
   if(currentRole==='admin'||currentRole==='cm'){
     var ppl=['Todos'].concat(taskPeople());if(ppl.indexOf(contWho)<0)contWho='Todos';
@@ -2214,14 +2514,14 @@ PANELS.contenido=function(){
       var late=(p.status==='Cambios'||p.status==='Borrador')&&p.date&&p.date<hoyC;
       var act='';
       if(p.status==='Idea'&&canSendToDoctor(p))act='<button class="kcmove" data-tomove="'+p.id+'|Borrador">Pasar a Diseño/Edición →</button>';
-      else if(p.status==='Borrador'&&isAssignee(p))act='<button class="kcmove" data-tomove="'+p.id+'|Revisión">Enviar a revisión →</button>';
+      else if(p.status==='Borrador'&&(isAssignee(p)||currentRole==='admin'))act='<button class="kcmove" data-tomove="'+p.id+'|Revisión">Enviar a revisión →</button>';
       else if(p.status==='Revisión'&&canSendToDoctor(p))act='<button class="kcmove send" data-tomove="'+p.id+'|Enviado">Enviar al doctor →</button>';
       else if(p.status==='Aprobado'&&canSendToDoctor(p))act='<button class="kcmove" data-tomove="'+p.id+'|Programado">Programar →</button>';
       return '<div class="kc" data-post="'+p.id+'"><div class="thumb" '+thumb+'>'+(p.img?'':(p.type==='Video'||p.type==='Reel'?'🎬':'🖼️'))+'</div><div class="kcb">'+(p.kind==='pauta'?'<span class="pautachip">📣 Pauta</span>':'')+'<div class="ti">'+escapeHtml(p.copy.slice(0,46))+(p.copy.length>46?'…':'')+'</div><div class="meta"><span class="dl">'+escapeHtml(p.doctor)+'</span><span class="dl"'+(late?' style="color:var(--coral);font-weight:700"':'')+' title="Fecha de entrega">'+(late?'⚠ ':'📅 ')+isoToShort(p.date)+'</span></div>'+act+'</div></div>';
     }).join('')+'</div>';}).join('');
   var introC=(currentRole==='disenador'||currentRole==='editor')?'Tus actividades asignadas, por etapa de avance. Toca una para abrirla.':'Seguimiento de todo el contenido en producción. Filtra por responsable para ver la carga de cada quien. Para crear, entra a la carpeta del cliente › Contenido.';
   var toolbar=(scopeSeg||persBar||cliBar)?'<div class="ctoolbar">'+scopeSeg+persBar+cliBar+'</div>':'';
-  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Actividades</h1><p>'+introC+'</p></div></div>'+toolbar+'<div class="board" style="grid-template-columns:repeat('+CONFIG.statuses.length+',minmax(155px,1fr))">'+body+'</div></div>';};
+  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Tablero</h1><p>'+introC+'</p></div></div>'+toolbar+'<div class="board" style="grid-template-columns:repeat('+CONFIG.statuses.length+',minmax(155px,1fr))">'+body+'</div></div>';};
 
 /* ===================== CALENDARIO (mini-cal navegable + lista por día) ===================== */
 var calY=2026,calM=6,calRange='mes',calSel=null,calMode='global';
@@ -2286,8 +2586,8 @@ function calInner(){return calRange==='mes'?calMonthView():('<div class="cal2wra
 function renderCalBox(){var b=document.getElementById('calBox');if(b){b.innerHTML=calInner();makeAccessible(b);}}
 PANELS.calendario=function(){calMode='global';
   return '<div class="pad"><div class="ptitle"><div><h1>Calendario</h1><p>Las publicaciones se ubican por su <b>fecha de publicación</b> 📅. Navega entre meses con ‹ › para planear con anticipación; alterna Mes / Semana / Día. Toca una pieza para abrirla.</p></div></div><div id="calBox">'+calInner()+'</div></div>';};
-function statusColor(s){return getColor('statuses',s)||{"Idea":"#5c6bc0","Borrador":"#90A4AE","Revisión":"#FFA000","Enviado":"#4FC3F7","Cambios":"#FF6B6B","Aprobado":"#4CAF50","Programado":"#7e57c2"}[s]||"#90a4ae";}
-var STATUS_LABEL={"Idea":"Idea (planeación CM)","Cambios":"Cambios solicitados","Borrador":"En proceso","Revisión":"Revisión (CM)","Enviado":"Enviado al doctor","Aprobado":"Aprobado","Programado":"Programado"};
+function statusColor(s){return getColor('statuses',s)||{"Idea":"#9AA8BC","Borrador":"#2C93C4","Revisión":"#CF961F","Enviado":"#CF961F","Cambios":"#E55F49","Aprobado":"#168F63","Programado":"#6468C7"}[s]||"#9AA8BC";}
+var STATUS_LABEL={"Idea":"Idea (planeación CM)","Cambios":"Cambios solicitados","Borrador":"En diseño","Revisión":"Revisión (CM)","Enviado":"Enviado al doctor","Aprobado":"Aprobado","Programado":"Programado"};
 function statusLabel(s){return STATUS_LABEL[s]||s;}
 function darken(hex,f){f=(f==null)?0.62:f;var h=(hex||'').replace('#','');if(h.length===3)h=h.replace(/(.)/g,'$1$1');var n=parseInt(h,16);if(isNaN(n))return hex;var r=Math.round(((n>>16)&255)*f),g=Math.round(((n>>8)&255)*f),b=Math.round((n&255)*f);return 'rgb('+r+','+g+','+b+')';}
 function selStatus(id,val){return '<select id="'+id+'">'+CONFIG.statuses.map(function(s){return '<option value="'+escapeHtml(s)+'"'+(s===val?' selected':'')+'>'+escapeHtml(statusLabel(s))+'</option>';}).join('')+'</select>';}
@@ -2342,6 +2642,41 @@ function parseRepFile(file){
   }catch(err){toast('No pude leer ese archivo; expórtalo como .xlsx o captura a mano.');}};
   rd.readAsArrayBuffer(file);
 }
+function repAutoDraft(){
+  var c=clients.filter(function(x){return x.id===repCid;})[0];if(!c)return;
+  readRepForm(c);
+  var mk=repMonth,r=repGet(c,mk);
+  if(!r||!r.nets||!Object.keys(r.nets).length||!repTotals(r).alc){toast('Captura primero los números del mes para generar el borrador.');return;}
+  var t=repTotals(r);var prevK=prevMonthKey(mk);var hasPrev=!!repGet(c,prevK);var pt=repTotals(repGet(c,prevK));
+  var mesN=(MESES[+mk.split('-')[1]-1]||'').toLowerCase();var prevN=(MESES[+prevK.split('-')[1]-1]||'').toLowerCase();
+  function delta(cur,prev){if(!hasPrev||prev==null||prev===0)return '';var d=Math.round((cur-prev)/prev*100);if(d>0)return ' (▲ +'+d+'% vs '+prevN+')';if(d<0)return ' (▼ '+d+'% vs '+prevN+')';return '';}
+  var L=[];
+  L.push('En '+mesN+' tu contenido llegó a '+fmtNum(t.alc)+' personas'+delta(t.alc,pt.alc)+'.');
+  if(t.msg)L.push('Recibiste '+fmtNum(t.msg)+' mensajes/consultas'+delta(t.msg,pt.msg)+'.');
+  if(t.seg)L.push('Sumaste '+fmtNum(t.seg)+' seguidores nuevos.');
+  var bn='',bv=-1;for(var n in r.nets){var a=+r.nets[n].alc||0;if(a>bv){bv=a;bn=n;}}
+  if(bn&&bv>0)L.push('Tu red más fuerte fue '+bn+' con '+fmtNum(bv)+' de alcance.');
+  var pa=r.pauta;if(pa&&((+pa.inv)||(+pa.msg))){var cpm=(+pa.msg)?Math.round((+pa.inv||0)/(+pa.msg)):0;L.push('En anuncios invertimos $'+fmtNum(+pa.inv||0)+((+pa.msg)?(' y trajeron '+fmtNum(+pa.msg)+' mensajes, a ≈ $'+cpm+' por mensaje'):'')+'.');}
+  if(c.objetivos)L.push('Seguimos enfocados en tu meta: '+c.objetivos);
+  var ta=document.getElementById('rep_note');if(ta){ta.value=L.join(' ');ta.focus();}
+  var tx=document.getElementById('rep_next');if(tx&&!tx.value.trim())tx.value='El próximo mes reforzaremos el contenido que más alcance tuvo y mantendremos la constancia de publicación. Meta del mes: …';
+  toast('✨ Borrador listo — revísalo y ajústalo antes de guardar.');
+}
+function waReportText(c,mk){
+  var r=repGet(c,mk),t=repTotals(r||{});
+  var L=['Hola '+(c.doc||'doctor')+' 👋','','Tu reporte de '+monthLabel(mk)+':'];
+  if(r&&r.note)L.push(r.note);
+  else{L.push('• Alcance: '+fmtNum(t.alc)+' personas');if(t.msg)L.push('• Mensajes/consultas: '+fmtNum(t.msg));if(t.seg)L.push('• Seguidores nuevos: '+fmtNum(t.seg));}
+  if(r&&r.next){L.push('');L.push('Próximo mes: '+r.next);}
+  L.push('');L.push('Cualquier duda, aquí estoy. 🙌');
+  return L.join('\n');
+}
+function repShareBtns(c,mk){
+  var r=repGet(c,mk);if(!r||!repTotals(r).alc)return '';
+  var pdf='<button class="addbtn" style="width:100%;margin-top:14px" data-printrep="'+c.id+'|'+mk+'">⬇ Descargar PDF</button>';
+  var wa=c.phone?('<a class="wabtn" style="width:100%;justify-content:center;margin-top:10px;box-sizing:border-box" href="https://wa.me/'+waPhone(c.phone)+'?text='+encodeURIComponent(waReportText(c,mk))+'" target="_blank" rel="noopener">💬 Enviar al doctor por WhatsApp</a>'):'<div class="csub" style="margin-top:10px">📱 Agrega el teléfono del cliente en su Perfil para poder enviarlo por WhatsApp.</div>';
+  return pdf+wa;
+}
 function docRepBody(c,mk){
   var r=repGet(c,mk);if(!r||!r.nets||!Object.keys(r.nets).length)return '<div class="folempty">Aún no hay reporte capturado para este mes.</div>';
   var t=repTotals(r);var hasPrev=!!repGet(c,prevMonthKey(mk));var pt=repTotals(repGet(c,prevMonthKey(mk)));
@@ -2395,10 +2730,10 @@ function folReportes(c){
       +'<div class="frow"><div class="fld"><label>💵 Inversión</label><input type="number" id="rp_inv" value="'+((r.pauta&&r.pauta.inv)||'')+'" placeholder="$"></div><div class="fld"><label>👁️ Alcance pagado</label><input type="number" id="rp_alc" value="'+((r.pauta&&r.pauta.alc)||'')+'" placeholder="0"></div></div>'
       +'<div class="frow"><div class="fld"><label>💬 Mensajes / leads</label><input type="number" id="rp_msg" value="'+((r.pauta&&r.pauta.msg)||'')+'" placeholder="0"></div><div class="fld"><label>🗓️ Citas / conversiones</label><input type="number" id="rp_conv" value="'+((r.pauta&&r.pauta.conv)||'')+'" placeholder="0"></div></div>'
       +'<div style="height:1px;background:var(--line);margin:16px 0"></div>'
-      +'<div class="fld"><label>📝 Qué pasó este mes</label><textarea id="rep_note" class="big" placeholder="Resultados clave en lenguaje sencillo para el doctor…">'+escapeHtml(r.note||'')+'</textarea></div>'
+      +'<div class="fld"><label style="display:flex;justify-content:space-between;align-items:center;gap:8px">📝 Qué pasó este mes <button type="button" data-repdraft style="font-size:11.5px;font-weight:700;color:var(--mint-d);background:var(--mint-bg);border:none;border-radius:8px;padding:5px 10px;cursor:pointer">✨ Generar borrador</button></label><textarea id="rep_note" class="big" placeholder="Pulsa «Generar borrador» para redactarlo desde los números, o escríbelo aquí…">'+escapeHtml(r.note||'')+'</textarea></div>'
       +'<div class="fld"><label>🎯 Próximas acciones</label><textarea id="rep_next" class="big" placeholder="Qué haremos el próximo mes y la meta…">'+escapeHtml(r.next||'')+'</textarea></div>'
       +'<button class="msave" style="width:100%" data-repsave>Guardar reporte de '+monthLabel(repMonth)+'</button></div>'
-    +'<div class="card"><h3>Vista previa</h3><div class="csub">Así lo verá '+escapeHtml(c.doc)+' en su portal · no se edita aquí</div>'+docRepBody(c,repMonth)+((repGet(c,repMonth)&&repTotals(repGet(c,repMonth)).alc)?'<button class="addbtn" style="width:100%;margin-top:14px" data-printrep="'+c.id+'|'+repMonth+'">⬇ Descargar PDF</button>':'')+'</div></div></div>';
+    +'<div class="card"><h3>Vista previa</h3><div class="csub">Así lo verá '+escapeHtml(c.doc)+' en su portal · no se edita aquí</div>'+docRepBody(c,repMonth)+repShareBtns(c,repMonth)+'</div></div></div>';
 }
 
 var adminOpen={finanzas:true};var adminCat='finanzas',accRole='cm',pendAccess=null,finView='',finTab='balance',finFilter='todos',paysView='clientes',payOpen=null;
@@ -2416,7 +2751,7 @@ function tagStyle(key,v){var c=getColor(key,v);return c?' style="background:'+c+
 function accItem(key,title,desc,body){var open=!!adminOpen[key];return '<div class="acc"><div class="acchead'+(open?' open':'')+'" data-acc="'+key+'"><span>'+title+'</span><span class="chev">'+(open?'▾':'▸')+'</span></div>'+(open?'<div class="accbody"><div class="accd">'+desc+'</div>'+body+'</div>':'')+'</div>';}
 var ACCESS={};
 var ACC_ROLES=[{r:'cm',n:'Anahí · Community Manager'},{r:'disenador',n:'Sofía · Diseño'},{r:'editor',n:'Karla · Edición'}];
-var ACC_MODS=[{p:'inicio',l:'🏠 Inicio',def:['admin','cm','disenador','editor']},{p:'contenido',l:'✅ Actividades',def:['admin','cm','disenador','editor']},{p:'calendario',l:'🗓️ Calendario',def:['admin','cm','disenador','editor']},{p:'clientes',l:'🩺 Clientes',def:['admin','cm']},{p:'mensajes',l:'💬 Mensajes',def:['admin','cm']},{p:'admin',l:'⚙️ Administración',def:['admin']}];
+var ACC_MODS=[{p:'inicio',l:'🏠 Inicio',def:['admin','cm','disenador','editor']},{p:'contenido',l:'📋 Tablero',def:['admin','cm','disenador','editor']},{p:'calendario',l:'🗓️ Calendario',def:['admin','cm','disenador','editor']},{p:'clientes',l:'🩺 Clientes',def:['admin','cm']},{p:'mensajes',l:'💬 Mensajes',def:['admin','cm']},{p:'admin',l:'⚙️ Administración',def:['admin']}];
 function modDef(p,role){var m=ACC_MODS.filter(function(x){return x.p===p;})[0];return !!(m&&m.def.indexOf(role)>=0);}
 function accessOn(role,p){if(role==='admin')return true;if(MYACCESS&&role===currentRole)return !!MYACCESS[p];if(ACCESS[role]&&(p in ACCESS[role]))return ACCESS[role][p];return modDef(p,role);}
 var permisosCache=null;
@@ -2501,7 +2836,7 @@ async function usuDel(id){usuDelId=null;var r=await invokeUsr({action:'delete',i
 async function usuSetPass(id){var pw=(($('#upw_'+id)||{}).value||'');if(pw.length<6){toast('⚠️ Mín. 6 caracteres');return;}var r=await invokeUsr({action:'setPassword',id:id,password:pw});if(r.error){toast('⚠️ '+r.error);return;}usuPassId=null;toast('🔑 Contraseña actualizada');loadUsuarios();}
 AFTER.admin=function(){if(adminCat==='usuarios'){loadUsuarios();renderUsuForm();}};
 function clientPayDet(c){var paid=!!c.paidThisMonth;
-  var prev=c.comprobante?'<div class="payprev"><img src="'+c.comprobante+'" data-vercomp="'+c.id+'"><div class="muted2">Comprobante del doctor'+(c.compDate?' · '+escapeHtml(c.compDate):'')+'. Verifica que sea real, luego marca pagado y emite recibo.</div></div>':'';
+  var prev=compPreview(c);
   return '<div class="paydet">'
     +'<div class="finedit"><span class="fen">💲 Valor mensual</span><input class="feinp" data-setval="'+c.id+'" value="'+escapeHtml(c.val||'')+'" placeholder="$0"></div>'+prev
     +'<div class="payacts">'+(paid?'<span style="font-size:12.5px;color:#2e7d32;font-weight:700">Pagado este mes ✓</span>':'<button class="recpill" data-remind="'+c.id+'">🔔 Recordatorio</button><button class="addbtn" data-confirmpay="'+c.id+'">✓ Marcar pagado</button>')+'</div>'
@@ -2608,7 +2943,7 @@ PANELS.pagos=function(){
       var head='<div class="payrow'+(open?' open':'')+'" data-payopen="c'+c.id+'"><div class="payav">'+initials(c.doc)+'</div><div class="paytx"><b>'+escapeHtml(c.doc)+'</b><small>día '+(c.payDay||10)+' · '+escapeHtml(c.val||'—')+'/mes</small></div>'+chip+'<span class="paychev">'+(open?'▾':'▸')+'</span></div>';
       var det='';
       if(open){
-        var prev=c.comprobante?'<div class="payprev"><img src="'+c.comprobante+'" data-vercomp="'+c.id+'"><div class="muted2">Comprobante del doctor'+(c.compDate?' · '+escapeHtml(c.compDate):'')+'. Verifica que sea real, luego marca pagado y emite recibo.</div></div>':'';
+        var prev=compPreview(c);
         det='<div class="paydet">'
           +'<div class="finedit"><span class="fen">💲 Valor mensual</span><input class="feinp" data-setval="'+c.id+'" value="'+escapeHtml(c.val||'')+'" placeholder="$0"></div>'+prev
           +'<div class="payacts">'+(paid?'<span style="font-size:12.5px;color:#2e7d32;font-weight:700">Pagado este mes ✓</span>':'<button class="recpill" data-remind="'+c.id+'">🔔 Recordatorio</button><button class="addbtn" data-confirmpay="'+c.id+'">✓ Marcar pagado</button>')+'</div>'
@@ -2665,7 +3000,7 @@ AFTER.perfil=function(){var f=$('#profFile');var av=$('#profAv');if(av&&f){av.ad
 
 function taskPeople(){var self=currentUserName();if(currentRole==='admin')return ['Perla Garza','Anahí (CM)','Sofía (Diseño)','Karla (Edición)'];if(currentRole==='cm')return [self,'Sofía (Diseño)','Karla (Edición)'];return [self];}
 function isLateTask(p){return p.date&&p.date<todayIso()&&p.status!=='Aprobado'&&p.status!=='Programado';}
-function canSendToDoctor(p){if(currentRole!=='cm'&&currentRole!=='admin')return false;var me=((USERS[currentRole]||{}).name||'').split(' ')[0];var c=clients.filter(function(x){return x.doc===p.doctor;})[0];return !!c&&(c.cm||'').indexOf(me)>=0;}
+function canSendToDoctor(p){if(currentRole==='admin')return true;if(currentRole!=='cm')return false;var me=((USERS[currentRole]||{}).name||'').split(' ')[0];var c=clients.filter(function(x){return x.doc===p.doctor;})[0];return !!c&&(c.cm||'').indexOf(me)>=0;}
 function isAssignee(p){return p.who===currentUserName();}
 function cmPerson(cmFirst){if(!cmFirst)return '';var f=cmFirst.split(' ')[0];if((USERS.admin.name||'').split(' ')[0]===f)return USERS.admin.person;if((USERS.cm.name||'').split(' ')[0]===f)return USERS.cm.person;return cmFirst;}
 function taskOwner(p){if(p.status==='Idea'||p.status==='Revisión'||p.status==='Enviado'||p.status==='Aprobado'||p.status==='Programado'){var c=clients.filter(function(x){return x.doc===p.doctor;})[0];var o=cmPerson(c?(c.cm||''):'');if(o)return o;}return p.who;}
@@ -2678,7 +3013,7 @@ PANELS.mio=function(){
     return '<button class="taskchip'+(w===taskWho?' on':'')+(late?' alert':'')+'" data-taskwho="'+escapeHtml(w)+'">'+escapeHtml(lbl)+'<span class="tcount">'+pend+'</span>'+(late?'<span class="tdot" title="Tiene un retraso"></span>':'')+'</button>';}).join('');
   var filterBar=multi?'<div class="taskfilter">'+chips+'</div>':'';
   var who=taskWho;var mine=posts.filter(function(p){return taskOwner(p)===who;});
-  var ALLCOLS=[{k:'✎ Cambios solicitados',st:'Cambios'},{k:'🛠️ En proceso',st:'Borrador'},{k:'👀 Revisión (CM)',st:'Revisión'},{k:'📤 Enviado al doctor',st:'Enviado'},{k:'✅ Aprobado',st:'Aprobado'},{k:'🗓️ Programado',st:'Programado'}];
+  var ALLCOLS=[{k:'✎ Cambios solicitados',st:'Cambios'},{k:'🎨 En diseño',st:'Borrador'},{k:'👀 Revisión (CM)',st:'Revisión'},{k:'📤 Enviado al doctor',st:'Enviado'},{k:'✅ Aprobado',st:'Aprobado'},{k:'🗓️ Programado',st:'Programado'}];
   var isProd=(currentRole==='disenador'||currentRole==='editor');
   var groups=isProd?ALLCOLS.slice(0,2):ALLCOLS;
   var canSend=(currentRole==='cm'||currentRole==='admin');
@@ -2686,7 +3021,7 @@ PANELS.mio=function(){
     return '<div class="col"><h4>'+g.k+'<span>'+items.length+'</span></h4>'+(items.map(function(p){var late=isLateTask(p);
       var act='';
       if(p.status==='Idea'&&canSendToDoctor(p))act='<button class="kcmove" data-tomove="'+p.id+'|Borrador">Pasar a Diseño/Edición →</button>';
-      else if(p.status==='Borrador'&&isAssignee(p))act='<button class="kcmove" data-tomove="'+p.id+'|Revisión">Enviar a revisión →</button>';
+      else if(p.status==='Borrador'&&(isAssignee(p)||currentRole==='admin'))act='<button class="kcmove" data-tomove="'+p.id+'|Revisión">Enviar a revisión →</button>';
       else if(p.status==='Revisión'&&canSendToDoctor(p))act='<button class="kcmove send" data-tomove="'+p.id+'|Enviado">Enviar al doctor →</button>';
       else if(p.status==='Aprobado'&&canSendToDoctor(p))act='<button class="kcmove" data-tomove="'+p.id+'|Programado">Programar →</button>';
       return '<div class="kc" data-post="'+p.id+'"><div class="kcb"><div class="ti">'+escapeHtml(p.copy.slice(0,44))+'…</div>'+(p.status==='Cambios'&&p.changeNote?'<div class="why">✎ Qué cambiar: '+escapeHtml(p.changeNote)+'</div>':'')+'<div class="meta"><span class="plat"'+tagStyle('platforms',p.plat)+'>'+escapeHtml(p.plat)+'</span><span class="dl"'+(late?' style="color:var(--coral);font-weight:700"':'')+'>'+(late?'⚠ ':'📅 ')+isoToShort(p.date)+'</span></div><div class="meta"><span class="dl">'+escapeHtml(p.doctor)+'</span></div>'+act+'</div></div>';
@@ -2741,51 +3076,66 @@ function medidaHint(t){return MEDIDAS[t]||'📐 Recomendado: 1080px de ancho';}
 function renderInspoWrap(){var wrap=document.getElementById('inspoWrap');if(!wrap)return;wrap.innerHTML=tmpInspo.map(function(s,i){return '<div class="inspoit" style="background-image:url('+s+')"><button data-delinspo="'+i+'" title="Quitar">✕</button></div>';}).join('')+'<button class="inspoadd" data-addinspo title="Agregar referencia">＋</button>';}
 function renderFileZone(){var z=document.getElementById('fileZone');if(!z)return;if(tmpImg){z.className='filezone has';z.innerHTML='<div class="fzthumb" style="background-image:url('+tmpImg+')"></div><div class="fzinfo"><div class="fzt">Imagen lista</div><div class="fzs">Adáptala abajo o haz clic para cambiarla</div></div><button class="fzx" data-filezap title="Quitar">✕</button>';}else{z.className='filezone';z.innerHTML='<div class="fzicon">🖼️</div><div class="fzinfo"><div class="fzt">Sube la imagen</div><div class="fzs">Para adaptarla a formatos y verla en la previa</div></div>';}}
 function exitPostEditor(){if(editFolderReturn){folderId=editFolderReturn;inFolder=true;folderTab='contenido';editFolderReturn=null;renderFolder();}else{go(editReturn);}}
+var EDIT_STEPS=['Estrategia','Contenido','Archivo','Programar'];
+var editStep=0;
+function pwBarHTML(){return EDIT_STEPS.map(function(t,i){var cls=i===editStep?'pwstep on':(i<editStep?'pwstep done':'pwstep');var num=i<editStep?'✓':(i+1);return '<button class="'+cls+'" data-editstep="'+i+'"><span class="pwsnum">'+num+'</span><span class="pwslbl">'+t+'</span></button>'+(i<EDIT_STEPS.length-1?'<span class="pwsline'+(i<editStep?' done':'')+'"></span>':'');}).join('');}
+function pwNavHTML(){var last=editStep===EDIT_STEPS.length-1;var back=editStep>0?'<button class="pwback" data-pwback>← Atrás</button>':'<span></span>';var next=last?'<span class="pwdone">Revisa la previa de la derecha y guarda 👉</span>':'<button class="pwnext" data-pwnext>Siguiente →</button>';return back+next;}
+function goEditStep(n){editStep=Math.max(0,Math.min(EDIT_STEPS.length-1,n));var ps=document.querySelectorAll('.pwpane');[].forEach.call(ps,function(s){s.style.display=(parseInt(s.getAttribute('data-pane'),10)===editStep)?'':'none';});var bar=document.getElementById('pwbar');if(bar)bar.innerHTML=pwBarHTML();var nav=document.getElementById('pwnav');if(nav)nav.innerHTML=pwNavHTML();var sc=document.querySelector('.postedit');if(sc&&sc.scrollIntoView){try{sc.scrollIntoView({block:'start',behavior:'smooth'});}catch(e){}}}
 function renderPostEditor(id,presetDoc){
-  editPostId=id||0;
+  editPostId=id||0;editStep=0;
   var p=id?posts.filter(function(x){return x.id===id})[0]:{doctor:(presetDoc||docList()[0]),plat:platformsFor(presetDoc||docList()[0])[0],type:CONFIG.types[0],date:todayIso(),pubDate:"",status:"Idea",funnel:CONFIG.funnel[0],copy:"",img:null,who:(responsables()[0]||''),idealClient:"",purpose:"",goals:"",inspo:"",inspoImgs:[],kind:"organico",objetivo:"",presu:"",oferta:"",publico:"",variaciones:"",finCamp:"",mediaUrl:""};
   tmpImg=p.img||null;tmpInspo=(p.inspoImgs||[]).slice();
-  var prev='<div class="igprevlbl">📱 Vista previa — así lo verá el doctor</div><div id="igPrevBox">'+igCard({handle:p.doctor,plat:p.plat,type:p.type,media:(p.mediaUrl||tmpImg||''),caption:p.copy})+'</div><div class="prevnote">🔒 Es tu vista de trabajo. El doctor la recibe <b>solo</b> cuando la marcas como <b>Enviado</b>.</div>';
+  var prev='<div class="igprevlbl">📱 Siempre visible · así lo verá el doctor</div><div id="igPrevBox">'+igCard({handle:p.doctor,plat:p.plat,type:p.type,media:(p.mediaUrl||tmpImg||''),caption:p.copy})+'</div><div class="prevnote">🔒 Es tu vista de trabajo. El doctor la recibe <b>solo</b> cuando la marcas como <b>Enviado</b>.</div>';
   var inspoHTML=tmpInspo.map(function(s,i){return '<div class="inspoit" style="background-image:url('+s+')"><button data-delinspo="'+i+'" title="Quitar">✕</button></div>';}).join('')+'<button class="inspoadd" data-addinspo title="Agregar referencia">＋</button>';
-  function step(n,t,s){return '<div class="pstep"><span class="pstepn">'+n+'</span><span class="psteph">'+t+'</span></div>'+(s?'<div class="psteps">'+s+'</div>':'');}
   var fileZoneHTML=tmpImg
-    ? '<div class="filezone has" id="fileZone" data-filezone><div class="fzthumb" style="background-image:url('+tmpImg+')"></div><div class="fzinfo"><div class="fzt">Imagen lista</div><div class="fzs">Adáptala abajo o haz clic para cambiarla</div></div><button class="fzx" data-filezap title="Quitar">✕</button></div>'
-    : '<div class="filezone" id="fileZone" data-filezone><div class="fzicon">🖼️</div><div class="fzinfo"><div class="fzt">Sube la imagen</div><div class="fzs">Para adaptarla a formatos y verla en la previa</div></div></div>';
-  var h='<div class="pad postedit" style="max-width:1100px"><div class="ptitle"><div><button class="folback" data-editback>← '+(editFolderReturn!=null?'Carpeta del cliente':'Actividades')+'</button><h1 style="margin-top:10px">'+(id?'Editar publicación':'Crear publicación')+'</h1><p>Llénala de principio a fin: primero la estrategia, luego el contenido. A la derecha ves cómo va quedando.</p></div></div>'
+    ? '<div class="filezone has" id="fileZone" data-filezone><div class="fzthumb" style="background-image:url('+tmpImg+')"></div><div class="fzinfo"><div class="fzt">Imagen lista</div><div class="fzs">Haz clic para cambiarla</div></div><button class="fzx" data-filezap title="Quitar">✕</button></div>'
+    : '<div class="filezone" id="fileZone" data-filezone><div class="fzicon">🖼️</div><div class="fzinfo"><div class="fzt">Sube la imagen</div><div class="fzs">Para adaptarla y verla en la previa</div></div></div>';
+  /* PANE 0 — Estrategia */
+  var pane0='<section class="pwpane" data-pane="0"><div class="pwhd"><div class="pweye">PASO 1 DE 4 · ESTRATEGIA</div><h2>Estrategia</h2><p>¿Qué vamos a publicar y para quién?</p></div>'
+    +'<div class="fld"><label>¿Es contenido de siempre o anuncio pagado?</label><div class="iseg" id="kindSeg"><button class="isegb'+((p.kind||"organico")==="organico"?" on":"")+'" data-postkind="organico">🌱 Orgánico</button><button class="isegb'+(p.kind==="pauta"?" on":"")+'" data-postkind="pauta">📣 Pauta</button></div><input type="hidden" id="fKind" value="'+(p.kind||"organico")+'"></div>'
+    +'<div id="pautaBox" style="'+(p.kind==="pauta"?"":"display:none")+'">'
+      +'<div class="fld"><label>📣 ¿De qué campaña cuelga?</label>'+campSelectHTML(p.doctor,p.campaignId)+'<div class="camphint">El presupuesto, el público y la oferta se definen <b>una sola vez</b> en la campaña. Créala en la carpeta del doctor › 📣 Pauta; aquí solo la eliges.</div></div>'
+    +'</div>'
+    +'<div class="fld"><label>👤 Doctor / cuenta</label>'+sel('fDoctor',docList(),p.doctor)+'</div>'
+    +'<div class="frow"><div class="fld"><label>📱 Plataforma</label>'+sel('fPlat',platformsFor(p.doctor),p.plat)+'</div><div class="fld"><label>🎞️ Tipo</label>'+sel('fType',CONFIG.types,p.type)+'</div></div>'
+    +'<div class="medhint" id="fTypeHint">'+medidaHint(p.type)+'</div>'
+    +'<div class="fld" style="margin-top:11px"><label>🎯 Cliente ideal — ¿a quién le habla?</label><textarea id="fIdeal" placeholder="ej. Mujeres 30-50 que consideran una cirugía y buscan confianza y resultados naturales">'+escapeHtml(p.idealClient||'')+'</textarea></div>'
+    +'<div class="fld"><label>💭 Propósito — ¿qué queremos lograr?</label><textarea id="fPurpose" placeholder="ej. Educar sobre el procedimiento y generar mensajes al WhatsApp">'+escapeHtml(p.purpose||'')+'</textarea></div>'
+    +'<div class="frow"><div class="fld"><label>📈 Meta concreta</label><input id="fGoals" value="'+escapeHtml(p.goals||'')+'" placeholder="ej. 10 mensajes · 3 citas"></div><div class="fld"><label>🔻 Fase del funnel</label>'+sel('fFunnel',CONFIG.funnel,p.funnel)+'</div></div>'
+  +'</section>';
+  /* PANE 1 — Contenido */
+  var pane1='<section class="pwpane" data-pane="1" style="display:none"><div class="pwhd"><div class="pweye">PASO 2 DE 4 · CONTENIDO</div><h2>Contenido</h2><p>El mensaje: copy y referencias.</p></div>'
+    +'<div class="fld"><label>✍️ Copy / guion</label><textarea id="fCopy" class="big" placeholder="Gancho (0-3s) → idea principal sin tecnicismos → CTA claro…">'+escapeHtml(p.copy||'')+'</textarea></div>'
+    +'<div class="fld"><label>💡 Inspiración / referencias</label><textarea id="fInspo" placeholder="Links de referencia (reel, video), ideas visuales, ejemplos a adaptar (nunca copiar)…">'+escapeHtml(p.inspo||'')+'</textarea></div>'
+    +'<div class="fld"><label>🖼️ Imágenes de referencia</label><div class="inspowrap" id="inspoWrap">'+inspoHTML+'</div><input type="file" id="inspoFile" accept="image/*" class="hidden"></div>'
+  +'</section>';
+  /* PANE 2 — Archivo (1-2-3) */
+  var pane2='<section class="pwpane" data-pane="2" style="display:none"><div class="pwhd"><div class="pweye">PASO 3 DE 4 · ARCHIVO</div><h2>El archivo</h2><p>Sube la imagen, adáptala al formato y pega el enlace de Drive.</p></div>'
+    +'<div class="arz">'
+      +'<div class="arzrow"><div class="arzn">1</div><div class="arzbody"><div class="arzt">Sube tu imagen</div>'+fileZoneHTML+'<input type="file" id="fileInput" accept="image/*" class="hidden"></div></div>'
+      +'<div class="arzrow"><div class="arzn">2</div><div class="arzbody"><div class="arzt">Adáptala al formato</div><button class="recpill arzbtn" data-adapter>📐 Cuadrado 1:1 · Vertical 4:5 · Reel 9:16</button><div class="arzsub">Recorta a la medida de cada red y descárgala. Es la <b>misma</b> imagen, no la vuelves a subir.</div></div></div>'
+      +'<div class="arzrow"><div class="arzn">3</div><div class="arzbody"><div class="arzt">Pega el enlace de Drive <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener" class="drvlink">📂 Abrir Drive ↗</a></div><input id="fMedia" value="'+escapeHtml(p.mediaUrl||'')+'" placeholder="https://drive.google.com/… — es lo que verá y aprobará el doctor">'
+        +(driveUpReady()
+          ? '<div class="arzhint">☁️ <b>Subida automática activa:</b> al subir la imagen en el paso 1, el enlace se pega solo aquí. ¿Adaptaste formatos? Toca <b>“Subir a Drive”</b> dentro del adaptador. <span class="muted2">¿Es video? Pega el enlace a mano.</span></div>'
+          : '<div class="arzhint">💡 Súbela a tu Drive y pega aquí el enlace. <span class="muted2">¿Es video? Pega directo el enlace de Drive. Puedes activar la subida automática en Administración › Subida a Drive.</span></div>')
+      +'</div></div>'
+    +'</div>'
+  +'</section>';
+  /* PANE 3 — Programar */
+  var _ps=p.status||'Idea',_psc=(typeof statusColor==='function'?statusColor(_ps):'#9AA8BC');
+  var pane3='<section class="pwpane" data-pane="3" style="display:none"><div class="pwhd"><div class="pweye">PASO 4 DE 4 · PROGRAMAR</div><h2>Programar</h2><p>¿Cuándo se entrega y quién la hace?</p></div>'
+    +'<div class="fld"><label>🚦 Estado</label><div class="rostatwrap"><span class="rostat" style="color:'+_psc+';border-color:'+_psc+'40;background:'+_psc+'14">'+escapeHtml(statusLabel(_ps))+'</span><span class="rostathint">Avanza solo desde el <b>Tablero</b> y la <b>aprobación del doctor</b> — aquí no se cambia a mano.</span></div></div>'
+    +'<div class="frow"><div class="fld"><label>📦 Fecha de entrega (interna)</label><input id="fDate" type="date" value="'+(p.date||'')+'"></div><div class="fld"><label>📅 Fecha de publicación</label><input id="fPub" type="date" value="'+(p.pubDate||'')+'"></div></div>'
+    +'<div class="fld"><label>🙋 Responsable</label>'+sel('fWho',responsables(),p.who)+'</div>'
+    +(id?'<div class="fld"><label>✎ Qué cambiar (si pides corrección)</label><textarea id="fChange" placeholder="Indicación clara para el responsable…">'+escapeHtml(p.changeNote||'')+'</textarea></div>':'')
+    +'<button class="msave" style="width:100%;margin-top:6px" data-savepost="'+(id||0)+'">'+(id?'Guardar cambios':'Crear publicación')+'</button>'
+    +(id?'<button class="mdel" style="width:100%;margin-top:8px" data-delpost="'+id+'">Eliminar</button>':'')
+  +'</section>';
+  var h='<div class="pad postedit" style="max-width:1100px"><div class="ptitle"><div><button class="folback" data-editback>← '+(editFolderReturn!=null?'Carpeta del cliente':'Tablero')+'</button><h1 style="margin-top:10px">'+(id?'Editar publicación':'Crear publicación')+'</h1><p>Llénala paso a paso, sin saturarte. A la derecha ves siempre cómo va quedando.</p></div></div>'
     +'<div class="peditgrid">'
     +'<div class="peditmain">'
-      +'<div class="card">'+step('1','Estrategia','¿Qué vamos a publicar y para quién?')
-        +'<div class="iseg" id="kindSeg"><button class="isegb'+((p.kind||"organico")==="organico"?" on":"")+'" data-postkind="organico">🌱 Orgánico</button><button class="isegb'+(p.kind==="pauta"?" on":"")+'" data-postkind="pauta">📣 Pauta</button></div><input type="hidden" id="fKind" value="'+(p.kind||"organico")+'">'
-        +'<div id="pautaBox" style="margin-top:12px;'+(p.kind==="pauta"?"":"display:none")+'">'
-          +'<div class="fld"><label>📣 Campaña</label>'+campSelectHTML(p.doctor,p.campaignId)+'</div>'
-          +'<div class="camphint">Define presupuesto, público y oferta <b>una sola vez</b> en la campaña (carpeta del doctor › 📣 Pauta). Aquí el anuncio solo se cuelga de ella.</div>'
-        +'</div>'
-        +'<div class="fld" style="margin-top:12px"><label>👤 Doctor / cuenta</label>'+sel('fDoctor',docList(),p.doctor)+'</div>'
-        +'<div class="frow"><div class="fld"><label>📱 Plataforma</label>'+sel('fPlat',platformsFor(p.doctor),p.plat)+'</div><div class="fld"><label>🎞️ Tipo</label>'+sel('fType',CONFIG.types,p.type)+'</div></div>'
-        +'<div class="medhint" id="fTypeHint">'+medidaHint(p.type)+'</div>'
-        +'<div class="fld" style="margin-top:11px"><label>🎯 Cliente ideal — ¿a quién le habla?</label><textarea id="fIdeal" placeholder="ej. Mujeres 30-50 que consideran una cirugía y buscan confianza y resultados naturales">'+escapeHtml(p.idealClient||'')+'</textarea></div>'
-        +'<div class="fld"><label>💭 Propósito — ¿qué queremos lograr?</label><textarea id="fPurpose" placeholder="ej. Educar sobre el procedimiento y generar mensajes al WhatsApp">'+escapeHtml(p.purpose||'')+'</textarea></div>'
-        +'<div class="frow"><div class="fld"><label>📈 Meta concreta</label><input id="fGoals" value="'+escapeHtml(p.goals||'')+'" placeholder="ej. 10 mensajes · 3 citas"></div><div class="fld"><label>🔻 Fase del funnel</label>'+sel('fFunnel',CONFIG.funnel,p.funnel)+'</div></div>'
-      +'</div>'
-      +'<div class="card">'+step('2','Creativo','El contenido y el archivo')
-        +'<div class="fld"><label>✍️ Copy / guion</label><textarea id="fCopy" class="big" placeholder="Gancho (0-3s) → idea principal sin tecnicismos → CTA claro…">'+escapeHtml(p.copy||'')+'</textarea></div>'
-        +'<div class="fld"><label>💡 Inspiración / referencias</label><textarea id="fInspo" placeholder="Links de referencia (reel, video), ideas visuales, ejemplos a adaptar (nunca copiar)…">'+escapeHtml(p.inspo||'')+'</textarea></div>'
-        +'<div class="fld"><label>🖼️ Imágenes de referencia</label><div class="inspowrap" id="inspoWrap">'+inspoHTML+'</div><input type="file" id="inspoFile" accept="image/*" class="hidden"></div>'
-        +'<div class="fldsep"></div>'
-        +'<div class="fld"><label>🎬 Archivo de la publicación</label>'+fileZoneHTML+'<input type="file" id="fileInput" accept="image/*" class="hidden">'
-          +'<button class="recpill" data-adapter style="width:100%;margin:8px 0 0">📐 Adaptar a formatos (1:1 · 4:5 · 9:16)</button></div>'
-        +'<div class="fld"><label>🔗 Enlace de Drive (archivo final) <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener" class="drvlink">📂 Abrir Drive ↗</a></label><input id="fMedia" value="'+escapeHtml(p.mediaUrl||'')+'" placeholder="Pega el enlace de Drive — es lo que verá y aprobará el doctor"></div>'
-        +(driveUpReady()
-          ? '<div class="filehint"><b>☁️ Subida automática activa:</b><br>1) <b>Sube</b> la imagen → se guarda en Drive y el <b>enlace se pega solo</b>.<br>2) ¿Necesitas formatos? <b>Adáptala</b> y toca <b>“Subir a Drive”</b> ahí mismo. <span class="muted2">¿Es video? Pega el enlace de Drive a mano.</span></div>'
-          : '<div class="filehint"><b>Paso a paso del archivo:</b><br>1) <b>Sube</b> la imagen arriba → aparece en la previa.<br>2) <b>Adáptala</b> a 1:1 / 4:5 / 9:16 y descárgala (usa la misma imagen, no la vuelves a subir).<br>3) <b>Súbela a Drive</b> y pega el enlace. <span class="muted2">¿Es video? Pega directo el enlace de Drive.</span><br><span class="muted2">💡 Actívala automática en Administración › Subida a Drive.</span></div>')
-      +'</div>'
-      +'<div class="card">'+step('3','Programación','¿Cuándo y quién?')
-        +'<div class="frow"><div class="fld"><label>🚦 Estado</label>'+selStatus('fStatus',p.status)+'</div><div class="fld"><label>📦 Fecha de entrega (interna)</label><input id="fDate" type="date" value="'+(p.date||'')+'"></div></div>'
-        +'<div class="frow"><div class="fld"><label>📅 Fecha de publicación</label><input id="fPub" type="date" value="'+(p.pubDate||'')+'"></div><div class="fld"><label>🙋 Responsable</label>'+sel('fWho',responsables(),p.who)+'</div></div>'
-        +(id?'<div class="fld"><label>✎ Qué cambiar (si pides corrección)</label><textarea id="fChange" placeholder="Indicación clara para el responsable…">'+escapeHtml(p.changeNote||'')+'</textarea></div>':'')
-        +'<button class="msave" style="width:100%;margin-top:6px" data-savepost="'+(id||0)+'">'+(id?'Guardar cambios':'Crear publicación')+'</button>'
-        +(id?'<button class="mdel" style="width:100%;margin-top:8px" data-delpost="'+id+'">Eliminar</button>':'')
-      +'</div>'
+      +'<div class="pwbar" id="pwbar">'+pwBarHTML()+'</div>'
+      +'<div class="card pwcard">'+pane0+pane1+pane2+pane3+'<div class="pwnav" id="pwnav">'+pwNavHTML()+'</div></div>'
     +'</div>'
     +'<div class="peditside"><div class="card">'+prev+'</div></div>'
   +'</div></div>';
@@ -2816,7 +3166,9 @@ function adapterDownload(){var c=document.getElementById('adCanvas');if(!c||!adS
 function refreshIgPreview(){var box=document.getElementById('igPrevBox');if(!box)return;var media=(($('#fMedia')||{}).value||'')||tmpImg||'';box.innerHTML=igCard({handle:(($('#fDoctor')||{}).value||''),plat:(($('#fPlat')||{}).value||''),type:(($('#fType')||{}).value||''),media:media,caption:(($('#fCopy')||{}).value||'')});}
 async function savePost(id){
   var gv=function(idd){var el=document.getElementById(idd);return el?el.value:undefined;};
-  var data={doctor:gv('fDoctor'),plat:gv('fPlat'),type:gv('fType'),date:gv('fDate')||todayIso(),pubDate:gv('fPub')||'',status:gv('fStatus'),funnel:gv('fFunnel'),who:gv('fWho'),copy:((gv('fCopy')||'').trim())||'(sin copy)',img:tmpImg,idealClient:(gv('fIdeal')||'').trim(),purpose:(gv('fPurpose')||'').trim(),goals:(gv('fGoals')||'').trim(),inspo:(gv('fInspo')||'').trim(),inspoImgs:tmpInspo.slice(),kind:gv('fKind')||'organico',campaignId:(function(){var v=gv('fCampaign');return v?parseInt(v,10):null;})(),mediaUrl:(gv('fMedia')||'').trim()};
+  /* El estado NO se edita desde el editor: lo maneja el flujo (Tablero + aprobación del doctor). Nueva pieza = Idea; edición = conserva su estado. */
+  var _exP=id?posts.filter(function(x){return x.id===id})[0]:null;
+  var data={doctor:gv('fDoctor'),plat:gv('fPlat'),type:gv('fType'),date:gv('fDate')||todayIso(),pubDate:gv('fPub')||'',status:(_exP?_exP.status:'Idea'),funnel:gv('fFunnel'),who:gv('fWho'),copy:((gv('fCopy')||'').trim())||'(sin copy)',img:tmpImg,idealClient:(gv('fIdeal')||'').trim(),purpose:(gv('fPurpose')||'').trim(),goals:(gv('fGoals')||'').trim(),inspo:(gv('fInspo')||'').trim(),inspoImgs:tmpInspo.slice(),kind:gv('fKind')||'organico',campaignId:(function(){var v=gv('fCampaign');return v?parseInt(v,10):null;})(),mediaUrl:(gv('fMedia')||'').trim()};
   if(document.getElementById('fChange'))data.changeNote=(gv('fChange')||'').trim();
   var saved;
   if(CLOUD){
@@ -2850,6 +3202,7 @@ function openClientForm(id){
       +'<div class="fld"><label>Correo</label><input id="cEmail" value="'+g('email')+'" placeholder="opcional"></div>'
       +'<div class="fld"><label>Paquete contratado</label>'+selPkg('cPackage',c.package)+'<div id="cPkgInc" class="pkginc">'+pkgIncludes(c.package)+'</div></div>'
       +eyebrow('Identidad de marca')
+      +'<div class="fld"><label>🎯 Objetivos y metas del cliente</label><textarea id="cObjetivos" placeholder="¿Qué quiere lograr? ej. llenar agenda de rinoplastia, posicionarse como referente, vender el paquete premium…">'+g('objetivos')+'</textarea></div>'
       +'<div class="fld"><label>Cuentas / redes sociales</label><div style="font-size:11px;color:var(--ink2);margin:-2px 0 8px">Pega el link y el nombre de usuario se pone solo (lo puedes editar). Cada cuenta aparece como plataforma al crear contenido para este doctor.</div><div id="accBox"></div><button class="accadd" data-accadd>＋ Agregar cuenta</button></div>'
       +'<div class="fld"><label>Plan · posteos por mes</label><input id="cPlan" value="'+g('plan')+'" placeholder="ej. 8 Instagram · 4 Facebook · 2 TikTok"></div>'
       +'<div class="frow"><div class="fld"><label>Paleta de colores</label><input id="cPalette" value="'+g('palette')+'" placeholder="#1a365d, #4CAF50"></div><div class="fld"><label>Fuentes</label><input id="cFonts" value="'+g('fonts')+'" placeholder="Poppins, Lato"></div></div>'
@@ -2873,7 +3226,7 @@ async function saveClient(id){
   var vf=$('#cVal');var valv=vf?(vf.value.trim()||'—'):(existing?existing.val:'—');
   var pf2=$('#cPackage');var pkv=pf2?pf2.value:(existing?existing.package:'');if(pkv==='(ninguno)')pkv='';
   var sf=$('#cStage');var stagev=sf?sf.value:(existing?existing.stage:CONFIG.stages[0]);
-  var data={doc:nm,esp:$('#cEsp').value.trim(),val:valv,cm:$('#cCm').value,acc:String(accs.length),stage:stagev,phone:$('#cPhone').value.trim(),email:$('#cEmail').value.trim(),photo:tmpClientPhoto,accounts:accs,plan:$('#cPlan').value.trim(),palette:$('#cPalette').value.trim(),fonts:$('#cFonts').value.trim(),personality:$('#cPersonality').value.trim(),keywords:($('#cKeywords')?$('#cKeywords').value.trim():(existing?existing.keywords:'')),notes:$('#cNotes').value.trim(),manychat:$('#cManychat').checked,whatsapp:$('#cWhats').checked,package:pkv};
+  var data={doc:nm,esp:$('#cEsp').value.trim(),val:valv,cm:$('#cCm').value,acc:String(accs.length),stage:stagev,phone:$('#cPhone').value.trim(),email:$('#cEmail').value.trim(),photo:tmpClientPhoto,accounts:accs,plan:$('#cPlan').value.trim(),objetivos:($('#cObjetivos')?$('#cObjetivos').value.trim():(existing?existing.objetivos:'')),palette:$('#cPalette').value.trim(),fonts:$('#cFonts').value.trim(),personality:$('#cPersonality').value.trim(),keywords:($('#cKeywords')?$('#cKeywords').value.trim():(existing?existing.keywords:'')),notes:$('#cNotes').value.trim(),manychat:$('#cManychat').checked,whatsapp:$('#cWhats').checked,package:pkv};
   if(CLOUD){
     try{var ex=id?clients.filter(function(x){return x.id===id})[0]:null;if(ex)data.dbid=ex.dbid;var sid=await saveClienteDB(data);
       if(ex){for(var ke in data)ex[ke]=data[ke];ex.dbid=sid||ex.dbid;}
@@ -2911,11 +3264,12 @@ document.addEventListener('click',function(e){
   var acl=e.target.closest('[data-archcli]');if(acl){archCid=parseInt(acl.getAttribute('data-archcli'),10);refresh();return;}
   var rnt=e.target.closest('[data-repnet]');if(rnt){var rcn=clients.filter(function(x){return x.id===repCid;})[0];if(rcn)readRepForm(rcn);repNet=rnt.getAttribute('data-repnet');refresh();return;}
   var rmo=e.target.closest('[data-repmo]');if(rmo){var rcm=clients.filter(function(x){return x.id===repCid;})[0];if(rcm)readRepForm(rcm);repMonth=(rmo.getAttribute('data-repmo')==='1')?repNextMonth(repMonth):prevMonthKey(repMonth);refresh();return;}
-  if(e.target.closest('[data-addexpense]')){var enm=$('#expName'),eam=$('#expAmt');var env=enm?enm.value.trim():'';var eav=eam?(parseInt(eam.value,10)||0):0;if(env){expenses.push({id:nextExpense++,name:env,amount:eav});refresh();toast('💸 Gasto agregado');}return;}
-  var dxp=e.target.closest('[data-delexpense]');if(dxp){expenses=expenses.filter(function(x){return x.id!==parseInt(dxp.getAttribute('data-delexpense'),10);});refresh();return;}
+  if(e.target.closest('[data-addexpense]')){var enm=$('#expName'),eam=$('#expAmt');var env=enm?enm.value.trim():'';var eav=eam?(parseInt(eam.value,10)||0):0;if(env){var _ng={id:nextExpense++,name:env,amount:eav};expenses.push(_ng);if(CLOUD)saveGastoDB(_ng).catch(function(err){toast('⚠️ No se pudo guardar el gasto en la nube: '+(err.message||err));});refresh();toast('💸 Gasto agregado');}return;}
+  var dxp=e.target.closest('[data-delexpense]');if(dxp){var _did=parseInt(dxp.getAttribute('data-delexpense'),10);var _dg=expenses.filter(function(x){return x.id===_did;})[0];if(CLOUD&&_dg&&_dg.dbid)delGastoDB(_dg.dbid).catch(function(){});expenses=expenses.filter(function(x){return x.id!==_did;});refresh();return;}
   if(e.target.closest('[data-repupload]')){var rfi=document.getElementById('repFile');if(rfi)rfi.click();return;}
   var prp=e.target.closest('[data-printrep]');if(prp){var pp9=prp.getAttribute('data-printrep').split('|');var pc9=clients.filter(function(x){return x.id===parseInt(pp9[0],10);})[0];if(pc9)printRepPDF(pc9,pp9[1]);return;}
-  if(e.target.closest('[data-repsave]')){var rc=clients.filter(function(x){return x.id===repCid;})[0];if(rc){readRepForm(rc);scheduleSave();refresh();toast('✅ Reporte de '+monthLabel(repMonth)+' guardado');}return;}
+  if(e.target.closest('[data-repdraft]')){repAutoDraft();return;}
+  if(e.target.closest('[data-repsave]')){var rc=clients.filter(function(x){return x.id===repCid;})[0];if(rc){readRepForm(rc);scheduleSave();refresh();toast('✅ Reporte de '+monthLabel(repMonth)+' guardado');if(CLOUD&&rc.dbid)saveReporteDB(rc.dbid,repMonth,rc.reports[repMonth]).catch(function(err){toast('⚠️ No se pudo respaldar en la nube: '+(err.message||err));});}return;}
   if(e.target.closest('[data-savedrive]')){var dvc=folderClient();if(dvc){var du=$('#driveUrl');dvc.driveUrl=du?du.value.trim():'';refresh();toast('📁 Enlace de Drive guardado');}return;}
   if(e.target.closest('[data-addquick]')){var ac2=folderClient();if(ac2){var an=$('#qkName'),au=$('#qkUrl');var nm2=an?an.value.trim():'';var ur2=au?au.value.trim():'';if(nm2||ur2){if(!ac2.assets)ac2.assets=[];ac2.assets.push({name:nm2||'Acceso',url:ur2});refresh();toast('🔗 Acceso rápido agregado');}}return;}
   var dla=e.target.closest('[data-delasset]');if(dla){var ad=clients.filter(function(x){return x.id===archCid;})[0];if(ad&&ad.assets){ad.assets.splice(parseInt(dla.getAttribute('data-delasset'),10),1);refresh();}return;}
@@ -2929,6 +3283,9 @@ document.addEventListener('click',function(e){
   if(e.target.closest('[data-saveprofile]'))return saveProfile();
   /* data-newpost retirado: los posts se crean solo desde la carpeta del cliente */
   if(e.target.closest('[data-editback]'))return exitPostEditor();
+  var _est=e.target.closest('[data-editstep]');if(_est){goEditStep(parseInt(_est.getAttribute('data-editstep'),10));return;}
+  if(e.target.closest('[data-pwnext]')){goEditStep(editStep+1);return;}
+  if(e.target.closest('[data-pwback]')){goEditStep(editStep-1);return;}
   if(e.target.closest('[data-newpostfol]')){var fcli=folderClient();editFolderReturn=folderId;editReturn='crm';renderPostEditor(0,fcli?fcli.doc:null);return;}
   var pk=e.target.closest('[data-postkind]');if(pk){var kind=pk.getAttribute('data-postkind');var fk=document.getElementById('fKind');if(fk)fk.value=kind;var kseg=document.getElementById('kindSeg');if(kseg)kseg.querySelectorAll('.isegb').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-postkind')===kind);});var pb=document.getElementById('pautaBox');if(pb)pb.style.display=(kind==='pauta')?'':'none';return;}
   if(e.target.closest('[data-filezap]')){tmpImg=null;renderFileZone();refreshIgPreview();return;}
@@ -2988,13 +3345,17 @@ document.addEventListener('click',function(e){
   var vsh=e.target.closest('[data-verstaff]');if(vsh){var pp3=vsh.getAttribute('data-verstaff').split('|');var s3=staff.filter(function(x){return x.id===parseInt(pp3[0],10)})[0];var hh2=s3&&s3.history?s3.history[parseInt(pp3[1],10)]:null;if(hh2&&hh2.comprobante){var w5=window.open('','_blank');if(w5){w5.document.write('<title>Comprobante</title><img src="'+hh2.comprobante+'" style="max-width:100%">');w5.document.close();}}return;}
   var tm=e.target.closest('[data-tomove]');if(tm){var pr=tm.getAttribute('data-tomove').split('|');var pp=posts.filter(function(x){return x.id===parseInt(pr[0],10);})[0];if(pp){if(pr[1]==='Enviado'&&!canSendToDoctor(pp)){toast('Solo el CM responsable de esta cuenta puede enviar al doctor.');return;}pp.status=pr[1];
     if(pr[1]==='Enviado'){var cli=clients.filter(function(x){return x.doc===pp.doctor;})[0];
-      if(cli){if(!convos[cli.id])convos[cli.id]=[];convos[cli.id].push({who:'me',text:'📤 Te compartí «'+pp.copy.slice(0,42)+'» para tu aprobación.',time:'ahora'});unread[cli.id]=(unread[cli.id]||0)+1;updateMsgBadge();}
+      if(cli){if(!convos[cli.id])convos[cli.id]=[];var _sm={who:'me',text:'📤 Te compartí «'+pp.copy.slice(0,42)+'» para tu aprobación.',time:'ahora'};convos[cli.id].push(_sm);if(CLOUD)saveMensajeDB(cli.id,_sm,'equipo');unread[cli.id]=(unread[cli.id]||0)+1;updateMsgBadge();}
       if(cli&&cli.id===DOCTOR_ID&&!pend.some(function(x){return x.postId===pp.id;}))pend.push({id:Date.now(),postId:pp.id,st:'Pendiente de tu revisión',t:pp.copy.slice(0,28),pm:isoToShort(pp.pubDate||pp.date)+' · '+escapeHtml(pp.type)+' · '+escapeHtml(pp.plat),cp:pp.copy});
       notify('Enviado al doctor',pp.copy.slice(0,42));}
     refresh();toast(pr[1]==='Enviado'?'📤 Enviado · aparece en Mensajes y en el portal del doctor':(pr[1]==='Programado'?'🗓️ Programado · listo para publicar':(pr[1]==='Borrador'?'🛠️ Pasó a Diseño/Edición':'👀 Enviado a revisión del CM')));}return;}
   var ev=e.target.closest('[data-post]');if(ev){editFolderReturn=inFolder?folderId:null;editReturn=currentPanel();renderPostEditor(parseInt(ev.getAttribute('data-post'),10));return;}
   if(e.target.closest('a.acctag'))return; // dejar que el enlace de la red social navegue, sin abrir la ficha
   if(e.target.closest('[data-folphoto]')){var fpf=document.getElementById('folPhotoFile');if(fpf)fpf.click();return;}
+  if(e.target.closest('[data-clientsmore]')){cliExpanded=!cliExpanded;renderSidebarClients();return;}
+  if(e.target.closest('[data-newentrega]')){editFolderReturn=null;editReturn='inicio';renderPostEditor(0);return;}
+  var _isc=e.target.closest('[data-iniscope]');if(_isc){inicioScope=_isc.getAttribute('data-iniscope');go('inicio');return;}
+  var arq=e.target.closest('[data-arq]');if(arq){var ac=folderClient();if(ac){ac.arranque=ac.arranque||{};var ak=arq.getAttribute('data-arq');ac.arranque[ak]=!ac.arranque[ak];if(CLOUD&&ac.dbid)saveArranqueDB(ac.dbid,ac.arranque).catch(function(err){toast('⚠️ No se pudo guardar en la nube: '+(err.message||err));});else scheduleSave();renderFolder();}return;}
   var fo=e.target.closest('[data-folder]');if(fo)return openFolder(parseInt(fo.getAttribute('data-folder'),10));
   if(e.target.closest('[data-folback]'))return closeFolder();
   var ftb=e.target.closest('[data-foltab]');if(ftb){folderTab=ftb.getAttribute('data-foltab');folBoardMtg=null;boardSel=null;campEdit=null;renderFolder();return;}
@@ -3080,7 +3441,8 @@ document.addEventListener('click',function(e){
   if(e.target.closest('[data-previewrec]')){readAgencyForm();var dM=new Date();printReceipt({doc:'Dr. Ejemplo'},{folio:(AGENCY.folioPrefix||'R-')+'0000',fecha:isoToLong(todayIso()),periodo:cap(MESES[dM.getMonth()])+' '+dM.getFullYear(),forma:((AGENCY.formas||'Transferencia').split(',')[0]||'Transferencia').trim(),concept:'Servicios de marketing digital',includes:'Vista previa de ejemplo',amount:'$5,000',docRazon:'Consultorio Ejemplo S.C.',docRfc:'XAXX010101000'});return;}
   var erec=e.target.closest('[data-emitrec]');if(erec)return emitReceipt(parseInt(erec.getAttribute('data-emitrec'),10));
   var prec=e.target.closest('[data-printrec]');if(prec){var pp=prec.getAttribute('data-printrec').split('|');var cl=clients.filter(function(x){return x.id===parseInt(pp[0],10)})[0];if(cl){var rr=cl.receipts.filter(function(x){return x.folio===pp[1]})[0];if(rr)printReceipt(cl,rr);}return;}
-  var vc=e.target.closest('[data-vercomp]');if(vc){var cl2=clients.filter(function(x){return x.id===parseInt(vc.getAttribute('data-vercomp'),10)})[0];if(cl2&&cl2.comprobante){var w2=window.open('','_blank');if(w2){w2.document.write('<title>Comprobante</title><img src="'+cl2.comprobante+'" style="max-width:100%">');w2.document.close();}}return;}
+  var vc=e.target.closest('[data-vercomp]');if(vc){var cl2=clients.filter(function(x){return x.id===parseInt(vc.getAttribute('data-vercomp'),10)})[0];if(cl2&&cl2.comprobante)openComprobante(cl2.comprobante);return;}
+  var dcp=e.target.closest('[data-delcomp]');if(dcp){var cl3=clients.filter(function(x){return x.id===parseInt(dcp.getAttribute('data-delcomp'),10)})[0];if(cl3){var _dp=cl3.comprobante;cl3.comprobante=null;if(typeof CLOUD!=='undefined'&&CLOUD&&cl3.dbid){if(isStoragePath(_dp))deleteComprobanteFile(_dp);savePagoDB(cl3.dbid,pagoMesActual(),{comprobante:null}).catch(function(){});}refresh();toast('🗑 Comprobante borrado');}return;}
   var vh=e.target.closest('[data-verhist]');if(vh){var pp2=vh.getAttribute('data-verhist').split('|');var clh=clients.filter(function(x){return x.id===parseInt(pp2[0],10)})[0];var hh=clh&&clh.history?clh.history[parseInt(pp2[1],10)]:null;if(hh&&hh.comprobante){var w3=window.open('','_blank');if(w3){w3.document.write('<title>Comprobante</title><img src="'+hh.comprobante+'" style="max-width:100%">');w3.document.close();}}return;}
   if(e.target.closest('[data-upcomp]')){var fi2=$('#compFile');if(fi2)fi2.click();return;}
   var qr=e.target.closest('[data-qr]');if(qr){var inp3=$('#teamChatInput');if(inp3)inp3.value=qr.textContent;return;}
@@ -3118,8 +3480,8 @@ document.addEventListener('change',function(e){
   if(e.target.id==='cCallSeen'){callDraft.seen=e.target.checked;return;}
   if(e.target&&e.target.id&&e.target.id.indexOf('aPlat')===0){var ai=e.target.id.slice(5);if(tmpAccounts[ai]){tmpAccounts[ai].platform=e.target.value;refreshAccOpen(ai);}return;}
   var sv=e.target.closest('[data-setval]');if(sv){var cv=clients.filter(function(x){return x.id===parseInt(sv.getAttribute('data-setval'),10)})[0];if(cv){cv.val=sv.value.trim()||'—';toast('💲 Valor de '+cv.doc+' actualizado');if(currentPanel()==='admin')refresh();}return;}
-  var exn=e.target.closest('[data-expname]');if(exn){var ex=expenses.filter(function(x){return x.id===parseInt(exn.getAttribute('data-expname'),10);})[0];if(ex)ex.name=exn.value.trim()||ex.name;return;}
-  var exa=e.target.closest('[data-expamt]');if(exa){var ex2=expenses.filter(function(x){return x.id===parseInt(exa.getAttribute('data-expamt'),10);})[0];if(ex2){ex2.amount=exa.value.trim();refresh();}return;}
+  var exn=e.target.closest('[data-expname]');if(exn){var ex=expenses.filter(function(x){return x.id===parseInt(exn.getAttribute('data-expname'),10);})[0];if(ex){ex.name=exn.value.trim()||ex.name;if(CLOUD&&ex.dbid)updateGastoDB(ex).catch(function(){});}return;}
+  var exa=e.target.closest('[data-expamt]');if(exa){var ex2=expenses.filter(function(x){return x.id===parseInt(exa.getAttribute('data-expamt'),10);})[0];if(ex2){ex2.amount=exa.value.trim();if(CLOUD&&ex2.dbid)updateGastoDB(ex2).catch(function(){});refresh();}return;}
   var cc2=e.target.closest('[data-cfgcolor]');if(cc2){var pr2=cc2.getAttribute('data-cfgcolor').split('|');var vv2=CONFIG[pr2[0]][parseInt(pr2[1],10)];if(vv2){COLORS[pr2[0]+'::'+vv2]=cc2.value;refresh();toast('🎨 Color de "'+vv2+'" actualizado');}return;}
   var ms=e.target.closest('[data-movestage]');if(ms){var id=parseInt(ms.getAttribute('data-movestage'),10);var c=clients.filter(function(x){return x.id===id})[0];if(c){c.stage=ms.value;refresh();toast('➡️ '+c.doc+' → '+c.stage);}return;}
   var pst=e.target.closest('[data-paystatus]');if(pst){var cl=clients.filter(function(x){return x.id===parseInt(pst.getAttribute('data-paystatus'),10)})[0];if(cl){cl.payStatus=pst.value;if(pst.value==='Pagado')logPayment(cl);refresh();if(pst.value==='Pagado')toast('✅ Pago registrado en el historial de '+cl.doc);else toast('💳 '+cl.doc+' → '+cl.payStatus);}return;}
@@ -3144,7 +3506,7 @@ document.addEventListener('input',function(e){var t=e.target;
   }else{tmpAccounts[i].username=v;tmpAccounts[i].url='';}
   refreshAccOpen(i);
 }});
-function sendTeam(){var i=$('#teamChatInput');if(!i||!i.value.trim())return;if(!convos[activeConvo])convos[activeConvo]=[];convos[activeConvo].push({who:noteMode?'note':'me',text:i.value.trim(),time:'ahora'});i.value='';refresh();var mb=$('#msgsBox');if(mb)mb.scrollTop=mb.scrollHeight;}
+function sendTeam(){var i=$('#teamChatInput');if(!i||!i.value.trim())return;if(!convos[activeConvo])convos[activeConvo]=[];var m={who:noteMode?'note':'me',text:i.value.trim(),time:'ahora'};convos[activeConvo].push(m);if(CLOUD&&!noteMode)saveMensajeDB(activeConvo,m,'equipo');i.value='';refresh();var mb=$('#msgsBox');if(mb)mb.scrollTop=mb.scrollHeight;}
 
 /* ---------- doctor ---------- */
 var pend=[{id:1,postId:3,st:"Pendiente de tu revisión",t:"Testimonio · Resultados naturales",pm:"Jueves 11 jun · Video · Facebook",cp:"Resultados naturales: la historia real de una paciente."},{id:2,postId:1,st:"Pendiente de tu revisión",t:"Blefaroplastia",pm:"Jueves 5 jun · Imagen · Instagram",cp:"Por qué tus ojos se ven cansados aunque duermas bien."}];
@@ -3156,13 +3518,13 @@ function renderDocAgenda(){var el=$('#docAgenda');if(!el)return;
   var pendHtml=pend.length?('<div class="agsec">Por aprobar antes de publicar</div>'+pend.map(function(p){return pendCard(p,'ag');}).join('')):'<div class="approved">✅ ¡Todo aprobado! No tienes nada pendiente.</div>';
   el.innerHTML=pendHtml+'<div class="agsec">Ya programado</div><div class="pcard"><div class="pc-b"><span class="st" style="color:#2e7d32;background:#e8f5e9">Aprobado</span><div class="ti">Tips de cuidado post-op</div><div class="pm">Miércoles 10 jun · Carrusel</div></div></div><div class="pcard"><div class="pc-b"><span class="st" style="color:#00695c;background:#e0f2f1">Publicado</span><div class="ti">Behind the scenes · Consulta</div><div class="pm">Lunes 8 jun · TikTok</div></div></div>';}
 function approve(id){var p=null;pend.forEach(function(x){if(x.id==id)p=x;});var a=$('#dp'+id),b=$('#ag'+id);if(a)a.classList.add('go');if(b)b.classList.add('go');toast('✅ ¡Aprobado!');
-  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Aprobado';if(CLOUD&&po.dbid)setPostEstadoDB(po.dbid,'Aprobado').catch(function(){});}}convos[DOCTOR_ID].push({who:'them',text:'✅ Aprobé «'+p.t+'»',time:'ahora'});unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Dr. Cárdenas aprobó un post',p.t);}
+  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Aprobado';if(CLOUD&&po.dbid)setPostEstadoDB(po.dbid,'Aprobado').catch(function(){});}}var _am={who:'them',text:'✅ Aprobé «'+p.t+'»',time:'ahora'};convos[DOCTOR_ID].push(_am);if(CLOUD)saveMensajeDB(DOCTOR_ID,_am,'doctor');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Dr. Cárdenas aprobó un post',p.t);}
   setTimeout(function(){pend=pend.filter(function(x){return x.id!=id});renderPend();renderDocAgenda();},380);}
 function askChange(id){var a=$('#dc'+id);if(a)a.classList.toggle('hidden');var b=$('#agc'+id);if(b)b.classList.toggle('hidden');}
 function sendChange(id){var p=null;pend.forEach(function(x){if(x.id==id)p=x;});var t1=$('#dc'+id+' textarea'),t2=$('#agc'+id+' textarea');var txt=((t2&&t2.value.trim())||(t1&&t1.value.trim())||'Por favor ajustar el detalle.');var a=$('#dp'+id),b=$('#ag'+id);if(a)a.classList.add('go');if(b)b.classList.add('go');toast('✎ Comentario enviado al equipo');
-  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Cambios';po.changeNote=txt;if(CLOUD&&po.dbid){setPostEstadoDB(po.dbid,'Cambios',txt).catch(function(){});addCambioDB(po.dbid,((clients.filter(function(x){return x.id===DOCTOR_ID})[0]||{}).doc)||'Doctor',txt);}}}convos[DOCTOR_ID].push({who:'post',postId:p.postId,text:txt,time:'ahora'});unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Feedback de Dr. Cárdenas',txt);}
+  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Cambios';po.changeNote=txt;if(CLOUD&&po.dbid){setPostEstadoDB(po.dbid,'Cambios',txt).catch(function(){});addCambioDB(po.dbid,((clients.filter(function(x){return x.id===DOCTOR_ID})[0]||{}).doc)||'Doctor',txt);}}}var _cm={who:'post',postId:p.postId,text:txt,time:'ahora'};convos[DOCTOR_ID].push(_cm);if(CLOUD)saveMensajeDB(DOCTOR_ID,_cm,'post');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Feedback de Dr. Cárdenas',txt);}
   setTimeout(function(){pend=pend.filter(function(x){return x.id!=id});renderPend();renderDocAgenda();},380);}
-function sendDoc(){var i=$('#docChatInput');if(!i||!i.value.trim())return;var m=$('#docMsgs');var d=document.createElement('div');d.className='dmsg me';d.textContent=i.value;m.appendChild(d);convos[DOCTOR_ID].push({who:'them',text:i.value.trim(),time:'ahora'});unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Mensaje de Dr. Cárdenas',i.value.trim());i.value='';m.scrollTop=m.scrollHeight;}
+function sendDoc(){var i=$('#docChatInput');if(!i||!i.value.trim())return;var m=$('#docMsgs');var d=document.createElement('div');d.className='dmsg me';d.textContent=i.value;m.appendChild(d);var _dm={who:'them',text:i.value.trim(),time:'ahora'};convos[DOCTOR_ID].push(_dm);if(CLOUD)saveMensajeDB(DOCTOR_ID,_dm,'doctor');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Mensaje de Dr. Cárdenas',i.value.trim());i.value='';m.scrollTop=m.scrollHeight;}
 function renderDocRep(){var el=$('#docRep');if(!el)return;var c=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(!c)return;var ms=repMonthsOf(c);var mk=ms.length?ms[ms.length-1]:'2026-06';el.innerHTML=docRepBody(c,mk)+(repGet(c,mk)?'<button class="dlpdf" style="margin-top:14px" data-printrep="'+c.id+'|'+mk+'">⬇ Descargar PDF</button>':'');}
 function renderDocPay(){var el=$('#docPay');if(!el)return;var c=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(!c)return;
   var estado=c.paidThisMonth?'<span class="st" style="color:#2e7d32;background:#e8f5e9">Pagado · recibo disponible</span>':(c.comprobante?'<span class="st">Comprobante enviado ✓</span>':'<span class="st" style="color:#b26a00;background:#fff3e0">Pago pendiente</span>');
@@ -3170,7 +3532,10 @@ function renderDocPay(){var el=$('#docPay');if(!el)return;var c=clients.filter(f
   el.innerHTML='<div class="approved" style="background:#e8f6fd;border:1px solid #c4def8;color:#1565c0;margin-bottom:10px">🔔 Recordatorio · tu pago es el '+escapeHtml(c.payDate||'—')+'.</div>'+(c.reminder?'<div class="approved" style="background:#fff3e0;border:1px solid #ffe0a3;color:#b26a00;margin-bottom:12px">🔔 Tu equipo te recuerda tu pago (segundo aviso).</div>':'')+'<div class="dminib"><div class="mk"><div class="v">'+escapeHtml(c.val)+'</div><div class="k">Mensualidad</div></div><div class="mk"><div class="v" style="font-size:13px">'+escapeHtml(c.payDate||'—')+'</div><div class="k">Fecha de pago</div></div></div>'
     +(c.thankShown?'<div class="pcard"><div class="pc-b"><span class="st" style="color:#2e7d32;background:#e8f5e9">Comprobante enviado ✓</span><div class="ti" style="font-size:18px">¡Gracias! 🙌</div><div class="cp">'+escapeHtml(THANKS.doctor||'¡Gracias por tu pago!')+'</div></div></div>':'<div class="pcard"><div class="pc-b" style="padding-bottom:4px">'+estado+'<div class="ti" style="font-size:16px">Sube tu comprobante</div><div class="cp">Cuando hagas tu transferencia, súbela aquí y tu equipo te emitirá el recibo.</div></div><div style="padding:12px 16px 16px"><button class="dbtn ok" data-upcomp style="width:100%">📎 Subir comprobante</button><input type="file" id="compFile" accept="image/*" style="display:none"></div></div>')
     +'<div style="font-weight:700;font-size:12px;color:#5a7a9c;margin:8px 0">Tus recibos</div><div>'+recs+'</div>';
-  var f=$('#compFile');if(f){f.onchange=function(){var file=f.files[0];if(!file)return;var rd=new FileReader();rd.onload=function(ev){c.comprobante=ev.target.result;c.compDate=fechaLarga(new Date());c.thankShown=true;renderDocPay();notify('💳 Comprobante recibido','Dr. Cárdenas subió su pago · verifícalo');};rd.readAsDataURL(file);};}
+  var f=$('#compFile');if(f){f.onchange=function(){var file=f.files[0];if(!file)return;
+    if(typeof CLOUD!=='undefined'&&CLOUD&&c.dbid){toast('📤 Subiendo comprobante…');uploadComprobante(c.dbid,file).then(function(path){c.comprobante=path;c.compDate=fechaLarga(new Date());c.thankShown=true;return savePagoDB(c.dbid,pagoMesActual(),{estado:'Comprobante',comprobante:path,monto:c.val||null});}).then(function(){renderDocPay();toast('✅ Comprobante enviado a tu equipo');}).catch(function(err){toast('⚠️ No se pudo subir: '+(err.message||err));});}
+    else{var rd=new FileReader();rd.onload=function(ev){c.comprobante=ev.target.result;c.compDate=fechaLarga(new Date());c.thankShown=true;renderDocPay();toast('✅ Comprobante enviado a tu equipo');};rd.readAsDataURL(file);}
+  };}
 }
 
 function updateDocPayBadge(){var b=$('#dpayNb');if(!b)return;var c=clients.filter(function(x){return x.id===DOCTOR_ID})[0];var n=1+((c&&c.reminder)?1:0);b.textContent=n;b.style.display='grid';}
