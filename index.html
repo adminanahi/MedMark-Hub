@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0111)file:///Users/anahiaguero/Desktop/Trabajo/Marketing%20me%CC%81dico/MedMark%20Brain/CONSULTORI%CC%81A/index.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MedMark Hub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./index_files/css2" rel="stylesheet">
-<script src="./index_files/xlsx.full.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
   :root{
     --navy:#1E2A44; --navy-d:#16203A; --edac:#1E2A44; --edac2:#2B3A5C; --mint:#4A9740; --mint-d:#35722F; --mint-s:#A9D3A4; --mint-bg:#E9F4E7;
@@ -1501,11 +1501,11 @@
 </head>
 <body>
 
-<div id="login" style="display: none;">
+<div id="login">
   <div class="blob q1"></div><div class="blob q2"></div>
   <div class="logincard">
-    <div class="logo"><svg width="32" height="28" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="#1E2A44" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"></polyline><polyline points="13,10 19,34 24,18" fill="none" stroke="#4A9740" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><span class="w">Med<span class="b">Mark</span></span></div>
-    <div class="lhi" id="lhi">Buenas tardes 👋</div>
+    <div class="logo"><svg width="32" height="28" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="#1E2A44" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="13,10 19,34 24,18" fill="none" stroke="#4A9740" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="w">Med<span class="b">Mark</span></span></div>
+    <div class="lhi" id="lhi">Bienvenido</div>
     <div class="lsub" id="lsub">Un solo acceso. Entra y te llevamos a tu espacio.</div>
     <div class="field"><label>Correo</label><input id="usr" type="email" autocomplete="email" placeholder="tucorreo@medmark.com"></div>
     <div class="field"><label>Contraseña</label><div class="pwdwrap"><input id="pwd" type="password" autocomplete="current-password" placeholder="••••••••"><button type="button" class="pwdeye" id="pwdEye" aria-label="Mostrar u ocultar contraseña">👁️</button></div></div>
@@ -1513,32 +1513,32 @@
     <button class="lbtn" id="enter">Entrar</button>
     <div class="lforgot">¿Olvidaste tu contraseña? Solicita a tu administrador el restablecimiento de tu acceso.</div>
     <div class="lnote">Las cuentas las crea la administradora. Si no tienes acceso, pídeselo a Perla.</div>
-    <details class="demobox" open=""><summary>Revisar en modo demo (sin cuenta)</summary><div class="lrole"><label>Entrar como</label><select id="demoRole"><option value="admin">Perla · Dueña</option><option value="roberto">Roberto · Community Manager</option><option value="noemi">Noemí · Community Manager</option><option value="disenador">Alfredo · Diseño</option><option value="editor">Edgardo · Diseño y video</option><option value="cm">Anahí · Automatizaciones</option><option value="doctor">Dra. Centeno · Doctora</option></select></div><button class="lbtn lbtn2" id="enterDemo">Entrar en modo demo</button></details>
+    <details class="demobox"><summary>Revisar en modo demo (sin cuenta)</summary><div class="lrole"><label>Entrar como</label><select id="demoRole"><option value="admin">Perla · Dueña</option><option value="roberto">Roberto · Community Manager</option><option value="noemi">Noemí · Community Manager</option><option value="disenador">Alfredo · Diseño</option><option value="editor">Edgardo · Diseño y video</option><option value="cm">Anahí · Automatizaciones</option><option value="doctor">Dra. Centeno · Doctora</option></select></div><button class="lbtn lbtn2" id="enterDemo">Entrar en modo demo</button></details>
   </div>
 </div>
 
-<div id="agencia" style="display: block;">
+<div id="agencia">
   <header class="topbar">
-    <div class="tbrand"><svg width="26" height="22" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline></svg><span class="w">Med<span class="b">Mark</span></span></div>
+    <div class="tbrand"><svg width="26" height="22" viewBox="0 0 46 40"><polyline points="1,26 9,26 13,10 19,34 24,18 28,26 34,26 38,6 42,26 45,26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="w">Med<span class="b">Mark</span></span></div>
     <div class="ttools">
-      <button class="ticon" id="bellBtn" title="Notificaciones">🔔<span class="bdot" id="bellDot" style=""></span></button>
-      <div class="tprofile" data-openprofile="" title="Mi perfil"><div class="av" id="sav">PG</div><div class="tpinfo"><b id="sname">Perla Garza</b><small id="srole">Administradora · Dueña</small></div></div>
-      <button class="tout" data-logout="" title="Cerrar sesión">⎋</button>
+      <button class="ticon" id="bellBtn" title="Notificaciones">🔔<span class="bdot" id="bellDot" style="display:none"></span></button>
+      <div class="tprofile" data-openprofile title="Mi perfil"><div class="av" id="sav">PG</div><div class="tpinfo"><b id="sname">Perla Garza</b><small id="srole">Administradora</small></div></div>
+      <button class="tout" data-logout title="Cerrar sesión">⎋</button>
     </div>
   </header>
   <div class="shell2">
     <aside class="sidebar2" id="sidebar2">
-      <div class="sbtop"><button class="sbcoll" data-sidecollapse="" title="Ocultar barra">‹</button></div>
+      <div class="sbtop"><button class="sbcoll" data-sidecollapse title="Ocultar barra">‹</button></div>
       <nav class="topnav" id="topnav">
         <button class="on" data-p="inicio" data-roles="admin,cm,disenador,editor"><span class="ic">🏠</span> Inicio</button>
         <button data-p="clientes" data-roles="admin,cm,disenador,editor"><span class="ic">🩺</span> Clientes</button>
         <button data-p="contenido" data-roles="admin,cm,disenador,editor"><span class="ic">🗓️</span> Calendario general</button>
-        <button data-p="tareas" data-roles="admin,cm,disenador,editor"><span class="ic">✅</span> Tareas <span class="bd" id="taskBadge" style="">1</span></button>
+        <button data-p="tareas" data-roles="admin,cm,disenador,editor"><span class="ic">✅</span> Tareas <span class="bd" id="taskBadge" style="display:none">0</span></button>
       </nav>
     </aside>
-    <main class="content" id="content"><div class="nh-wrap"><section class="nh-hero"><div class="nh-blob"></div><div class="nh-heroin"><div class="nh-herotxt"><div class="nh-eyebrow">Martes 21 de julio · semana en curso</div><h1 class="nh-h1">Buenas tardes, Perla 👋</h1><p class="nh-lead">Esto es lo que necesita tu supervisión · vas al día ✅</p></div><div class="nh-kpis"><div class="nh-kpi" data-goto="contenido"><b>1</b><span>En curso</span></div><div class="nh-kpi" data-goto="contenido"><b>1</b><span>Por revisar</span></div><div class="nh-kpi" data-goto="contenido"><b>1</b><span>Con el doctor</span></div><div class="nh-kpi" data-goto="contenido"><b>0</b><span>Retrasos</span></div></div></div></section><div class="nh-grid"><section class="nh-col-main"><div class="nh-sechd"><div><h2>Próximas entregas</h2><p>Esta semana · se renueva cada lunes</p></div></div><article class="nh-card" data-post="4"><div class="nh-crow"><span class="dvchip st-rev">En revisión</span><div class="nh-cmain"><div class="nh-ct">La obesidad no se trata con una sola consulta.</div><div class="nh-cmeta"><span class="dvav">CC</span><span>Dra. Carolina Centeno · Instagram</span></div></div><div class="nh-cright"><div class="nh-cdate">lista en 2 días · 23 jul</div><div class="nh-cpub">publica 28 jul</div></div><span class="dvgo" aria-hidden="true">›</span></div><div class="nh-cfoot"><span class="nh-resp"><span class="nh-ravat">A</span>Alfredo · Diseño</span><span class="nh-sep"></span><span class="nh-flowl">Avance</span><span class="nh-step done"><i></i>Diseño</span><span class="nh-step cur"><i></i>Revisión</span><span class="nh-step todo"><i></i>Doctor</span><span class="nh-step todo"><i></i>Programar</span></div></article></section><aside class="nh-col-side"><div class="nh-panel"><div class="nh-panelhd"><h3>Carga del equipo</h3><span>pendientes</span></div><div class="nh-tm"><span class="nh-tmav">A</span><div class="nh-tmx"><b>Alfredo</b><small>Diseño</small></div><span class="nh-tmn" style="color:#4A9740">1</span><span class="nh-tmdot" style="background:#4A9740"></span></div><div class="nh-tm"><span class="nh-tmav">E</span><div class="nh-tmx"><b>Edgardo</b><small>Video</small></div><span class="nh-tmn" style="color:#4A9740">1</span><span class="nh-tmdot" style="background:#4A9740"></span></div></div><div class="nh-panel"><div class="nh-panelhd"><h3>Tu semana</h3><span>1 entregas</span></div><div class="nh-week"><div class="nh-wday"><div class="nh-wl">LUN</div><div class="nh-wn">20</div><div class="nh-wdots"></div></div><div class="nh-wday on"><div class="nh-wl">MAR</div><div class="nh-wn">21</div><div class="nh-wdots"></div></div><div class="nh-wday"><div class="nh-wl">MIÉ</div><div class="nh-wn">22</div><div class="nh-wdots"></div></div><div class="nh-wday"><div class="nh-wl">JUE</div><div class="nh-wn">23</div><div class="nh-wdots"><i></i></div></div><div class="nh-wday"><div class="nh-wl">VIE</div><div class="nh-wn">24</div><div class="nh-wdots"></div></div><div class="nh-wday"><div class="nh-wl">SÁB</div><div class="nh-wn">25</div><div class="nh-wdots"></div></div><div class="nh-wday"><div class="nh-wl">DOM</div><div class="nh-wn">26</div><div class="nh-wdots"></div></div></div></div><div class="nh-panel"><div class="nh-panelhd"><h3>Esperando a otros</h3><span>no depende de ti</span></div><div class="esprow" data-post="5"><span class="espic">⏳</span><div class="espmain"><div class="espt">Vesícula: señales de que ya no debes esp</div><div class="espw">Esperando aprobación · Dra. Carolina Centeno</div></div><span class="esptag">hoy</span></div></div></aside></div></div></main>
+    <main class="content" id="content"></main>
   </div>
-  <div class="notifpop" id="notifPanel" style="display:none"><div class="arlbl">Actividad del equipo</div><div class="afeed"><div class="afdot">👀</div><div><div class="aft">Por revisar: «La obesidad no se trata con …»</div><div class="afw">esperando tu visto bueno</div></div></div><div class="afeed"><div class="afdot">📤</div><div><div class="aft"><b>Dra. Carolina Centeno</b> tiene una pieza por aprobar</div><div class="afw">enviada a su portal</div></div></div><div class="afeed"><div class="afdot">🔴</div><div><div class="aft"><b>Edgardo</b> no entregó a tiempo</div><div class="afw">«Grabar reel de tips post-cirugía» · venció 20 jul</div></div></div></div>
+  <div class="notifpop" id="notifPanel" style="display:none"></div>
 </div>
 
 <div id="doctor">
@@ -1548,12 +1548,12 @@
       <div class="dscreen">
         <section data-d="pend">
           <div class="dhead"><div class="blob"></div><div class="g" id="dg">Buenas tardes,</div><h2>Dr. Cárdenas 👋</h2><div class="s">Tienes contenido esperando tu visto bueno</div></div>
-          <div class="dbody"><div class="dcount" id="dcount">Tienes <b>2</b> publicaciones por revisar</div><div id="dlist"><div class="pcard igwrap" id="dp1"><div class="igtag"><span class="st">Pendiente de tu revisión</span> Testimonio · Resultados naturales · Jueves 11 jun · Video · Facebook</div><div class="igcard"><div class="ighd"><span class="igav">CC</span><div class="igmeta"><b>Dra. Carolina Centeno</b><small>Instagram</small></div><span class="igmore">···</span></div><div class="igmedia" style="aspect-ratio:1 / 1"><div class="igph">🖼️ Sin imagen aún<br><small>pega el enlace de Drive en el editor</small></div></div><div class="igbar"><span>♡</span><span>💬</span><span>➤</span></div><div class="igcap"><b>Dra. Carolina Centeno</b> Resultados naturales: la historia real de una paciente.</div></div><div class="dacts"><button class="dbtn ok" data-ok="1">✓ Aprobar</button><button class="dbtn ch" data-ch="1">✎ Comentar</button></div><div class="dcorr hidden" id="dc1"><textarea placeholder="Escribe tu comentario o duda…"></textarea><button class="send" data-sc="1">Enviar al equipo</button></div></div><div class="pcard igwrap" id="dp2"><div class="igtag"><span class="st">Pendiente de tu revisión</span> Blefaroplastia · Jueves 5 jun · Imagen · Instagram</div><div class="igcard"><div class="ighd"><span class="igav">CC</span><div class="igmeta"><b>Dra. Carolina Centeno</b><small>Instagram</small></div><span class="igmore">···</span></div><div class="igmedia" style="aspect-ratio:1 / 1"><div class="igph">🖼️ Sin imagen aún<br><small>pega el enlace de Drive en el editor</small></div></div><div class="igbar"><span>♡</span><span>💬</span><span>➤</span></div><div class="igcap"><b>Dra. Carolina Centeno</b> Por qué tus ojos se ven cansados aunque duermas bien.</div></div><div class="dacts"><button class="dbtn ok" data-ok="2">✓ Aprobar</button><button class="dbtn ch" data-ch="2">✎ Comentar</button></div><div class="dcorr hidden" id="dc2"><textarea placeholder="Escribe tu comentario o duda…"></textarea><button class="send" data-sc="2">Enviar al equipo</button></div></div></div></div>
+          <div class="dbody"><div class="dcount" id="dcount"></div><div id="dlist"></div></div>
         </section>
         <section data-d="chat" class="hidden">
           <div class="dhead"><div class="blob"></div><div class="g">Tu equipo</div><h2>Anahí · MedMark</h2></div>
           <div class="dmsgs" id="docMsgs"><div class="dmsg them">¡Hola Doctor! Le dejamos la propuesta de la semana 🙌</div><div class="dmsg me">Perfecto, ahora la veo</div></div>
-          <div class="dcomposer"><input id="docChatInput" placeholder="Mensaje…"><button data-senddoc="">↑</button></div>
+          <div class="dcomposer"><input id="docChatInput" placeholder="Mensaje…"><button data-senddoc>↑</button></div>
         </section>
         <section data-d="rep" class="hidden">
           <div class="dhead"><div class="blob"></div><div class="g">Tus resultados</div><h2>Tu reporte de redes</h2><div class="s">Cómo vamos avanzando, mes con mes</div></div>
@@ -1565,19 +1565,19 @@
         </section>
       </div>
       <nav class="dnav dnav3" id="dnav">
-        <button class="on" data-d="pend"><span class="mi">📋</span>Revisar<span class="nb" id="dnb" style="display: grid;">2</span></button>
+        <button class="on" data-d="pend"><span class="mi">📋</span>Revisar<span class="nb" id="dnb">2</span></button>
         <button data-d="chat"><span class="mi">💬</span>Mensajes</button>
         <button data-d="rep"><span class="mi">📈</span>Reportes</button>
       </nav>
     </div>
-    <button class="backlink" data-logout="">⎋ Cambiar usuario</button>
+    <button class="backlink" data-logout>⎋ Cambiar usuario</button>
   </div>
 </div>
 
 <div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
 <div class="toast" id="toast"></div>
 
-<script src="./index_files/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 window.SUPA_URL="https://ojfngxesnayapjktwtia.supabase.co";
 window.SUPA_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qZm5neGVzbmF5YXBqa3R3dGlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0MDA5NjksImV4cCI6MjA5Nzk3Njk2OX0.qCv2Ef2jhXeVoNHCD6HC0SyNnwG1mrceW34PAnn-UEQ";
@@ -3705,6 +3705,5 @@ document.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')
 var tt;function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('show')},2500);}
 renderPend();
 </script>
-
-
-</body></html>
+</body>
+</html>
