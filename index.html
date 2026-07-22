@@ -677,6 +677,8 @@
   body.dark .cvb.on{background:var(--navy);color:#fff}
   /* ---- Filtro unificado tipo chip (Monday/Notion) ---- */
   .fbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .calbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+  .calbar-f{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .fchip{position:relative;display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12.5px;font-weight:600;color:var(--ink2);cursor:pointer;transition:.15s;white-space:nowrap}
   .fchip:hover{border-color:var(--ink3)}
   .fchip.on{border-color:var(--mint);background:var(--mint-bg);color:var(--mint-d)}
@@ -1806,9 +1808,9 @@ function buildReceiptDoc(c,r){
 function printReceipt(c,r){var w=window.open("","_blank");if(!w){toast("Permite las ventanas emergentes para descargar el PDF");return;}w.document.write(buildReceiptDoc(c,r));w.document.close();w.focus();setTimeout(function(){w.print();},350);}
 
 /* ---------- tema ---------- */
-var themeMode='auto';
+var themeMode='light';
 function isNight(){var h=new Date().getHours();return h>=19||h<7;}
-function applyTheme(){document.body.classList.toggle('dark',themeMode==='dark'||(themeMode==='auto'&&isNight()));}
+function applyTheme(){document.body.classList.remove('dark');}
 function setThemeMode(m){themeMode=m;applyTheme();}
 function setAccent(c){document.documentElement.style.setProperty('--mint',c);document.documentElement.style.setProperty('--mint-s',c);profile.accent=c;}
 applyTheme();
@@ -2866,10 +2868,11 @@ PANELS.contenido=function(){
       return '<div class="kc" data-post="'+p.id+'"'+(canDrag?' draggable="true"':'')+'><div class="thumb" '+thumb+'>'+(p.img?'':(p.type==='Video'||p.type==='Reel'?'🎬':'🖼️'))+'</div><div class="kcb">'+(p.kind==='pauta'?'<span class="pautachip">📣 Pauta</span>':'')+(p.aprobadoManual?'<span class="manualchip" title="Se marcó Aprobado sin la aprobación del doctor">✋ Aprobado manual</span>':'')+'<div class="ti">'+escapeHtml(p.copy.slice(0,46))+(p.copy.length>46?'…':'')+'</div><div class="meta"><span class="dl">'+escapeHtml(p.doctor)+'</span><span class="dl"'+(late?' style="color:var(--coral);font-weight:700"':'')+' title="Fecha de entrega">'+(late?'⚠ ':'📅 ')+isoToShort(p.date)+'</span></div>'+act+'</div></div>';
     }).join('')+'</div>';}).join('');
   var introC=(currentRole==='disenador'||currentRole==='editor')?'Tus actividades asignadas, por etapa de avance. Toca una para abrirla.':'Seguimiento de todo el contenido en producción. Filtra por responsable para ver la carga de cada quien. Para crear, entra a la carpeta del cliente › Contenido.';
-  var toolbar=(persBar||cliBar)?'<div class="fbar">'+persBar+cliBar+'</div>':'';
+  var filtersHTML=(persBar||cliBar)?'<div class="calbar-f">'+persBar+cliBar+'</div>':'';
   var vswitch='<div class="iseg contvista"><button class="isegb'+(contVista==='tablero'?' on':'')+'" data-contvista="tablero">📋 Tablero</button><button class="isegb'+(contVista==='calendario'?' on':'')+'" data-contvista="calendario">🗓️ Calendario</button></div>';
-  if(contVista==='calendario'){calMode='global';return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Calendario general</h1><p><b>Panorama de fechas y entregas de toda la agencia</b> — contenido y tareas juntos. Cada pieza va por su fecha; las tareas de agencia salen en gris con la etiqueta «Tarea». Navega meses con ‹ ›.</p></div></div>'+vswitch+toolbar+'<div id="calBox">'+calInner()+'</div></div>';}
-  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Calendario general</h1><p>'+introC+'</p></div></div>'+vswitch+toolbar+'<div class="board" style="grid-template-columns:repeat('+CONFIG.statuses.length+',minmax(155px,1fr))">'+body+'</div></div>';};
+  var ctrlbar='<div class="calbar">'+vswitch+filtersHTML+'</div>';
+  if(contVista==='calendario'){calMode='global';return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Calendario general</h1><p>Contenido y tareas de toda la agencia, ordenados por fecha (las tareas de agencia salen en gris). Navega meses con ‹ ›.</p></div></div>'+ctrlbar+'<div id="calBox">'+calInner()+'</div></div>';}
+  return '<div class="pad" style="max-width:none;padding-right:30px"><div class="ptitle"><div><h1>Calendario general</h1><p>'+introC+'</p></div></div>'+ctrlbar+'<div class="board" style="grid-template-columns:repeat('+CONFIG.statuses.length+',minmax(155px,1fr))">'+body+'</div></div>';};
 
 /* ===================== CALENDARIO (mini-cal navegable + lista por día) ===================== */
 var calY=2026,calM=6,calRange='mes',calSel=null,calMode='global';
@@ -3193,10 +3196,9 @@ async function usuSetPass(id){var pw=(($('#upw_'+id)||{}).value||'');if(pw.lengt
 PANELS.perfil=function(){
   var av=profile.photo?'style="background-image:url('+profile.photo+')"':'';
   var sw=ACCENTS.map(function(a){return '<span class="sw'+(a.c===profile.accent?' on':'')+'" data-accent="'+a.c+'" style="background:'+a.c+'" title="'+a.n+'"></span>';}).join('');
-  return '<div class="pad"><div class="ptitle"><div><h1>Mi perfil</h1><p>Personaliza tu experiencia: foto, datos, color y tema.</p></div></div>\
+  return '<div class="pad"><div class="ptitle"><div><h1>Mi perfil</h1><p>Personaliza tu experiencia: foto, datos y color de acento.</p></div></div>\
   <div class="profwrap"><div class="profcard"><div class="profav" id="profAv" '+av+'>'+(profile.photo?'':initials(profile.name))+'<span class="cam">📷</span></div><input type="file" id="profFile" accept="image/*" class="hidden"><h2 id="profName">'+escapeHtml(profile.name)+'</h2><div class="role">'+escapeHtml(profile.role)+'</div>\
     <div style="font-size:11.5px;color:var(--ink2);margin-top:14px;font-weight:600;text-align:left">Color de acento</div><div class="swatches">'+sw+'</div>\
-    <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)"><div style="font-size:11.5px;color:var(--ink2);font-weight:600;text-align:left;margin-bottom:8px">Apariencia</div><div class="seg3"><button class="'+(themeMode==="light"?"on":"")+'" data-thememode="light">☀️ Claro</button><button class="'+(themeMode==="dark"?"on":"")+'" data-thememode="dark">🌙 Oscuro</button><button class="'+(themeMode==="auto"?"on":"")+'" data-thememode="auto">🔄 Auto</button></div></div>\
     <button class="mdel" style="width:100%;margin-top:18px" data-logout>⎋ Cerrar sesión</button></div>\
   <div class="card"><h3 style="margin-bottom:14px">Datos personales</h3>\
     <div class="fld"><label>Nombre</label><input id="pfName" value="'+escapeHtml(profile.name)+'"></div>\
