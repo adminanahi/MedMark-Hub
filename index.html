@@ -781,6 +781,11 @@
   .netsubs{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
   .netsub{font-size:11.5px;color:var(--ink2)}.netsub b{color:var(--ink)}
   .repblock{margin-top:14px}.repblock h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+  .repsechd{font-size:12.5px;font-weight:800;color:var(--ink);margin:18px 0 8px;letter-spacing:.01em}
+  .repread{margin-bottom:6px}.repreadhd{font-size:12.5px;font-weight:800;color:var(--mint-d);margin-bottom:6px}
+  .qhrow{font-size:13.5px;color:var(--ink)}.qhfases{margin-top:8px;font-size:12px;color:var(--ink2)}
+  .qhtag{display:inline-block;background:var(--col);border-radius:8px;padding:3px 9px;margin:2px 3px 2px 0;font-size:11.5px;font-weight:600;color:var(--ink)}
+  .repfoot{margin-top:10px;font-size:12.5px;color:var(--ink2);line-height:1.5}
   .pautachip{display:inline-block;font-size:10px;font-weight:700;color:#7e57c2;background:#efe9fb;border-radius:7px;padding:2px 7px;margin-bottom:5px}
   body.dark .pautachip{background:#2c2542;color:#c9b8f0}
   .finsum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -897,6 +902,7 @@
   .dnav6{grid-template-columns:repeat(6,1fr)}
   .dnav6 button{font-size:9px}.dnav6 .mi{font-size:18px}
   .dnav3{grid-template-columns:repeat(3,1fr)}
+  .dnav2{grid-template-columns:repeat(2,1fr)}
   .dnav4{grid-template-columns:repeat(4,1fr)}
   .origenwrap{display:grid;gap:16px}
   .callhact{display:flex;gap:8px;flex-wrap:wrap}
@@ -1549,26 +1555,16 @@
       <div class="notch"></div>
       <div class="dscreen">
         <section data-d="pend">
-          <div class="dhead"><div class="blob"></div><div class="g" id="dg">Buenas tardes,</div><h2>Dr. Cárdenas 👋</h2><div class="s">Tienes contenido esperando tu visto bueno</div></div>
+          <div class="dhead"><div class="blob"></div><div class="g" id="dg">Buenas tardes,</div><h2 id="dname">Doctor 👋</h2><div class="s">Tienes contenido esperando tu visto bueno</div></div>
           <div class="dbody"><div class="dcount" id="dcount"></div><div id="dlist"></div></div>
-        </section>
-        <section data-d="chat" class="hidden">
-          <div class="dhead"><div class="blob"></div><div class="g">Tu equipo</div><h2>Anahí · MedMark</h2></div>
-          <div class="dmsgs" id="docMsgs"><div class="dmsg them">¡Hola Doctor! Le dejamos la propuesta de la semana 🙌</div><div class="dmsg me">Perfecto, ahora la veo</div></div>
-          <div class="dcomposer"><input id="docChatInput" placeholder="Mensaje…"><button data-senddoc>↑</button></div>
         </section>
         <section data-d="rep" class="hidden">
           <div class="dhead"><div class="blob"></div><div class="g">Tus resultados</div><h2>Tu reporte de redes</h2><div class="s">Cómo vamos avanzando, mes con mes</div></div>
           <div class="dbody" id="docRep"></div>
         </section>
-        <section data-d="cal" class="hidden">
-          <div class="dhead"><div class="blob"></div><div class="g">Tu contenido</div><h2>Agenda de la semana</h2><div class="s">Aprueba o comenta cada publicación antes de publicar</div></div>
-          <div class="dbody" id="docAgenda"></div>
-        </section>
       </div>
-      <nav class="dnav dnav3" id="dnav">
+      <nav class="dnav dnav2" id="dnav">
         <button class="on" data-d="pend"><span class="mi">📋</span>Revisar<span class="nb" id="dnb">2</span></button>
-        <button data-d="chat"><span class="mi">💬</span>Mensajes</button>
         <button data-d="rep"><span class="mi">📈</span>Reportes</button>
       </nav>
     </div>
@@ -1619,7 +1615,7 @@ var posts=[
  {id:5,doctor:"Dra. Carolina Centeno",plat:"Facebook",type:"Carrusel",date:"2026-07-22",pubDate:"2026-07-27",status:"Enviado",funnel:"Consciente del problema",copy:"Vesícula: señales de que ya no debes esperar.",img:null,who:"Edgardo (Video)"},
 ];
 var clients=[
- {id:6,doc:"Dra. Carolina Centeno",esp:"Cirugía Bariátrica y General",cm:"Roberto",acc:"2",stage:"Activo",phone:"444 000 0000",email:"hola@dracarolinacenteno.com",photo:null,accounts:[{platform:"Instagram",username:"cirujanobariatraqro",url:"https://instagram.com/cirujanobariatraqro"},{platform:"Facebook",username:"Dra. Carolina Centeno",url:"https://facebook.com/dracarolinacenteno"}],plan:"3 IG/sem · 2 FB/sem · 8-9 historias/sem",palette:"Por definir (hoy solo azul médico)",fonts:"Por definir",personality:"Segura, empática, cercana, sin prejuicios",adjetivos:"Segura, empática, cercana, sin prejuicios",principios:"Dice la verdad sin juzgar\nExplica, no asusta\nVe el caso completo, no solo el peso",servicios:"Manga gástrica · Bypass gástrico · Bipartición (SADI-S) · Vesícula · Hernias · Cirugía robótica",audiencias:["Persona con obesidad que busca bajar de peso por salud","Familiar que busca una opción para un ser querido"],keywords:"bajar de peso, obesidad, cirugía bariátrica, manga gástrica, cirujano bariatra",arranque:{gb_perfil:"al_dia",bio_ig:"al_dia",bio_fb:"en_proceso",link_bio:"por_corregir",wa_business:"sin_revisar",gb_fotos:"en_proceso",hl_base:"por_corregir"},objetivos:"Posicionarse como referente de cirugía bariátrica con enfoque humano · más manga gástrica y bypass agendados.",notes:"Regla del brief: hablar MENOS de medicamentos (GLP-1/Ozempic). Equipo de mujeres como pilar visual. Priorizar 3 procedimientos ancla. Sitio oficial: dracarolinacenteno.com.",reports:{"2026-05":{nets:{Instagram:{alc:9000,seg:50,msg:14,likes:600,com:80,guard:140,comp:90,rep:0},Facebook:{alc:6000,seg:30,msg:8,likes:200,com:30,guard:0,comp:50,rep:0}},note:"",next:""},"2026-06":{nets:{Instagram:{alc:12000,seg:90,msg:20,likes:800,com:110,guard:200,comp:130,rep:0},Facebook:{alc:7800,seg:50,msg:11,likes:260,com:40,guard:0,comp:70,rep:0}},note:"",next:""}}},
+ {id:6,doc:"Dra. Carolina Centeno",esp:"Cirugía Bariátrica y General",cm:"Roberto",acc:"2",stage:"Activo",phone:"444 000 0000",email:"hola@dracarolinacenteno.com",photo:null,accounts:[{platform:"Instagram",username:"cirujanobariatraqro",url:"https://instagram.com/cirujanobariatraqro"},{platform:"Facebook",username:"Dra. Carolina Centeno",url:"https://facebook.com/dracarolinacenteno"}],plan:"3 IG/sem · 2 FB/sem · 8-9 historias/sem",palette:"Por definir (hoy solo azul médico)",fonts:"Por definir",personality:"Segura, empática, cercana, sin prejuicios",adjetivos:"Segura, empática, cercana, sin prejuicios",principios:"Dice la verdad sin juzgar\nExplica, no asusta\nVe el caso completo, no solo el peso",servicios:"Manga gástrica · Bypass gástrico · Bipartición (SADI-S) · Vesícula · Hernias · Cirugía robótica",audiencias:["Persona con obesidad que busca bajar de peso por salud","Familiar que busca una opción para un ser querido"],keywords:"bajar de peso, obesidad, cirugía bariátrica, manga gástrica, cirujano bariatra",arranque:{gb_perfil:"al_dia",bio_ig:"al_dia",bio_fb:"en_proceso",link_bio:"por_corregir",wa_business:"sin_revisar",gb_fotos:"en_proceso",hl_base:"por_corregir"},objetivos:"Posicionarse como referente de cirugía bariátrica con enfoque humano · más manga gástrica y bypass agendados.",notes:"Regla del brief: hablar MENOS de medicamentos (GLP-1/Ozempic). Equipo de mujeres como pilar visual. Priorizar 3 procedimientos ancla. Sitio oficial: dracarolinacenteno.com.",reports:{"2026-05":{nets:{Instagram:{alc:9000,seg:50,msg:14,likes:600,com:80,guard:140,comp:90,rep:0},Facebook:{alc:6000,seg:30,msg:8,likes:200,com:30,guard:0,comp:50,rep:0}},note:"",next:""},"2026-06":{nets:{Instagram:{alc:12000,seg:90,msg:20,likes:800,com:110,guard:200,comp:130,rep:0},Facebook:{alc:7800,seg:50,msg:11,likes:260,com:40,guard:0,comp:70,rep:0}},note:"",next:""},"2026-07":{nets:{Instagram:{alc:15800,seg:120,msg:31,likes:1050,com:150,guard:280,comp:190,rep:0},Facebook:{alc:9200,seg:70,msg:15,likes:320,com:55,guard:0,comp:95,rep:0}},pauta:{inv:3000,alc:41000,msg:48,conv:0},gb:{resenas:6,busq:520,contact:44},note:"En julio tu contenido llegó a 25 mil personas (más que en junio) y entraron 46 mensajes entre orgánico y pauta. Lo que más funcionó: los videos donde explicas los mitos de la manga gástrica.",next:"Este mes reforzamos los videos de mitos, que fueron los que más mensajes trajeron, y mantenemos la campaña activa. Para el próximo ciclo sumamos testimonios reales para la etapa de confianza."}}},
 ];
 var nextPost=21,nextClient=23,tmpImg=null,tmpClientPhoto=null,tmpAccounts=[],editPostId=null,editReturn='contenido',tmpInspo=[],editFolderReturn=null;
 function docList(){return clients.map(function(c){return c.doc;});}
@@ -1648,6 +1644,7 @@ function readAgencyForm(){if(!document.getElementById('agRazon'))return;function
 function numeroALetras(input){var n=Math.floor(Math.abs(+String(input).replace(/[^0-9.]/g,''))||0);if(n===0)return 'CERO';var UNI=['','UNO','DOS','TRES','CUATRO','CINCO','SEIS','SIETE','OCHO','NUEVE','DIEZ','ONCE','DOCE','TRECE','CATORCE','QUINCE','DIECISÉIS','DIECISIETE','DIECIOCHO','DIECINUEVE'];var DEC=['','DIEZ','VEINTE','TREINTA','CUARENTA','CINCUENTA','SESENTA','SETENTA','OCHENTA','NOVENTA'];var CEN=['','CIENTO','DOSCIENTOS','TRESCIENTOS','CUATROCIENTOS','QUINIENTOS','SEISCIENTOS','SETECIENTOS','OCHOCIENTOS','NOVECIENTOS'];function d2(x){if(x<20)return UNI[x];if(x===20)return 'VEINTE';if(x<30)return 'VEINTI'+UNI[x-20];var dd=Math.floor(x/10),u=x%10;return DEC[dd]+(u?' Y '+UNI[u]:'');}function d3(x){if(x===100)return 'CIEN';var cc=Math.floor(x/100),r=x%100;return (CEN[cc]+(r?' '+d2(r):'')).trim();}var mill=Math.floor(n/1000000),miles=Math.floor((n%1000000)/1000),resto=n%1000,out='';if(mill)out+=(mill===1?'UN MILLÓN':d3(mill)+' MILLONES')+' ';if(miles)out+=(miles===1?'MIL':d3(miles)+' MIL')+' ';if(resto)out+=d3(resto);return out.trim().replace(/\s+/g,' ');}
 function montoEnLetra(a){var c=String(a).replace(/[^0-9.]/g,'').split('.');var ent=c[0]||'0';var cent=((c[1]||'')+'00').slice(0,2);return numeroALetras(ent)+' PESOS '+cent+'/100 M.N.';}
 var DOCTOR_ID=6,nextFolio=1024;
+function docName(){var c=clients.filter(function(x){return x.id===DOCTOR_ID;})[0];return (c&&c.doc)||'El doctor';}
 var MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
 clients.forEach(function(c){
   var activo=(c.stage==="Activo"||c.stage==="Renovación");
@@ -1687,7 +1684,7 @@ function renderHistory(){var c=clients.filter(function(x){return x.id===histId})
 }
 /* ---------- mensajes + notificaciones ---------- */
 var convos={6:[{who:'them',text:'Hola, ¿cuándo sale el de vesícula?',time:'hace 1 h'}]};
-var unread={6:1},activeConvo=6,noteMode=false,taskWho='',contWho='Todos',contClient='Todos',archCid=0,repCid=0,repMonth='2026-06',repNet='';
+var unread={6:1},activeConvo=6,noteMode=false,taskWho='',contWho='Todos',contClient='Todos',archCid=0,repCid=0,repMonth='2026-07',repNet='';
 function chatClients(){var act=clients.filter(function(c){return c.stage==='Activo'||c.stage==='Renovación';});if(currentRole==='cm'){var me=((USERS[currentRole]||{}).name||'').split(' ')[0];return act.filter(function(c){return (c.cm||'').indexOf(me)>=0;});}return act;}
 function clientName(id){var c=clients.filter(function(x){return x.id===id})[0];return c?c.doc:'Doctor';}
 function totalUnread(){var t=0;chatClients().forEach(function(c){t+=(unread[c.id]||0);});return t;}
@@ -1821,7 +1818,7 @@ function roleFromEmail(em){em=(em||'').trim().toLowerCase();for(var k in DEMO_US
 var drSel=$('#demoRole');if(drSel)drSel.addEventListener('change',function(){var u=$('#usr');if(u)u.value=DEMO_USR[drSel.value]||'';});
 $('#lhi').textContent=greet()+' 👋';
 function authMsg(m,ok){var el=$('#authMsg');if(!el)return;el.textContent=m||'';el.className='authmsg'+(ok?' ok':'')+(m?' show':'');}
-function rolARuta(rol){$('#login').style.display='none';if(window.Notification&&Notification.permission==='default'){try{Notification.requestPermission();}catch(e){}}if(rol==='doctor'){$('#doctor').style.display='grid';$('#dg').textContent=greet()+',';renderPend();renderDocRep();}else{$('#agencia').style.display='block';applyRole(rol);updateMsgBadge();}}
+function rolARuta(rol){$('#login').style.display='none';if(window.Notification&&Notification.permission==='default'){try{Notification.requestPermission();}catch(e){}}if(rol==='doctor'){$('#doctor').style.display='grid';$('#dg').textContent=greet()+',';var _dn=$('#dname');if(_dn)_dn.textContent=docName()+' 👋';renderPend();renderDocRep();}else{$('#agencia').style.display='block';applyRole(rol);updateMsgBadge();}}
 async function trasSesion(){if(!window.supa)return false;try{var ur=await supa.auth.getUser();var u=ur.data&&ur.data.user;if(!u)return false;var q=await supa.from('perfiles').select('rol,nombre').eq('id',u.id).maybeSingle();var rol=q.data&&q.data.rol;if(!rol||rol==='pendiente'){authMsg('Tu cuenta ya existe pero está pendiente de que la administradora te asigne un rol.');return false;}demoPerson=null;myUid=u.id;sessionName=(q.data&&q.data.nombre)||'';try{var pr=await supa.from('permisos_rol').select('modulos').eq('rol',rol).maybeSingle();MYACCESS=(pr&&pr.data&&pr.data.modulos)||{};}catch(e){MYACCESS={};}authMsg('');CLOUD=true;try{clients=await loadClientesDB();}catch(_le){clients=[];}try{await attachCampaignsDB();}catch(_ce){}try{await attachReportesDB();}catch(_re){}try{await attachPagosDB();}catch(_pe2){}try{posts=await loadPostsDB();}catch(_pe){posts=[];}try{staff=await loadPersonalDB();}catch(_se){staff=[];}try{await loadNegocioDB();}catch(_ne){}try{if(rol!=='doctor')expenses=await loadGastosDB();}catch(_ge){}try{convos=await loadMensajesDB(rol==='doctor');}catch(_me){convos={};}unread={};if(rol==='doctor'){if(clients[0])DOCTOR_ID=clients[0].id;pend=posts.filter(function(p){return p.status==='Enviado';}).map(function(p){return {id:p.id,postId:p.id,st:'Pendiente de tu revisión',t:(p.copy||'').slice(0,28),pm:isoToShort(p.pubDate||p.date)+' · '+escapeHtml(p.type)+' · '+escapeHtml(p.plat),cp:p.copy};});}else{pend=[];}try{startRealtime();}catch(_rt){}rolARuta(rol);return true;}catch(e){authMsg('No pude cargar tu perfil: '+(e.message||e));return false;}}
 /* ===== Capa de datos en la nube (Supabase) — Módulo Clientes ===== */
 var CLOUD=false;
@@ -1861,8 +1858,8 @@ function campDbidById(localId){if(localId==null)return null;for(var i=0;i<client
 function campLocalIdByDbid(dbid){if(!dbid)return null;for(var i=0;i<clients.length;i++){var ks=clients[i].campaigns||[];for(var j=0;j<ks.length;j++){if(ks[j].dbid===dbid)return ks[j].id;}}return null;}
 async function attachCampaignsDB(){try{var rows=await loadCampaignsDB();var byDbid={};clients.forEach(function(c){c.campaigns=[];byDbid[c.dbid]=c;});rows.forEach(function(o){var c=byDbid[o.row.cliente_id];if(c)c.campaigns.push(o.camp);});}catch(e){}}
 /* ---- Reportes mensuales en la nube (tabla `reportes`: mes + jsonb datos/pauta + nota/proximo_mes). Historial por mes; el equipo escribe, el doctor solo lee los suyos (RLS ya puesta). No guarda imágenes. ---- */
-function reporteToDb(clienteDbid,mk,r){return {cliente_id:clienteDbid,mes:mk,datos:(r&&r.nets)||{},pauta:(r&&r.pauta)||null,nota:(r&&r.note)||null,proximo_mes:(r&&r.next)||null};}
-function dbToReporte(row){return {nets:row.datos||{},pauta:row.pauta||null,note:row.nota||'',next:row.proximo_mes||''};}
+function reporteToDb(clienteDbid,mk,r){return {cliente_id:clienteDbid,mes:mk,datos:Object.assign({},(r&&r.nets)||{},(r&&r.gb)?{__gb:r.gb}:{}),pauta:(r&&r.pauta)||null,nota:(r&&r.note)||null,proximo_mes:(r&&r.next)||null};}
+function dbToReporte(row){var datos=Object.assign({},row.datos||{});var gb=datos.__gb||null;if(gb)delete datos.__gb;return {nets:datos,pauta:row.pauta||null,note:row.nota||'',next:row.proximo_mes||'',gb:gb};}
 async function loadReportesDB(){if(!window.supa)return {};var r=await supa.from('reportes').select('*');if(r.error)throw r.error;var by={};((r.data)||[]).forEach(function(row){(by[row.cliente_id]=by[row.cliente_id]||{})[row.mes]=dbToReporte(row);});return by;}
 async function attachReportesDB(){try{var by=await loadReportesDB();clients.forEach(function(c){if(c.dbid)c.reports=by[c.dbid]||{};});}catch(e){}}
 async function saveReporteDB(clienteDbid,mk,r){if(!window.supa||!clienteDbid)return;var ex=await supa.from('reportes').select('id').eq('cliente_id',clienteDbid).eq('mes',mk).maybeSingle();if(ex&&ex.error)throw ex.error;var row=reporteToDb(clienteDbid,mk,r);if(ex&&ex.data&&ex.data.id){var u=await supa.from('reportes').update(row).eq('id',ex.data.id);if(u.error)throw u.error;}else{var i=await supa.from('reportes').insert(row);if(i.error)throw i.error;}}
@@ -2697,141 +2694,8 @@ function monthPickerHTML(){
   return '<div class="mpwrap"><button class="monthbtn" data-monthtoggle>📅 '+lbl+' <span class="mpcar">▾</span></button>'+pop+'</div>';
 }
 
-/* ===================== AGENDA / CITAS (lado del doctor) ===================== */
-var WORK_START_MIN=540,WORK_END_MIN=1140,SLOT_MIN=30; // 9:00–19:00, espacios de 30 min
-var APPT_TIPOS=[['1ª vez','#4FC3F7'],['Seguimiento','#4CAF50'],['Cirugía','#FF6B6B'],['Post-operatorio','#FFA000']];
-var agendaDate=null,agendaMode='agendar',agendaView='horarios',agendaClinical=false,agendaCid=ASIST_DOC,apptForm={tipo:'1ª vez',dur:1},fichaEstado='proceso';
-function toMin(t){var p=(t||'0:0').split(':');return parseInt(p[0],10)*60+parseInt(p[1],10);}
-function minToTime(m){return pad2(Math.floor(m/60))+':'+pad2(m%60);}
-function slotTimes(){var arr=[];for(var m=WORK_START_MIN;m<WORK_END_MIN;m+=SLOT_MIN)arr.push(minToTime(m));return arr;}
-function slotOpts(sel){return slotTimes().map(function(v){return '<option value="'+v+'"'+(v===sel?' selected':'')+'>'+v+'</option>';}).join('');}
-function tipoColor(t){for(var i=0;i<APPT_TIPOS.length;i++)if(APPT_TIPOS[i][0]===t)return APPT_TIPOS[i][1];return '#90a4ae';}
-function dayLabel(iso){var p=iso.split('-');var d=new Date(parseInt(p[0],10),parseInt(p[1],10)-1,parseInt(p[2],10));var di=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];return di[d.getDay()]+' '+parseInt(p[2],10)+' '+cap(MESES[parseInt(p[1],10)-1])+' '+p[0];}
-function addDays(iso,n){var p=iso.split('-');var d=new Date(parseInt(p[0],10),parseInt(p[1],10)-1,parseInt(p[2],10));d.setDate(d.getDate()+n);return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
-function apptStartAt(c,date,t){return (c.appts||[]).filter(function(a){return a.date===date&&a.time===t;})[0];}
-function apptCoversMin(c,date,m){return (c.appts||[]).filter(function(a){var st=toMin(a.time);return a.date===date&&st<m&&st+(a.dur||1)*60>m;})[0];}
-function isBlocked(c,date,t){return (c.blocks||[]).indexOf(date+'|'+t)>=0;}
-function slotConflict(c,date,startMin,durMin,exceptId){if(startMin<WORK_START_MIN||startMin+durMin>WORK_END_MIN)return true;for(var m=startMin;m<startMin+durMin;m+=SLOT_MIN){if(isBlocked(c,date,minToTime(Math.floor(m/60)*60)))return true;var occ=(c.appts||[]).some(function(a){if(a.id===exceptId)return false;var st=toMin(a.time);return a.date===date&&st<=m&&st+(a.dur||1)*60>m;});if(occ)return true;}return false;}
-var wheelVals={};
-function timeWheelHTML(id,sel){sel=sel||'09:00';var p=sel.split(':');var hh=p[0],mm=p[1];
-  var hours='';for(var h=9;h<=18;h++){var hv=pad2(h);hours+='<button type="button" class="wheelitem'+(hv===hh?' on':'')+'" data-wv="'+hv+'">'+hv+'</button>';}
-  var mins='';for(var m=0;m<60;m+=5){var mv=pad2(m);mins+='<button type="button" class="wheelitem'+(mv===mm?' on':'')+'" data-wv="'+mv+'">'+mv+'</button>';}
-  return '<div class="wheel" id="'+id+'Wheel"><div class="wheelband"></div>'
-    +'<div class="wheelcol"><div class="wheelscroll" id="'+id+'HScroll"><div class="wheelpad"></div>'+hours+'<div class="wheelpad"></div></div></div>'
-    +'<div class="wheelsep">:</div>'
-    +'<div class="wheelcol"><div class="wheelscroll" id="'+id+'MScroll"><div class="wheelpad"></div>'+mins+'<div class="wheelpad"></div></div></div>'
-    +'</div>';}
-function initTimeWheel(id,sel){sel=sel||'09:00';var p=sel.split(':');var cur={H:p[0],M:p[1]};wheelVals[id]=cur.H+':'+cur.M;
-  function combine(){wheelVals[id]=cur.H+':'+cur.M;}
-  function col(sfx,initVal){var sc=document.getElementById(id+sfx+'Scroll');if(!sc)return;var IH=36;var items=sc.querySelectorAll('.wheelitem');
-    function style(){var c=sc.scrollTop;for(var i=0;i<items.length;i++){var b=items[i];var d=((i*IH)-c)/IH;var ad=Math.abs(d);if(ad>3.2){b.style.visibility='hidden';continue;}b.style.visibility='visible';b.style.transform='rotateX('+(Math.max(-72,Math.min(72,d*-26)))+'deg) scale('+Math.max(.5,1-ad*0.16)+')';b.style.opacity=Math.max(.15,1-ad*0.32);b.classList.toggle('on',ad<0.5);}var idx=Math.max(0,Math.min(items.length-1,Math.round(c/IH)));if(items[idx]){cur[sfx]=items[idx].getAttribute('data-wv');combine();}}
-    var si=0;items.forEach(function(b,i){if(b.getAttribute('data-wv')===initVal)si=i;});sc.scrollTop=si*IH;style();
-    sc.addEventListener('scroll',function(){if(sc._raf)cancelAnimationFrame(sc._raf);sc._raf=requestAnimationFrame(style);});
-    items.forEach(function(b,i){b.addEventListener('click',function(){sc.scrollTo({top:i*IH,behavior:'smooth'});});});}
-  col('H',cur.H);col('M',cur.M);}
-function renderAgenda(cid,clinical){
-  var c=clients.filter(function(x){return x.id===cid})[0];if(!c)return '';
-  if(!c.appts)c.appts=[];if(!c.blocks)c.blocks=[];if(!agendaDate)agendaDate=todayIso();
-  agendaClinical=!!clinical;agendaCid=cid;
-  var isToday=agendaDate===todayIso();
-  var head='<div class="agnav"><button class="agarrow" data-agday="-1" aria-label="Día anterior">‹</button><div class="agdatewrap"><button class="agdatebtn" data-agpick><span class="agdatetxt">'+dayLabel(agendaDate)+'</span><span class="agcal">▾</span></button><input type="date" id="agJumpHidden" class="aghidden" data-agjump value="'+agendaDate+'"></div><button class="agarrow" data-agday="1" aria-label="Día siguiente">›</button>'+(isToday?'':'<button class="agtoday" data-agtoday>Hoy</button>')+'</div>';
-  var viewSeg='<div class="iseg agview"><button class="isegb'+(agendaView==='horarios'?' on':'')+'" data-agview="horarios">🕘 Horarios</button><button class="isegb'+(agendaView==='citas'?' on':'')+'" data-agview="citas">📋 Citas</button></div>';
-  if(agendaView==='citas'){
-    var dayAppts=(c.appts||[]).filter(function(a){return a.date===agendaDate;}).sort(function(a,b){return toMin(a.time)-toMin(b.time);});
-    var list=dayAppts.map(function(a){var col=tipoColor(a.tipo);var endT=minToTime(toMin(a.time)+(a.dur||1)*60);return '<div class="citarow" data-appt="'+a.id+'" style="border-left:4px solid '+col+'"><div class="citahora">'+a.time+'<small>'+endT+'</small></div><div class="citainfo"><div class="citatipo" style="color:'+col+'">'+escapeHtml(a.tipo)+(a.origen==='web'?' · 🌐 web':'')+'</div><div class="citaname">'+escapeHtml(a.name||'Paciente')+'</div>'+(a.motivo?'<div class="citamot">'+escapeHtml(a.motivo)+'</div>':'')+'</div><span class="go">›</span></div>';}).join('')||'<div class="folempty">No hay citas agendadas este día.</div>';
-    return '<div class="folsec">'+head+'<div class="agctrl">'+viewSeg+'</div><div class="citalist">'+list+'</div></div>';
-  }
-  var blockBtn='<button class="agblock'+(agendaMode==='bloquear'?' on':'')+'" data-agmode="'+(agendaMode==='bloquear'?'agendar':'bloquear')+'">🔒 Bloquear</button>';
-  var rows='';
-  for(var h=9;h<19;h++){
-    var hk=pad2(h)+':00',hStart=h*60;
-    var here=(c.appts||[]).filter(function(a){var st=toMin(a.time);return a.date===agendaDate&&st>=hStart&&st<hStart+60;}).sort(function(a,b){return toMin(a.time)-toMin(b.time);});
-    var cov=(c.appts||[]).some(function(a){var st=toMin(a.time);return a.date===agendaDate&&st<hStart&&st+(a.dur||1)*60>hStart;});
-    var bl=isBlocked(c,agendaDate,hk);
-    if(here.length){var blk=here.map(function(a){var col=tipoColor(a.tipo);return '<div class="agslot appt" style="border-left:4px solid '+col+'" data-appt="'+a.id+'"><div class="agtipo" style="color:'+col+'">'+a.time+' · '+escapeHtml(a.tipo)+(a.dur>1?' · '+a.dur+'h':'')+(a.origen==='web'?' <span class="agweb">🌐 web</span>':'')+'</div><div class="agname">'+escapeHtml(a.name||'Paciente')+'</div></div>';}).join('');rows+='<div class="agrow"><div class="agh">'+hk+'</div><div class="agcell">'+blk+'</div></div>';}
-    else if(cov){rows+='<div class="agrow"><div class="agh">'+hk+'</div><div class="agslot cont">⤷ continúa</div></div>';}
-    else if(bl){rows+='<div class="agrow"><div class="agh">'+hk+'</div><div class="agslot blocked" data-agunblock="'+hk+'">🔒 Bloqueado'+(agendaMode==='bloquear'?' · tocar para quitar':'')+'</div></div>';}
-    else{rows+='<div class="agrow"><div class="agh">'+hk+'</div><div class="agslot free" data-agslot="'+hk+'">'+(agendaMode==='bloquear'?'Tocar para bloquear':'＋ Disponible')+'</div></div>';}
-  }
-  var legend='<div class="aglegend">'+APPT_TIPOS.map(function(t){return '<span><i style="background:'+t[1]+'"></i>'+escapeHtml(t[0])+'</span>';}).join('')+'<span><i style="background:#c9d4e0"></i>Bloqueado</span></div>';
-  return '<div class="folsec">'+head+'<div class="agctrl">'+viewSeg+blockBtn+'</div><div class="agtable">'+rows+'</div>'+legend+'</div>';
-}
-function agendaRefresh(){var el=document.getElementById('docAgendaCitas');if(agendaClinical&&el){el.innerHTML=renderAgenda(agendaCid,true);}else{refresh();}}
 function waPhone(p){var d=(p||'').replace(/\D/g,'');if(!d)return '';if(d.length===10)return '52'+d;return d;}
-function sendReminderWhats(cid,apptId){
-  var c=clients.filter(function(x){return x.id===cid})[0];if(!c)return;var a=(c.appts||[]).filter(function(x){return x.id===apptId;})[0];if(!a)return;
-  var L=['Hola'+(a.name?' '+a.name:'')+', le recordamos su cita en '+c.doc+':','','📅 '+dayLabel(a.date),'🕐 '+a.time+' h'+(a.tipo?(' · '+a.tipo):'')];
-  L.push('','Si necesita reagendar, responda este mensaje. ¡Le esperamos!');
-  var url='https://wa.me/'+waPhone(a.phone)+'?text='+encodeURIComponent(L.join('\n'));
-  window.open(url,'_blank');toast('📲 Abriendo WhatsApp con el recordatorio');
-}
-function openApptForm(cid,t){
-  apptForm={tipo:'1ª vez',dur:1};
-  $('#modal').innerHTML='<div class="mhd"><div><h2>Agendar cita</h2><div class="mhsub">'+dayLabel(agendaDate)+'</div></div><button class="x" data-closemodal>✕</button></div><div class="mbd">'
-    +'<div class="callfld"><label>Tipo de cita</label><div class="callbtns" id="apTipos">'+APPT_TIPOS.map(function(tp){return '<button class="callsrc'+(apptForm.tipo===tp[0]?' on':'')+'" data-aptipo="'+escapeHtml(tp[0])+'">'+escapeHtml(tp[0])+'</button>';}).join('')+'</div></div>'
-    +'<div class="callfld"><label>Hora (desliza las horas y los minutos)</label>'+timeWheelHTML('apTime',t)+'</div>'
-    +'<div class="callfld"><label>Duración</label><div class="iseg" id="apDur"><button class="isegb'+(apptForm.dur===1?' on':'')+'" data-apdur="1">1 hora</button><button class="isegb'+(apptForm.dur===2?' on':'')+'" data-apdur="2">2 horas</button></div></div>'
-    +'<div class="frow"><div class="fld"><label>Nombre del paciente</label><input id="apName" placeholder="Nombre"></div><div class="fld"><label>Celular</label><input id="apPhone" placeholder="opcional"></div></div>'
-    +'<div class="fld"><label>Motivo (opcional)</label><input id="apMotivo" placeholder="ej. valoración blefaroplastia"></div>'
-    +'<div class="mactions"><button class="msave" data-saveappt="'+cid+'">Agendar cita</button></div></div>';
-  $('#overlay').classList.add('show');initTimeWheel('apTime',t);
-}
-function openApptView(cid,apptId){
-  var c=clients.filter(function(x){return x.id===cid})[0];if(!c)return;var a=(c.appts||[]).filter(function(x){return x.id===apptId;})[0];if(!a)return;
-  var col=tipoColor(a.tipo);
-  var s1='<div class="fichasec"><div class="fichah">📇 Datos de la cita</div>'
-    +'<div class="frow"><div class="fld"><label>Nombre</label><input id="fvName" value="'+escapeHtml(a.name||'')+'"></div><div class="fld"><label>Celular</label><input id="fvPhone" value="'+escapeHtml(a.phone||'')+'"></div></div>'
-    +'<div class="folrow"><b>Tipo</b><span style="color:'+col+';font-weight:700">'+escapeHtml(a.tipo)+'</span></div>'
-    +'<div class="frow"><div class="fld"><label>Fecha</label><input type="date" id="fvDate" value="'+a.date+'"></div><div class="fld"><label>Duración</label><select id="fvDur"><option value="1"'+((a.dur||1)===1?' selected':'')+'>1 hora</option><option value="2"'+((a.dur||1)===2?' selected':'')+'>2 horas</option></select></div></div>'
-    +'<div class="fld"><label>Hora (desliza las horas y los minutos)</label>'+timeWheelHTML('fvTime',a.time)+'</div>'
-    +'<div class="fld"><label>Motivo</label><input id="fvMotivo" value="'+escapeHtml(a.motivo||'')+'"></div></div>'
-    +'<div class="adminnote">La información clínica del paciente vive en <b>Expedientes</b> y es exclusiva del doctor.</div>';
-  $('#modal').innerHTML='<div class="mhd"><div><h2>Cita</h2><div class="mhsub">'+escapeHtml(a.name||'Paciente')+'</div></div><button class="x" data-closemodal>✕</button></div><div class="mbd">'+s1+'<div class="mactions"><button class="addbtn" data-sendreminder="'+cid+'|'+apptId+'">📲 Enviar recordatorio</button><button class="msave" data-saveficha="'+cid+'|'+apptId+'">Guardar</button><button class="mdel" data-delappt="'+cid+'|'+apptId+'">Cancelar</button></div></div>';
-  $('#overlay').classList.add('show');initTimeWheel('fvTime',a.time);
-}
-
-/* ===================== EXPEDIENTES (exclusivo del doctor) ===================== */
-function expedKey(n){return (n||'').trim().toLowerCase();}
-function expedRecord(c,key){if(!c.exped)c.exped={};if(!c.exped[key])c.exped[key]={salud:'',alergias:'',procs:'',consultas:[]};return c.exped[key];}
-function readExpedDOM(c,key){var r=expedRecord(c,key);function q(s){return document.querySelector(s);}if(q('[data-esalud]'))r.salud=q('[data-esalud]').value;if(q('[data-ealergias]'))r.alergias=q('[data-ealergias]').value;if(q('[data-eprocs]'))r.procs=q('[data-eprocs]').value;(r.consultas||[]).forEach(function(co){var n=q('[data-cnota="'+co.id+'"]');if(n)co.nota=n.value;var rc=q('[data-creceta="'+co.id+'"]');if(rc)co.receta=rc.value;var ic=q('[data-cindic="'+co.id+'"]');if(ic)co.indic=ic.value;var nx=q('[data-cnext="'+co.id+'"]');if(nx)co.next=nx.value;});}
-function expedPhone(c,name){var ap=(c.appts||[]).filter(function(a){return expedKey(a.name)===expedKey(name);}).sort(function(a,b){return a.date<b.date?1:-1;})[0];return ap?ap.phone:'';}
-function expedPatients(c){var map={};(c.appts||[]).forEach(function(a){if(a.name){var k=expedKey(a.name);if(!map[k])map[k]={key:k,name:a.name};}});Object.keys(c.exped||{}).forEach(function(k){if(!map[k])map[k]={key:k,name:k};});return Object.keys(map).map(function(k){return map[k];}).sort(function(a,b){return a.name<b.name?-1:1;});}
-function renderDocExped(){var el=$('#docExped');if(!el)return;var c=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(!c)return;if(!c.exped)c.exped={};
-  if(expedSel){el.innerHTML=expedView(c,expedSel);}else{el.innerHTML=expedList(c);}}
-function expedList(c){
-  var pts=expedPatients(c);
-  var rows=pts.map(function(p){var r=(c.exped||{})[p.key]||{};var nv=(r.consultas||[]).length;return '<div class="exprow" data-exped="'+escapeHtml(p.key)+'"><div class="cavatar cavatar-i" style="width:34px;height:34px;font-size:12px">'+initials(p.name)+'</div><div class="expinfo"><b>'+escapeHtml(p.name)+'</b><small>'+(expedPhone(c,p.name)||'sin teléfono')+' · '+nv+' consulta'+(nv===1?'':'s')+'</small></div><span class="go">›</span></div>';}).join('')||'<div class="folempty">Aún no hay pacientes. Aparecen aquí cuando la asistente agenda una cita.</div>';
-  return '<div class="dbody2"><p class="folhint">Información clínica de tus pacientes (solo tú la ves). La agenda y los recordatorios los maneja tu asistente.</p>'+rows+'</div>';
-}
-function expedView(c,key){
-  var r=expedRecord(c,key);var pts=expedPatients(c);var nm=(pts.filter(function(p){return p.key===key;})[0]||{}).name||key;
-  var cons=(r.consultas||[]).slice().sort(function(a,b){return a.date<b.date?1:-1;}).map(function(co){
-    return '<div class="conscard"><div class="conshd"><b>📅 '+isoToShort(co.date)+'</b><button class="lk2" style="color:var(--coral)" data-delconsulta="'+co.id+'">✕</button></div>'
-      +'<div class="fld"><label>Nota de la consulta</label><textarea data-cnota="'+co.id+'">'+escapeHtml(co.nota||'')+'</textarea></div>'
-      +'<div class="fld"><label>Receta</label><textarea data-creceta="'+co.id+'">'+escapeHtml(co.receta||'')+'</textarea></div>'
-      +'<div class="fld"><label>Indicaciones</label><textarea data-cindic="'+co.id+'">'+escapeHtml(co.indic||'')+'</textarea></div>'
-      +'<div class="fld"><label>Próxima consulta</label><input type="date" data-cnext="'+co.id+'" value="'+escapeHtml(co.next||'')+'"></div>'
-      +'<button class="addbtn sm" data-sendconsulta="'+escapeHtml(key)+'|'+co.id+'">📲 Enviar receta/indicaciones por WhatsApp</button></div>';
-  }).join('')||'<div class="folempty">Sin consultas registradas.</div>';
-  return '<div class="dbody2"><button class="folback" data-expedback>← Pacientes</button>'
-    +'<div class="exphead"><div class="cavatar cavatar-i" style="width:42px;height:42px;font-size:15px">'+initials(nm)+'</div><div><div class="foldoc">'+escapeHtml(nm)+'</div><div class="folesp">'+(expedPhone(c,nm)||'sin teléfono')+'</div></div></div>'
-    +'<div class="fichasec"><div class="fichah">🩺 Datos clínicos</div>'
-    +'<div class="fld"><label>Historial y estado de salud</label><textarea data-esalud>'+escapeHtml(r.salud||'')+'</textarea></div>'
-    +'<div class="fld"><label>Alergias</label><textarea data-ealergias>'+escapeHtml(r.alergias||'')+'</textarea></div>'
-    +'<div class="fld"><label>Procedimientos sugeridos</label><textarea data-eprocs>'+escapeHtml(r.procs||'')+'</textarea></div></div>'
-    +'<div class="folsechd"><div class="subt">Historial de consultas</div><button class="addbtn sm" data-newconsulta="'+escapeHtml(key)+'">＋ Nueva consulta</button></div>'+cons
-    +'<div class="mactions"><button class="msave" data-saveexped="'+escapeHtml(key)+'">Guardar expediente</button></div></div>';
-}
-function sendConsultaWhats(key,consultaId){
-  var c=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(!c)return;var r=(c.exped||{})[key];if(!r)return;var co=(r.consultas||[]).filter(function(x){return x.id===consultaId;})[0];if(!co)return;
-  var pts=expedPatients(c);var nm=(pts.filter(function(p){return p.key===key;})[0]||{}).name||key;
-  var L=['Hola '+nm+', de parte de '+c.doc+':'];
-  if(co.receta){L.push('','💊 Receta:',co.receta);}
-  if(co.indic){L.push('','📋 Indicaciones:',co.indic);}
-  if(co.next){L.push('','📅 Próxima consulta: '+isoToShort(co.next));}
-  if(L.length===1){L.push('','(Completa receta o indicaciones y vuelve a enviar.)');}
-  window.open('https://wa.me/'+waPhone(expedPhone(c,nm))+'?text='+encodeURIComponent(L.join('\n')),'_blank');toast('📲 Abriendo WhatsApp con la receta');
-}
+function addDays(iso,n){var p=iso.split('-');var d=new Date(parseInt(p[0],10),parseInt(p[1],10)-1,parseInt(p[2],10));d.setDate(d.getDate()+n);return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
 function visiblePosts(){
   if(currentRole==='disenador'||currentRole==='editor'){var me=currentUserName();return posts.filter(function(p){return p.who===me;});}
   var meName=((USERS[currentRole]||{}).name||'').split(' ')[0];
@@ -2964,7 +2828,7 @@ function repClients(){var act=clients.filter(function(c){return c.stage==='Activ
 function repNets(c){var u=[];(c.accounts||[]).forEach(function(a){if(a.platform&&u.indexOf(a.platform)<0)u.push(a.platform);});return u.length?u:['Instagram','Facebook'];}
 function repTotals(r){var t={alc:0,seg:0,msg:0,inter:0};if(r&&r.nets){for(var n in r.nets){var x=r.nets[n];t.alc+=+x.alc||0;t.seg+=+x.seg||0;t.msg+=+x.msg||0;t.inter+=(+x.likes||0)+(+x.com||0)+(+x.guard||0)+(+x.comp||0)+(+x.rep||0);}}return t;}
 function repTrendTotals(c){var ms=repMonthsOf(c);if(ms.length<2)return '';var use=ms.slice(-6);var vals=use.map(function(m){return repTotals(c.reports[m]).alc;});var max=Math.max.apply(null,vals)||1;return '<div class="bars">'+use.map(function(m,i){var v=vals[i];var h=Math.max(6,Math.round(v/max*100));return '<div class="barcol"><div class="vv">'+fmtNum(v)+'</div><div class="bb" style="height:'+h+'%'+(i===use.length-1?';background:var(--mint)':'')+'"></div><small>'+(MESES[+m.split('-')[1]-1]||'').slice(0,3)+'</small></div>';}).join('')+'</div>';}
-function readRepForm(c){if(!c.reports)c.reports={};var r=c.reports[repMonth]||{nets:{},note:'',next:''};if(!r.nets)r.nets={};var gv=function(id){var el=document.getElementById(id);return el?el.value:null;};if(document.getElementById('rn_alc')!=null){var o={};NET_FIELDS.forEach(function(f){o[f.k]=parseInt(gv('rn_'+f.k),10)||0;});r.nets[repNet]=o;}if(document.getElementById('rp_inv')!=null){r.pauta={inv:parseInt(gv('rp_inv'),10)||0,alc:parseInt(gv('rp_alc'),10)||0,msg:parseInt(gv('rp_msg'),10)||0,conv:parseInt(gv('rp_conv'),10)||0};}var nt=gv('rep_note');if(nt!=null)r.note=nt.trim();var nx=gv('rep_next');if(nx!=null)r.next=nx.trim();c.reports[repMonth]=r;}
+function readRepForm(c){if(!c.reports)c.reports={};var r=c.reports[repMonth]||{nets:{},note:'',next:''};if(!r.nets)r.nets={};var gv=function(id){var el=document.getElementById(id);return el?el.value:null;};if(document.getElementById('rn_alc')!=null){var o={};NET_FIELDS.forEach(function(f){o[f.k]=parseInt(gv('rn_'+f.k),10)||0;});r.nets[repNet]=o;}if(document.getElementById('rp_inv')!=null){r.pauta={inv:parseInt(gv('rp_inv'),10)||0,alc:parseInt(gv('rp_alc'),10)||0,msg:parseInt(gv('rp_msg'),10)||0,conv:parseInt(gv('rp_conv'),10)||0};}if(document.getElementById('rg_resenas')!=null){r.gb={resenas:parseInt(gv('rg_resenas'),10)||0,busq:parseInt(gv('rg_busq'),10)||0,contact:parseInt(gv('rg_contact'),10)||0};}var nt=gv('rep_note');if(nt!=null)r.note=nt.trim();var nx=gv('rep_next');if(nx!=null)r.next=nx.trim();c.reports[repMonth]=r;}
 function parseRepFile(file){
   if(!window.XLSX){toast('No pude leer el Excel aquí; captura a mano.');return;}
   var rd=new FileReader();
@@ -2997,7 +2861,7 @@ function repAutoDraft(){
   if(t.seg)L.push('Sumaste '+fmtNum(t.seg)+' seguidores nuevos.');
   var bn='',bv=-1;for(var n in r.nets){var a=+r.nets[n].alc||0;if(a>bv){bv=a;bn=n;}}
   if(bn&&bv>0)L.push('Tu red más fuerte fue '+bn+' con '+fmtNum(bv)+' de alcance.');
-  var pa=r.pauta;if(pa&&((+pa.inv)||(+pa.msg))){var cpm=(+pa.msg)?Math.round((+pa.inv||0)/(+pa.msg)):0;L.push('En anuncios invertimos $'+fmtNum(+pa.inv||0)+((+pa.msg)?(' y trajeron '+fmtNum(+pa.msg)+' mensajes, a ≈ $'+cpm+' por mensaje'):'')+'.');}
+  var pa=r.pauta;if(pa&&((+pa.inv)||(+pa.msg))){L.push('En anuncios invertimos $'+fmtNum(+pa.inv||0)+((+pa.msg)?(' y trajeron '+fmtNum(+pa.msg)+' mensajes'):'')+'.');}
   if(c.objetivos)L.push('Seguimos enfocados en tu meta: '+c.objetivos);
   var ta=document.getElementById('rep_note');if(ta){ta.value=L.join(' ');ta.focus();}
   var tx=document.getElementById('rep_next');if(tx&&!tx.value.trim())tx.value='El próximo mes reforzaremos el contenido que más alcance tuvo y mantendremos la constancia de publicación. Meta del mes: …';
@@ -3018,19 +2882,34 @@ function repShareBtns(c,mk){
   var wa=c.phone?('<a class="wabtn" style="width:100%;justify-content:center;margin-top:10px;box-sizing:border-box" href="https://wa.me/'+waPhone(c.phone)+'?text='+encodeURIComponent(waReportText(c,mk))+'" target="_blank" rel="noopener">💬 Enviar al doctor por WhatsApp</a>'):'<div class="csub" style="margin-top:10px">📱 Agrega el teléfono del cliente en su Perfil para poder enviarlo por WhatsApp.</div>';
   return pdf+wa;
 }
+function repActivity(c,mk){
+  var ps=clientPosts(c).filter(function(p){return (p.pubDate||p.date||'').slice(0,7)===mk;});
+  if(!ps.length)return null;
+  var byType={};ps.forEach(function(p){var t=p.type||'Post';byType[t]=(byType[t]||0)+1;});
+  var byFun={};ps.forEach(function(p){if(p.funnel)byFun[p.funnel]=(byFun[p.funnel]||0)+1;});
+  return {total:ps.length,byType:byType,byFun:Object.keys(byFun)};
+}
 function docRepBody(c,mk){
   var r=repGet(c,mk);if(!r||!r.nets||!Object.keys(r.nets).length)return '<div class="folempty">Aún no hay reporte capturado para este mes.</div>';
   var t=repTotals(r);var hasPrev=!!repGet(c,prevMonthKey(mk));var pt=repTotals(repGet(c,prevMonthKey(mk)));
+  /* 1) La lectura arriba: lo primero que ve el doctor. */
+  var lectura=r.note?('<div class="repread"><div class="repreadhd">📌 En pocas palabras</div><div class="readbox">'+escapeHtml(r.note)+'</div></div>'):'';
+  /* 2) Qué hicimos — se cuenta solo desde las publicaciones del mes. */
+  var act=repActivity(c,mk),quehicimos='';
+  if(act){var tp=Object.keys(act.byType).map(function(k){return act.byType[k]+' '+k.toLowerCase()+(act.byType[k]>1?'s':'');});quehicimos='<div class="repblock"><h4>🗂️ Qué hicimos</h4><div class="qhrow"><b>'+act.total+' publicaciones</b> este mes'+(tp.length?' · '+escapeHtml(tp.join(' · ')):'')+'</div>'+(act.byFun.length?'<div class="qhfases">Fases del embudo trabajadas: '+act.byFun.map(function(f){return '<span class="qhtag">'+escapeHtml(f)+'</span>';}).join(' ')+'</div>':'')+'</div>';}
+  /* 3) Tu presencia (orgánico). */
   var gen=[['Alcance','alc'],['Mensajes','msg'],['Seguidores','seg'],['Interacciones','inter']];
   var cards=gen.map(function(g){var cur=t[g[1]];var prev=hasPrev?pt[g[1]]:null;return '<div class="repkpi"><div class="rn">'+fmtNum(cur)+'</div><div class="rl">'+g[0]+'</div>'+pctBadge(cur,prev)+'</div>';}).join('');
   var trend=repTrendTotals(c);
   var netCards=Object.keys(r.nets).map(function(n){var x=r.nets[n];var subs=[['Likes','likes'],['Coment.','com'],['Guard.','guard'],['Comp.','comp'],['Repost','rep']].map(function(s){return '<span class="netsub">'+s[0]+' <b>'+fmtNum(+x[s[1]]||0)+'</b></span>';}).join('');return '<div class="netcard"><div class="nethd">'+accIcon(n)+' '+escapeHtml(n)+'</div><div class="netrow"><span>Alcance <b>'+fmtNum(+x.alc||0)+'</b></span><span>Mensajes <b>'+fmtNum(+x.msg||0)+'</b></span><span>Seguidores <b>'+fmtNum(+x.seg||0)+'</b></span></div><div class="netsubs">'+subs+'</div></div>';}).join('');
-  var pa=r.pauta;var pauta=(pa&&((+pa.inv)||(+pa.msg)))?('<div class="chartcard" style="margin-top:14px"><h3>📣 Pauta (anuncios)</h3><div class="repgrid"><div class="repkpi"><div class="rn">$'+fmtNum(+pa.inv||0)+'</div><div class="rl">Inversión</div></div><div class="repkpi"><div class="rn">'+fmtNum(+pa.msg||0)+'</div><div class="rl">Mensajes / leads</div></div><div class="repkpi"><div class="rn">$'+((+pa.msg)?Math.round((+pa.inv||0)/(+pa.msg)):0)+'</div><div class="rl">Costo por mensaje</div></div><div class="repkpi"><div class="rn">'+fmtNum(+pa.conv||0)+'</div><div class="rl">Citas / conversiones</div></div></div></div>'):'';
-  var qpaso=r.note?('<div class="repblock"><h4>📝 Qué pasó este mes</h4><div class="readbox">'+escapeHtml(r.note)+'</div></div>'):'';
-  var acc=r.next?('<div class="repblock"><h4>🎯 Próximas acciones</h4><div class="readbox">'+escapeHtml(r.next)+'</div></div>'):'';
-  return '<div class="repmonth">📅 '+monthLabel(mk)+'</div><div class="repgrid">'+cards+'</div>'
-    +(trend?'<div class="chartcard" style="margin-top:14px"><h3>Alcance · últimos meses</h3>'+trend+'</div>':'')
-    +'<div class="netwrap">'+netCards+'</div>'+pauta+qpaso+acc;
+  var organico='<div class="repsechd">📱 Tu presencia (orgánico)</div><div class="repgrid">'+cards+'</div>'+(trend?'<div class="chartcard" style="margin-top:14px"><h3>Alcance · últimos meses</h3>'+trend+'</div>':'')+'<div class="netwrap">'+netCards+'</div>';
+  /* 4) Tus campañas (pauta) — solo lo que al doctor le importa: invertí X, obtuve Y. */
+  var pa=r.pauta;var pauta=(pa&&((+pa.inv)||(+pa.msg)))?('<div class="repsechd">📣 Tus campañas (pauta)</div><div class="chartcard"><div class="repgrid"><div class="repkpi"><div class="rn">$'+fmtNum(+pa.inv||0)+'</div><div class="rl">Invertiste</div></div><div class="repkpi"><div class="rn">'+fmtNum(+pa.alc||0)+'</div><div class="rl">Alcance pagado</div></div><div class="repkpi"><div class="rn">'+fmtNum(+pa.msg||0)+'</div><div class="rl">Mensajes / leads</div></div></div><div class="repfoot">Con $'+fmtNum(+pa.inv||0)+' de inversión llegamos a '+fmtNum(+pa.alc||0)+' personas y entraron '+fmtNum(+pa.msg||0)+' mensajes.</div></div>'):'';
+  /* 5) Reputación (Google Business). */
+  var gb=r.gb;var repu=(gb&&((+gb.resenas)||(+gb.busq)||(+gb.contact)))?('<div class="repsechd">⭐ Reputación (Google)</div><div class="chartcard"><div class="repgrid"><div class="repkpi"><div class="rn">'+fmtNum(+gb.resenas||0)+'</div><div class="rl">Reseñas nuevas</div></div><div class="repkpi"><div class="rn">'+fmtNum(+gb.busq||0)+'</div><div class="rl">Te encontraron</div></div><div class="repkpi"><div class="rn">'+fmtNum(+gb.contact||0)+'</div><div class="rl">Pidieron contacto</div></div></div></div>'):'';
+  /* 6) Qué sigue. */
+  var acc=r.next?('<div class="repblock"><h4>🎯 Qué sigue</h4><div class="readbox">'+escapeHtml(r.next)+'</div></div>'):'';
+  return '<div class="repmonth">📅 '+monthLabel(mk)+'</div>'+lectura+quehicimos+organico+pauta+repu+acc;
 }
 function printRepPDF(c,mk){
   var r=repGet(c,mk);if(!r){toast('No hay reporte de este mes.');return;}
@@ -3043,9 +2922,10 @@ function printRepPDF(c,mk){
     +'<h1>'+escapeHtml(c.doc)+'</h1><div class="sub">Reporte de redes sociales · '+monthLabel(mk)+'</div>'
     +'<h2>General (todas las redes)</h2><table>'+rowsHtml+'</table>'
     +'<h2>Por red social</h2><table>'+netHtml+'</table>'
-    +((r.pauta&&((+r.pauta.inv)||(+r.pauta.msg)))?'<h2>Pauta (anuncios)</h2><table><tr><td>Inversión</td><td style="text-align:right"><b>$'+fmtNum(+r.pauta.inv||0)+'</b></td></tr><tr><td>Mensajes / leads</td><td style="text-align:right"><b>'+fmtNum(+r.pauta.msg||0)+'</b></td></tr><tr><td>Costo por mensaje</td><td style="text-align:right"><b>$'+((+r.pauta.msg)?Math.round((+r.pauta.inv||0)/(+r.pauta.msg)):0)+'</b></td></tr><tr><td>Citas / conversiones</td><td style="text-align:right"><b>'+fmtNum(+r.pauta.conv||0)+'</b></td></tr></table>':'')
-    +(r.note?'<h2>Qué pasó este mes</h2><div class="note">'+escapeHtml(r.note)+'</div>':'')
-    +(r.next?'<h2>Próximas acciones</h2><div class="note">'+escapeHtml(r.next)+'</div>':'')
+    +((r.pauta&&((+r.pauta.inv)||(+r.pauta.msg)))?'<h2>Campañas (pauta)</h2><table><tr><td>Inversión</td><td style="text-align:right"><b>$'+fmtNum(+r.pauta.inv||0)+'</b></td></tr><tr><td>Alcance pagado</td><td style="text-align:right"><b>'+fmtNum(+r.pauta.alc||0)+'</b></td></tr><tr><td>Mensajes / leads</td><td style="text-align:right"><b>'+fmtNum(+r.pauta.msg||0)+'</b></td></tr></table>':'')
+    +((r.gb&&((+r.gb.resenas)||(+r.gb.busq)||(+r.gb.contact)))?'<h2>Reputación (Google)</h2><table><tr><td>Reseñas nuevas</td><td style="text-align:right"><b>'+fmtNum(+r.gb.resenas||0)+'</b></td></tr><tr><td>Te encontraron</td><td style="text-align:right"><b>'+fmtNum(+r.gb.busq||0)+'</b></td></tr><tr><td>Pidieron contacto</td><td style="text-align:right"><b>'+fmtNum(+r.gb.contact||0)+'</b></td></tr></table>':'')
+    +(r.note?'<h2>En pocas palabras</h2><div class="note">'+escapeHtml(r.note)+'</div>':'')
+    +(r.next?'<h2>Qué sigue</h2><div class="note">'+escapeHtml(r.next)+'</div>':'')
     +'<div style="margin-top:28px;color:#9fb3c8;font-size:11px">MedMark · Generado para '+escapeHtml(c.doc)+'</div>'
     +'</body></html>';
   w.document.write(doc);w.document.close();w.focus();setTimeout(function(){w.print();},350);
@@ -3062,7 +2942,7 @@ function folReportesRO(c){
   var metrics=row('👁️ Alcance',x.alc)+row('➕ Seguidores nuevos',x.seg)+row('💬 Mensajes / consultas',x.msg)+row('❤️ Likes',x.likes)+row('💬 Comentarios',x.com)+row('🔖 Guardados',x.guard)+row('🔁 Compartidos',x.comp)+row('📣 Reposts',x.rep);
   var pauta=(r.pauta&&(r.pauta.inv||r.pauta.alc||r.pauta.msg||r.pauta.conv))?('<div style="font-size:12px;font-weight:700;color:var(--ink2);margin:14px 0 6px">📣 Pauta del mes</div>'+row('💵 Inversión',r.pauta.inv)+row('👁️ Alcance pagado',r.pauta.alc)+row('💬 Mensajes / leads',r.pauta.msg)+row('🗓️ Citas / conversiones',r.pauta.conv)):'';
   var notes=(r.note?'<div class="folrow" style="flex-direction:column;align-items:flex-start;gap:4px"><b>📝 Qué pasó este mes</b><span style="white-space:pre-wrap">'+escapeHtml(r.note)+'</span></div>':'')+(r.next?'<div class="folrow" style="flex-direction:column;align-items:flex-start;gap:4px"><b>🎯 Próximas acciones</b><span style="white-space:pre-wrap">'+escapeHtml(r.next)+'</span></div>':'');
-  var body=has?(netSeg+'<div style="font-size:12px;font-weight:700;color:var(--ink2);margin:12px 0 6px">Métricas de '+escapeHtml(repNet)+'</div>'+metrics+pauta+notes):'<div class="folmut" style="padding:12px 2px">Aún no hay reporte de '+monthLabel(repMonth)+'.</div>';
+  var body=has?(netSeg+'<div style="font-size:12px;font-weight:700;color:var(--ink2);margin:12px 0 6px">Métricas de '+escapeHtml(repNet)+'</div>'+metrics+pauta+((r.gb&&(r.gb.resenas||r.gb.busq||r.gb.contact))?('<div style="font-size:12px;font-weight:700;color:var(--ink2);margin:14px 0 6px">⭐ Reputación (Google Business)</div>'+row('⭐ Reseñas nuevas',r.gb.resenas)+row('🔎 Te encontraron',r.gb.busq)+row('📞 Pidieron contacto',r.gb.contact)):'')+notes):'<div class="folmut" style="padding:12px 2px">Aún no hay reporte de '+monthLabel(repMonth)+'.</div>';
   return '<div class="folsec">'+monthNav+'<div class="card"><h3>Reporte de '+monthLabel(repMonth)+'</h3><div class="csub">Solo lectura · métricas capturadas por el equipo</div>'+body+'</div></div>';
 }
 function folReportes(c){
@@ -3086,6 +2966,10 @@ function folReportes(c){
       +'<div style="font-size:12px;font-weight:700;color:var(--ink2);margin:4px 0 6px">📣 Pauta del mes (anuncios) — opcional</div>'
       +'<div class="frow"><div class="fld"><label>💵 Inversión</label><input type="number" id="rp_inv" value="'+((r.pauta&&r.pauta.inv)||'')+'" placeholder="$"></div><div class="fld"><label>👁️ Alcance pagado</label><input type="number" id="rp_alc" value="'+((r.pauta&&r.pauta.alc)||'')+'" placeholder="0"></div></div>'
       +'<div class="frow"><div class="fld"><label>💬 Mensajes / leads</label><input type="number" id="rp_msg" value="'+((r.pauta&&r.pauta.msg)||'')+'" placeholder="0"></div><div class="fld"><label>🗓️ Citas / conversiones</label><input type="number" id="rp_conv" value="'+((r.pauta&&r.pauta.conv)||'')+'" placeholder="0"></div></div>'
+      +'<div style="height:1px;background:var(--line);margin:16px 0"></div>'
+      +'<div style="font-size:12px;font-weight:700;color:var(--ink2);margin:4px 0 6px">⭐ Reputación (Google Business) — opcional</div>'
+      +'<div class="frow"><div class="fld"><label>⭐ Reseñas nuevas</label><input type="number" id="rg_resenas" value="'+((r.gb&&r.gb.resenas)||'')+'" placeholder="0"></div><div class="fld"><label>🔎 Te encontraron</label><input type="number" id="rg_busq" value="'+((r.gb&&r.gb.busq)||'')+'" placeholder="0"></div></div>'
+      +'<div class="fld"><label>📞 Pidieron contacto (llamadas / clics)</label><input type="number" id="rg_contact" value="'+((r.gb&&r.gb.contact)||'')+'" placeholder="0"></div>'
       +'<div style="height:1px;background:var(--line);margin:16px 0"></div>'
       +'<div class="fld"><label style="display:flex;justify-content:space-between;align-items:center;gap:8px">📝 Qué pasó este mes <button type="button" data-repdraft style="font-size:11.5px;font-weight:700;color:var(--mint-d);background:var(--mint-bg);border:none;border-radius:8px;padding:5px 10px;cursor:pointer">✨ Generar borrador</button></label><textarea id="rep_note" class="big" placeholder="Pulsa «Generar borrador» para redactarlo desde los números, o escríbelo aquí…">'+escapeHtml(r.note||'')+'</textarea></div>'
       +'<div class="fld"><label>🎯 Próximas acciones</label><textarea id="rep_next" class="big" placeholder="Qué haremos el próximo mes y la meta…">'+escapeHtml(r.next||'')+'</textarea></div>'
@@ -3578,27 +3462,6 @@ document.addEventListener('click',function(e){
   if(e.target.closest('[data-monthtoggle]')){callPickerOpen=!callPickerOpen;if(callPickerOpen)callPickerYear=parseInt(callMonth.split('-')[0],10)||2026;refresh();return;}
   var myr=e.target.closest('[data-monthyear]');if(myr){callPickerYear+=(myr.getAttribute('data-monthyear')==='next'?1:-1);if(callPickerYear<2026)callPickerYear=2026;if(callPickerYear>2035)callPickerYear=2035;refresh();return;}
   var mpk=e.target.closest('[data-monthpick]');if(mpk){callMonth=mpk.getAttribute('data-monthpick');callPickerOpen=false;refresh();return;}
-  var agd=e.target.closest('[data-agday]');if(agd){agendaDate=addDays(agendaDate,parseInt(agd.getAttribute('data-agday'),10));agendaRefresh();return;}
-  if(e.target.closest('[data-agtoday]')){agendaDate=todayIso();agendaRefresh();return;}
-  if(e.target.closest('[data-agpick]')){var hp=document.getElementById('agJumpHidden');if(hp){try{hp.showPicker();}catch(_){hp.click();}}return;}
-  var agm=e.target.closest('[data-agmode]');if(agm){agendaMode=agm.getAttribute('data-agmode');agendaRefresh();return;}
-  var agv=e.target.closest('[data-agview]');if(agv){agendaView=agv.getAttribute('data-agview');agendaRefresh();return;}
-  var ags=e.target.closest('[data-agslot]');if(ags){var hh=ags.getAttribute('data-agslot');var cc4=clients.filter(function(x){return x.id===agendaCid})[0];if(!cc4)return;if(agendaMode==='bloquear'){if(!cc4.blocks)cc4.blocks=[];cc4.blocks.push(agendaDate+'|'+hh);agendaRefresh();scheduleSave();}else{openApptForm(agendaCid,hh);}return;}
-  var agu=e.target.closest('[data-agunblock]');if(agu){if(agendaMode==='bloquear'){var hh2=agu.getAttribute('data-agunblock');var cc5=clients.filter(function(x){return x.id===agendaCid})[0];if(cc5){cc5.blocks=(cc5.blocks||[]).filter(function(k){return k!==agendaDate+'|'+hh2;});agendaRefresh();scheduleSave();}}return;}
-  var apv=e.target.closest('[data-appt]');if(apv){openApptView(agendaCid,parseInt(apv.getAttribute('data-appt'),10));return;}
-  var apt=e.target.closest('[data-aptipo]');if(apt){apptForm.tipo=apt.getAttribute('data-aptipo');var tb=document.getElementById('apTipos');if(tb)tb.querySelectorAll('.callsrc').forEach(function(b){b.classList.remove('on');});apt.classList.add('on');return;}
-  var apd=e.target.closest('[data-apdur]');if(apd){apptForm.dur=parseInt(apd.getAttribute('data-apdur'),10);var db=document.getElementById('apDur');if(db)db.querySelectorAll('.isegb').forEach(function(b){b.classList.remove('on');});apd.classList.add('on');return;}
-  var ape=e.target.closest('[data-apestado]');if(ape){fichaEstado=ape.getAttribute('data-apestado');var eb=document.getElementById('fvEstado');if(eb)eb.querySelectorAll('.isegb').forEach(function(b){b.classList.remove('on');});ape.classList.add('on');return;}
-  var sap=e.target.closest('[data-saveappt]');if(sap){var cid6=parseInt(sap.getAttribute('data-saveappt'),10);var c6=clients.filter(function(x){return x.id===cid6})[0];if(!c6)return;var t6=wheelVals['apTime']||'09:00',d6=apptForm.dur;if(slotConflict(c6,agendaDate,toMin(t6),d6*60,-1)){toast('⚠️ Se empalma con otra cita o un horario bloqueado');return;}if(!c6.appts)c6.appts=[];c6.appts.push({id:nextAppt++,date:agendaDate,time:t6,dur:d6,tipo:apptForm.tipo,name:($('#apName')?$('#apName').value.trim():''),phone:($('#apPhone')?$('#apPhone').value.trim():''),motivo:($('#apMotivo')?$('#apMotivo').value.trim():''),salud:'',procs:'',receta:'',recs:'',next:'',estado:'proceso'});closeModal();agendaRefresh();scheduleSave();toast('📅 Cita agendada');return;}
-  var sfi=e.target.closest('[data-saveficha]');if(sfi){var fp=sfi.getAttribute('data-saveficha').split('|');var c7=clients.filter(function(x){return x.id===parseInt(fp[0],10)})[0];if(c7){var a7=(c7.appts||[]).filter(function(x){return x.id===parseInt(fp[1],10)})[0];if(a7){var nd=$('#fvDate')?$('#fvDate').value:a7.date,nt=wheelVals['fvTime']||a7.time,ndur=$('#fvDur')?parseInt($('#fvDur').value,10):(a7.dur||1);if(slotConflict(c7,nd,toMin(nt),ndur*60,a7.id)){toast('⚠️ Ese horario se empalma con otra cita/bloqueo o queda fuera de horario');return;}a7.date=nd;a7.time=nt;a7.dur=ndur;if($('#fvName'))a7.name=$('#fvName').value.trim();if($('#fvPhone'))a7.phone=$('#fvPhone').value.trim();if($('#fvMotivo'))a7.motivo=$('#fvMotivo').value.trim();}}closeModal();agendaRefresh();scheduleSave();toast('✅ Cita actualizada');return;}
-  var dap=e.target.closest('[data-delappt]');if(dap){var dq=dap.getAttribute('data-delappt').split('|');var c8=clients.filter(function(x){return x.id===parseInt(dq[0],10)})[0];if(c8){c8.appts=(c8.appts||[]).filter(function(x){return x.id!==parseInt(dq[1],10);});}closeModal();agendaRefresh();scheduleSave();toast('🗑️ Cita cancelada');return;}
-  var sfw=e.target.closest('[data-sendreminder]');if(sfw){var sr=sfw.getAttribute('data-sendreminder').split('|');sendReminderWhats(parseInt(sr[0],10),parseInt(sr[1],10));return;}
-  var exo=e.target.closest('[data-exped]');if(exo){expedSel=exo.getAttribute('data-exped');renderDocExped();return;}
-  if(e.target.closest('[data-expedback]')){expedSel=null;renderDocExped();return;}
-  var enc=e.target.closest('[data-newconsulta]');if(enc){var cE=clients.filter(function(x){return x.id===DOCTOR_ID})[0];var kE=enc.getAttribute('data-newconsulta');if(cE){readExpedDOM(cE,kE);expedRecord(cE,kE).consultas.push({id:nextConsulta++,date:todayIso(),nota:'',receta:'',indic:'',next:''});renderDocExped();scheduleSave();}return;}
-  var edc=e.target.closest('[data-delconsulta]');if(edc){var cE2=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(cE2&&expedSel){readExpedDOM(cE2,expedSel);var rr=expedRecord(cE2,expedSel);rr.consultas=(rr.consultas||[]).filter(function(x){return x.id!==parseInt(edc.getAttribute('data-delconsulta'),10);});renderDocExped();scheduleSave();}return;}
-  var sve=e.target.closest('[data-saveexped]');if(sve){var cE3=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(cE3){readExpedDOM(cE3,sve.getAttribute('data-saveexped'));renderDocExped();scheduleSave();toast('✅ Expediente guardado');}return;}
-  var snc=e.target.closest('[data-sendconsulta]');if(snc){var sp2=snc.getAttribute('data-sendconsulta').split('|');var cE4=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(cE4)readExpedDOM(cE4,sp2[0]);sendConsultaWhats(sp2[0],parseInt(sp2[1],10));return;}
   var scl=e.target.closest('[data-savecall]');if(scl){var cidv=parseInt(scl.getAttribute('data-savecall'),10);var cv2=clients.filter(function(x){return x.id===cidv})[0];if(!cv2)return;if(!callDraft.result||!callDraft.source){toast('⚠️ Elige resultado y cómo nos conoció');return;}if(!cv2.calls)cv2.calls=[];var pf=$('#cCallProc'),nf=$('#cCallNote'),of=$('#cCallOther'),naf=$('#cCallName'),phf=$('#cCallPhone');var rec={id:nextCall++,date:todayIso(),result:callDraft.result,source:callDraft.source,name:naf?naf.value.trim():'',phone:phf?phf.value.trim():'',proc:pf?pf.value.trim():'',note:nf?nf.value.trim():''};if(callDraft.source==='Redes sociales')rec.app=callDraft.app;else rec.seen=callDraft.seen;if(callDraft.source==='Otro')rec.otherText=of?of.value.trim():'';cv2.calls.push(rec);callDraft={result:'',source:'',app:'',otherText:'',seen:false,name:'',phone:'',proc:'',note:''};refresh();scheduleSave();toast('📞 Llamada registrada');return;}
   var dcl=e.target.closest('[data-delcall]');if(dcl){var dp=dcl.getAttribute('data-delcall').split('|');var cv3=clients.filter(function(x){return x.id===parseInt(dp[0],10)})[0];if(cv3){cv3.calls=(cv3.calls||[]).filter(function(x){return x.id!==parseInt(dp[1],10);});refresh();scheduleSave();}return;}
   var cc=e.target.closest('[data-client]');if(cc)return openClientForm(parseInt(cc.getAttribute('data-client'),10));
@@ -3625,9 +3488,7 @@ document.addEventListener('click',function(e){
   var ok=e.target.closest('[data-ok]');if(ok)return approve(parseInt(ok.getAttribute('data-ok'),10));
   var ch=e.target.closest('[data-ch]');if(ch)return askChange(parseInt(ch.getAttribute('data-ch'),10));
   var sc=e.target.closest('[data-sc]');if(sc)return sendChange(parseInt(sc.getAttribute('data-sc'),10));
-  if(e.target.closest('[data-senddoc]'))return sendDoc();
-  var dn=e.target.closest('#dnav button');if(dn){$$('#dnav button').forEach(function(x){x.classList.remove('on')});dn.classList.add('on');$$('#doctor [data-d]').forEach(function(s){s.classList.toggle('hidden',s.getAttribute('data-d')!==dn.getAttribute('data-d'));});if(dn.getAttribute('data-d')==='pagos')renderDocPay();if(dn.getAttribute('data-d')==='rep')renderDocRep();return;}
-function renderDocCitas(){var el=$('#docAgendaCitas');if(el)el.innerHTML=renderAgenda(DOCTOR_ID,true);}
+  var dn=e.target.closest('#dnav button');if(dn){$$('#dnav button').forEach(function(x){x.classList.remove('on')});dn.classList.add('on');$$('#doctor [data-d]').forEach(function(s){s.classList.toggle('hidden',s.getAttribute('data-d')!==dn.getAttribute('data-d'));});if(dn.getAttribute('data-d')==='rep')renderDocRep();return;}
 });
 document.addEventListener('input',function(e){if(e.target&&e.target.id==='topSearch'){cliQuery=e.target.value;renderSidebarClients();}else if(e.target&&e.target.id==='crmSearch'){crmQuery=e.target.value;var _p=e.target.selectionStart;refresh();var _el=document.getElementById('crmSearch');if(_el){_el.focus();try{_el.setSelectionRange(_p,_p);}catch(_cs){}}}else if(e.target&&e.target.id==='usuSearch'){usuFilter(e.target.value);}else if(e.target&&(e.target.id==='fMedia'||e.target.id==='fCopy')){refreshIgPreview();}});
 document.addEventListener('change',function(e){
@@ -3654,7 +3515,6 @@ document.addEventListener('change',function(e){
   if(e.target.id==='fDoctor'){var ps=document.getElementById('fPlat');if(ps)ps.innerHTML=platformsFor(e.target.value).map(function(o){return '<option>'+escapeHtml(o)+'</option>';}).join('');var fc=document.getElementById('fCampaign');if(fc){var cc=clients.filter(function(x){return x.doc===e.target.value;})[0];var cmps=(cc&&cc.campaigns)?cc.campaigns:[];fc.innerHTML='<option value="">— Sin campaña / selecciona —</option>'+cmps.map(function(k){return '<option value="'+k.id+'">'+escapeHtml(k.name||'Campaña')+(k.presu?' · '+escapeHtml(k.presu):'')+'</option>';}).join('');}var fa=document.getElementById('fAudiencia');if(fa){var aa=audienciasForDoctor(e.target.value);fa.disabled=!aa.length;fa.innerHTML=aa.length?('<option value="">— Selecciona —</option>'+aa.map(function(x){return '<option value="'+escapeHtml(x)+'">'+escapeHtml(x)+'</option>';}).join('')):'<option value="">— Define las audiencias en Marca —</option>';}return;}
   if(e.target.id==='bImgFile'){var bf=e.target.files[0];if(bf){var ar3=currentBoardArr();var rd=new FileReader();rd.onload=function(ev){var im=new Image();im.onload=function(){var mw=520,sc=Math.min(1,mw/im.width);ar3.push({t:'image',x:60,y:60,w:Math.round(im.width*sc),h:Math.round(im.height*sc),src:ev.target.result});renderFolder();toast('🖼️ Foto insertada');};im.src=ev.target.result;};rd.readAsDataURL(bf);}return;}
   var cmn=e.target.closest&&e.target.closest('[data-callmonth]');if(cmn){callMonth=cmn.value;refresh();return;}
-  var agj=e.target.closest&&e.target.closest('[data-agjump]');if(agj){if(agj.value){agendaDate=agj.value;agendaRefresh();}return;}
   if(e.target.id==='cCallSeen'){callDraft.seen=e.target.checked;return;}
   if(e.target&&e.target.id&&e.target.id.indexOf('aPlat')===0){var ai=e.target.id.slice(5);if(tmpAccounts[ai]){tmpAccounts[ai].platform=e.target.value;refreshAccOpen(ai);}return;}
   var cc2=e.target.closest('[data-cfgcolor]');if(cc2){var pr2=cc2.getAttribute('data-cfgcolor').split('|');var vv2=CONFIG[pr2[0]][parseInt(pr2[1],10)];if(vv2){COLORS[pr2[0]+'::'+vv2]=cc2.value;refresh();toast('🎨 Color de "'+vv2+'" actualizado');}return;}
@@ -3691,13 +3551,12 @@ function renderDocAgenda(){var el=$('#docAgenda');if(!el)return;
   var pendHtml=pend.length?('<div class="agsec">Por aprobar antes de publicar</div>'+pend.map(function(p){return pendCard(p,'ag');}).join('')):'<div class="approved">✅ ¡Todo aprobado! No tienes nada pendiente.</div>';
   el.innerHTML=pendHtml+'<div class="agsec">Ya programado</div><div class="pcard"><div class="pc-b"><span class="st" style="color:#2e7d32;background:#e8f5e9">Aprobado</span><div class="ti">Tips de cuidado post-op</div><div class="pm">Miércoles 10 jun · Carrusel</div></div></div><div class="pcard"><div class="pc-b"><span class="st" style="color:#00695c;background:#e0f2f1">Publicado</span><div class="ti">Behind the scenes · Consulta</div><div class="pm">Lunes 8 jun · TikTok</div></div></div>';}
 function approve(id){var p=null;pend.forEach(function(x){if(x.id==id)p=x;});var a=$('#dp'+id),b=$('#ag'+id);if(a)a.classList.add('go');if(b)b.classList.add('go');toast('✅ ¡Aprobado!');
-  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Aprobado';if(CLOUD&&po.dbid)setPostEstadoDB(po.dbid,'Aprobado').catch(function(){});}}var _am={who:'them',text:'✅ Aprobé «'+p.t+'»',time:'ahora'};convos[DOCTOR_ID].push(_am);if(CLOUD)saveMensajeDB(DOCTOR_ID,_am,'doctor');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Dr. Cárdenas aprobó un post',p.t);}
+  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Aprobado';if(CLOUD&&po.dbid)setPostEstadoDB(po.dbid,'Aprobado').catch(function(){});}}var _am={who:'them',text:'✅ Aprobé «'+p.t+'»',time:'ahora'};convos[DOCTOR_ID].push(_am);if(CLOUD)saveMensajeDB(DOCTOR_ID,_am,'doctor');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify(docName()+' aprobó un post',p.t);}
   setTimeout(function(){pend=pend.filter(function(x){return x.id!=id});renderPend();renderDocAgenda();},380);}
 function askChange(id){var a=$('#dc'+id);if(a)a.classList.toggle('hidden');var b=$('#agc'+id);if(b)b.classList.toggle('hidden');}
 function sendChange(id){var p=null;pend.forEach(function(x){if(x.id==id)p=x;});var t1=$('#dc'+id+' textarea'),t2=$('#agc'+id+' textarea');var txt=((t2&&t2.value.trim())||(t1&&t1.value.trim())||'Por favor ajustar el detalle.');var a=$('#dp'+id),b=$('#ag'+id);if(a)a.classList.add('go');if(b)b.classList.add('go');toast('✎ Comentario enviado al equipo');
-  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Cambios';po.changeNote=txt;if(CLOUD&&po.dbid){setPostEstadoDB(po.dbid,'Cambios',txt).catch(function(){});addCambioDB(po.dbid,((clients.filter(function(x){return x.id===DOCTOR_ID})[0]||{}).doc)||'Doctor',txt);}}}var _cm={who:'post',postId:p.postId,text:txt,time:'ahora'};convos[DOCTOR_ID].push(_cm);if(CLOUD)saveMensajeDB(DOCTOR_ID,_cm,'post');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Feedback de Dr. Cárdenas',txt);}
+  if(p){if(p.postId){var po=posts.filter(function(x){return x.id===p.postId})[0];if(po){po.status='Cambios';po.changeNote=txt;if(CLOUD&&po.dbid){setPostEstadoDB(po.dbid,'Cambios',txt).catch(function(){});addCambioDB(po.dbid,((clients.filter(function(x){return x.id===DOCTOR_ID})[0]||{}).doc)||'Doctor',txt);}}}var _cm={who:'post',postId:p.postId,text:txt,time:'ahora'};convos[DOCTOR_ID].push(_cm);if(CLOUD)saveMensajeDB(DOCTOR_ID,_cm,'post');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Feedback de '+docName(),txt);}
   setTimeout(function(){pend=pend.filter(function(x){return x.id!=id});renderPend();renderDocAgenda();},380);}
-function sendDoc(){var i=$('#docChatInput');if(!i||!i.value.trim())return;var m=$('#docMsgs');var d=document.createElement('div');d.className='dmsg me';d.textContent=i.value;m.appendChild(d);var _dm={who:'them',text:i.value.trim(),time:'ahora'};convos[DOCTOR_ID].push(_dm);if(CLOUD)saveMensajeDB(DOCTOR_ID,_dm,'doctor');unread[DOCTOR_ID]=(unread[DOCTOR_ID]||0)+1;notify('Mensaje de Dr. Cárdenas',i.value.trim());i.value='';m.scrollTop=m.scrollHeight;}
 function renderDocRep(){var el=$('#docRep');if(!el)return;var c=clients.filter(function(x){return x.id===DOCTOR_ID})[0];if(!c)return;var ms=repMonthsOf(c);var mk=ms.length?ms[ms.length-1]:'2026-06';el.innerHTML=docRepBody(c,mk)+(repGet(c,mk)?'<button class="dlpdf" style="margin-top:14px" data-printrep="'+c.id+'|'+mk+'">⬇ Descargar PDF</button>':'');}
 
 function makeAccessible(scope){var root=scope||document;var els=root.querySelectorAll('.row[data-goto],.row[data-post],.row[data-gotask],.kc[data-post],.kpi[data-goto],.clicn[data-folder],.crmc[data-folder],.ci[data-convo],.cal2day[data-calday],.day[data-calday]');for(var i=0;i<els.length;i++){var el=els[i];if(el.tagName==='BUTTON'||el.tagName==='A')continue;if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','0');if(!el.hasAttribute('role'))el.setAttribute('role','button');}}
