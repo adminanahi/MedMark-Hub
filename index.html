@@ -3262,7 +3262,7 @@ function exitPostEditor(){if(editFolderReturn){folderId=editFolderReturn;inFolde
 var EDIT_STEPS=['Estrategia','Contenido','Archivo','Programar'];
 var editStep=0;
 function pwBarHTML(){return EDIT_STEPS.map(function(t,i){var cls=i===editStep?'pwstep on':(i<editStep?'pwstep done':'pwstep');var num=i<editStep?'✓':(i+1);return '<button class="'+cls+'" data-editstep="'+i+'"><span class="pwsnum">'+num+'</span><span class="pwslbl">'+t+'</span></button>'+(i<EDIT_STEPS.length-1?'<span class="pwsline'+(i<editStep?' done':'')+'"></span>':'');}).join('');}
-function pwNavHTML(){var last=editStep===EDIT_STEPS.length-1;var back=editStep>0?'<button class="pwback" data-pwback>← Atrás</button>':'<span></span>';var next=last?'<span class="pwdone">Revisa la previa de la derecha y guarda 👉</span>':'<button class="pwnext" data-pwnext>Siguiente →</button>';return back+next;}
+function pwNavHTML(){var last=editStep===EDIT_STEPS.length-1;var back=editStep>0?'<button class="pwback" data-pwback>← Atrás</button>':'<span></span>';var saveMid=last?'':'<button class="pwback" data-savepost="'+(editPostId||0)+'" title="Guarda lo que llevas y sigue después (o pásala a Diseño)" style="color:var(--mint-d);border-color:var(--mint-s)">💾 Guardar avance</button>';var next=last?'<span class="pwdone">Revisa la previa de la derecha y guarda 👉</span>':'<button class="pwnext" data-pwnext>Siguiente →</button>';return back+saveMid+next;}
 function goEditStep(n){editStep=Math.max(0,Math.min(EDIT_STEPS.length-1,n));var ps=document.querySelectorAll('.pwpane');[].forEach.call(ps,function(s){s.style.display=(parseInt(s.getAttribute('data-pane'),10)===editStep)?'':'none';});var bar=document.getElementById('pwbar');if(bar)bar.innerHTML=pwBarHTML();var nav=document.getElementById('pwnav');if(nav)nav.innerHTML=pwNavHTML();var sc=document.querySelector('.postedit');if(sc&&sc.scrollIntoView){try{sc.scrollIntoView({block:'start',behavior:'smooth'});}catch(e){}}}
 function renderPostEditor(id,presetDoc){
   editPostId=id||0;editStep=0;
@@ -3281,7 +3281,6 @@ function renderPostEditor(id,presetDoc){
     +'</div>'
     +'<div class="fld"><label>👤 Doctor / cuenta</label>'+sel('fDoctor',docList(),p.doctor)+'</div>'
     +'<div class="frow"><div class="fld"><label>📱 Plataforma</label>'+sel('fPlat',platformsFor(p.doctor),p.plat)+'</div><div class="fld"><label>🎞️ Tipo</label>'+sel('fType',CONFIG.types,p.type)+'</div></div>'
-    +'<div class="medhint" id="fTypeHint">'+medidaHint(p.type)+'</div>'
     +'<div class="fld" style="margin-top:11px"><label>👥 Audiencia — ¿a quién le habla? <span style="font-weight:400;color:var(--ink2)">(de Marca)</span></label>'+audSelectHTML(p.doctor,p.audiencia)+'</div>'
     +'<div class="fld"><label>📝 Detalle del cliente ideal <span style="font-weight:400;color:var(--ink2)">(opcional)</span></label><textarea id="fIdeal" placeholder="Matices para esta pieza: ej. quien lleva años intentando dietas sin éxito">'+escapeHtml(p.idealClient||'')+'</textarea></div>'
     +'<div class="fld"><label>💭 Propósito — ¿qué queremos lograr?</label><textarea id="fPurpose" placeholder="ej. Educar sobre el procedimiento y generar mensajes al WhatsApp">'+escapeHtml(p.purpose||'')+'</textarea></div>'
@@ -3290,14 +3289,13 @@ function renderPostEditor(id,presetDoc){
   /* PANE 1 — Contenido */
   var pane1='<section class="pwpane" data-pane="1" style="display:none"><div class="pwhd"><div class="pweye">PASO 2 DE 4 · CONTENIDO</div><h2>Contenido</h2><p>El mensaje: copy y referencias.</p></div>'
     +'<div class="fld"><label>✍️ Copy / guion</label><textarea id="fCopy" class="big" placeholder="Gancho (0-3s) → idea principal sin tecnicismos → CTA claro…">'+escapeHtml(p.copy||'')+'</textarea></div>'
-    +'<div class="fld"><label>💡 Inspiración / referencias</label><textarea id="fInspo" placeholder="Links de referencia (reel, video), ideas visuales, ejemplos a adaptar (nunca copiar)…">'+escapeHtml(p.inspo||'')+'</textarea></div>'
-    +'<div class="fld"><label>🖼️ Imágenes de referencia</label><div class="inspowrap" id="inspoWrap">'+inspoHTML+'</div><input type="file" id="inspoFile" accept="image/*" class="hidden"></div>'
+    +'<div class="fld"><label>💡 Inspiración / referencias <span style="font-weight:400;color:var(--ink2)">(pega enlaces)</span></label><textarea id="fInspo" placeholder="Pega enlaces: un reel, un tablero de Pinterest, una carpeta de Drive… (nunca copiar, solo inspirarse)">'+escapeHtml(p.inspo||'')+'</textarea></div>'
   +'</section>';
   /* PANE 2 — Archivo (1-2-3) */
   var pane2='<section class="pwpane" data-pane="2" style="display:none"><div class="pwhd"><div class="pweye">PASO 3 DE 4 · ARCHIVO</div><h2>El archivo</h2><p>Sube la imagen, adáptala al formato y pega el enlace de Drive.</p></div>'
     +'<div class="arz">'
       +'<div class="arzrow"><div class="arzn">1</div><div class="arzbody"><div class="arzt">Sube tu imagen</div>'+fileZoneHTML+'<input type="file" id="fileInput" accept="image/*" class="hidden"></div></div>'
-      +'<div class="arzrow"><div class="arzn">2</div><div class="arzbody"><div class="arzt">Adáptala al formato</div><button class="recpill arzbtn" data-adapter>📐 Cuadrado 1:1 · Vertical 4:5 · Reel 9:16</button><div class="arzsub">Recorta a la medida de cada red y descárgala. Es la <b>misma</b> imagen, no la vuelves a subir.</div></div></div>'
+      +'<div class="arzrow"><div class="arzn">2</div><div class="arzbody"><div class="arzt">Adáptala al formato</div><button class="recpill arzbtn" data-adapter>📐 Cuadrado 1:1 · Vertical 4:5 · Reel 9:16</button><div class="arzsub">Recorta a la medida de cada red y descárgala. Es la <b>misma</b> imagen, no la vuelves a subir.</div><div class="medhint" id="fTypeHint">'+medidaHint(p.type)+'</div></div></div>'
       +'<div class="arzrow"><div class="arzn">3</div><div class="arzbody"><div class="arzt">Pega el enlace de Drive <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener" class="drvlink">📂 Abrir Drive ↗</a></div><input id="fMedia" value="'+escapeHtml(p.mediaUrl||'')+'" placeholder="https://drive.google.com/… — es lo que verá y aprobará el doctor">'
         +(driveUpReady()
           ? '<div class="arzhint">☁️ <b>Subida automática activa:</b> al subir la imagen en el paso 1, el enlace se pega solo aquí. ¿Adaptaste formatos? Toca <b>“Subir a Drive”</b> dentro del adaptador. <span class="muted2">¿Es video? Pega el enlace a mano.</span></div>'
